@@ -42,5 +42,10 @@ tutorial::go_interactive(height = 400)
 x <- 2
 x
 ```
+<div style="margin-bottom:80px;">
+</div>
 $$ \Huge \sigma^2 = \frac{\sum(X-\mu)^2}{N-1}$$
+<div style="margin-bottom:80px;">
+</div>
 
+![](https://mk0at44uvaxh7f73.kinstacdn.com/wp-content/uploads/2013/01/bell-curve.png){width=4000px}
