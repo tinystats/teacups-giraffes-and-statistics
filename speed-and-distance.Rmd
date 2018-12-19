@@ -42,3 +42,5 @@ tutorial::go_interactive(height = 400)
 x <- 2
 x
 ```
+$$ \Huge \sigma^2 = \frac{\sum(X-\mu)^2}{N-1}$$
+
