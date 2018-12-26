@@ -14,21 +14,21 @@ includes:
 
 #What does the 'mean' mean?
 
-Let's say you're interested in how dogs from Florida and Georgia differ by weight.
+Let's say you're interested in measuring the heights of a species of teacup giraffes recently discovered on small uninhabited tropical island, just of off of latitude 11°48' N. 
 
 ###Sampling
-Since we can't take the weight of EVERY dog in these these two states, we have to rely on taking the weights of randomly selected groups of dogs. Let's weigh 100 different dogs in each state.
+Since we can't take the weight of EVERY giraffe on the island, and it is unclear how many giraffes live on the island, we have to rely on taking the heights of randomly selected groups of giraffes. Let's measure 100 different animals that were captured at various locations of the island terrain.
 <div style="margin-bottom:50px">
 <div>
 <center>
 ![](giraffes2.png)
 </center>
 </div>
-<p>
-<center>![](giraffe1.png){width=150px}
-![](http://dog-milk.com/images/2017/02/jen_ha_illustration_shiba_inu_hello_hoku_02.jpg){width=350px}
-</center>
-</p>
+<!-- <p> -->
+<!-- <center>![](giraffe1.png){width=150px} -->
+<!-- ![](http://dog-milk.com/images/2017/02/jen_ha_illustration_shiba_inu_hello_hoku_02.jpg){width=350px} -->
+<!-- </center> -->
+<!-- </p> -->
 <div style="margin-bottom:30px">
 </div>
 
