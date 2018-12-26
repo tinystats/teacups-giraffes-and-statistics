@@ -1,0 +1,129 @@
+---
+title: "Variance"
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+ encoding=encoding,
+ output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
+
+output: bookdown::html_document2
+includes:
+      after_body: footer.html
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Variance
+
+##Back on the island...
+After successfully calcuating the mean, you return to the memory of the first day you had collected the data...
+
+After a hike through the island's thick jungle, you reached a small clearing with some rock surfaces with small pools of water. You experience your first encounter with a little giraffe. It barely cleared the height of an unfurling fiddlehead. You throw an acorn in its direction, and you're pleasantly surprised that it trots over to you and begins playfully hopping on and off your muddy boots. After observing this behavior for a while, you bring out your measuring tape and records its height. 
+
+Shortly after you leave the clearning, you see another little giraffe sliding down a rock, stopping directly in your path. You're surprised how much larger this one is--about as tall as two coconuts stacked on top of each other! This pattern repeats itself, and you realize that although all small, mini-giraffes are variable in size.
+
+...You return back to the data and you wonder-- how do you formally assess how spread out the values of height are among these small animals?
+
+The answer is by calculating the variance.
+
+<center>![](https://cdn1.vectorstock.com/i/1000x1000/77/50/jungle-forest-and-flowers-trees-leaves-flowers-vector-22897750.jpg)</center>
+
+##Why is variance important?
+You need a solid understanding of variance in order to grasp the mechanics of any statistical test.
+
+
+##How to calculate variance?
+First, the idea is to capture how far away individual observations lie from the known mean. In other words, we could subtract the mean from each height.
+
+Using \@ref(eq:equation2), it's easy to translate this into code in R.
+
+```{r, include=FALSE}
+tutorial::go_interactive(height = 400)
+```
+
+
+```{r ex="variance", type="sample-code"}
+
+heights1 <- c(1,5,6,4,7,4,9,2)
+
+# Subtract the mean from each height in the vector "heights1"
+
+
+# Print out "heights1_diff"
+
+
+```
+```{r ex="variance", type="solution"}
+heights1 <- c(1,5,6,4,7,4,9,2)
+
+# Subtract the mean from each height in the vector "heights1"
+heights1_diff <- heights1 - mean(heights1)
+
+# Print out "heights1_diff"
+heights1_diff
+```
+```{r ex="variance", type="sct"}
+test_object("heights1_diff")
+
+test_output_contains("heights1_diff", incorrect_msg= "Did you print 'heights1_diff'?")
+success_msg("Great!")
+```
+
+This is a great start, but we're back to the problem of needing to summarize multiple values. Since these newly calculated values are both negative and positive, we quickly realize that adding them up (like the first step when calculating the mean) would not be a productive idea since the negatives cancel the positives.
+
+What's the easiest thing to do when you want to retain how far away a point is from the mean irrespective of whether it's above or below the mean? How about taking the absolute value?
+
+(Great explanation for why not to take the abs val)
+
+Instead, we square the difference. Now, we have positive values that we can sum up. We call the number we get, the sum of squares. 
+
+<div style="margin-bottom:50px">
+</div>
+\begin{equation}
+ (\#eq:equation1)
+ \Large {\sum_{i=1}^n (x_i - \bar{x})^2}
+ \end{equation}
+<div style="margin-bottom:50px">
+</div>
+
+The sum of squares is an important calculation that we will see again for other statistical operations. 
+
+(Image of squares in physical way)
+
+We need to take into account how many observations contributed to these sum of squares. So, we divide by our n, we take the average of the squared differences from the mean. This is the variance.
+
+
+<div style="margin-bottom:50px">
+</div>
+\begin{equation}
+ (\#eq:equation2)
+ \Large \sigma^2 = \frac{\sum_{i=1}^n (x_i - \bar{x})^2}{N}
+ \end{equation}
+<div style="margin-bottom:50px">
+</div>
+
+
+The problem with variance is that it is a scaleable number, and knowing the variance alone is not enough to gauge whether the spread is large or small without knowing the units of the data. So, the standard deviation fixes that. By taking the square root of the variance, we can "standardize" the sum of squares. The revised equation is below:
+
+
+<div style="margin-bottom:50px">
+</div>
+\begin{equation}
+ (\#eq:equation2)
+ \Large \sigma = \sqrt{\frac{\sum_{i=1}^n (x_i - \bar{x})^2}{N}}
+ \end{equation}
+<div style="margin-bottom:50px">
+</div>
+
+
+
+
+
+
+&nbsp;
+<hr />
+<p style="text-align: center;"> <span style="color: #808080;"> Created using </span></p>
+<p><center>![](https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg){width=40px}
+![](https://bookdown.org/yihui/rmarkdown/images/hex-rmarkdown.png){width=40px}
+![](https://www.rstudio.com/wp-content/uploads/2014/06/RStudio-Ball.png){width=40px}</p>

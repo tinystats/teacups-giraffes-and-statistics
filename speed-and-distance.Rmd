@@ -19,6 +19,10 @@ Let's say you're interested in how dogs from Florida and Georgia differ by weigh
 ###Sampling
 Since we can't take the weight of EVERY dog in these these two states, we have to rely on taking the weights of randomly selected groups of dogs. Let's weigh 100 different dogs in each state.
 <div style="margin-bottom:50px">
+<div>
+<center>
+![](giraffes2.png)
+</center>
 </div>
 <p>
 <center>![](giraffe1.png){width=150px}
@@ -62,21 +66,44 @@ Using \@ref(eq:equation2), it's easy to translate this into code in R.
 ```{r, include=FALSE}
 tutorial::go_interactive(height = 400)
 ```
-```{r}
-dogs1 <- c(1,5,6,4,7,4,9,2)
-
-#Sum up all weights stored in dogs1, using the sum() function, and save it as a new object called "dogs1_sum"
 
 
+```{r ex="mean", type="sample-code"}
+# Vector of the weights stored in the object 'weights1'
+weights1 <- c(1,5,6,4,7,4,9,2)
 
-#Divide dogs1_sum by the number of observations. Use the length() function for n.
+# Sum up all weights stored in weights, using the sum() function, and save it as a new object called "weights1_sum"
 
 
-#Compare your result to: 
+# Divide weights1_sum by the number of observations. Use the length() function for n. Store your answer as "weights1_mean"
 
-mean(dogs1)
+
+# Print out "weights1_mean" and compare your answer to the R function "mean(weights1)"
 
 ```
+```{r ex="mean", type="solution"}
+# Vector of the weights stored in the object "weights1"
+weights1 <- c(1,5,6,4,7,4,9,2)
+
+# Sum up all weights stored in "weights1"", using the sum() function, and save it as a new object called "weights1_sum"
+weights1_sum <- sum(weights1)
+
+# Divide weights1_sum by the number of observations. Use the length() function for n. Store your answer as "weights1_mean"
+weights1_mean <- weights1_sum/length(weights1)
+
+# Print out "weights1_mean" and compare your answer to the R function "mean(weights1)"
+weights1_mean
+mean(weights1)
+```
+```{r ex="mean", type="sct"}
+test_object("weights1_sum")
+test_object("weights1_mean")
+
+test_output_contains("weights1_mean", incorrect_msg= "Did you print 'weights1_mean'?")
+test_function("mean", incorrect_msg= "Did you run 'mean(weights1)'?")
+success_msg("Great!")
+```
+
 <div style="margin-bottom:50px">
 </div>
 ###Create your own function
