@@ -5,10 +5,11 @@ navbar:
   left:
   - text: "Home"
     href: index.html
-  - text: "Speed and Distance"
+  - text: "Intro to the Bell Curve"
+    href: _001BellCurve.html
+  - text: "The Mean"
     href: speed-and-distance.html
-output:
-  html_document:
-    theme: cosmo
-
-
+  - text: "Spread of the Data"
+    href: Variance.html
+output: bookdown::html_document2
+    
