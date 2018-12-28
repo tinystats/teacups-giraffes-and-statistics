@@ -16,7 +16,7 @@ Shortly after you leave the clearing, you see another little giraffe sliding dow
 
 <div style="margin-top:50px">
 </div>
-<center>![](giraffe_forest.png)</center>
+<center>![](giraffe_forest.png){width=800px}</center>
 <div style="margin-bottom:50px">
 </div>
 

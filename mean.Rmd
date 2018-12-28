@@ -3,14 +3,14 @@ title: "The Mean"
 ---
 
 #What does the 'mean' mean?
-
 Let's say you're interested in measuring the heights of a species of teacup giraffes recently discovered on small uninhabited tropical island, just off of latitude 11°48' N. 
+<div style="margin-bottom:50px"></div>
 
 ###Sampling
 Since we can't take the weight of EVERY giraffe on the island, and it is unclear how many giraffes live on the island, we have to rely on taking the heights of randomly selected groups of giraffes. Let's measure 100 different animals that were captured at various locations of the island terrain.
-<div style="margin-top:50px"></div>
-<center>![](giraffe_ruler.png){width=900px}</center>
 
+<div style="margin-top:50px"></div>
+<center>![](giraffe_ruler.png){width=800px}</center>
 <div style="margin-bottom:50px"></div>
 
 ###Taking the mean
@@ -19,8 +19,7 @@ It'd be really hard to eyeball 100 different numbers and be able to say somethin
 The mean is the average. It is the sum of all of the weights divided by the number of dogs for the group. All dogs will be labeled "x", and the numerical subscript indicates the dog's number in the group.
 
 <p>We'll use $\color{blue}{\bar{x}}$ (read "x-bar") to represent the mean of each sample, calculated with the following equation:</p>
-<div style="margin-bottom:50px">
-</div>
+<div style="margin-bottom:50px"></div>
 \begin{equation}
  (\#eq:equation1)
  \Large \color{blue}{\bar{x}} = \frac{x_1 + x_2 + ... + x_n}{n}
@@ -29,8 +28,7 @@ The mean is the average. It is the sum of all of the weights divided by the numb
 </div>
 To make this more efficient, instead of writing "${x_1 + x_2 + ... + x_n}$", we can use the sigma symbol to represent summation of all the observations. 
 
-<div style="margin-bottom:50px">
-</div>
+<div style="margin-bottom:50px"></div>
 \begin{equation}
  (\#eq:equation2)
  \Large \color{blue}{\bar{x}} = \frac{\sum_{i=1}^n x_i}{n}
