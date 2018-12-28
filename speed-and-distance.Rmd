@@ -1,5 +1,5 @@
 ---
-title: "Speed and Distance"
+title: "The Mean"
 ---
 
 #What does the 'mean' mean?
