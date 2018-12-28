@@ -6,7 +6,7 @@ navbar:
   - text: "Home"
     href: index.html
   - text: "Intro to the Bell Curve"
-    href: "_001BellCurve.html"
+    href: BellCurve.html
   - text: "The Mean"
     href: mean.html
   - text: "Spread of the Data"

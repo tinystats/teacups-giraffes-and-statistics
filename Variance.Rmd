@@ -25,8 +25,11 @@ The range is not good enough to capture the real difference.
 What is a more stable measurment?
 
 The answer is by calculating the variance.
-
-<center>![](https://cdn1.vectorstock.com/i/1000x1000/77/50/jungle-forest-and-flowers-trees-leaves-flowers-vector-22897750.jpg)</center>
+<div style="margin-top:50px">
+</div>
+<center>![](giraffe_forest.png)</center>
+<div style="margin-bottom:50px">
+</div>
 
 ##Why is variance important?
 You need a solid understanding of variance in order to grasp the mechanics of any statistical test.
