@@ -3,7 +3,10 @@ title: "Home"
 output: html_document
 ---
 
-This is the "welcome page" I added as an experiment. Here is an illustration of some teacup giraffes. Some are smaller than an iPhone.
+This is the "welcome page" I added as an experiment. Here is an illustration of some teacup giraffes. If you're wondering how tall a teacup giraffe is...some are smaller than an iPhone.
+
 <center>
+<div style="margin-top:50px"></div>
 ![](giraffes2.png){width=800px}
+<div style="margin-bottom:50px"></div>
 </center>

@@ -1,11 +1,10 @@
 ---
-title: "Spread of the Data"
+title: "The Spread of the Data"
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#The Spread of the Data
 
 ##Back on the island...
 After successfully calculating the mean, you return to the memory of the first day you had collected your data...There was one that was your favorite-- it was especially cute! 
@@ -26,7 +25,7 @@ What is a more stable measurment?
 
 The answer is by calculating the variance.
 <div style="margin-top:50px"></div>
-<center>![](giraffe_forest.png){width=900px}</center>
+<center>![](giraffe_forest.png){width=800px}</center>
 <div style="margin-bottom:50px"></div>
 
 ##Why is variance important?
