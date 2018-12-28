@@ -14,7 +14,11 @@ After a one hour hike, you reach a clearing where tall cypress trees surround pr
 
 Shortly after you leave the clearing, you see another little giraffe sliding down a rock, stopping directly in your path. You're surprised how much larger this one is--about as tall as a banana. This pattern repeats itself, and you realize that although all small, mini-giraffes are variable in size.
 
+<center>![](giraffe_forest.png)</center>
+
 The next week is spent trekking and measuring every giraffe you can manage to bring near enough. You've capitalized on the fact that they seem to find the pistachios from your lunch very tasty, and you're relieved that they seem to be social enough to approach long enough for a reliable measurment with your tape measure. With the help of your guide, you manage to measure 50 giraffes in the first week.
+
+(Introduce the existence of the nearby (additional) island with small giraffes. Insert illustration and narrative -- take measurements from 2nd island)
 
 ##The Data
 You record the data below in your records book, and you make a plot to get a sense of how tall the tiny giraffes really are.
