@@ -176,7 +176,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Cars</a>
+      <a class="navbar-brand" href="index.html">Statistics with R</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -187,7 +187,7 @@ $(document).ready(function () {
   <a href="_001BellCurve.html">Intro to the Bell Curve</a>
 </li>
 <li>
-  <a href="speed-and-distance.html">The Mean</a>
+  <a href="mean.html">The Mean</a>
 </li>
 <li>
   <a href="Variance.html">Spread of the Data</a>
@@ -210,14 +210,17 @@ $(document).ready(function () {
 
 
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
-<div id="variance" class="section level1">
-<h1><span class="header-section-number">1</span> Variance</h1>
+<div id="the-spread-of-the-data" class="section level1">
+<h1><span class="header-section-number">1</span> The Spread of the Data</h1>
 <div id="back-on-the-island" class="section level2">
 <h2><span class="header-section-number">1.1</span> Back on the island…</h2>
-<p>After successfully calcuating the mean, you return to the memory of the first day you had collected the data…</p>
-<p>After a hike through the island’s thick jungle, you reached a small clearing with some rock surfaces with small pools of water. You experience your first encounter with a little giraffe. It barely cleared the height of an unfurling fiddlehead. You throw an acorn in its direction, and you’re pleasantly surprised that it trots over to you and begins playfully hopping on and off your muddy boots. After observing this behavior for a while, you bring out your measuring tape and records its height.</p>
-<p>Shortly after you leave the clearning, you see another little giraffe sliding down a rock, stopping directly in your path. You’re surprised how much larger this one is–about as tall as two coconuts stacked on top of each other! This pattern repeats itself, and you realize that although all small, mini-giraffes are variable in size.</p>
+<p>After successfully calculating the mean, you return to the memory of the first day you had collected your data…There was one that was your favorite– it was especially cute!</p>
+<p>-After a few days, you get acquainted with this very small one. the favorite- how rare is its smallness?</p>
 <p>…You return back to the data and you wonder– how do you formally assess how spread out the values of height are among these small animals?</p>
+<p>You might start by calculating the range. This gives us a rough idea of the kinds of heights we can expect on a very basic level. But, the range seems to ignore important information (i.e. outliers).</p>
+<p>(Include Interactive plot where you see two different data sets with same range. One has outliers influencing the range– while the other just has a lot more variability.)</p>
+<p>The range is not good enough to capture the real difference.</p>
+<p>What is a more stable measurment?</p>
 <p>The answer is by calculating the variance.</p>
 <center>
 <img src="https://cdn1.vectorstock.com/i/1000x1000/77/50/jungle-forest-and-flowers-trees-leaves-flowers-vector-22897750.jpg" />
@@ -265,12 +268,13 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJoZWlnaHRzMSA8LSBjKDEsNSw2LDQsNyw0LDksMilcblxu
 <div style="margin-bottom:50px">
 
 </div>
-<span class="math display" id="eq:equation2">\[\begin{equation}
- \tag{1.2}
+<span class="math display" id="eq:equation3">\[\begin{equation}
+ \tag{1.3}
  \Large \sigma = \sqrt{\frac{\sum_{i=1}^n (x_i - \bar{x})^2}{N}}
  \end{equation}\]</span>
 <div style="margin-bottom:50px">
-
+<p>Bell curve - place holder point out outliers in illustration</p>
+<p>Population vs sample (N vs N-1)</p>
 </div>
  
 <hr />

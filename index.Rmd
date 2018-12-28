@@ -4,3 +4,6 @@ output: html_document
 ---
 
 This is the "welcome page" I added as an experiment
+<center>
+![](giraffes2.png){width=800px}
+</center>

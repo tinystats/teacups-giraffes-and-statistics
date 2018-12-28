@@ -1,14 +1,14 @@
 name: "cars"
 output_dir: "docs"
 navbar:
-  title: "Cars"
+  title: "Statistics with R"
   left:
   - text: "Home"
     href: index.html
   - text: "Intro to the Bell Curve"
     href: "_001BellCurve.html"
   - text: "The Mean"
-    href: speed-and-distance.html
+    href: mean.html
   - text: "Spread of the Data"
     href: Variance.html
 output: bookdown::html_document2

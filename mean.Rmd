@@ -1,0 +1,112 @@
+---
+title: "The Mean"
+---
+
+#What does the 'mean' mean?
+
+Let's say you're interested in measuring the heights of a species of teacup giraffes recently discovered on small uninhabited tropical island, just off of latitude 11°48' N. 
+
+###Sampling
+Since we can't take the weight of EVERY giraffe on the island, and it is unclear how many giraffes live on the island, we have to rely on taking the heights of randomly selected groups of giraffes. Let's measure 100 different animals that were captured at various locations of the island terrain.
+<div style="margin-top:50px">
+</div>
+<center>
+![](giraffe_ruler.png){width=800px}
+</center>
+<!-- <p> -->
+<!-- <center>![](giraffe1.png){width=150px} -->
+<!-- ![](http://dog-milk.com/images/2017/02/jen_ha_illustration_shiba_inu_hello_hoku_02.jpg){width=350px} -->
+<!-- </center> -->
+<!-- </p> -->
+<div style="margin-bottom:50px">
+</div>
+
+###Taking the mean
+It'd be really hard to eyeball 100 different numbers and be able to say something about dogs in Georgia or Florida. We need to summarize these weights into a single number per group that will be meaningful-- <span style="color:blue"> the mean</span>! 
+
+The mean is the average. It is the sum of all of the weights divided by the number of dogs for the group. All dogs will be labeled "x", and the numerical subscript indicates the dog's number in the group.
+
+<p>We'll use $\color{blue}{\bar{x}}$ (read "x-bar") to represent the mean of each sample, calculated with the following equation:</p>
+<div style="margin-bottom:50px">
+</div>
+\begin{equation}
+ (\#eq:equation1)
+ \Large \color{blue}{\bar{x}} = \frac{x_1 + x_2 + ... + x_n}{n}
+ \end{equation}
+<div style="margin-bottom:50px">
+</div>
+To make this more efficient, instead of writing "${x_1 + x_2 + ... + x_n}$", we can use the sigma symbol to represent summation of all the observations. 
+
+<div style="margin-bottom:50px">
+</div>
+\begin{equation}
+ (\#eq:equation2)
+ \Large \color{blue}{\bar{x}} = \frac{\sum_{i=1}^n x_i}{n}
+ \end{equation}
+<div style="margin-bottom:50px">
+</div>
+
+This might look intimidating, but it means the same thing as \@ref(eq:equation1). Let's break the symbols apart a bit. The sigma $\sum{}$ means add up. What are we adding up? All the observations "x". The i=1 means that we start with the first x on our list. The character on top of the sigma is the last observation we include in our summation. In this case it's n--because we're adding all n = 100 observations in each group of dogs. In both equations, we still divide by the total number of observations in each group we have: n. 
+<div style="margin-bottom:50px">
+</div>
+###Code it up
+Using \@ref(eq:equation2), it's easy to translate this into code in R.
+
+```{r, include=FALSE}
+tutorial::go_interactive(height = 400)
+```
+
+
+```{r ex="mean", type="sample-code"}
+# Vector of the weights stored in the object 'weights1'
+weights1 <- c(1,5,6,4,7,4,9,2)
+
+# Sum up all weights stored in weights, using the sum() function, and save it as a new object called "weights1_sum"
+
+
+# Divide weights1_sum by the number of observations. Use the length() function for n. Store your answer as "weights1_mean"
+
+
+# Print out "weights1_mean" and compare your answer to the R function "mean(weights1)"
+
+```
+```{r ex="mean", type="solution"}
+# Vector of the weights stored in the object "weights1"
+weights1 <- c(1,5,6,4,7,4,9,2)
+
+# Sum up all weights stored in "weights1"", using the sum() function, and save it as a new object called "weights1_sum"
+weights1_sum <- sum(weights1)
+
+# Divide weights1_sum by the number of observations. Use the length() function for n. Store your answer as "weights1_mean"
+weights1_mean <- weights1_sum/length(weights1)
+
+# Print out "weights1_mean" and compare your answer to the R function "mean(weights1)"
+weights1_mean
+mean(weights1)
+```
+```{r ex="mean", type="sct"}
+test_object("weights1_sum")
+test_object("weights1_mean")
+
+test_output_contains("weights1_mean", incorrect_msg= "Did you print 'weights1_mean'?")
+test_function("mean", incorrect_msg= "Did you run 'mean(weights1)'?")
+success_msg("Great!")
+```
+
+<div style="margin-bottom:50px">
+</div>
+###Create your own function
+ Now it's your turn to write your own function. Call it "my_mean" and have it calculate the mean of any given vector. Do this in RStudio on your local computer.
+ <div style="margin-bottom:50px">
+</div>
+###Things to think about...
+How reliably does the sample mean represent the population mean? See the [Law of Large Numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers).
+
+
+&nbsp;
+<hr />
+<p style="text-align: center;"> <span style="color: #808080;"> Created using </span></p>
+<p><center>![](https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg){width=40px}
+![](https://bookdown.org/yihui/rmarkdown/images/hex-rmarkdown.png){width=40px}
+![](https://www.rstudio.com/wp-content/uploads/2014/06/RStudio-Ball.png){width=40px}</p>
+&nbsp;

@@ -5,16 +5,24 @@ title: "Spread of the Data"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#Variance
+#The Spread of the Data
 
 ##Back on the island...
-After successfully calcuating the mean, you return to the memory of the first day you had collected the data...
+After successfully calculating the mean, you return to the memory of the first day you had collected your data...There was one that was your favorite-- it was especially cute! 
 
-After a hike through the island's thick jungle, you reached a small clearing with some rock surfaces with small pools of water. You experience your first encounter with a little giraffe. It barely cleared the height of an unfurling fiddlehead. You throw an acorn in its direction, and you're pleasantly surprised that it trots over to you and begins playfully hopping on and off your muddy boots. After observing this behavior for a while, you bring out your measuring tape and records its height. 
-
-Shortly after you leave the clearning, you see another little giraffe sliding down a rock, stopping directly in your path. You're surprised how much larger this one is--about as tall as two coconuts stacked on top of each other! This pattern repeats itself, and you realize that although all small, mini-giraffes are variable in size.
+-After a few days, you get acquainted with this very small one. the favorite- how rare is its smallness?
 
 ...You return back to the data and you wonder-- how do you formally assess how spread out the values of height are among these small animals?
+
+
+
+You might start by calculating the range. This gives us a rough idea of the kinds of heights we can expect on a very basic level. But, the range seems to ignore important information (i.e. outliers).
+
+(Include Interactive plot where you see two different data sets with same range. One has outliers influencing the range-- while the other just has a lot more variability.)
+
+The range is not good enough to capture the real difference.
+
+What is a more stable measurment?
 
 The answer is by calculating the variance.
 
@@ -101,10 +109,18 @@ The problem with variance is that it is a scaleable number, and knowing the vari
 <div style="margin-bottom:50px">
 </div>
 \begin{equation}
- (\#eq:equation2)
+ (\#eq:equation3)
  \Large \sigma = \sqrt{\frac{\sum_{i=1}^n (x_i - \bar{x})^2}{N}}
  \end{equation}
 <div style="margin-bottom:50px">
+
+
+Bell curve - place holder
+ point out outliers in illustration
+ 
+Population vs sample (N vs N-1)
+
+
 </div>
 
 
