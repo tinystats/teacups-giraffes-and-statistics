@@ -1,9 +1,9 @@
 ---
-title: "index"
+title: "Home"
 output: html_document
 ---
 
-This is the "welcome page" I added as an experiment
+This is the "welcome page" I added as an experiment. Here is an illustration of some teacup giraffes. Some are smaller than an iPhone.
 <center>
 ![](giraffes2.png){width=800px}
 </center>

@@ -8,14 +8,10 @@ Let's say you're interested in measuring the heights of a species of teacup gira
 
 ###Sampling
 Since we can't take the weight of EVERY giraffe on the island, and it is unclear how many giraffes live on the island, we have to rely on taking the heights of randomly selected groups of giraffes. Let's measure 100 different animals that were captured at various locations of the island terrain.
-<div style="margin-top:50px">
-</div>
-<center>
-![](giraffe_ruler.png){width=850px}
-</center>
+<div style="margin-top:50px"></div>
+<center>![](giraffe_ruler.png){width=900px}</center>
 
-<div style="margin-bottom:50px">
-</div>
+<div style="margin-bottom:50px"></div>
 
 ###Taking the mean
 It'd be really hard to eyeball 100 different numbers and be able to say something about dogs in Georgia or Florida. We need to summarize these weights into a single number per group that will be meaningful-- <span style="color:blue"> the mean</span>! 
