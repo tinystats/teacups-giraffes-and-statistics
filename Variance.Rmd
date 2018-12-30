@@ -6,7 +6,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-##Back on the island...
+# Back on the island...
 After successfully calculating the mean, you return to the memory of the first day you had collected your data...There was one that was your favorite-- it was especially cute! 
 
 -After a few days, you get acquainted with this very small one. the favorite- how rare is its smallness?
@@ -68,6 +68,7 @@ test_object("heights1_diff")
 test_output_contains("heights1_diff", incorrect_msg= "Did you print 'heights1_diff'?")
 success_msg("Great!")
 ```
+<div style="margin-top:50px"></div>
 
 This is a great start, but we're back to the problem of needing to summarize multiple values. Since these newly calculated values are both negative and positive, we quickly realize that adding them up (like the first step when calculating the mean) would not be a productive idea since the negatives cancel the positives.
 

@@ -210,8 +210,8 @@ $(document).ready(function () {
 
 
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
-<div id="back-on-the-island" class="section level2">
-<h2><span class="header-section-number">0.1</span> Back on the island…</h2>
+<div id="back-on-the-island" class="section level1">
+<h1><span class="header-section-number">1</span> Back on the island…</h1>
 <p>After successfully calculating the mean, you return to the memory of the first day you had collected your data…There was one that was your favorite– it was especially cute!</p>
 <p>-After a few days, you get acquainted with this very small one. the favorite- how rare is its smallness?</p>
 <p>…You return back to the data and you wonder– how do you formally assess how spread out the values of height are among these small animals?</p>
@@ -229,17 +229,19 @@ The answer is by calculating the variance.
 <div style="margin-bottom:50px">
 
 </div>
-</div>
 <div id="why-is-variance-important" class="section level2">
-<h2><span class="header-section-number">0.2</span> Why is variance important?</h2>
+<h2><span class="header-section-number">1.1</span> Why is variance important?</h2>
 <p>You need a solid understanding of variance in order to grasp the mechanics of any statistical test.</p>
 </div>
 <div id="how-to-calculate-variance" class="section level2">
-<h2><span class="header-section-number">0.3</span> How to calculate variance?</h2>
+<h2><span class="header-section-number">1.2</span> How to calculate variance?</h2>
 <p>First, the idea is to capture how far away individual observations lie from the known mean. In other words, we could subtract the mean from each height.</p>
-<p>Using <a href="#eq:equation2">(2)</a>, it’s easy to translate this into code in R.</p>
+<p>Using <a href="#eq:equation2">(1.2)</a>, it’s easy to translate this into code in R.</p>
 <div data-datacamp-exercise="" data-height="400" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJoZWlnaHRzMSA8LSBjKDEsNSw2LDQsNyw0LDksMilcblxuIyBTdWJ0cmFjdCB0aGUgbWVhbiBmcm9tIGVhY2ggaGVpZ2h0IGluIHRoZSB2ZWN0b3IgXCJoZWlnaHRzMVwiXG5cblxuIyBQcmludCBvdXQgXCJoZWlnaHRzMV9kaWZmXCIiLCJzb2x1dGlvbiI6ImhlaWdodHMxIDwtIGMoMSw1LDYsNCw3LDQsOSwyKVxuXG4jIFN1YnRyYWN0IHRoZSBtZWFuIGZyb20gZWFjaCBoZWlnaHQgaW4gdGhlIHZlY3RvciBcImhlaWdodHMxXCJcbmhlaWdodHMxX2RpZmYgPC0gaGVpZ2h0czEgLSBtZWFuKGhlaWdodHMxKVxuXG4jIFByaW50IG91dCBcImhlaWdodHMxX2RpZmZcIlxuaGVpZ2h0czFfZGlmZiIsInNjdCI6InRlc3Rfb2JqZWN0KFwiaGVpZ2h0czFfZGlmZlwiKVxuXG50ZXN0X291dHB1dF9jb250YWlucyhcImhlaWdodHMxX2RpZmZcIiwgaW5jb3JyZWN0X21zZz0gXCJEaWQgeW91IHByaW50ICdoZWlnaHRzMV9kaWZmJz9cIilcbnN1Y2Nlc3NfbXNnKFwiR3JlYXQhXCIpIn0=
+</div>
+<div style="margin-top:50px">
+
 </div>
 <p>This is a great start, but we’re back to the problem of needing to summarize multiple values. Since these newly calculated values are both negative and positive, we quickly realize that adding them up (like the first step when calculating the mean) would not be a productive idea since the negatives cancel the positives.</p>
 <p>What’s the easiest thing to do when you want to retain how far away a point is from the mean irrespective of whether it’s above or below the mean? How about taking the absolute value?</p>
@@ -249,7 +251,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJoZWlnaHRzMSA8LSBjKDEsNSw2LDQsNyw0LDksMilcblxu
 
 </div>
 <span class="math display" id="eq:equation1">\[\begin{equation}
- \tag{1}
+ \tag{1.1}
  \Large {\sum_{i=1}^n (x_i - \bar{x})^2}
  \end{equation}\]</span>
 <div style="margin-bottom:50px">
@@ -262,7 +264,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJoZWlnaHRzMSA8LSBjKDEsNSw2LDQsNyw0LDksMilcblxu
 
 </div>
 <span class="math display" id="eq:equation2">\[\begin{equation}
- \tag{2}
+ \tag{1.2}
  \Large \sigma^2 = \frac{\sum_{i=1}^n (x_i - \bar{x})^2}{N}
  \end{equation}\]</span>
 <div style="margin-bottom:50px">
@@ -273,7 +275,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJoZWlnaHRzMSA8LSBjKDEsNSw2LDQsNyw0LDksMilcblxu
 
 </div>
 <span class="math display" id="eq:equation3">\[\begin{equation}
- \tag{3}
+ \tag{1.3}
  \Large \sigma = \sqrt{\frac{\sum_{i=1}^n (x_i - \bar{x})^2}{N}}
  \end{equation}\]</span>
 <div style="margin-bottom:50px">
@@ -289,6 +291,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJoZWlnaHRzMSA8LSBjKDEsNSw2LDQsNyw0LDksMilcblxu
 <center>
 <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" width="40" /> <img src="https://bookdown.org/yihui/rmarkdown/images/hex-rmarkdown.png" width="40" /> <img src="https://www.rstudio.com/wp-content/uploads/2014/06/RStudio-Ball.png" width="40" />
 </p>
+</div>
 </div>
 
 
