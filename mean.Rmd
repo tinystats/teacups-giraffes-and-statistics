@@ -21,7 +21,7 @@ d <- rbind(x,x2)
 
 p <- ggplot(data=d, aes(d$x, fill=d$type))+geom_histogram(binwidth=1, color="white")+theme_light()+scale_fill_manual(values=c("green3", "turquoise3"))+labs(x="Teacup Giraffe heights", y="Frequency", fill=NULL)+scale_y_continuous(expand=c(0,0))+theme(panel.border=element_blank(), panel.grid.minor=element_blank(), axis.ticks.y=element_blank(), legend.position= c(0.165,0.92), legend.background = element_blank())
 
-ggsave(filename = "/Users/Desiree/Documents/New R Projects/Cars/docs/p.png", width=5, height=3, p)
+ggsave(filename = "/Users/Desiree/Documents/New R Projects/Cars/p.png", width=5, height=3, p)
 
 ```
 ![](p.png){width=500px}
@@ -329,7 +329,7 @@ p <- dd %>% plot_ly(x=~log10(N), y=~x, frame=~frame, type="scatter", mode="lines
     x = 1, xanchor = "right", y = 0, yanchor = "bottom"
   )
 
-htmltools::save_html(p,"/Users/Desiree/Documents/New R Projects/Cars/docs/law_of_large_numbers.html")
+htmltools::save_html(p,"/Users/Desiree/Documents/New R Projects/Cars/Law_of_large_numbers.html")
 
 ```
 <center><iframe src="Law_of_large_numbers.html" width="600" height="550" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
