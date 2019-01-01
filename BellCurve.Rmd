@@ -16,7 +16,7 @@ Shortly after you leave the clearing, you spot another little giraffe sliding do
 
 <div style="margin-top:50px">
 </div>
-<center>![](giraffe_forest.png){width=800px}</center>
+<center>![](giraffe_forest_dpi72.png){width=800px}</center>
 <div style="margin-bottom:50px">
 </div>
 
@@ -25,7 +25,7 @@ The next week is spent trekking and measuring every giraffe you can manage to br
 (Introduce the existence of the nearby (additional) island with small giraffes. Insert narrative for island #2 -- take measurements from 2nd island)
 
 <p><div style="margin-top:50px"></div>
-<center>![](giraffe_islands1.png){width=800px}</center>
+<center>![](giraffe_island_dpi72.png){width=800px}</center>
 <div style="margin-bottom:50px"></div></p>
 
 
@@ -56,5 +56,8 @@ The giraffes on the north side of the island have bell curve B...
 # Create your own histogram
 
 
+
+### Sampling
+Since we can't take the height of EVERY giraffe on the islands, and it is unclear how many giraffes live on the island, we have to rely on taking the heights of randomly selected groups of giraffes. Let's measure 100 different animals that were captured at various locations of the island terrain.
 
 

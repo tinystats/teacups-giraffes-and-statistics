@@ -1,97 +1,338 @@
 ---
-title: "The Mean"
+title: "Mean, Median, and Mode"
 ---
 
-# What does the 'mean' mean?
-Let's say you're interested in measuring the heights of a species of teacup giraffes recently discovered on small uninhabited tropical island, just off of latitude 11°48' N. 
-<div style="margin-bottom:50px"></div>
-
-### Sampling
-Since we can't take the weight of EVERY giraffe on the island, and it is unclear how many giraffes live on the island, we have to rely on taking the heights of randomly selected groups of giraffes. Let's measure 100 different animals that were captured at various locations of the island terrain.
+<style>
+.main-container { width: 600px; max-width: 950px;}
+</style>
+# What are measures of centrality?
 
 <div style="margin-top:50px"></div>
-<center>![](giraffe_ruler.png){width=800px}</center>
+<p style=><center>
+```{r, echo=FALSE}
+library(ggplot2)
+set.seed(12)
+x <- rnorm(50, 10, 2)
+x2 <- rnorm(50, 18, 1.2)
+x <- data.frame(x=x, type="Island #1")
+x2 <- data.frame(x=x2, type="Island #2")
+
+d <- rbind(x,x2)
+
+p <- ggplot(data=d, aes(d$x, fill=d$type))+geom_histogram(binwidth=1, color="white")+theme_light()+scale_fill_manual(values=c("green3", "turquoise3"))+labs(x="Teacup Giraffe heights", y="Frequency", fill=NULL)+scale_y_continuous(expand=c(0,0))+theme(panel.border=element_blank(), panel.grid.minor=element_blank(), axis.ticks.y=element_blank(), legend.position= c(0.165,0.92), legend.background = element_blank())
+
+ggsave(filename = "/Users/Desiree/Documents/New R Projects/Cars/docs/p.png", width=5, height=3, p)
+
+```
+![](p.png){width=500px}
+
+</center><div style="margin-bottom:25px"></div>
+
+You've just collected a lot of height data and graphed it. Although informative, a graphical display of these data is difficult to summarize--we need to describe these heights with a single number that will be meaningful and allow us to do statistics.
+
+We can do this with a measure of centrality: the mean, the median, or the mode. A measure of centrality describes the concept that one number in the "center" of the data set is a good summary of the entire set. What's the best measure of the center? 
+
+* The **mean**, is the one you are probably most familiar with, and we describe it in detail below.
+
+* The **median** is the number in the middle of the data set. Half of the observations lie above the median and half below. The median is used as the measure of centrality when your data are not normally distributed and are instead skewed to the left of right.
+ ( QUICK ILLO OF SKEWNESS WITH LEFT  RIGHT LABEL)
+
+* The **mode** is the most frequent number (height in our case) in the data set. It's not typically used in statistics, and we won't cover it further here.
+
+
+<!-- Let's say you're interested in measuring the heights of a species of teacup giraffes recently discovered on small uninhabited tropical island, just off of latitude 11°48' N.  -->
 <div style="margin-bottom:50px"></div>
 
+
 ### Taking the mean
-It'd be really hard to eyeball 100 different numbers and be able to say something about dogs in Georgia or Florida. We need to summarize these weights into a single number per group that will be meaningful-- <span style="color:blue"> the mean</span>! 
+The mean is the average. It is the sum of all of the heights divided by the number of giraffes for the sample. All giraffes will be labeled "x", and the numerical subscript indicates the giraffes's number in the sample.
 
-The mean is the average. It is the sum of all of the weights divided by the number of dogs for the group. All dogs will be labeled "x", and the numerical subscript indicates the dog's number in the group.
-
-<p>We'll use $\color{blue}{\bar{x}}$ (read "x-bar") to represent the mean of each sample, calculated with the following equation:</p>
+<p>We'll use ${\bar{x}}$ (read "x-bar") to represent the mean of each sample, calculated with the following equation:</p>
 <div style="margin-bottom:50px"></div>
 \begin{equation}
  (\#eq:equation1)
- \Large \color{blue}{\bar{x}} = \frac{x_1 + x_2 + ... + x_n}{n}
+ \Large{\bar{x}} = \frac{x_1 + x_2 + ... + x_n}{n}
  \end{equation}
 <div style="margin-bottom:50px">
 </div>
-To make this more efficient, instead of writing "${x_1 + x_2 + ... + x_n}$", we can use the sigma symbol to represent summation of all the observations. 
+To make this more efficient, instead of writing "${x_1 + x_2 + ... + x_n}$", we can use the uppercase sigma symbol $\sum{}$ to represent summation of all the observations. 
 
 <div style="margin-bottom:50px"></div>
 \begin{equation}
  (\#eq:equation2)
- \Large \color{blue}{\bar{x}} = \frac{\sum_{i=1}^n x_i}{n}
+ \Large {\bar{x}} = \frac{\sum_{i=1}^n x_i}{n}
  \end{equation}
 <div style="margin-bottom:50px">
 </div>
 
-This might look intimidating, but it means the same thing as \@ref(eq:equation1). Let's break the symbols apart a bit. The sigma $\sum{}$ means add up. What are we adding up? All the observations "x". The i=1 means that we start with the first x on our list. The character on top of the sigma is the last observation we include in our summation. In this case it's n--because we're adding all n = 100 observations in each group of dogs. In both equations, we still divide by the total number of observations in each group we have: n. 
+<p> This might look intimidating, but it means the same thing as \@ref(eq:equation1). Let's break the symbols apart a bit. The sigma means add up. What are we adding up? All the heights "x", which we call our *observations*. The i=1 means that we start with the first x on our list. The character on top of the sigma is the last observation we include in our summation. In this case it's n--because we're adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: n. </p>
 <div style="margin-bottom:50px">
 </div>
 ###Code it up
-Using \@ref(eq:equation2), it's easy to translate this into code in R.
+Using \@ref(eq:equation2), it's easy to translate this into code in R. The heights recorded from island 1 have been stored in a vector called `heights_island1`. Below we show the first few observations from this vector, using the `head()` function.
 
+```{r, echo=FALSE}
+set.seed(12)
+heights_island1 <- rnorm(50,10,2)
+```
+```{r, echo=TRUE}
+head(heights_island1)
+```
+
+<div style="margin-bottom:25px"></div>
+
+Use the interactive window below to calculate the mean "by hand".
+
+<div style="margin-bottom:15px"></div>
 ```{r, include=FALSE}
 tutorial::go_interactive(height = 400)
 ```
 
+```{r ex="mean", type="pre-exercise-code"}
+set.seed(12)
+heights_island1 <- rnorm(50,10,2)
+
+```
 
 ```{r ex="mean", type="sample-code"}
-# Vector of the weights stored in the object 'weights1'
-weights1 <- c(1,5,6,4,7,4,9,2)
 
-# Sum up all weights stored in weights, using the sum() function, and save it as a new object called "weights1_sum"
+# Sum up all heights stored in heights, using the sum() function, and save it as a new object called "heights_island1_sum"
 
 
-# Divide weights1_sum by the number of observations. Use the length() function for n. Store your answer as "weights1_mean"
+# Divide heightsisland1_sum by the number of observations. Use the length() function for n. Store your answer as "heights_island1_mean"
 
 
-# Print out "weights1_mean" and compare your answer to the R function "mean(weights1)"
+# Print out "heights_island1_mean" and compare your answer to the R function "mean(heights_island1)"
 
 ```
+
 ```{r ex="mean", type="solution"}
-# Vector of the weights stored in the object "weights1"
-weights1 <- c(1,5,6,4,7,4,9,2)
 
-# Sum up all weights stored in "weights1"", using the sum() function, and save it as a new object called "weights1_sum"
-weights1_sum <- sum(weights1)
+# Sum up all heights stored in "heights_island1"", using the sum() function, and save it as a new object called "heights_island1_sum"
+heights_islands1_sum <- sum(heights_island1)
 
-# Divide weights1_sum by the number of observations. Use the length() function for n. Store your answer as "weights1_mean"
-weights1_mean <- weights1_sum/length(weights1)
+# Divide heights_island1_sum by the number of observations. Use the length() function for n. Store your answer as "heights1_mean"
+heights_islands1_mean <- heights_island1_sum/length(heights_island1)
 
-# Print out "weights1_mean" and compare your answer to the R function "mean(weights1)"
-weights1_mean
-mean(weights1)
+# Print out "heights_island1_mean" and compare your answer to the R function "mean(heights_island1)"
+heights_island1_mean
+mean(heights_island1)
 ```
-```{r ex="mean", type="sct"}
-test_object("weights1_sum")
-test_object("weights1_mean")
 
-test_output_contains("weights1_mean", incorrect_msg= "Did you print 'weights1_mean'?")
-test_function("mean", incorrect_msg= "Did you run 'mean(weights1)'?")
+```{r ex="mean", type="sct"}
+test_object("heights_island1_sum")
+test_object("heights_island1_mean")
+
+test_output_contains("heights_island1_mean", incorrect_msg= "Did you print 'heights_island1_mean'?")
+test_function("mean", incorrect_msg= "Did you run 'mean(heights_island1)'?")
 success_msg("Great!")
 ```
 
 <div style="margin-bottom:50px">
 </div>
+
+
 ###Create your own function
- Now it's your turn to write your own function. Call it "my_mean" and have it calculate the mean of any given vector. Do this in RStudio on your local computer.
- <div style="margin-bottom:50px">
-</div>
+ Now it's your turn to write your own function. Call it "my_mean" and have it calculate the mean of any given vector. You're going to use the rules for writing a function in R that you've used previously. As a reminder, you'll use `function()` and embed your code (that you completed in the previous exercise) within curly brackets`{}`. The advantage of making a "homemade" function is that you can string together all the steps from the previous exercise into a single command.
+ 
+```{r ex="mean_function", type="pre-exercise-code"}
+set.seed(12)
+heights_island1 <- rnorm(50,10,2)
+```
+
+```{r ex="mean_function", type="sample-code"}
+# Complete the code below to create your own function that will calculate the mean of any vector
+
+my_mean <- function(vector){
+ 
+  
+}
+
+#Verify that your function correctly calculates the mean.
+my_mean(heights_island1)
+mean(heights_island1) 
+
+```
+
+```{r ex="mean_function", type="solution"}
+# Complete the code below to create your own function that will calculate the mean of any vector
+
+my_mean <- function(vector){
+  a <- sum(vector)
+  b <- a/length(vector)
+  return(b)
+}
+
+#Verify that your function correctly calculates the mean.
+my_mean(heights_island1)
+mean(heights_island1) 
+
+```
+
+```{r ex="mean_function", type="sct"}
+test_function_result(name= "my_mean", not_called_msg="Did you run my_mean()?", error_msg="There's an error in your function.", incorrect_msg="Your function runs, but it is calculating the wrong value.")
+success_msg("Great!")
+```
+ 
+ You can also complete the exercise above in RStudio on your local computer. This way you will be able to save your `my_mean()` function and script for future use.
+ 
+ <div style="margin-bottom:50px"></div>
+
+
+### Taking the median
+To calculate the median go through the following steps:
+
+* Assess whether there are an odd or even number of observations
+* Order all observations from smallest to largest
+* If an odd number, then the median is the middle value at position: (n+1)/2
+* If an even number, then:
+    + Find the value at the position: n/2
+    + Find the value at the position: (n+1)/2
+    + The median will be the mean of the values of at these two positions.
+  
+Before you write your own median function, the two concepts need to be introduced: 1) the modulus operator `%%` and 2) `if...else` statements. 
+
+The modulus operation gives the remainder after division of one number by another. For example, in R `11 %% 5` returns the `1`, which is the remainer of `11` divided by `5`.  If the modulus operation returns `0`, then there is no remainder. It is useful to apply the modulus operation `x %% 2` to determine whether a number `x` is even or odd by testing whether or not the result is exactly equal to 0.
+
+<div style="margin-bottom:50px"></div>
+
+```{r, tut=FALSE}
+11 %% 2
+11 %% 2 == 0 
+10 %% 2
+10 %% 2 == 0
+```
+
+The `if...else` statements are useful when you want two different things to happen based on two different conditions. See below.
+```{r ex="if_else", type="pre-exercise-code"}
+set.seed(12)
+heights_island1 <- rnorm(50,10,2)
+```
+
+```{r ex="if_else", type="sample-code"}
+# 
+
+if(length(heights_island1) %% 2 == 0) {
+  print("EVEN!")
+} else {
+    print("ODD.")
+}
+
+
+if((length(heights_island1)-1) %% 2 == 0) {
+  print("EVEN!")
+} else {
+    print("ODD.")
+}
+```
+
+
+```{r, include=FALSE}
+tutorial::go_interactive(height = 400)
+```
+
+```{r ex="median_function", type="pre-exercise-code"}
+set.seed(12)
+heights_island1 <- rnorm(50,10,2)
+```
+
+```{r ex="median_function", type="sample-code"}
+# Complete the code below to create your own function that will calculate the median of any vector
+
+my_median <- function(vector){
+  if(){
+   
+  }else{ 
+   
+  }
+}
+
+#Verify that your function correctly calculates the median.
+my_median(heights_island1)
+median(heights_island1) 
+
+```
+
+```{r ex="median_function", type="solution"}
+# Complete the code below to create your own function that will calculate the median of any vector
+
+my_median <- function(vector){
+  ordered_heights <- sort(heights_island1)
+  if(length(ordered_heights)==0){
+   position1 <- length(ordered_heights)/2
+   position2 <- position1 + 1
+   temp_values <- ordered_heights[c(position1, position2)]
+   median <- mean(temp_values)
+  }else{ 
+   position <- (length(ordered_heights)+1)/2
+   median <- ordered_heights[position]
+  }
+  return(median)
+}
+
+#Verify that your function correctly calculates the median.
+my_median(heights_island1)
+median(heights_island1) 
+
+
+```
+
+```{r ex="median_function", type="sct"}
+test_function_result(name= "my_median", not_called_msg="Did you run my_mean()?", error_msg="There's an error in your function.", incorrect_msg="Your function runs, but it is calculating the wrong value.")
+success_msg("Great!")
+```
+
+
 ###Things to think about...
 How reliably does the sample mean represent the population mean? See the [Law of Large Numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers).
 
+
+```{r, tut=FALSE, echo=FALSE, message= FALSE}
+library(emdbook)
+library(plotly)
+accumulate_by <- function(dat, var) {
+  var <- lazyeval::f_eval(var, dat)
+  lvls <- plotly:::getLevels(var)
+  dats <- lapply(seq_along(lvls), function(x) {
+    cbind(dat[var %in% lvls[seq(1, x)], ], frame = lvls[[x]])
+  })
+  dplyr::bind_rows(dats)
+}
+
+d <- do.call(rbind, lapply(lseq(10,10000, 300), function(x){
+	d <- data.frame(x=rnorm(x), frame=x/300, N=x)
+	return(d)
+}))
+
+dd <- aggregate(data=d, x~frame+N, FUN=mean)%>%
+accumulate_by(~N)
+p <- dd %>% plot_ly(x=~log10(N), y=~x, frame=~frame, type="scatter", mode="lines", line = list(simplyfy = F, color="orangered"))%>% 
+ animation_opts(
+    frame = 10, 
+    transition = 0, 
+    redraw = FALSE
+ ) %>% 
+  layout(
+    xaxis = list(
+      title = "Sample Size (log10)",
+      zeroline = F
+    ),
+    yaxis = list(range=c(-0.7,0.7),
+      title = "Mean",
+      zeroline = F
+    )
+  ) %>%
+  animation_slider(
+    hide = T
+    )%>%
+  animation_button(
+    x = 1, xanchor = "right", y = 0, yanchor = "bottom"
+  )
+
+htmltools::save_html(p,"/Users/Desiree/Documents/New R Projects/Cars/docs/law_of_large_numbers.html")
+
+```
+<center><iframe src="Law_of_large_numbers.html" width="600" height="550" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
 
 &nbsp;
 <hr />

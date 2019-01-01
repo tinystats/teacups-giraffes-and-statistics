@@ -31,6 +31,9 @@ The answer is by calculating the variance.
 ##Why is variance important?
 You need a solid understanding of variance in order to grasp the mechanics of any statistical test.
 
+<div style="margin-top:50px"></div>
+<center>![](giraffe_ruler.png){width=800px}</center>
+<div style="margin-bottom:50px"></div>
 
 ##How to calculate variance?
 First, the idea is to capture how far away individual observations lie from the known mean. In other words, we could subtract the mean from each height.
