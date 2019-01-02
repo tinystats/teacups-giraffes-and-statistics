@@ -3,7 +3,7 @@ title: "Mean, Median, and Mode"
 ---
 
 <style>
-.main-container { width: 600px; max-width: 950px;}
+.main-container { width: 700px; max-width: 950px;}
 </style>
 # What are measures of centrality?
 
@@ -24,7 +24,7 @@ p <- ggplot(data=d, aes(d$x, fill=d$type))+geom_histogram(binwidth=1, color="whi
 ggsave(filename = "/Users/Desiree/Documents/New R Projects/Cars/p.png", width=5, height=3, p)
 
 ```
-![](p.png){width=500px}
+![](p1.png){width=500px}
 
 </center><div style="margin-bottom:25px"></div>
 
@@ -32,10 +32,13 @@ You've just collected a lot of height data and graphed it. Although informative,
 
 We can do this with a measure of centrality: the mean, the median, or the mode. A measure of centrality describes the concept that one number in the "center" of the data set is a good summary of the entire set. What's the best measure of the center? 
 
-* The **mean**, is the one you are probably most familiar with, and we describe it in detail below.
+* The **mean** is the average and the measure of centrality that you are probably most familiar with. We describe it in detail below.
 
 * The **median** is the number in the middle of the data set. Half of the observations lie above the median and half below. The median is used as the measure of centrality when your data are not normally distributed and are instead skewed to the left of right.
- ( QUICK ILLO OF SKEWNESS WITH LEFT  RIGHT LABEL)
+ <center>
+![](http://placekitten.com/200/200) ![](http://placekitten.com/200/200) ![](http://placekitten.com/200/200)
+</center>
+
 
 * The **mode** is the most frequent number (height in our case) in the data set. It's not typically used in statistics, and we won't cover it further here.
 
@@ -45,7 +48,7 @@ We can do this with a measure of centrality: the mean, the median, or the mode. 
 
 
 ### Taking the mean
-The mean is the average. It is the sum of all of the heights divided by the number of giraffes for the sample. All giraffes will be labeled "x", and the numerical subscript indicates the giraffes's number in the sample.
+The mean is the sum of all of the heights divided by the number of giraffes for the sample. All giraffes will be labeled "x", and the numerical subscript indicates the giraffes's number in the sample.
 
 <p>We'll use ${\bar{x}}$ (read "x-bar") to represent the mean of each sample, calculated with the following equation:</p>
 <div style="margin-bottom:50px"></div>
@@ -65,7 +68,7 @@ To make this more efficient, instead of writing "${x_1 + x_2 + ... + x_n}$", we 
 <div style="margin-bottom:50px">
 </div>
 
-<p> This might look intimidating, but it means the same thing as \@ref(eq:equation1). Let's break the symbols apart a bit. The sigma means add up. What are we adding up? All the heights "x", which we call our *observations*. The i=1 means that we start with the first x on our list. The character on top of the sigma is the last observation we include in our summation. In this case it's n--because we're adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: n. </p>
+<p> This might look intimidating, but it means the same thing as \@ref(eq:equation1). Let's break the symbols apart a bit. The sigma means 'add up'. What are we adding up? All the heights "x", which we call our *observations*. The "i =" part indicates what number term to begin with. For our purposes, this will always be the first observation, when i = 1. The character on top of the sigma is the last observation we include in our summation. In this case it's n --because we're adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: n. </p>
 <div style="margin-bottom:50px">
 </div>
 ###Code it up
@@ -108,11 +111,11 @@ heights_island1 <- rnorm(50,10,2)
 
 ```{r ex="mean", type="solution"}
 
-# Sum up all heights stored in "heights_island1"", using the sum() function, and save it as a new object called "heights_island1_sum"
-heights_islands1_sum <- sum(heights_island1)
+# Sum up all heights stored in "heights_island1", using the sum() function, and save it as a new object called "heights_island1_sum"
+heights_island1_sum <- sum(heights_island1)
 
 # Divide heights_island1_sum by the number of observations. Use the length() function for n. Store your answer as "heights1_mean"
-heights_islands1_mean <- heights_island1_sum/length(heights_island1)
+heights_island1_mean <- heights_island1_sum/length(heights_island1)
 
 # Print out "heights_island1_mean" and compare your answer to the R function "mean(heights_island1)"
 heights_island1_mean
@@ -123,7 +126,7 @@ mean(heights_island1)
 test_object("heights_island1_sum")
 test_object("heights_island1_mean")
 
-test_output_contains("heights_island1_mean", incorrect_msg= "Did you print 'heights_island1_mean'?")
+test_output_contains("heights_island1_mean", incorrect_msg = "Did you print 'heights_island1_mean'?")
 test_function("mean", incorrect_msg= "Did you run 'mean(heights_island1)'?")
 success_msg("Great!")
 ```
@@ -182,12 +185,12 @@ success_msg("Great!")
 ### Taking the median
 To calculate the median go through the following steps:
 
-* Assess whether there are an odd or even number of observations
+* Assess whether there is an odd or even number of observations
 * Order all observations from smallest to largest
-* If an odd number, then the median is the middle value at position: (n+1)/2
+* If an odd number, then the median is the middle value at position: (n + 1) / 2
 * If an even number, then:
-    + Find the value at the position: n/2
-    + Find the value at the position: (n+1)/2
+    + Find the value at the position: n / 2
+    + Find the value at the position: (n / 2) + 1
     + The median will be the mean of the values of at these two positions.
   
 Before you write your own median function, the two concepts need to be introduced: 1) the modulus operator `%%` and 2) `if...else` statements. 
@@ -257,14 +260,14 @@ median(heights_island1)
 # Complete the code below to create your own function that will calculate the median of any vector
 
 my_median <- function(vector){
-  ordered_heights <- sort(heights_island1)
-  if(length(ordered_heights)==0){
-   position1 <- length(ordered_heights)/2
+  ordered_heights <- sort(vector, decreasing = FALSE)
+  if(length(ordered_heights) %% 2 == 0){
+   position1 <- length(ordered_heights) / 2
    position2 <- position1 + 1
    temp_values <- ordered_heights[c(position1, position2)]
    median <- mean(temp_values)
   }else{ 
-   position <- (length(ordered_heights)+1)/2
+   position <- (length(ordered_heights) + 1) / 2
    median <- ordered_heights[position]
   }
   return(median)
@@ -284,7 +287,18 @@ success_msg("Great!")
 
 
 ###Things to think about...
-How reliably does the sample mean represent the population mean? See the [Law of Large Numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers).
+
+How reliably does the sample mean represent the population mean? Warning: when you calculate the mean from a small sample, you run the risk of calculating a sample mean that is very different from the true population mean! The larger of a sample you collect, the closer you will be to population mean, and the more reliable your sample mean will be.
+
+Pressing 'Play' on the plot below will illustrate this concept. 
+* Each point in this line is the mean from a random sample of a population with a TRUE mean of 0. [BAD SENTENCE!!] 
+
+* This animation shows the values of means calculated from increasingly larger samples. 
+* The x-axis shows the sample size: small samples on the left, and larger samples to the right. 
+* The y-axis shows what the mean is for a sample of that particular size. Though the y-values vary here, remember that if the sample were a GOOD estimate of the population, the mean should be 0.  
+* But you can see that when the samples are small the sample mean isn't always a good representation of the population it was sampled from--and that's not a good thing :-( 
+
+See the [Law of Large Numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers).
 
 
 ```{r, tut=FALSE, echo=FALSE, message= FALSE}

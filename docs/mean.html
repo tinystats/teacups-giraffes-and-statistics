@@ -212,7 +212,7 @@ $(document).ready(function () {
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <style>
-.main-container { width: 600px; max-width: 950px;}
+.main-container { width: 700px; max-width: 950px;}
 </style>
 <div id="what-are-measures-of-centrality" class="section level1">
 <h1><span class="header-section-number">1</span> What are measures of centrality?</h1>
@@ -222,7 +222,7 @@ $(document).ready(function () {
 <p style=>
 <center>
 <div class="figure">
-<img src="p.png" width="500" />
+<img src="p1.png" width="500" />
 
 </div>
 </center>
@@ -232,8 +232,11 @@ $(document).ready(function () {
 <p>You’ve just collected a lot of height data and graphed it. Although informative, a graphical display of these data is difficult to summarize–we need to describe these heights with a single number that will be meaningful and allow us to do statistics.</p>
 <p>We can do this with a measure of centrality: the mean, the median, or the mode. A measure of centrality describes the concept that one number in the “center” of the data set is a good summary of the entire set. What’s the best measure of the center?</p>
 <ul>
-<li><p>The <strong>mean</strong>, is the one you are probably most familiar with, and we describe it in detail below.</p></li>
-<li><p>The <strong>median</strong> is the number in the middle of the data set. Half of the observations lie above the median and half below. The median is used as the measure of centrality when your data are not normally distributed and are instead skewed to the left of right. ( QUICK ILLO OF SKEWNESS WITH LEFT RIGHT LABEL)</p></li>
+<li><p>The <strong>mean</strong> is the average and the measure of centrality that you are probably most familiar with. We describe it in detail below.</p></li>
+<li>The <strong>median</strong> is the number in the middle of the data set. Half of the observations lie above the median and half below. The median is used as the measure of centrality when your data are not normally distributed and are instead skewed to the left of right.
+<center>
+<img src="http://placekitten.com/200/200" /> <img src="http://placekitten.com/200/200" /> <img src="http://placekitten.com/200/200" />
+</center></li>
 <li><p>The <strong>mode</strong> is the most frequent number (height in our case) in the data set. It’s not typically used in statistics, and we won’t cover it further here.</p></li>
 </ul>
 <!-- Let's say you're interested in measuring the heights of a species of teacup giraffes recently discovered on small uninhabited tropical island, just off of latitude 11°48' N.  -->
@@ -242,7 +245,7 @@ $(document).ready(function () {
 </div>
 <div id="taking-the-mean" class="section level3">
 <h3><span class="header-section-number">1.0.1</span> Taking the mean</h3>
-<p>The mean is the average. It is the sum of all of the heights divided by the number of giraffes for the sample. All giraffes will be labeled “x”, and the numerical subscript indicates the giraffes’s number in the sample.</p>
+<p>The mean is the sum of all of the heights divided by the number of giraffes for the sample. All giraffes will be labeled “x”, and the numerical subscript indicates the giraffes’s number in the sample.</p>
 <p>
 We’ll use <span class="math inline">\({\bar{x}}\)</span> (read “x-bar”) to represent the mean of each sample, calculated with the following equation:
 </p>
@@ -268,7 +271,7 @@ We’ll use <span class="math inline">\({\bar{x}}\)</span> (read “x-bar”) to
 
 </div>
 <p>
-This might look intimidating, but it means the same thing as <a href="#eq:equation1">(1.1)</a>. Let’s break the symbols apart a bit. The sigma means add up. What are we adding up? All the heights “x”, which we call our <em>observations</em>. The i=1 means that we start with the first x on our list. The character on top of the sigma is the last observation we include in our summation. In this case it’s n–because we’re adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: n.
+This might look intimidating, but it means the same thing as <a href="#eq:equation1">(1.1)</a>. Let’s break the symbols apart a bit. The sigma means ‘add up’. What are we adding up? All the heights “x”, which we call our <em>observations</em>. The “i =” part indicates what number term to begin with. For our purposes, this will always be the first observation, when i = 1. The character on top of the sigma is the last observation we include in our summation. In this case it’s n –because we’re adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: n.
 </p>
 <div style="margin-bottom:50px">
 
@@ -287,7 +290,7 @@ This might look intimidating, but it means the same thing as <a href="#eq:equati
 
 </div>
 <div data-datacamp-exercise="" data-height="400" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBTdW0gdXAgYWxsIGhlaWdodHMgc3RvcmVkIGluIGhlaWdodHMsIHVzaW5nIHRoZSBzdW0oKSBmdW5jdGlvbiwgYW5kIHNhdmUgaXQgYXMgYSBuZXcgb2JqZWN0IGNhbGxlZCBcImhlaWdodHNfaXNsYW5kMV9zdW1cIlxuXG5cbiMgRGl2aWRlIGhlaWdodHNpc2xhbmQxX3N1bSBieSB0aGUgbnVtYmVyIG9mIG9ic2VydmF0aW9ucy4gVXNlIHRoZSBsZW5ndGgoKSBmdW5jdGlvbiBmb3Igbi4gU3RvcmUgeW91ciBhbnN3ZXIgYXMgXCJoZWlnaHRzX2lzbGFuZDFfbWVhblwiXG5cblxuIyBQcmludCBvdXQgXCJoZWlnaHRzX2lzbGFuZDFfbWVhblwiIGFuZCBjb21wYXJlIHlvdXIgYW5zd2VyIHRvIHRoZSBSIGZ1bmN0aW9uIFwibWVhbihoZWlnaHRzX2lzbGFuZDEpXCIiLCJzb2x1dGlvbiI6IiMgU3VtIHVwIGFsbCBoZWlnaHRzIHN0b3JlZCBpbiBcImhlaWdodHNfaXNsYW5kMVwiXCIsIHVzaW5nIHRoZSBzdW0oKSBmdW5jdGlvbiwgYW5kIHNhdmUgaXQgYXMgYSBuZXcgb2JqZWN0IGNhbGxlZCBcImhlaWdodHNfaXNsYW5kMV9zdW1cIlxuaGVpZ2h0c19pc2xhbmRzMV9zdW0gPC0gc3VtKGhlaWdodHNfaXNsYW5kMSlcblxuIyBEaXZpZGUgaGVpZ2h0c19pc2xhbmQxX3N1bSBieSB0aGUgbnVtYmVyIG9mIG9ic2VydmF0aW9ucy4gVXNlIHRoZSBsZW5ndGgoKSBmdW5jdGlvbiBmb3Igbi4gU3RvcmUgeW91ciBhbnN3ZXIgYXMgXCJoZWlnaHRzMV9tZWFuXCJcbmhlaWdodHNfaXNsYW5kczFfbWVhbiA8LSBoZWlnaHRzX2lzbGFuZDFfc3VtL2xlbmd0aChoZWlnaHRzX2lzbGFuZDEpXG5cbiMgUHJpbnQgb3V0IFwiaGVpZ2h0c19pc2xhbmQxX21lYW5cIiBhbmQgY29tcGFyZSB5b3VyIGFuc3dlciB0byB0aGUgUiBmdW5jdGlvbiBcIm1lYW4oaGVpZ2h0c19pc2xhbmQxKVwiXG5oZWlnaHRzX2lzbGFuZDFfbWVhblxubWVhbihoZWlnaHRzX2lzbGFuZDEpIiwic2N0IjoidGVzdF9vYmplY3QoXCJoZWlnaHRzX2lzbGFuZDFfc3VtXCIpXG50ZXN0X29iamVjdChcImhlaWdodHNfaXNsYW5kMV9tZWFuXCIpXG5cbnRlc3Rfb3V0cHV0X2NvbnRhaW5zKFwiaGVpZ2h0c19pc2xhbmQxX21lYW5cIiwgaW5jb3JyZWN0X21zZz0gXCJEaWQgeW91IHByaW50ICdoZWlnaHRzX2lzbGFuZDFfbWVhbic/XCIpXG50ZXN0X2Z1bmN0aW9uKFwibWVhblwiLCBpbmNvcnJlY3RfbXNnPSBcIkRpZCB5b3UgcnVuICdtZWFuKGhlaWdodHNfaXNsYW5kMSknP1wiKVxuc3VjY2Vzc19tc2coXCJHcmVhdCFcIikifQ==
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBTdW0gdXAgYWxsIGhlaWdodHMgc3RvcmVkIGluIGhlaWdodHMsIHVzaW5nIHRoZSBzdW0oKSBmdW5jdGlvbiwgYW5kIHNhdmUgaXQgYXMgYSBuZXcgb2JqZWN0IGNhbGxlZCBcImhlaWdodHNfaXNsYW5kMV9zdW1cIlxuXG5cbiMgRGl2aWRlIGhlaWdodHNpc2xhbmQxX3N1bSBieSB0aGUgbnVtYmVyIG9mIG9ic2VydmF0aW9ucy4gVXNlIHRoZSBsZW5ndGgoKSBmdW5jdGlvbiBmb3Igbi4gU3RvcmUgeW91ciBhbnN3ZXIgYXMgXCJoZWlnaHRzX2lzbGFuZDFfbWVhblwiXG5cblxuIyBQcmludCBvdXQgXCJoZWlnaHRzX2lzbGFuZDFfbWVhblwiIGFuZCBjb21wYXJlIHlvdXIgYW5zd2VyIHRvIHRoZSBSIGZ1bmN0aW9uIFwibWVhbihoZWlnaHRzX2lzbGFuZDEpXCIiLCJzb2x1dGlvbiI6IiMgU3VtIHVwIGFsbCBoZWlnaHRzIHN0b3JlZCBpbiBcImhlaWdodHNfaXNsYW5kMVwiLCB1c2luZyB0aGUgc3VtKCkgZnVuY3Rpb24sIGFuZCBzYXZlIGl0IGFzIGEgbmV3IG9iamVjdCBjYWxsZWQgXCJoZWlnaHRzX2lzbGFuZDFfc3VtXCJcbmhlaWdodHNfaXNsYW5kMV9zdW0gPC0gc3VtKGhlaWdodHNfaXNsYW5kMSlcblxuIyBEaXZpZGUgaGVpZ2h0c19pc2xhbmQxX3N1bSBieSB0aGUgbnVtYmVyIG9mIG9ic2VydmF0aW9ucy4gVXNlIHRoZSBsZW5ndGgoKSBmdW5jdGlvbiBmb3Igbi4gU3RvcmUgeW91ciBhbnN3ZXIgYXMgXCJoZWlnaHRzMV9tZWFuXCJcbmhlaWdodHNfaXNsYW5kMV9tZWFuIDwtIGhlaWdodHNfaXNsYW5kMV9zdW0vbGVuZ3RoKGhlaWdodHNfaXNsYW5kMSlcblxuIyBQcmludCBvdXQgXCJoZWlnaHRzX2lzbGFuZDFfbWVhblwiIGFuZCBjb21wYXJlIHlvdXIgYW5zd2VyIHRvIHRoZSBSIGZ1bmN0aW9uIFwibWVhbihoZWlnaHRzX2lzbGFuZDEpXCJcbmhlaWdodHNfaXNsYW5kMV9tZWFuXG5tZWFuKGhlaWdodHNfaXNsYW5kMSkiLCJzY3QiOiJ0ZXN0X29iamVjdChcImhlaWdodHNfaXNsYW5kMV9zdW1cIilcbnRlc3Rfb2JqZWN0KFwiaGVpZ2h0c19pc2xhbmQxX21lYW5cIilcblxudGVzdF9vdXRwdXRfY29udGFpbnMoXCJoZWlnaHRzX2lzbGFuZDFfbWVhblwiLCBpbmNvcnJlY3RfbXNnID0gXCJEaWQgeW91IHByaW50ICdoZWlnaHRzX2lzbGFuZDFfbWVhbic/XCIpXG50ZXN0X2Z1bmN0aW9uKFwibWVhblwiLCBpbmNvcnJlY3RfbXNnPSBcIkRpZCB5b3UgcnVuICdtZWFuKGhlaWdodHNfaXNsYW5kMSknP1wiKVxuc3VjY2Vzc19tc2coXCJHcmVhdCFcIikifQ==
 </div>
 <div style="margin-bottom:50px">
 
@@ -308,13 +311,13 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 <h3><span class="header-section-number">1.0.4</span> Taking the median</h3>
 <p>To calculate the median go through the following steps:</p>
 <ul>
-<li>Assess whether there are an odd or even number of observations</li>
+<li>Assess whether there is an odd or even number of observations</li>
 <li>Order all observations from smallest to largest</li>
-<li>If an odd number, then the median is the middle value at position: (n+1)/2</li>
+<li>If an odd number, then the median is the middle value at position: (n + 1) / 2</li>
 <li>If an even number, then:
 <ul>
-<li>Find the value at the position: n/2</li>
-<li>Find the value at the position: (n+1)/2</li>
+<li>Find the value at the position: n / 2</li>
+<li>Find the value at the position: (n / 2) + 1</li>
 <li>The median will be the mean of the values of at these two positions.</li>
 </ul></li>
 </ul>
@@ -336,12 +339,21 @@ The <code>if...else</code> statements are useful when you want two different thi
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBcblxuaWYobGVuZ3RoKGhlaWdodHNfaXNsYW5kMSkgJSUgMiA9PSAwKSB7XG4gIHByaW50KFwiRVZFTiFcIilcbn0gZWxzZSB7XG4gICAgcHJpbnQoXCJPREQuXCIpXG59XG5cblxuaWYoKGxlbmd0aChoZWlnaHRzX2lzbGFuZDEpLTEpICUlIDIgPT0gMCkge1xuICBwcmludChcIkVWRU4hXCIpXG59IGVsc2Uge1xuICAgIHByaW50KFwiT0RELlwiKVxufSJ9
 </div>
 <div data-datacamp-exercise="" data-height="400" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBDb21wbGV0ZSB0aGUgY29kZSBiZWxvdyB0byBjcmVhdGUgeW91ciBvd24gZnVuY3Rpb24gdGhhdCB3aWxsIGNhbGN1bGF0ZSB0aGUgbWVkaWFuIG9mIGFueSB2ZWN0b3JcblxubXlfbWVkaWFuIDwtIGZ1bmN0aW9uKHZlY3Rvcil7XG4gIGlmKCl7XG4gICBcbiAgfWVsc2V7IFxuICAgXG4gIH1cbn1cblxuI1ZlcmlmeSB0aGF0IHlvdXIgZnVuY3Rpb24gY29ycmVjdGx5IGNhbGN1bGF0ZXMgdGhlIG1lZGlhbi5cbm15X21lZGlhbihoZWlnaHRzX2lzbGFuZDEpXG5tZWRpYW4oaGVpZ2h0c19pc2xhbmQxKSAiLCJzb2x1dGlvbiI6IiMgQ29tcGxldGUgdGhlIGNvZGUgYmVsb3cgdG8gY3JlYXRlIHlvdXIgb3duIGZ1bmN0aW9uIHRoYXQgd2lsbCBjYWxjdWxhdGUgdGhlIG1lZGlhbiBvZiBhbnkgdmVjdG9yXG5cbm15X21lZGlhbiA8LSBmdW5jdGlvbih2ZWN0b3Ipe1xuICBvcmRlcmVkX2hlaWdodHMgPC0gc29ydChoZWlnaHRzX2lzbGFuZDEpXG4gIGlmKGxlbmd0aChvcmRlcmVkX2hlaWdodHMpPT0wKXtcbiAgIHBvc2l0aW9uMSA8LSBsZW5ndGgob3JkZXJlZF9oZWlnaHRzKS8yXG4gICBwb3NpdGlvbjIgPC0gcG9zaXRpb24xICsgMVxuICAgdGVtcF92YWx1ZXMgPC0gb3JkZXJlZF9oZWlnaHRzW2MocG9zaXRpb24xLCBwb3NpdGlvbjIpXVxuICAgbWVkaWFuIDwtIG1lYW4odGVtcF92YWx1ZXMpXG4gIH1lbHNleyBcbiAgIHBvc2l0aW9uIDwtIChsZW5ndGgob3JkZXJlZF9oZWlnaHRzKSsxKS8yXG4gICBtZWRpYW4gPC0gb3JkZXJlZF9oZWlnaHRzW3Bvc2l0aW9uXVxuICB9XG4gIHJldHVybihtZWRpYW4pXG59XG5cbiNWZXJpZnkgdGhhdCB5b3VyIGZ1bmN0aW9uIGNvcnJlY3RseSBjYWxjdWxhdGVzIHRoZSBtZWRpYW4uXG5teV9tZWRpYW4oaGVpZ2h0c19pc2xhbmQxKVxubWVkaWFuKGhlaWdodHNfaXNsYW5kMSkgIiwic2N0IjoidGVzdF9mdW5jdGlvbl9yZXN1bHQobmFtZT0gXCJteV9tZWRpYW5cIiwgbm90X2NhbGxlZF9tc2c9XCJEaWQgeW91IHJ1biBteV9tZWFuKCk/XCIsIGVycm9yX21zZz1cIlRoZXJlJ3MgYW4gZXJyb3IgaW4geW91ciBmdW5jdGlvbi5cIiwgaW5jb3JyZWN0X21zZz1cIllvdXIgZnVuY3Rpb24gcnVucywgYnV0IGl0IGlzIGNhbGN1bGF0aW5nIHRoZSB3cm9uZyB2YWx1ZS5cIilcbnN1Y2Nlc3NfbXNnKFwiR3JlYXQhXCIpIn0=
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBDb21wbGV0ZSB0aGUgY29kZSBiZWxvdyB0byBjcmVhdGUgeW91ciBvd24gZnVuY3Rpb24gdGhhdCB3aWxsIGNhbGN1bGF0ZSB0aGUgbWVkaWFuIG9mIGFueSB2ZWN0b3JcblxubXlfbWVkaWFuIDwtIGZ1bmN0aW9uKHZlY3Rvcil7XG4gIGlmKCl7XG4gICBcbiAgfWVsc2V7IFxuICAgXG4gIH1cbn1cblxuI1ZlcmlmeSB0aGF0IHlvdXIgZnVuY3Rpb24gY29ycmVjdGx5IGNhbGN1bGF0ZXMgdGhlIG1lZGlhbi5cbm15X21lZGlhbihoZWlnaHRzX2lzbGFuZDEpXG5tZWRpYW4oaGVpZ2h0c19pc2xhbmQxKSAiLCJzb2x1dGlvbiI6IiMgQ29tcGxldGUgdGhlIGNvZGUgYmVsb3cgdG8gY3JlYXRlIHlvdXIgb3duIGZ1bmN0aW9uIHRoYXQgd2lsbCBjYWxjdWxhdGUgdGhlIG1lZGlhbiBvZiBhbnkgdmVjdG9yXG5cbm15X21lZGlhbiA8LSBmdW5jdGlvbih2ZWN0b3Ipe1xuICBvcmRlcmVkX2hlaWdodHMgPC0gc29ydCh2ZWN0b3IsIGRlY3JlYXNpbmcgPSBGQUxTRSlcbiAgaWYobGVuZ3RoKG9yZGVyZWRfaGVpZ2h0cykgJSUgMiA9PSAwKXtcbiAgIHBvc2l0aW9uMSA8LSBsZW5ndGgob3JkZXJlZF9oZWlnaHRzKSAvIDJcbiAgIHBvc2l0aW9uMiA8LSBwb3NpdGlvbjEgKyAxXG4gICB0ZW1wX3ZhbHVlcyA8LSBvcmRlcmVkX2hlaWdodHNbYyhwb3NpdGlvbjEsIHBvc2l0aW9uMildXG4gICBtZWRpYW4gPC0gbWVhbih0ZW1wX3ZhbHVlcylcbiAgfWVsc2V7IFxuICAgcG9zaXRpb24gPC0gKGxlbmd0aChvcmRlcmVkX2hlaWdodHMpICsgMSkgLyAyXG4gICBtZWRpYW4gPC0gb3JkZXJlZF9oZWlnaHRzW3Bvc2l0aW9uXVxuICB9XG4gIHJldHVybihtZWRpYW4pXG59XG5cbiNWZXJpZnkgdGhhdCB5b3VyIGZ1bmN0aW9uIGNvcnJlY3RseSBjYWxjdWxhdGVzIHRoZSBtZWRpYW4uXG5teV9tZWRpYW4oaGVpZ2h0c19pc2xhbmQxKVxubWVkaWFuKGhlaWdodHNfaXNsYW5kMSkgIiwic2N0IjoidGVzdF9mdW5jdGlvbl9yZXN1bHQobmFtZT0gXCJteV9tZWRpYW5cIiwgbm90X2NhbGxlZF9tc2c9XCJEaWQgeW91IHJ1biBteV9tZWFuKCk/XCIsIGVycm9yX21zZz1cIlRoZXJlJ3MgYW4gZXJyb3IgaW4geW91ciBmdW5jdGlvbi5cIiwgaW5jb3JyZWN0X21zZz1cIllvdXIgZnVuY3Rpb24gcnVucywgYnV0IGl0IGlzIGNhbGN1bGF0aW5nIHRoZSB3cm9uZyB2YWx1ZS5cIilcbnN1Y2Nlc3NfbXNnKFwiR3JlYXQhXCIpIn0=
 </div>
 </div>
 <div id="things-to-think-about" class="section level3">
 <h3><span class="header-section-number">1.0.5</span> Things to think about…</h3>
-<p>How reliably does the sample mean represent the population mean? See the <a href="https://en.wikipedia.org/wiki/Law_of_large_numbers">Law of Large Numbers</a>.</p>
+<p>How reliably does the sample mean represent the population mean? Warning: when you calculate the mean from a small sample, you run the risk of calculating a sample mean that is very different from the true population mean! The larger of a sample you collect, the closer you will be to population mean, and the more reliable your sample mean will be.</p>
+<p>Pressing ‘Play’ on the plot below will illustrate this concept. * Each point in this line is the mean from a random sample of a population with a TRUE mean of 0. [BAD SENTENCE!!]</p>
+<ul>
+<li>This animation shows the values of means calculated from increasingly larger samples.</li>
+<li>The x-axis shows the sample size: small samples on the left, and larger samples to the right.</li>
+<li>The y-axis shows what the mean is for a sample of that particular size. Though the y-values vary here, remember that if the sample were a GOOD estimate of the population, the mean should be 0.<br />
+</li>
+<li>But you can see that when the samples are small the sample mean isn’t always a good representation of the population it was sampled from–and that’s not a good thing :-(</li>
+</ul>
+<p>See the <a href="https://en.wikipedia.org/wiki/Law_of_large_numbers">Law of Large Numbers</a>.</p>
 <center>
 <iframe src="Law_of_large_numbers.html" width="600" height="550" scrolling="yes" seamless="seamless" frameBorder="0">
 </iframe>
