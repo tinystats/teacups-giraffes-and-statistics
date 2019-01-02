@@ -101,7 +101,7 @@ We need to take into account how many observations contributed to these sum of s
 </div>
 \begin{equation}
  (\#eq:equation2)
- \Large \sigma^2 = \frac{\sum_{i=1}^n (x_i - \bar{x})^2}{N}
+ \Large \sigma^2 = \frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n}
  \end{equation}
 <div style="margin-bottom:50px">
 </div>
@@ -114,7 +114,7 @@ The problem with variance is that it is a scaleable number, and knowing the vari
 </div>
 \begin{equation}
  (\#eq:equation3)
- \Large \sigma = \sqrt{\frac{\sum_{i=1}^n (x_i - \bar{x})^2}{N}}
+ \Large \sigma = \sqrt{\frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n}}
  \end{equation}
 <div style="margin-bottom:50px">
 
