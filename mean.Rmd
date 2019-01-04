@@ -21,7 +21,7 @@ d <- rbind(x,x2)
 
 p <- ggplot(data=d, aes(d$x, fill=d$type))+geom_histogram(binwidth=1, color="white")+theme_light()+scale_fill_manual(values=c("green3", "turquoise3"))+labs(x="Teacup Giraffe heights", y="Frequency", fill=NULL)+scale_y_continuous(expand=c(0,0))+theme(panel.border=element_blank(), panel.grid.minor=element_blank(), axis.ticks.y=element_blank(), legend.position= c(0.165,0.92), legend.background = element_blank())
 
-ggsave(filename = "/Users/Desiree/Documents/New R Projects/Cars/p.png", width=5, height=3, p)
+#ggsave(filename = "/Users/Desiree/Documents/New R Projects/Cars/p.png", width=5, height=3, p)
 
 ```
 ![](mean_hist.png){width=500px}
@@ -38,7 +38,24 @@ We can do this with a measure of centrality: the mean, the median, or the mode. 
 * The **median** is the number in the middle of the data set. Half of the observations lie above the median and half below. The median is used as the measure of centrality when your data are not normally distributed and are instead skewed to the left of right.
  <center>
  <div style="margin-bottom:20px"></div>
-![](http://placekitten.com/200/100) ![](http://placekitten.com/g/200/100) ![](http://placekitten.com/200/100)
+```{r fig.show="animate", animation.hook = 'gifski', fig.width=6, fig.height=2, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.5}
+library(fGarch)
+library(ggplot2)
+skew <- seq(1,1.5,0.05)
+skew2 <- seq(1.45,1,-0.05)
+skew <- c(skew, skew2)
+plot <- function(x){
+	d <- lapply(1:21, function(x){
+		d <- data.frame(x=rsnorm(100000, mean=0, sd=2, xi=skew[x]), frame=x)
+		return(d)
+	})
+means <- lapply(1:21, function(x) mean(d[[x]]$x))
+medians <- lapply(1:21, function(x) median(d[[x]]$x))
+p <- lapply(1:21, function(y) ggplot(data=d[[y]], aes(x))+geom_histogram(binwidth=0.25, color="white", fill="skyblue2")+theme_light()+theme(panel.border=element_blank(),panel.grid.minor=element_blank(), axis.ticks=element_blank(), axis.text=element_blank())+guides(fill=FALSE)+labs(x=NULL, y=NULL)+scale_y_continuous(expand=c(0,0),limits=c(0,5400), breaks=c(0,2000, 4000))+geom_vline(xintercept=means[[y]], size=0.5, linetype="dashed")+geom_vline(xintercept=medians[[y]], size=0.5)+xlim(-5,5)+annotate("text", label="Mean", size=3.5, x=-3.9, y=5000, hjust=0)+annotate("text", label="Median", size=3.5 ,x=-3.9, y=4500, hjust=0)+geom_segment(aes(x=-4.3, xend=-4, y=5000, yend=5000), linetype="dashed")+geom_segment(aes(x=-4.3, xend=-4, y=4500, yend=4500)))
+p
+}
+plot()
+```
 <div style="margin-bottom:20px"></div>
 </center>
 
@@ -70,7 +87,7 @@ To make this more efficient, instead of writing "${x_1 + x_2 + ... + x_n}$", we 
 <div style="margin-bottom:50px">
 </div>
 
-<p> This might look intimidating, but it means the same thing as \@ref(eq:equation1). Let's break the symbols apart a bit. The sigma means 'add up'. What are we adding up? All the heights "x", which we call our *observations*. The "i&nbsp;=&nbsp;" part indicates which term to begin adding. For our purposes, this will always be the first observation, when i = 1. The character on top of the sigma is the last observation we include in our summation. In this case it's n --because we're adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: n. </p>
+<p> This might look intimidating, but equation \@ref(eq:equation2) is really showing the same thing as \@ref(eq:equation1). Let's break the symbols apart a bit (see annotated equation \@ref(eq:equation3) below). The sigma means 'add up'. What are we adding up? All the heights "x", which we call our *observations*. The "i&nbsp;=&nbsp;" part indicates which term to begin adding. For our purposes, this will always be the first observation, when i = 1. The character on top of the sigma is the last observation we include in our summation. In this case it's n --because we're adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: n. </p>
 
 <div style="margin-bottom:50px">
 </div>
@@ -78,7 +95,7 @@ To make this more efficient, instead of writing "${x_1 + x_2 + ... + x_n}$", we 
 <p>
 <center>
 \begin{equation}
- (\#eq:equation2)
+ (\#eq:equation3)
 \vcenter{\img[width=400px]{eq_annotated.png}}
  \end{equation}
 </center>
@@ -95,6 +112,7 @@ Using \@ref(eq:equation2), it's easy to translate this into code in R. The heigh
 set.seed(12)
 heights_island1 <- rnorm(50,10,2)
 ```
+
 ```{r, echo=TRUE}
 head(heights_island1)
 ```
@@ -215,15 +233,31 @@ To calculate the median go through the following steps:
   
 Before you write your own median function, the two concepts need to be introduced: 1) the modulus operator `%%` and 2) `if...else` statements. 
 
-The modulus operation gives the remainder after division of one number by another. For example, in R `11 %% 5` returns the `1`, which is the remainer of `11` divided by `5`.  If the modulus operation returns `0`, then there is no remainder. It is useful to apply the modulus operation `x %% 2` to determine whether a number `x` is even or odd by testing whether or not the result is exactly equal to 0.
+The modulus operation gives the remainder after division of one number by another. For example, in R `11 %% 5` returns the `1`, which is the remainer of `11` divided by `5`.  If the modulus operation returns `0`, then there is no remainder. It is useful to apply the modulus operation `x %% 2` to determine whether a number `x` is even or odd by testing whether or not the result is exactly equal to 0. See example code below.
 <div style="margin-bottom:15px">
+
+<style>
+  .col2 {
+    columns: 2 200px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 200px; /* chrome, safari */
+    -moz-columns: 2 200px;    /* firefox */
+  }
+  .col3 {
+    columns: 3 100px;
+    -webkit-columns: 3 100px;
+    -moz-columns: 3 100px;
+  }
+</style>
+
 </div>
-```{r, tut=FALSE}
-11 %% 2
-11 %% 2 == 0 
+<div class="col2">
+```{r, tut=FALSE, prompt=TRUE}
 10 %% 2
 10 %% 2 == 0
+11 %% 2
+11 %% 2 == 0
 ```
+</div>
 <div style="margin-bottom:15px">
 </div>
 The `if...else` statements are useful when you want to specify distinct outcomes for objects dependent on whether they meet your set criteria. See below.
@@ -370,7 +404,7 @@ p <- dd %>% plot_ly(x=~log10(N), y=~x, frame=~frame, type="scatter", mode="lines
     x = 1, xanchor = "right", y = 0, yanchor = "bottom"
   )
 
-htmltools::save_html(p,"/Users/Desiree/Documents/New R Projects/Cars/Law_of_large_numbers.html")
+#htmltools::save_html(p,"/Users/Desiree/Documents/New R Projects/Cars/Law_of_large_numbers.html")
 
 ```
 <center><iframe src="Law_of_large_numbers.html" width="600" height="550" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
