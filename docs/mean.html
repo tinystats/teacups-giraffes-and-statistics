@@ -22,6 +22,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -215,7 +217,7 @@ $(document).ready(function () {
 .main-container { width: 700px; max-width: 950px;}
 </style>
 <div id="what-are-measures-of-centrality" class="section level1">
-<h1><span class="header-section-number">1</span> What are measures of centrality?</h1>
+<h1>What are measures of centrality?</h1>
 <div style="margin-top:50px">
 
 </div>
@@ -250,7 +252,7 @@ $(document).ready(function () {
 
 </div>
 <div id="taking-the-mean" class="section level3">
-<h3><span class="header-section-number">1.0.1</span> Taking the mean</h3>
+<h3>Taking the mean</h3>
 <p>The mean is the sum of all of the heights divided by the number of giraffes for the sample. All giraffes will be labeled “x”, and the numerical subscript indicates the giraffes’s number in the sample.</p>
 <p>
 We’ll use <span class="math inline">\({\bar{x}}\)</span> (read “x-bar”) to represent the mean of each sample, calculated with the following equation:
@@ -258,8 +260,8 @@ We’ll use <span class="math inline">\({\bar{x}}\)</span> (read “x-bar”) to
 <div style="margin-bottom:50px">
 
 </div>
-<span class="math display" id="eq:equation1">\[\begin{equation}
- \tag{1.1}
+<span class="math display">\[\begin{equation}
+ (\#eq:equation1)
  \Large{\bar{x}} = \frac{x_1 + x_2 + ... + x_n}{n}
  \end{equation}\]</span>
 <div style="margin-bottom:50px">
@@ -269,23 +271,23 @@ We’ll use <span class="math inline">\({\bar{x}}\)</span> (read “x-bar”) to
 <div style="margin-bottom:50px">
 
 </div>
-<span class="math display" id="eq:equation2">\[\begin{equation}
- \tag{1.2}
+<span class="math display">\[\begin{equation}
+ (\#eq:equation2)
  \Large{\bar{x}} = \frac{\sum{x_i}}{n}
  \end{equation}\]</span>
 <div style="margin-bottom:50px">
 
 </div>
 <p>
-This might look intimidating, but it means the same thing as <a href="#eq:equation1">(1.1)</a>. Let’s break the symbols apart a bit. The sigma means ‘add up’. What are we adding up? All the heights “x”, which we call our <em>observations</em>. The “i =” part indicates which term to begin adding. For our purposes, this will always be the first observation, when i = 1. The character on top of the sigma is the last observation we include in our summation. In this case it’s n –because we’re adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: n.
+This might look intimidating, but it means the same thing as @ref(eq:equation1). Let’s break the symbols apart a bit. The sigma means ‘add up’. What are we adding up? All the heights “x”, which we call our <em>observations</em>. The “i =” part indicates which term to begin adding. For our purposes, this will always be the first observation, when i = 1. The character on top of the sigma is the last observation we include in our summation. In this case it’s n –because we’re adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: n.
 </p>
 <p>
 <center>
 <div style="margin-bottom:50px">
 
 </div>
-<span class="math display" id="eq:equation2">\[\begin{equation}
- \tag{1.2}
+<span class="math display">\[\begin{equation}
+ (\#eq:equation2)
 \vcenter{\img[width=400px]{eq_annotated.png}}
  \end{equation}\]</span>
 <div style="margin-bottom:50px">
@@ -298,13 +300,12 @@ This might look intimidating, but it means the same thing as <a href="#eq:equati
 </div>
 </div>
 <div id="code-it-up" class="section level3">
-<h3><span class="header-section-number">1.0.2</span> Code it up</h3>
-Using <a href="#eq:equation2">(1.2)</a>, it’s easy to translate this into code in R. The heights recorded from island 1 have been stored in a vector called <code>heights_island1</code>. Below we show the first few observations from this vector, using the <code>head()</code> function.
+<h3>Code it up</h3>
+Using @ref(eq:equation2), it’s easy to translate this into code in R. The heights recorded from island 1 have been stored in a vector called <code>heights_island1</code>. Below we show the first few observations from this vector, using the <code>head()</code> function.
 <div style="margin-bottom:15px">
 
 </div>
 <pre class="r"><code>head(heights_island1)</code></pre>
-<pre><code>## [1]  7.038865 13.154339  8.086511  8.159990  6.004716  9.455408</code></pre>
 <div style="margin-bottom:15px">
 
 </div>
@@ -320,7 +321,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 </div>
 </div>
 <div id="create-your-own-function" class="section level3">
-<h3><span class="header-section-number">1.0.3</span> Create your own function</h3>
+<h3>Create your own function</h3>
 Now it’s your turn to write your own function. Call it “my_mean” and have it calculate the mean of any given vector. You’re going to use the rules for writing a function in R that you’ve used previously. As a reminder, you’ll use <code>function()</code> and embed your code (that you completed in the previous exercise) within curly brackets<code>{}</code>. The advantage of making a “homemade” function is that you can string together all the steps from the previous exercise into a single command.
 <div style="margin-bottom:15px">
 
@@ -337,7 +338,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 </div>
 </div>
 <div id="taking-the-median" class="section level3">
-<h3><span class="header-section-number">1.0.4</span> Taking the median</h3>
+<h3>Taking the median</h3>
 <p>To calculate the median go through the following steps:</p>
 <ul>
 <li>Assess whether there is an odd or even number of observations</li>
@@ -388,7 +389,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 </div>
 </div>
 <div id="things-to-think-about" class="section level3">
-<h3><span class="header-section-number">1.0.5</span> Things to think about…</h3>
+<h3>Things to think about…</h3>
 <p>Remember that the sample mean is the estimate the entire population’s mean (which would be impossibly large to measure). How reliably does the mean of a sample represent the population mean? {RED} Warning: if a small sample has been used, the sample mean may not be a reliable at all! Estimates from small samples are subject to the whims of randomness: the larger the sample, the closer the sample size appraches the population size, and the more reliable the sample estimate becomes.</p>
 <p>Pressing ‘Play’ on the plot below will illustrate this concept.</p>
 <ul>
