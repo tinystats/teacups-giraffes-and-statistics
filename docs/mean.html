@@ -212,7 +212,7 @@ $(document).ready(function () {
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <style>
-.main-container { width: 700px; max-width: 950px;}
+.main-container {max-width: 700px;}
 </style>
 <div id="what-are-measures-of-centrality" class="section level1">
 <h1><span class="header-section-number">1</span> What are measures of centrality?</h1>
@@ -271,7 +271,7 @@ We’ll use <span class="math inline">\({\bar{x}}\)</span> (read “x-bar”) to
 </div>
 <span class="math display" id="eq:equation2">\[\begin{equation}
  \tag{1.2}
- \Large{\bar{x}} = \frac{\sum{x_i}}{n}
+ \Large{\bar{x}} = \frac{\sum_{i=1}^{n}{x_i}}{n}
  \end{equation}\]</span>
 <div style="margin-bottom:50px">
 
@@ -279,18 +279,15 @@ We’ll use <span class="math inline">\({\bar{x}}\)</span> (read “x-bar”) to
 <p>
 This might look intimidating, but it means the same thing as <a href="#eq:equation1">(1.1)</a>. Let’s break the symbols apart a bit. The sigma means ‘add up’. What are we adding up? All the heights “x”, which we call our <em>observations</em>. The “i =” part indicates which term to begin adding. For our purposes, this will always be the first observation, when i = 1. The character on top of the sigma is the last observation we include in our summation. In this case it’s n –because we’re adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: n.
 </p>
-<p>
-<center>
 <div style="margin-bottom:50px">
 
 </div>
+<p>
+<center>
 <span class="math display" id="eq:equation2">\[\begin{equation}
  \tag{1.2}
 \vcenter{\img[width=400px]{eq_annotated.png}}
  \end{equation}\]</span>
-<div style="margin-bottom:50px">
-
-</div>
 </center>
 </p>
 <div style="margin-bottom:50px">

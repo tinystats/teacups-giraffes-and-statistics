@@ -92,7 +92,7 @@ Instead, we square the difference. Now, we have positive values that we can sum 
 
 The sum of squares is an important calculation that we will see again for other statistical operations. 
 
-(Image of squares in physical way)
+(Image of squares shown in a physical/concrete way)
 
 We need to take into account how many observations contributed to these sum of squares. So, we divide by our n, we take the average of the squared differences from the mean. This is the variance.
 
@@ -132,7 +132,6 @@ Population vs sample (N vs N-1)
 
 
 
-&nbsp;
 <hr />
 <p style="text-align: center;"> <span style="color: #808080;"> Created using </span></p>
 <p><center>![](https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg){width=40px}
