@@ -383,4 +383,12 @@ htmltools::save_html(p,"/Users/Desiree/Documents/New R Projects/Cars/Law_of_larg
 <p><center>![](https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg){width=40px}
 ![](https://bookdown.org/yihui/rmarkdown/images/hex-rmarkdown.png){width=40px}
 ![](https://www.rstudio.com/wp-content/uploads/2014/06/RStudio-Ball.png){width=40px}</p>
-&nbsp;
+
+ <script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path["img"] = "https://cdn.rawgit.com/pkra/mathjax-img/1.0.0/";
+    MathJax.Hub.Config({
+    extensions: ["tex2jax.js","[img]/img.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]},
+    });
+ </script>
