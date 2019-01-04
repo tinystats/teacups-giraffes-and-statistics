@@ -32,7 +32,7 @@ ggsave(filename = "/Users/Desiree/Documents/New R Projects/Cars/p.png", width=5,
 </center>
 <div style="margin-bottom:25px"></div>
 
-You've just collected a lot of height data and graphed it. Although informative, a graphical display of these data is difficult to summarize--we need to describe these heights with a single number that will be meaningful and allow us to do statistics.
+You've just collected a lot of height data and graphed it. Although informative, a graphical display of these data is difficult to summarize-- we need to describe these heights with a single number that will be meaningful and allow us to do statistics.
 
 We can do this with a measure of centrality: the mean, the median, or the mode. A measure of centrality describes the concept that one number in the "center" of the data set is a good summary of the entire set. What's the best measure of the center? 
 
@@ -65,6 +65,16 @@ The mean is the sum of all of the heights divided by the number of giraffes for 
 </div>
 To make this more efficient, instead of writing "${x_1 + x_2 + ... + x_n}$", we can use the uppercase sigma symbol $\sum{}$ to represent summation of all the observations. 
 
+<div style="margin-bottom:50px"></div>
+\begin{equation}
+ (\#eq:equation2)
+ \Large{\bar{x}} = \frac{\sum{x_i}}{n}
+ \end{equation}
+<div style="margin-bottom:50px">
+</div>
+
+<p> This might look intimidating, but it means the same thing as \@ref(eq:equation1). Let's break the symbols apart a bit. The sigma means 'add up'. What are we adding up? All the heights "x", which we call our *observations*. The "i = " part indicates which term to begin adding. For our purposes, this will always be the first observation, when i = 1. The character on top of the sigma is the last observation we include in our summation. In this case it's n --because we're adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: n. </p>
+
 <p>
 <center>
 <div style="margin-bottom:50px"></div>
@@ -77,7 +87,6 @@ To make this more efficient, instead of writing "${x_1 + x_2 + ... + x_n}$", we 
 </center>
 </p>
 
-<p> This might look intimidating, but it means the same thing as \@ref(eq:equation1). Let's break the symbols apart a bit. The sigma means 'add up'. What are we adding up? All the heights "x", which we call our *observations*. The "i =" part indicates which term to begin adding. For our purposes, this will always be the first observation, when i = 1. The character on top of the sigma is the last observation we include in our summation. In this case it's n --because we're adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: n. </p>
 <div style="margin-bottom:50px">
 </div>
 
@@ -375,12 +384,3 @@ htmltools::save_html(p,"/Users/Desiree/Documents/New R Projects/Cars/Law_of_larg
 ![](https://bookdown.org/yihui/rmarkdown/images/hex-rmarkdown.png){width=40px}
 ![](https://www.rstudio.com/wp-content/uploads/2014/06/RStudio-Ball.png){width=40px}</p>
 &nbsp;
-
- <script type="text/x-mathjax-config">
-    MathJax.Ajax.config.path["img"] = "https://cdn.rawgit.com/pkra/mathjax-img/1.0.0/";
-    MathJax.Hub.Config({
-    extensions: ["tex2jax.js","[img]/img.js"],
-    jax: ["input/TeX","output/HTML-CSS"],
-    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]},
-    });
- </script>
