@@ -41,17 +41,19 @@ We can do this with a measure of centrality: the mean, the median, or the mode. 
 ```{r fig.show="animate", animation.hook = 'gifski', fig.width=6, fig.height=2, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.5}
 library(fGarch)
 library(ggplot2)
-skew <- seq(1,1.5,0.05)
-skew2 <- seq(1.45,1,-0.05)
-skew <- c(skew, skew2)
+skew <- seq(0.5,1,0.05)
+skew2 <- seq(1.1, 2, 0.1)
+skew3 <- seq(1.9,1,-0.1)
+skew4 <- seq(0.95,0.55,-0.05)
+skew <- c(skew, skew2, skew3, skew4)
 plot <- function(x){
-	d <- lapply(1:21, function(x){
+	d <- lapply(1:40, function(x){
 		d <- data.frame(x=rsnorm(100000, mean=0, sd=2, xi=skew[x]), frame=x)
 		return(d)
 	})
-means <- lapply(1:21, function(x) mean(d[[x]]$x))
-medians <- lapply(1:21, function(x) median(d[[x]]$x))
-p <- lapply(1:21, function(y) ggplot(data=d[[y]], aes(x))+geom_histogram(binwidth=0.25, color="white", fill="skyblue2")+theme_light()+theme(panel.border=element_blank(),panel.grid.minor=element_blank(), axis.ticks=element_blank(), axis.text=element_blank())+guides(fill=FALSE)+labs(x=NULL, y=NULL)+scale_y_continuous(expand=c(0,0),limits=c(0,5400), breaks=c(0,2000, 4000))+geom_vline(xintercept=means[[y]], size=0.5, linetype="dashed")+geom_vline(xintercept=medians[[y]], size=0.5)+xlim(-5,5)+annotate("text", label="Mean", size=3.5, x=-3.9, y=5000, hjust=0)+annotate("text", label="Median", size=3.5 ,x=-3.9, y=4500, hjust=0)+geom_segment(aes(x=-4.3, xend=-4, y=5000, yend=5000), linetype="dashed")+geom_segment(aes(x=-4.3, xend=-4, y=4500, yend=4500)))
+means <- lapply(1:40, function(x) mean(d[[x]]$x))
+medians <- lapply(1:40, function(x) median(d[[x]]$x))
+p <- lapply(1:40, function(y) ggplot(data=d[[y]], aes(x))+geom_histogram(binwidth=0.25, color="white", fill="skyblue2")+theme_light()+theme(panel.border=element_blank(),panel.grid.minor=element_blank(), axis.ticks=element_blank(), axis.text=element_blank())+guides(fill=FALSE)+labs(x=NULL, y=NULL)+scale_y_continuous(expand=c(0,0),limits=c(0,5600), breaks=c(0,2000, 4000))+geom_vline(xintercept=means[[y]], size=0.5, linetype="dashed")+geom_vline(xintercept=medians[[y]], size=0.5)+xlim(-5,5)+annotate("text", label="Mean", size=3.5, x=-3.9, y=5000, hjust=0)+annotate("text", label="Median", size=3.5 ,x=-3.9, y=4500, hjust=0)+geom_segment(aes(x=-4.3, xend=-4, y=5000, yend=5000), linetype="dashed")+geom_segment(aes(x=-4.3, xend=-4, y=4500, yend=4500)))
 p
 }
 plot()
