@@ -70,7 +70,7 @@ To make this more efficient, instead of writing "${x_1 + x_2 + ... + x_n}$", we 
 <div style="margin-bottom:50px">
 </div>
 
-<p> This might look intimidating, but it means the same thing as \@ref(eq:equation1). Let's break the symbols apart a bit. The sigma means 'add up'. What are we adding up? All the heights "x", which we call our *observations*. The "i = " part indicates which term to begin adding. For our purposes, this will always be the first observation, when i = 1. The character on top of the sigma is the last observation we include in our summation. In this case it's n --because we're adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: n. </p>
+<p> This might look intimidating, but it means the same thing as \@ref(eq:equation1). Let's break the symbols apart a bit. The sigma means 'add up'. What are we adding up? All the heights "x", which we call our *observations*. The "i&nbsp;=&nbsp;" part indicates which term to begin adding. For our purposes, this will always be the first observation, when i = 1. The character on top of the sigma is the last observation we include in our summation. In this case it's n --because we're adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: n. </p>
 
 <div style="margin-bottom:50px">
 </div>
