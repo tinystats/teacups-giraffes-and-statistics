@@ -10,3 +10,14 @@ This is the "welcome page" I added as an experiment. Here is an illustration of 
 ![](giraffes2.png){width=800px}
 <div style="margin-bottom:50px"></div>
 </center>
+
+
+
+ <script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path["img"] = "https://cdn.rawgit.com/pkra/mathjax-img/1.0.0/";
+    MathJax.Hub.Config({
+    extensions: ["tex2jax.js","[img]/img.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]},
+    });
+ </script>
