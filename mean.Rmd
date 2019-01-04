@@ -1,8 +1,5 @@
 ---
 title: "Mean, Median, and Mode"
-output:
-  html_document:
-    df_print: paged
 ---
 
 <style>
@@ -229,7 +226,7 @@ The modulus operation gives the remainder after division of one number by anothe
 ```
 <div style="margin-bottom:15px">
 </div>
-The `if...else` statements are useful when you want to specify distinct outcomes for objects dependent on whether they meets your set criteria. See below.
+The `if...else` statements are useful when you want to specify distinct outcomes for objects dependent on whether they meet your set criteria. See below.
 <div style="margin-bottom:15px">
 </div>
 ```{r ex="if_else", type="pre-exercise-code"}
