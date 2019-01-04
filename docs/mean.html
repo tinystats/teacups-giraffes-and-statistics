@@ -22,6 +22,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -215,14 +217,14 @@ $(document).ready(function () {
 .main-container { width: 700px; max-width: 950px;}
 </style>
 <div id="what-are-measures-of-centrality" class="section level1">
-<h1><span class="header-section-number">1</span> What are measures of centrality?</h1>
+<h1>What are measures of centrality?</h1>
 <div style="margin-top:50px">
 
 </div>
 <p style=>
 <center>
 <div class="figure">
-<img src="p1.png" width="500" />
+<img src="mean_hist.png" width="500" />
 
 </div>
 </center>
@@ -235,16 +237,22 @@ $(document).ready(function () {
 <li><p>The <strong>mean</strong> is the average and the measure of centrality that you are probably most familiar with. We describe it in detail below.</p></li>
 <li>The <strong>median</strong> is the number in the middle of the data set. Half of the observations lie above the median and half below. The median is used as the measure of centrality when your data are not normally distributed and are instead skewed to the left of right.
 <center>
-<img src="http://placekitten.com/200/200" /> <img src="http://placekitten.com/200/200" /> <img src="http://placekitten.com/200/200" />
+<div style="margin-bottom:20px">
+
+</div>
+<img src="http://placekitten.com/200/100" /> <img src="http://placekitten.com/g/200/100" /> <img src="http://placekitten.com/200/100" />
+<div style="margin-bottom:20px">
+
+</div>
 </center></li>
-<li><p>The <strong>mode</strong> is the most frequent number (height in our case) in the data set. It’s not typically used in statistics, and we won’t cover it further here.</p></li>
+<li><p>The <strong>mode</strong> is the number (or height in our case) that occurs most frequently in the data set. It’s not typically used in statistics, and we won’t cover it further here.</p></li>
 </ul>
 <!-- Let's say you're interested in measuring the heights of a species of teacup giraffes recently discovered on small uninhabited tropical island, just off of latitude 11°48' N.  -->
 <div style="margin-bottom:50px">
 
 </div>
 <div id="taking-the-mean" class="section level3">
-<h3><span class="header-section-number">1.0.1</span> Taking the mean</h3>
+<h3>Taking the mean</h3>
 <p>The mean is the sum of all of the heights divided by the number of giraffes for the sample. All giraffes will be labeled “x”, and the numerical subscript indicates the giraffes’s number in the sample.</p>
 <p>
 We’ll use <span class="math inline">\({\bar{x}}\)</span> (read “x-bar”) to represent the mean of each sample, calculated with the following equation:
@@ -252,44 +260,50 @@ We’ll use <span class="math inline">\({\bar{x}}\)</span> (read “x-bar”) to
 <div style="margin-bottom:50px">
 
 </div>
-<span class="math display" id="eq:equation1">\[\begin{equation}
- \tag{1.1}
+<span class="math display">\[\begin{equation}
+ (\#eq:equation1)
  \Large{\bar{x}} = \frac{x_1 + x_2 + ... + x_n}{n}
  \end{equation}\]</span>
 <div style="margin-bottom:50px">
 
 </div>
 <p>To make this more efficient, instead of writing “<span class="math inline">\({x_1 + x_2 + ... + x_n}\)</span>”, we can use the uppercase sigma symbol <span class="math inline">\(\sum{}\)</span> to represent summation of all the observations.</p>
+<p>
+<center>
 <div style="margin-bottom:50px">
 
 </div>
-<span class="math display" id="eq:equation2">\[\begin{equation}
- \tag{1.2}
- \Large {\bar{x}} = \frac{\sum_{i=1}^n x_i}{n}
+<span class="math display">\[\begin{equation}
+ (\#eq:equation2)
+\vcenter{\img[width=400px]{eq_annotated.png}}
  \end{equation}\]</span>
 <div style="margin-bottom:50px">
 
 </div>
+</center>
+</p>
 <p>
-This might look intimidating, but it means the same thing as <a href="#eq:equation1">(1.1)</a>. Let’s break the symbols apart a bit. The sigma means ‘add up’. What are we adding up? All the heights “x”, which we call our <em>observations</em>. The “i =” part indicates what number term to begin with. For our purposes, this will always be the first observation, when i = 1. The character on top of the sigma is the last observation we include in our summation. In this case it’s n –because we’re adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: n.
+This might look intimidating, but it means the same thing as @ref(eq:equation1). Let’s break the symbols apart a bit. The sigma means ‘add up’. What are we adding up? All the heights “x”, which we call our <em>observations</em>. The “i =” part indicates which term to begin adding. For our purposes, this will always be the first observation, when i = 1. The character on top of the sigma is the last observation we include in our summation. In this case it’s n –because we’re adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: n.
 </p>
 <div style="margin-bottom:50px">
 
 </div>
 </div>
 <div id="code-it-up" class="section level3">
-<h3><span class="header-section-number">1.0.2</span> Code it up</h3>
-<p>Using <a href="#eq:equation2">(1.2)</a>, it’s easy to translate this into code in R. The heights recorded from island 1 have been stored in a vector called <code>heights_island1</code>. Below we show the first few observations from this vector, using the <code>head()</code> function.</p>
+<h3>Code it up</h3>
+Using @ref(eq:equation2), it’s easy to translate this into code in R. The heights recorded from island 1 have been stored in a vector called <code>heights_island1</code>. Below we show the first few observations from this vector, using the <code>head()</code> function.
+<div style="margin-bottom:15px">
+
+</div>
 <pre class="r"><code>head(heights_island1)</code></pre>
-<pre><code>## [1]  7.038865 13.154339  8.086511  8.159990  6.004716  9.455408</code></pre>
-<div style="margin-bottom:25px">
+<div style="margin-bottom:15px">
 
 </div>
 <p>Use the interactive window below to calculate the mean “by hand”.</p>
 <div style="margin-bottom:15px">
 
 </div>
-<div data-datacamp-exercise="" data-height="400" data-encoded="true">
+<div data-datacamp-exercise="" data-height="160" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBTdW0gdXAgYWxsIGhlaWdodHMgc3RvcmVkIGluIGhlaWdodHMsIHVzaW5nIHRoZSBzdW0oKSBmdW5jdGlvbiwgYW5kIHNhdmUgaXQgYXMgYSBuZXcgb2JqZWN0IGNhbGxlZCBcImhlaWdodHNfaXNsYW5kMV9zdW1cIlxuXG5cbiMgRGl2aWRlIGhlaWdodHNpc2xhbmQxX3N1bSBieSB0aGUgbnVtYmVyIG9mIG9ic2VydmF0aW9ucy4gVXNlIHRoZSBsZW5ndGgoKSBmdW5jdGlvbiBmb3Igbi4gU3RvcmUgeW91ciBhbnN3ZXIgYXMgXCJoZWlnaHRzX2lzbGFuZDFfbWVhblwiXG5cblxuIyBQcmludCBvdXQgXCJoZWlnaHRzX2lzbGFuZDFfbWVhblwiIGFuZCBjb21wYXJlIHlvdXIgYW5zd2VyIHRvIHRoZSBSIGZ1bmN0aW9uIFwibWVhbihoZWlnaHRzX2lzbGFuZDEpXCIiLCJzb2x1dGlvbiI6IiMgU3VtIHVwIGFsbCBoZWlnaHRzIHN0b3JlZCBpbiBcImhlaWdodHNfaXNsYW5kMVwiLCB1c2luZyB0aGUgc3VtKCkgZnVuY3Rpb24sIGFuZCBzYXZlIGl0IGFzIGEgbmV3IG9iamVjdCBjYWxsZWQgXCJoZWlnaHRzX2lzbGFuZDFfc3VtXCJcbmhlaWdodHNfaXNsYW5kMV9zdW0gPC0gc3VtKGhlaWdodHNfaXNsYW5kMSlcblxuIyBEaXZpZGUgaGVpZ2h0c19pc2xhbmQxX3N1bSBieSB0aGUgbnVtYmVyIG9mIG9ic2VydmF0aW9ucy4gVXNlIHRoZSBsZW5ndGgoKSBmdW5jdGlvbiBmb3Igbi4gU3RvcmUgeW91ciBhbnN3ZXIgYXMgXCJoZWlnaHRzMV9tZWFuXCJcbmhlaWdodHNfaXNsYW5kMV9tZWFuIDwtIGhlaWdodHNfaXNsYW5kMV9zdW0vbGVuZ3RoKGhlaWdodHNfaXNsYW5kMSlcblxuIyBQcmludCBvdXQgXCJoZWlnaHRzX2lzbGFuZDFfbWVhblwiIGFuZCBjb21wYXJlIHlvdXIgYW5zd2VyIHRvIHRoZSBSIGZ1bmN0aW9uIFwibWVhbihoZWlnaHRzX2lzbGFuZDEpXCJcbmhlaWdodHNfaXNsYW5kMV9tZWFuXG5tZWFuKGhlaWdodHNfaXNsYW5kMSkiLCJzY3QiOiJ0ZXN0X29iamVjdChcImhlaWdodHNfaXNsYW5kMV9zdW1cIilcbnRlc3Rfb2JqZWN0KFwiaGVpZ2h0c19pc2xhbmQxX21lYW5cIilcblxudGVzdF9vdXRwdXRfY29udGFpbnMoXCJoZWlnaHRzX2lzbGFuZDFfbWVhblwiLCBpbmNvcnJlY3RfbXNnID0gXCJEaWQgeW91IHByaW50ICdoZWlnaHRzX2lzbGFuZDFfbWVhbic/XCIpXG50ZXN0X2Z1bmN0aW9uKFwibWVhblwiLCBpbmNvcnJlY3RfbXNnPSBcIkRpZCB5b3UgcnVuICdtZWFuKGhlaWdodHNfaXNsYW5kMSknP1wiKVxuc3VjY2Vzc19tc2coXCJHcmVhdCFcIikifQ==
 </div>
 <div style="margin-bottom:50px">
@@ -297,10 +311,16 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 </div>
 </div>
 <div id="create-your-own-function" class="section level3">
-<h3><span class="header-section-number">1.0.3</span> Create your own function</h3>
-<p>Now it’s your turn to write your own function. Call it “my_mean” and have it calculate the mean of any given vector. You’re going to use the rules for writing a function in R that you’ve used previously. As a reminder, you’ll use <code>function()</code> and embed your code (that you completed in the previous exercise) within curly brackets<code>{}</code>. The advantage of making a “homemade” function is that you can string together all the steps from the previous exercise into a single command.</p>
-<div data-datacamp-exercise="" data-height="400" data-encoded="true">
+<h3>Create your own function</h3>
+Now it’s your turn to write your own function. Call it “my_mean” and have it calculate the mean of any given vector. You’re going to use the rules for writing a function in R that you’ve used previously. As a reminder, you’ll use <code>function()</code> and embed your code (that you completed in the previous exercise) within curly brackets<code>{}</code>. The advantage of making a “homemade” function is that you can string together all the steps from the previous exercise into a single command.
+<div style="margin-bottom:15px">
+
+</div>
+<div data-datacamp-exercise="" data-height="160" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBDb21wbGV0ZSB0aGUgY29kZSBiZWxvdyB0byBjcmVhdGUgeW91ciBvd24gZnVuY3Rpb24gdGhhdCB3aWxsIGNhbGN1bGF0ZSB0aGUgbWVhbiBvZiBhbnkgdmVjdG9yXG5cbm15X21lYW4gPC0gZnVuY3Rpb24odmVjdG9yKXtcbiBcbiAgXG59XG5cbiNWZXJpZnkgdGhhdCB5b3VyIGZ1bmN0aW9uIGNvcnJlY3RseSBjYWxjdWxhdGVzIHRoZSBtZWFuLlxubXlfbWVhbihoZWlnaHRzX2lzbGFuZDEpXG5tZWFuKGhlaWdodHNfaXNsYW5kMSkgIiwic29sdXRpb24iOiIjIENvbXBsZXRlIHRoZSBjb2RlIGJlbG93IHRvIGNyZWF0ZSB5b3VyIG93biBmdW5jdGlvbiB0aGF0IHdpbGwgY2FsY3VsYXRlIHRoZSBtZWFuIG9mIGFueSB2ZWN0b3JcblxubXlfbWVhbiA8LSBmdW5jdGlvbih2ZWN0b3Ipe1xuICBhIDwtIHN1bSh2ZWN0b3IpXG4gIGIgPC0gYS9sZW5ndGgodmVjdG9yKVxuICByZXR1cm4oYilcbn1cblxuI1ZlcmlmeSB0aGF0IHlvdXIgZnVuY3Rpb24gY29ycmVjdGx5IGNhbGN1bGF0ZXMgdGhlIG1lYW4uXG5teV9tZWFuKGhlaWdodHNfaXNsYW5kMSlcbm1lYW4oaGVpZ2h0c19pc2xhbmQxKSAiLCJzY3QiOiJ0ZXN0X2Z1bmN0aW9uX3Jlc3VsdChuYW1lPSBcIm15X21lYW5cIiwgbm90X2NhbGxlZF9tc2c9XCJEaWQgeW91IHJ1biBteV9tZWFuKCk/XCIsIGVycm9yX21zZz1cIlRoZXJlJ3MgYW4gZXJyb3IgaW4geW91ciBmdW5jdGlvbi5cIiwgaW5jb3JyZWN0X21zZz1cIllvdXIgZnVuY3Rpb24gcnVucywgYnV0IGl0IGlzIGNhbGN1bGF0aW5nIHRoZSB3cm9uZyB2YWx1ZS5cIilcbnN1Y2Nlc3NfbXNnKFwiR3JlYXQhXCIpIn0=
+</div>
+<div style="margin-bottom:15px">
+
 </div>
 <p>You can also complete the exercise above in RStudio on your local computer. This way you will be able to save your <code>my_mean()</code> function and script for future use.</p>
 <div style="margin-bottom:50px">
@@ -308,7 +328,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 </div>
 </div>
 <div id="taking-the-median" class="section level3">
-<h3><span class="header-section-number">1.0.4</span> Taking the median</h3>
+<h3>Taking the median</h3>
 <p>To calculate the median go through the following steps:</p>
 <ul>
 <li>Assess whether there is an odd or even number of observations</li>
@@ -322,8 +342,8 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 </ul></li>
 </ul>
 <p>Before you write your own median function, the two concepts need to be introduced: 1) the modulus operator <code>%%</code> and 2) <code>if...else</code> statements.</p>
-<p>The modulus operation gives the remainder after division of one number by another. For example, in R <code>11 %% 5</code> returns the <code>1</code>, which is the remainer of <code>11</code> divided by <code>5</code>. If the modulus operation returns <code>0</code>, then there is no remainder. It is useful to apply the modulus operation <code>x %% 2</code> to determine whether a number <code>x</code> is even or odd by testing whether or not the result is exactly equal to 0.</p>
-<div style="margin-bottom:50px">
+The modulus operation gives the remainder after division of one number by another. For example, in R <code>11 %% 5</code> returns the <code>1</code>, which is the remainer of <code>11</code> divided by <code>5</code>. If the modulus operation returns <code>0</code>, then there is no remainder. It is useful to apply the modulus operation <code>x %% 2</code> to determine whether a number <code>x</code> is even or odd by testing whether or not the result is exactly equal to 0.
+<div style="margin-bottom:15px">
 
 </div>
 <pre class="r"><code>11 %% 2</code></pre>
@@ -334,31 +354,47 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 <pre><code>## [1] 0</code></pre>
 <pre class="r"><code>10 %% 2 == 0</code></pre>
 <pre><code>## [1] TRUE</code></pre>
-The <code>if...else</code> statements are useful when you want two different things to happen based on two different conditions. See below.
-<div data-datacamp-exercise="" data-height="400" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBcblxuaWYobGVuZ3RoKGhlaWdodHNfaXNsYW5kMSkgJSUgMiA9PSAwKSB7XG4gIHByaW50KFwiRVZFTiFcIilcbn0gZWxzZSB7XG4gICAgcHJpbnQoXCJPREQuXCIpXG59XG5cblxuaWYoKGxlbmd0aChoZWlnaHRzX2lzbGFuZDEpLTEpICUlIDIgPT0gMCkge1xuICBwcmludChcIkVWRU4hXCIpXG59IGVsc2Uge1xuICAgIHByaW50KFwiT0RELlwiKVxufSJ9
+<div style="margin-bottom:15px">
+
 </div>
-<div data-datacamp-exercise="" data-height="400" data-encoded="true">
+The <code>if...else</code> statements are useful when you want to specify distinct outcomes for objects dependent on whether they meets your set criteria. See below.
+<div style="margin-bottom:15px">
+
+</div>
+<div data-datacamp-exercise="" data-height="160" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBQcmludCBhIGRpZmZlcmVudCByZXN1bHQgZGVwZW5kZW50IG9uIHdoZXRoZXIgYSBudW1iZXIgaXMgZXZlbiBvciBvZGRcblxuaWYobGVuZ3RoKGhlaWdodHNfaXNsYW5kMSkgJSUgMiA9PSAwKSB7XG4gIHByaW50KFwiRVZFTiFcIilcbn0gZWxzZSB7XG4gICAgcHJpbnQoXCJPREQhXCIpXG59XG5cblxuaWYoKGxlbmd0aChoZWlnaHRzX2lzbGFuZDEpLTEpICUlIDIgPT0gMCkge1xuICBwcmludChcIkVWRU4hXCIpXG59IGVsc2Uge1xuICAgIHByaW50KFwiT0REIVwiKVxufSJ9
+</div>
+<div style="margin-bottom:15px">
+
+</div>
+<p>Now that you have a sense for how the <code>%%</code> operator can be used to test whether a number is EVEN or ODD, and how <code>if...else</code> statements work, use both of these concepts in the window below to write your own function that calculates the median of any vector.</p>
+<div style="margin-bottom:15px">
+
+</div>
+<div data-datacamp-exercise="" data-height="210" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBDb21wbGV0ZSB0aGUgY29kZSBiZWxvdyB0byBjcmVhdGUgeW91ciBvd24gZnVuY3Rpb24gdGhhdCB3aWxsIGNhbGN1bGF0ZSB0aGUgbWVkaWFuIG9mIGFueSB2ZWN0b3JcblxubXlfbWVkaWFuIDwtIGZ1bmN0aW9uKHZlY3Rvcil7XG4gIGlmKCl7XG4gICBcbiAgfWVsc2V7IFxuICAgXG4gIH1cbn1cblxuI1ZlcmlmeSB0aGF0IHlvdXIgZnVuY3Rpb24gY29ycmVjdGx5IGNhbGN1bGF0ZXMgdGhlIG1lZGlhbi5cbm15X21lZGlhbihoZWlnaHRzX2lzbGFuZDEpXG5tZWRpYW4oaGVpZ2h0c19pc2xhbmQxKSAiLCJzb2x1dGlvbiI6IiMgQ29tcGxldGUgdGhlIGNvZGUgYmVsb3cgdG8gY3JlYXRlIHlvdXIgb3duIGZ1bmN0aW9uIHRoYXQgd2lsbCBjYWxjdWxhdGUgdGhlIG1lZGlhbiBvZiBhbnkgdmVjdG9yXG5cbm15X21lZGlhbiA8LSBmdW5jdGlvbih2ZWN0b3Ipe1xuICBvcmRlcmVkX2hlaWdodHMgPC0gc29ydCh2ZWN0b3IsIGRlY3JlYXNpbmcgPSBGQUxTRSlcbiAgaWYobGVuZ3RoKG9yZGVyZWRfaGVpZ2h0cykgJSUgMiA9PSAwKXtcbiAgIHBvc2l0aW9uMSA8LSBsZW5ndGgob3JkZXJlZF9oZWlnaHRzKSAvIDJcbiAgIHBvc2l0aW9uMiA8LSBwb3NpdGlvbjEgKyAxXG4gICB0ZW1wX3ZhbHVlcyA8LSBvcmRlcmVkX2hlaWdodHNbYyhwb3NpdGlvbjEsIHBvc2l0aW9uMildXG4gICBtZWRpYW4gPC0gbWVhbih0ZW1wX3ZhbHVlcylcbiAgfWVsc2V7IFxuICAgcG9zaXRpb24gPC0gKGxlbmd0aChvcmRlcmVkX2hlaWdodHMpICsgMSkgLyAyXG4gICBtZWRpYW4gPC0gb3JkZXJlZF9oZWlnaHRzW3Bvc2l0aW9uXVxuICB9XG4gIHJldHVybihtZWRpYW4pXG59XG5cbiNWZXJpZnkgdGhhdCB5b3VyIGZ1bmN0aW9uIGNvcnJlY3RseSBjYWxjdWxhdGVzIHRoZSBtZWRpYW4uXG5teV9tZWRpYW4oaGVpZ2h0c19pc2xhbmQxKVxubWVkaWFuKGhlaWdodHNfaXNsYW5kMSkgIiwic2N0IjoidGVzdF9mdW5jdGlvbl9yZXN1bHQobmFtZT0gXCJteV9tZWRpYW5cIiwgbm90X2NhbGxlZF9tc2c9XCJEaWQgeW91IHJ1biBteV9tZWFuKCk/XCIsIGVycm9yX21zZz1cIlRoZXJlJ3MgYW4gZXJyb3IgaW4geW91ciBmdW5jdGlvbi5cIiwgaW5jb3JyZWN0X21zZz1cIllvdXIgZnVuY3Rpb24gcnVucywgYnV0IGl0IGlzIGNhbGN1bGF0aW5nIHRoZSB3cm9uZyB2YWx1ZS5cIilcbnN1Y2Nlc3NfbXNnKFwiR3JlYXQhXCIpIn0=
+</div>
+<div style="margin-bottom:50px">
+
 </div>
 </div>
 <div id="things-to-think-about" class="section level3">
-<h3><span class="header-section-number">1.0.5</span> Things to think about…</h3>
-<p>How reliably does the sample mean represent the population mean? Warning: when you calculate the mean from a small sample, you run the risk of calculating a sample mean that is very different from the true population mean! The larger of a sample you collect, the closer you will be to population mean, and the more reliable your sample mean will be.</p>
-<p>Pressing ‘Play’ on the plot below will illustrate this concept. * Each point in this line is the mean from a random sample of a population with a TRUE mean of 0. [BAD SENTENCE!!]</p>
+<h3>Things to think about…</h3>
+<p>Remember that the sample mean is the estimate the entire population’s mean (which would be impossibly large to measure). How reliably does the mean of a sample represent the population mean? {RED} Warning: if a small sample has been used, the sample mean may not be a reliable at all! Estimates from small samples are subject to the whims of randomness: the larger the sample, the closer the sample size appraches the population size, and the more reliable the sample estimate becomes.</p>
+<p>Pressing ‘Play’ on the plot below will illustrate this concept.</p>
 <ul>
 <li>This animation shows the values of means calculated from increasingly larger samples.</li>
+<li>Each point in this line is the mean calculated from a random sample. The TRUE mean of the population is 0.</li>
 <li>The x-axis shows the sample size: small samples on the left, and larger samples to the right.</li>
-<li>The y-axis shows what the mean is for a sample of that particular size. Though the y-values vary here, remember that if the sample were a GOOD estimate of the population, the mean should be 0.<br />
+<li>The y-axis shows what the mean is for a sample of that particular size. Though the y-values vary here, remember that if the sample were a GOOD estimate of the population, the y-values should be very close to 0.<br />
 </li>
-<li>But you can see that when the samples are small the sample mean isn’t always a good representation of the population it was sampled from–and that’s not a good thing :-(</li>
+<li>But you can see that when the samples are small the sample mean isn’t always a good representation of the population that it was sampled from–and that’s not a good thing.</li>
 </ul>
-<p>See the <a href="https://en.wikipedia.org/wiki/Law_of_large_numbers">Law of Large Numbers</a>.</p>
+<p>For further reading see the <a href="https://en.wikipedia.org/wiki/Law_of_large_numbers">Law of Large Numbers</a>.</p>
 <center>
 <iframe src="Law_of_large_numbers.html" width="600" height="550" scrolling="yes" seamless="seamless" frameBorder="0">
 </iframe>
 </center>
- 
 <hr />
 <p style="text-align: center;">
 <span style="color: #808080;"> Created using </span>
@@ -368,6 +404,14 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" width="40" /> <img src="https://bookdown.org/yihui/rmarkdown/images/hex-rmarkdown.png" width="40" /> <img src="https://www.rstudio.com/wp-content/uploads/2014/06/RStudio-Ball.png" width="40" />
 </p>
 <p> </p>
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path["img"] = "https://cdn.rawgit.com/pkra/mathjax-img/1.0.0/";
+    MathJax.Hub.Config({
+    extensions: ["tex2jax.js","[img]/img.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]},
+    });
+ </script>
 </div>
 </div>
 

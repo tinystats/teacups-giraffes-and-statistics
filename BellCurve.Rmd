@@ -22,11 +22,17 @@ Shortly after you leave the clearing, you spot another little giraffe sliding do
 
 The next week is spent trekking and measuring every giraffe you can manage to bring near enough. You've capitalized on the fact that they seem to find the pistachios from your lunch very tasty, and you're relieved that they seem to be social enough to approach long enough for a reliable measurment with your tape measure. With the help of your guide, you manage to measure 50 giraffes in the first week.
 
+<p><div style="margin-top:50px"></div>
+<center>![](giraffe_lineup.png){width=800px}</center>
+<div style="margin-bottom:50px"></div></p>
+
 (Introduce the existence of the nearby (additional) island with small giraffes. Insert narrative for island #2 -- take measurements from 2nd island)
 
 <p><div style="margin-top:50px"></div>
 <center>![](giraffe_island_dpi72.png){width=800px}</center>
 <div style="margin-bottom:50px"></div></p>
+
+
 
 
 
