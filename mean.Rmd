@@ -51,9 +51,9 @@ plot <- function(x){
 		d <- data.frame(x=rsnorm(100000, mean=0, sd=2, xi=skew[x]), frame=x)
 		return(d)
 	})
-means <- lapply(1:40, function(x) mean(d[[x]]$x))
-medians <- lapply(1:40, function(x) median(d[[x]]$x))
-p <- lapply(1:40, function(y) ggplot(data=d[[y]], aes(x))+geom_histogram(binwidth=0.25, color="white", fill="skyblue2")+theme_light()+theme(panel.border=element_blank(),panel.grid.minor=element_blank(), axis.ticks=element_blank(), axis.text=element_blank())+guides(fill=FALSE)+labs(x=NULL, y=NULL)+scale_y_continuous(expand=c(0,0),limits=c(0,5600), breaks=c(0,2000, 4000))+geom_vline(xintercept=means[[y]], size=0.5, linetype="dashed")+geom_vline(xintercept=medians[[y]], size=0.5)+xlim(-5,5)+annotate("text", label="Mean", size=3.5, x=-3.9, y=5000, hjust=0)+annotate("text", label="Median", size=3.5 ,x=-3.9, y=4500, hjust=0)+geom_segment(aes(x=-4.3, xend=-4, y=5000, yend=5000), linetype="dashed")+geom_segment(aes(x=-4.3, xend=-4, y=4500, yend=4500)))
+medians <- c(seq(0.31,-0.31, -0.031), seq(-0.279,0.279, 0.031))
+#medians <<- lapply(1:40, function(x) median(d[[x]]$x))
+p <- lapply(1:40, function(y) ggplot(data=d[[y]], aes(x))+geom_histogram(binwidth=0.25, color="white", fill="skyblue2")+theme_light()+theme(panel.border=element_blank(),panel.grid.minor=element_blank(), axis.ticks=element_blank(), axis.text=element_blank())+guides(fill=FALSE)+labs(x=NULL, y=NULL)+scale_y_continuous(expand=c(0,0),limits=c(0,5600), breaks=c(0,2000, 4000))+geom_vline(xintercept=0, size=0.5, linetype="dashed")+geom_vline(xintercept=medians[y], size=0.5)+xlim(-5,5)+annotate("text", label="Mean", size=3.5, x=-3.9, y=5000, hjust=0)+annotate("text", label="Median", size=3.5 ,x=-3.9, y=4500, hjust=0)+geom_segment(aes(x=-4.3, xend=-4, y=5000, yend=5000), linetype="dashed")+geom_segment(aes(x=-4.3, xend=-4, y=4500, yend=4500)))
 p
 }
 plot()
@@ -367,6 +367,15 @@ For further reading see the [Law of Large Numbers](https://en.wikipedia.org/wiki
 ```{r, tut=FALSE, echo=FALSE, message= FALSE}
 library(emdbook)
 library(plotly)
+
+m <- list(
+  l = 50,
+  r = 50,
+  b = 10,
+  t = 10,
+  pad = 4
+)
+
 accumulate_by <- function(dat, var) {
   var <- lazyeval::f_eval(var, dat)
   lvls <- plotly:::getLevels(var)
@@ -383,12 +392,13 @@ d <- do.call(rbind, lapply(lseq(10,10000, 300), function(x){
 
 dd <- aggregate(data=d, x~frame+N, FUN=mean)%>%
 accumulate_by(~N)
-p <- dd %>% plot_ly(x=~log10(N), y=~x, frame=~frame, type="scatter", mode="lines", line = list(simplyfy = F, color="orangered"))%>% 
+p <- dd %>% plot_ly(x=~log10(N), y=~x, frame=~frame, type="scatter", mode="lines", line = list(simplyfy = F, color="orangered"),width=550, height=350)%>% 
  animation_opts(
     frame = 10, 
     transition = 0, 
     redraw = FALSE
  ) %>% 
+config(displayModeBar = F) %>%
   layout(
     xaxis = list(
       title = "Sample Size (log10)",
@@ -397,7 +407,7 @@ p <- dd %>% plot_ly(x=~log10(N), y=~x, frame=~frame, type="scatter", mode="lines
     yaxis = list(range=c(-0.7,0.7),
       title = "Mean",
       zeroline = F
-    )
+    ), autosize=F, margin=m
   ) %>%
   animation_slider(
     hide = T
@@ -406,10 +416,10 @@ p <- dd %>% plot_ly(x=~log10(N), y=~x, frame=~frame, type="scatter", mode="lines
     x = 1, xanchor = "right", y = 0, yanchor = "bottom"
   )
 
-#htmltools::save_html(p,"/Users/Desiree/Documents/New R Projects/Cars/Law_of_large_numbers.html")
+htmltools::save_html(p,"Law_of_large_numbers.html")
 
 ```
-<center><iframe src="Law_of_large_numbers.html" width="600" height="550" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
+<center><iframe style="margin: 0px;" src="Law_of_large_numbers.html" width="570" height="400" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
 
 <hr />
 <p style="text-align: center;"> <span style="color: #808080;"> Created using </span></p>

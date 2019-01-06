@@ -42,8 +42,77 @@ You record the data below in your logbook, and you make a plot to get a sense of
 # Histogram
 Each time you log a giraffe within a height range, you note how frequently a giraffe of this height has been recorded. Y-axis is frequency. X-axis is the height range
 
-INSERT ANIMATED PLOT
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 
+library(plotly)
+library(tweenr)
+
+set.seed(12)
+x <- round(rnorm(50, 10, 2))
+x2 <- round(rnorm(50, 18, 1.2))
+x <- c(x,x2)
+df <- data.frame(x = x, y = 23, type=rep(c('Island #1', 'Island #2'), each=50))
+dfs <- list(df)
+for(i in seq_len(nrow(df))) {
+    dftemp <- tail(dfs, 1)
+    dftemp[[1]]$y[i] <- sum(dftemp[[1]]$x[seq_len(i)] == dftemp[[1]]$x[i])
+    dfs <- append(dfs, dftemp)
+}
+dfs <- append(dfs, dfs[rep(length(dfs), 3)])
+dft <- tween_states(dfs, 10, 1, 'cubic-in', 500)
+dft$y <- dft$y - 0.5
+dft <- dft[dft$y != 23, ]
+
+m <- list(
+  l = 50,
+  r = 50,
+  b = 10,
+  t = 10,
+  pad = 4
+)
+
+p <- dft %>%
+  plot_ly(
+    x = ~x, 
+    y = ~y,
+    frame = ~.frame, 
+    color = ~type,
+    colors = c("green3", "turquoise3"),
+    marker = list(size = 16),
+    width=630, 
+    height=390
+  )  %>% 
+config(displayModeBar = F) %>%
+  layout(
+    xaxis = list(range=c(4,23),
+      title = "Teacup Giraffe heights",
+      zeroline = F
+    ),
+    yaxis = list(range=c(-0.5,21),
+      title = "Frequency",
+      zeroline = F
+    ),legend = list(x = 0.075, y = 0.91), autosize=F, margin=m
+  ) %>% 
+  animation_opts(
+    frame = 50, 
+    transition = 0, 
+    redraw = FALSE
+  ) %>%
+  animation_slider(
+    hide = T
+    ) %>%
+  animation_button(
+    x = 1, xanchor = "right", y = 0, yanchor = "bottom"
+  )
+p
+
+htmltools::save_html(p, file="two_animated_hist.html")
+```
+<div style="margin-top:30px">
+</div>
+<center>
+<iframe style="margin:0px; padding:0px; display:block; border:0px" src="two_animated_hist.html" width="650" height="450" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe>
 #Creates a Bell Curve
 The normal curve is shaped like a bell
 
