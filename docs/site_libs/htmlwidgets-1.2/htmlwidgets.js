@@ -565,10 +565,7 @@
         }
 
         if (binding.resize) {
-          var lastSize = {
-            w: sizeObj ? sizeObj.getWidth() : el.offsetWidth,
-            h: sizeObj ? sizeObj.getHeight() : el.offsetHeight
-          };
+          var lastSize = {};
           var resizeHandler = function(e) {
             var size = {
               w: sizeObj ? sizeObj.getWidth() : el.offsetWidth,
