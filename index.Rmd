@@ -10,25 +10,3 @@ This is the "welcome page" I added as an experiment. Here is an illustration of 
 ![](giraffes2.png){width=800px}
 <div style="margin-bottom:50px"></div>
 </center>
-
-
-```{r fig.show="animate", animation.hook = 'gifski', fig.width=10, fig.height=2, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide'}
-
-library(ggplot2)
-
-lims <- data.frame(min=c(0,0,0,0), max=c(4,20, 120, 1200))
-cols <- c("brown1", "darkturquoise", "royalblue1","darkorchid1")
-ns <- c("10", "100", "1,000", "10,000")
-plot <- function(x){
-	d <- lapply(c(10, 100, 1000, 10000), function(x){
-		d <- data.frame(x=rnorm(x), frame=x)
-		return(d)
-	})
-
-p <- lapply(1:4, function(y) ggplot(data=d[[y]], aes(x))+geom_histogram(binwidth=0.25, color="white", fill=cols[y])+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank(), panel.grid.major=element_line(size=0.2), axis.ticks=element_blank(), strip.background = element_blank(), strip.text.x = element_text(color="black"), axis.text.x=element_blank(), plot.title = element_text(hjust = 0.5, size=12))+ guides(fill=FALSE)+labs(x=NULL, y=NULL)+scale_y_continuous(expand=c(0,0), limits=c(lims[y,1], lims[y,2]))+xlim(-5,5)+ggtitle(paste0("N=", ns[y])))
-p <- cowplot::plot_grid(p[[1]], p[[2]], p[[3]], p[[4]], ncol=4, align="hv")
-p
-}
-
-lapply(1:4, function(x) plot())
-```
