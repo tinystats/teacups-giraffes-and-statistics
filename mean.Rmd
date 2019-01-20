@@ -57,11 +57,11 @@ We can do this with a measure of centrality: the mean, the median, or the mode. 
 # p <- lapply(1:40, function(y) ggplot(data=d[[y]], aes(x))+geom_histogram(binwidth=0.25, color="white", fill="skyblue2")+theme_light()+theme(panel.border=element_blank(),panel.grid.minor=element_blank(), axis.ticks=element_blank(), axis.text=element_blank())+guides(fill=FALSE)+labs(x=NULL, y=NULL)+scale_y_continuous(expand=c(0,0),limits=c(0,5600), breaks=c(0,2000, 4000))+geom_vline(xintercept=0, size=0.5, linetype="dashed")+geom_vline(xintercept=medians[y], size=0.5)+xlim(-5,5)+annotate("text", label="Mean", size=3.4, x=-4.1, y=5300, hjust=0)+annotate("text", label="Median", size=3.4 ,x=-4.1, y=4600, hjust=0)+geom_segment(aes(x=-4.8, xend=-4.3, y=5300, yend=5300), linetype="dashed")+geom_segment(aes(x=-4.8, xend=-4.3, y=4600, yend=4600)))
 # print (p)
 # }
-
-gif_file <-  file.path(getwd(), 'median.gif')
-save_gif(plot(), gif_file= gif_file, progress = FALSE, loop= TRUE, delay= 0.5, width=400, height= 133, res= 100)
-
-utils::browseURL(gif_file)
+# 
+# gif_file <-  file.path(getwd(), 'median.gif')
+# save_gif(plot(), gif_file= gif_file, progress = FALSE, loop= TRUE, delay= 0.5, width=400, height= 133, res= 100)
+# 
+# utils::browseURL(gif_file)
 
 ```
 <center> ![](median.gif) </center>
