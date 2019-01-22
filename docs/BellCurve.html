@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -75,6 +78,7 @@ h6 {
 }
 </style>
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 
 </head>
 
@@ -271,6 +275,101 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -288,14 +387,23 @@ $(document).ready(function () {
         <li>
   <a href="index.html">Home</a>
 </li>
-<li>
-  <a href="BellCurve.html">Intro to the Bell Curve</a>
-</li>
-<li>
-  <a href="mean.html">The Mean</a>
-</li>
-<li>
-  <a href="Variance.html">Spread of the Data</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Modules
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="BellCurve.html">Intro to the Bell Curve</a>
+    </li>
+    <li>
+      <a href="mean.html">The Mean</a>
+    </li>
+    <li>
+      <a href="Variance.html">Spread of the Data</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -314,11 +422,12 @@ $(document).ready(function () {
 </div>
 
 
+<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
+<!-- <link href="style.css" rel="stylesheet" /> -->
 <div id="welcome-to-the-island" class="section level1">
 <h1><span class="header-section-number">1</span> Welcome to the island</h1>
 <p>You arrive on the island, and you’re excited to collect data on a new species. All you know is that they are small giraffe-like creatures. After suiting up in your field gear, your guide leads you deep into the dense island brush, and you scan the ground for your first subject.</p>
 <p>After a one hour hike, you reach a clearing where tall cypress trees encircle low growth vegetation. You experience your first encounter with a little giraffe, whose cool drink from a puddle you seem to have interrupted. Its slender body does not even clear the height of a dandelion. You toss an apple core in its direction, and you’re pleasantly surprised that it trots over to you and begins hopping on and off your muddy boots in play. After observing this behavior for a while, you bring out your measuring tape and record its height.</p>
-<p>Shortly after you leave the clearing, you spot another little giraffe sliding down a rock, stopping directly in your path. You’re surprised how much larger this one is–about as tall as a banana. This pattern repeats itself, and you realize that although all small, mini-giraffes are variable in size.</p>
 <div style="margin-top:50px">
 
 </div>
@@ -328,6 +437,7 @@ $(document).ready(function () {
 <div style="margin-bottom:50px">
 
 </div>
+<p>Shortly after you leave the clearing, you spot another little giraffe sliding down a rock, stopping directly in your path. You’re surprised how much larger this one is–about as tall as a banana. This pattern repeats itself, and you realize that although all small, mini-giraffes are variable in size.</p>
 <p>The next week is spent trekking and measuring every giraffe you can manage to bring near enough. You’ve capitalized on the fact that they seem to find the pistachios from your lunch very tasty, and you’re relieved that they seem to be sufficiently social to approach long enough for a reliable measurment with your tape measure. With the help of your guide, you manage to measure 50 giraffes in the first week.</p>
 <p>
 <div style="margin-top:50px">
@@ -340,7 +450,7 @@ $(document).ready(function () {
 
 </div>
 </p>
-<p>(Introduce the existence of the nearby (additional) island with small giraffes. Insert narrative for island #2 – take measurements from 2nd island)</p>
+<p>There is a second island not too far away, where you guide has indicated there may be more giraffes. You wonder how the population of giraffes on the second island may be different, and so you make arrangements to go to Island #2 the following week. It is not too long until you have added another 50 measurements of these tiny giraffes from this second excursion.</p>
 <p>
 <div style="margin-top:50px">
 
@@ -352,42 +462,100 @@ $(document).ready(function () {
 
 </div>
 </p>
-<div id="the-data" class="section level2">
-<h2><span class="header-section-number">1.1</span> The Data</h2>
-<p>You record the data below in your logbook, and you make a plot to get a sense of how tall the tiny giraffes really are.</p>
 </div>
-</div>
-<div id="histogram" class="section level1">
-<h1><span class="header-section-number">2</span> Histogram</h1>
-<p>Each time you log a giraffe within a height range, you note how frequently a giraffe of this height has been recorded. Y-axis is frequency. X-axis is the height range</p>
+<div id="the-data" class="section level1">
+<h1><span class="header-section-number">2</span> The Data</h1>
+<!-- You record the data below in your logbook, and you make a plot to get a sense of how tall the tiny giraffes really are. -->
+<p>After a nice lunch on the beach, you decide to take a first look at the data. What’s the best way to look at data when you know nothing about it…?</p>
+<p>You can start by scanning the data for the shortest and tallest heights. You see the range is between 6 and 20 cm. So you draw a ruler in the sand with the extreme heights on either end. You’d like to see how many times each height occurs in your data set, and so you grab a little leaf to represent each individual giraffe’s height and place it just above your ruler mark. You put out a new leaf for each height and continue doing this for each individual to see which heights “stack up” along your ruler. To keep track of which heights came from different islands, you pick differently colored leaves for each group. Look below for a sped-up version of this process! The y-axis is frequency. The x-axis is the heights.</p>
 <div style="margin-top:30px">
 
 </div>
 <center>
 <iframe style="margin:0px; padding:0px; display:block; border:0px" src="two_animated_hist.html" width="650" height="450" scrolling="yes" seamless="seamless" frameBorder="0">
 </iframe>
+</center>
+<p>As you put the last leaf in place, your local guide saunters by and glances at your markings, “Oh nice, you’ve made a histogram!”</p>
+<p>Happy with your progress thus far, you are excited to send your histogram results to your PhD mentor back in the homeland. Instead of taking a picture of your leaf histogram, you turn to R to create the perfect figure.</p>
+</div>
+<div id="our-dataframe" class="section level1">
+<h1><span class="header-section-number">3</span> Our Dataframe</h1>
+<div style="margin-top:30px">
+
+</div>
+<p>The heights from your logbook have been stored in a dataframe called <code>d</code>. Below we show the last few observations from this vector, using the <code>tail()</code> function, which all happen to be from Island #2.</p>
+<div style="margin-bottom:15px">
+
+</div>
+<pre class="r"><code>tail(d)</code></pre>
+<pre><code>##       Height  Location
+## 95  19.24044 Island #2
+## 96  17.58925 Island #2
+## 97  18.54274 Island #2
+## 98  17.16631 Island #2
+## 99  17.71318 Island #2
+## 100 16.79124 Island #2</code></pre>
+</div>
+<div id="making-a-histogram-with-ggplot2" class="section level1">
+<h1><span class="header-section-number">4</span> Making a histogram with <code>ggplot2</code></h1>
+<p>We will use the <em>ggplot2</em> package for all our graphing. There are many different ways that ggplot can be customized. Check out <a href="https://ggplot2.tidyverse.org/reference">this page</a> as a reference.</p>
+<p>We need some basic components as a bare minimum to get started. We can layer nicer components on top of this later to make the graph look nice. Our steps:</p>
+<ol style="list-style-type: decimal">
+<li><p>Specify the dataframe that we want to use using <code>ggplot()</code>. We will do this using the option <code>data =</code>. We also have to tell ggplot <em>what</em> to actually plot– we do this with the argument that stands for aesthetics: <code>aes()</code>. In our case, only the x-axis variable <code>Height</code> needs to be specified.</p></li>
+<li><p>Add a <code>geom</code> layer, which is the visual representation of the data points. In contrast to other ways we write code in R, ggplot options are added using a plus sign <code>+</code>. In our case, we will write <code>+</code> and then <code>geom_histogram()</code>. To make your plot look similar to your sand drawing, you want to add an optional argument within the parentheses of <code>geom_histogram</code>, which will set the bin width to 1 cm: `geom_histogram( binwidth = 1 ).</p></li>
+</ol>
+<p>Here we are using <code>geom_histogram</code>, but there are many other <code>geom_</code> layers that you could use instead for different plot types. Check some of them out <a href="https://ggplot2.tidyverse.org/reference/#section-layer-geoms">here</a>.</p>
+<p>A note about the <code>+</code>: You can keep adding new specifications on one long continuous line of code, separating each one with a <code>+</code>. However, if you’d like to make the code easier to read by adding each specification to a new line, make sure the <code>+</code> to the end of the first line and not the new one.</p>
+<p>It’s a good idea to save any ggplot you make as an object. It’s a helpful practice for when you’ll do more complicated graphing later (e.g. combining plots).</p>
+<p>Run the code below to see what this basic histogram in ggplot looks like:</p>
+<div style="margin-bottom:15px">
+
+</div>
+<div data-datacamp-exercise="" data-height="160" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoicCA8LSBnZ3Bsb3QoZGF0YSA9IGQsIGFlcyh4ID0gSGVpZ2h0KSkgKyBcbiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGg9MSlcblxucCJ9
+</div>
+<p>Let’s go over some quick ways we can make any ggplot look nicer. First, we need to tell ggplot that we want the data from the two islands to be different colors. And second, we need to specify the colors we want to use.</p>
+<p><strong>Different color for each group:</strong> Under aes(), we add a <code>fill =</code> argument. Here is where you put the name of the variable that contains the categories that you want to distinguish with different colors. To choose colors ggplot should use, we need to add a new function <code>+ scale_fill_manual()</code> and then specify the actual colors with <code>values =</code>. To read more about how to create your own color scale, see this <a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">page</a>. If you have more than one color you need to specify, make sure you combine them with the <code>c()</code> function.</p>
+<p>Colors in R can be specified in different ways. For example, you can use a string of the color name. See possible colors <a href="http://sape.inf.usi.ch/quick-reference/ggplot2/colour">here</a>.</p>
+<p><strong>Outline Color:</strong> To add a colored outline around the data contained in your <code>geom_</code> (i.e. the bars for ‘geom_histogram’), specify <code>color =</code> within the parentheses for the geom.</p>
+<p>In the window below, we have added some options that you can play around with. Use the descriptions above to specify the correct variable that <code>fill</code> should be set to as well as the fill and outline colors.</p>
+<p>Try out some color specifications on your own, and then check out the solution to see what we picked.</p>
+<div data-datacamp-exercise="" data-height="160" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiI0ZpbGwgaW4gdGhlIGluY29tcGxldGUgYXJndW1lbnRzIGJlbG93XG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9ICkpICtcbiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGggPSAxLCBjb2xvciA9ICkrXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoICkpXG4gIFxucCIsInNvbHV0aW9uIjoicCA8LSBnZ3Bsb3QoZGF0YSA9IGQsIGFlcyh4ID0gSGVpZ2h0LCBmaWxsID0gTG9jYXRpb24pKSArXG4gIGdlb21faGlzdG9ncmFtKGJpbndpZHRoID0gMSwgY29sb3IgPSBcIndoaXRlXCIpK1xuICBzY2FsZV9maWxsX21hbnVhbCh2YWx1ZXMgPSBjKFwiZ3JlZW4zXCIsIFwidHVycXVvaXNlM1wiKSlcbiAgXG5wIn0=
+</div>
+<p><strong>Playing around with “complete themes”: </strong> ggplot has a nice way of changing many non-data display parameters at once though what is referred to as “complete themes”. Check this <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">page</a> for the available options.</p>
+<p>Have fun testing out a few different complete themes by adding the argument with a <code>+</code> sign. Try 3 different ones and take note of how the plot changes.</p>
+<div data-datacamp-exercise="" data-height="160" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiIyBBZGQgYSBjb21wbGV0ZSB0aGVtZSB0byBleGlzdGluZyBjb2RlXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKStcbiAgc2NhbGVfZmlsbF9tYW51YWwodmFsdWVzID0gYyhcImdyZWVuM1wiLCBcInR1cnF1b2lzZTNcIikpXG5cbnAiLCJzb2x1dGlvbiI6IiMgQWRkIGEgY29tcGxldGUgdGhlbWUgdG8gZXhpc3RpbmcgY29kZVxuXG5wIDwtIGdncGxvdChkYXRhID0gZCwgYWVzKHggPSBIZWlnaHQsIGZpbGwgPSBMb2NhdGlvbikpICtcbiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGggPSAxLCBjb2xvciA9IFwid2hpdGVcIikrXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKSArIHRoZW1lX2xpZ2h0KClcblxucCJ9
+</div>
+<p>If you’re not wholly happy with any of the complete themes, you can add a <code>theme()</code> argument to tweak the display of the existing theme. To read more about how to modify componenets of a complete theme, check out this <a href="https://ggplot2.tidyverse.org/reference/theme.html">resource</a>.</p>
+<p>You pick <code>theme_light()</code> and you feel pretty good about your ggplot accomplishment. You send your plot to your PhD advisor, and within what feels like only minutes, you have a new attachment in your email inbox:</p>
+<p>[]advisor_email.png</p>
+<p><strong>Labels, axes, and plot background:</strong></p>
 </div>
 <div id="creates-a-bell-curve" class="section level1">
-<h1><span class="header-section-number">3</span> Creates a Bell Curve</h1>
+<h1><span class="header-section-number">5</span> Creates a Bell Curve</h1>
 <p>The normal curve is shaped like a bell</p>
 </div>
 <div id="bell-curves-come-in-different-shapes-and-sizes" class="section level1">
-<h1><span class="header-section-number">4</span> Bell Curves come in different shapes and sizes</h1>
+<h1><span class="header-section-number">6</span> Bell Curves come in different shapes and sizes</h1>
 <p>Introduce mu and sigma: Mu is center point. Sigma indicating width. 2x2 grid, showing 4 different distributions.</p>
 <p>** make the point that have different shapes.</p>
 <p>The giraffes on the south side of the island have a bell curve A.. The giraffes on the north side of the island have bell curve B…</p>
 <p>…might be overlapping too much with Variance.</p>
 </div>
 <div id="create-your-own-histogram" class="section level1">
-<h1><span class="header-section-number">5</span> Create your own histogram</h1>
+<h1><span class="header-section-number">7</span> Create your own histogram</h1>
 <div id="sampling" class="section level3">
-<h3><span class="header-section-number">5.0.1</span> Sampling</h3>
+<h3><span class="header-section-number">7.0.1</span> Sampling</h3>
 <p>Since we can’t take the height of EVERY giraffe on the islands, and it is unclear how many giraffes live on the island, we have to rely on taking the heights of randomly selected groups of giraffes. Let’s measure 100 different animals that were captured at various locations of the island terrain.</p>
 </div>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 

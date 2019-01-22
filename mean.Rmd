@@ -2,9 +2,9 @@
 title: "Mean, Median, and Mode"
 ---
 
-<style>
-.main-container {max-width: 700px;}
-</style>
+
+
+
 # What are measures of centrality?
 
 <div style="margin-top:50px"></div>

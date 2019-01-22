@@ -127,6 +127,11 @@ Population vs sample (N vs N-1)
 
 </div>
 
+Notes: 
+- Things to think about: 
+- Show how the Sum of Square for a non-normal distribution is not balanced on either side of the mean
+- Maybe have scale illo showing sum of squares being unbalanced/ unequal
+
 
 
 

@@ -5,11 +5,21 @@ navbar:
   left:
   - text: "Home"
     href: index.html
-  - text: "Intro to the Bell Curve"
-    href: BellCurve.html
-  - text: "The Mean"
-    href: mean.html
-  - text: "Spread of the Data"
-    href: Variance.html
-output: bookdown::html_document2
+  - text: "Modules"
+    menu:
+      - text: "Intro to the Bell Curve"
+        href: BellCurve.html
+      - text: "The Mean"
+        href: mean.html
+      - text: "Spread of the Data"
+        href: Variance.html
+output: 
+  bookdown::html_document2:
+    css: style.css
+    toc: true
+    toc_float: true
+   
+
+
+
   

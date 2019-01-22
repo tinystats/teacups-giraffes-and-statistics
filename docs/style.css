@@ -1,0 +1,17 @@
+/* Whole document: */
+
+body {
+	font-size: 18px;
+}
+
+/*.main-container {
+	max-width: 700px !important;
+}*/
+
+.tocify {
+	border-radius: 0;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: black;
+}
