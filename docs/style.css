@@ -4,14 +4,55 @@ body {
 	font-size: 18px;
 }
 
-/*.main-container {
-	max-width: 700px !important;
-}*/
-
-.tocify {
-	border-radius: 0;
+.main-container {
+	max-width: 1300px !important;
 }
 
-.navbar-default .navbar-nav>li>a {
+
+div.tocify {
+    max-width: 260px;
+    max-height: 85%;
+    font-size: 12px;
+}
+
+.tocify {
+  border: none;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: white;
+    border: none;
+    color: gray;
+}
+
+.list-group-item:hover {
+    z-index: 2;
+    color: DarkSlateGray;
+    background-color: white;
+    border: none;
+}
+
+.list-group-item.active{
+    z-index: 2;
     color: black;
+    background-color: white;
+    border: none;
+}
+
+.list-group-item.active:focus {
+    z-index: 2;
+    color: black;
+    background-color: white;
+    border: none;
+}
+
+.list-group-item.active:hover {
+    z-index: 2;
+    color: DarkSlateGray;
+    background-color: white;
+    border: none;
 }

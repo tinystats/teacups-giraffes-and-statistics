@@ -15,7 +15,7 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -417,10 +417,10 @@ div.tocify {
 
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <div id="what-does-the-mean-mean" class="section level1">
-<h1><span class="header-section-number">1</span> What does the ‘mean’ mean?</h1>
+<h1>What does the ‘mean’ mean?</h1>
 <p>Let’s say you’re interested in measuring the heights of a species of teacup giraffes recently discovered on small uninhabited tropical island, just off of latitude 11°48’ N.</p>
 <div id="sampling" class="section level3">
-<h3><span class="header-section-number">1.0.1</span> Sampling</h3>
+<h3>Sampling</h3>
 Since we can’t take the weight of EVERY giraffe on the island, and it is unclear how many giraffes live on the island, we have to rely on taking the heights of randomly selected groups of giraffes. Let’s measure 100 different animals that were captured at various locations of the island terrain.
 <div style="margin-top:50px">
 
@@ -438,7 +438,7 @@ Since we can’t take the weight of EVERY giraffe on the island, and it is uncle
 </div>
 </div>
 <div id="taking-the-mean" class="section level3">
-<h3><span class="header-section-number">1.0.2</span> Taking the mean</h3>
+<h3>Taking the mean</h3>
 <p>It’d be really hard to eyeball 100 different numbers and be able to say something about dogs in Georgia or Florida. We need to summarize these weights into a single number per group that will be meaningful– <span style="color:blue"> the mean</span>!</p>
 <p>The mean is the average. It is the sum of all of the weights divided by the number of dogs for the group. All dogs will be labeled “x”, and the numerical subscript indicates the dog’s number in the group.</p>
 <p>
@@ -448,7 +448,7 @@ We’ll use <span class="math inline">\(\color{blue}{\bar{x}}\)</span> (read “
 
 </div>
 <span class="math display" id="eq:equation1">\[\begin{equation}
- \tag{1.1}
+ \tag{1}
  \Large \color{blue}{\bar{x}} = \frac{x_1 + x_2 + ... + x_n}{n}
  \end{equation}\]</span>
 <div style="margin-bottom:50px">
@@ -459,20 +459,20 @@ We’ll use <span class="math inline">\(\color{blue}{\bar{x}}\)</span> (read “
 
 </div>
 <span class="math display" id="eq:equation2">\[\begin{equation}
- \tag{1.2}
+ \tag{2}
  \Large \color{blue}{\bar{x}} = \frac{\sum_{i=1}^n x_i}{n}
  \end{equation}\]</span>
 <div style="margin-bottom:50px">
 
 </div>
-This might look intimidating, but it means the same thing as <a href="#eq:equation1">(1.1)</a>. Let’s break the symbols apart a bit. The sigma <span class="math inline">\(\sum{}\)</span> means add up. What are we adding up? All the observations “x”. The i=1 means that we start with the first x on our list. The character on top of the sigma is the last observation we include in our summation. In this case it’s n–because we’re adding all n = 100 observations in each group of dogs. In both equations, we still divide by the total number of observations in each group we have: n.
+This might look intimidating, but it means the same thing as <a href="#eq:equation1">(1)</a>. Let’s break the symbols apart a bit. The sigma <span class="math inline">\(\sum{}\)</span> means add up. What are we adding up? All the observations “x”. The i=1 means that we start with the first x on our list. The character on top of the sigma is the last observation we include in our summation. In this case it’s n–because we’re adding all n = 100 observations in each group of dogs. In both equations, we still divide by the total number of observations in each group we have: n.
 <div style="margin-bottom:50px">
 
 </div>
 </div>
 <div id="code-it-up" class="section level3">
-<h3><span class="header-section-number">1.0.3</span> Code it up</h3>
-<p>Using <a href="#eq:equation2">(1.2)</a>, it’s easy to translate this into code in R.</p>
+<h3>Code it up</h3>
+<p>Using <a href="#eq:equation2">(2)</a>, it’s easy to translate this into code in R.</p>
 <div data-datacamp-exercise="" data-height="400" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFZlY3RvciBvZiB0aGUgd2VpZ2h0cyBzdG9yZWQgaW4gdGhlIG9iamVjdCAnd2VpZ2h0czEnXG53ZWlnaHRzMSA8LSBjKDEsNSw2LDQsNyw0LDksMilcblxuIyBTdW0gdXAgYWxsIHdlaWdodHMgc3RvcmVkIGluIHdlaWdodHMsIHVzaW5nIHRoZSBzdW0oKSBmdW5jdGlvbiwgYW5kIHNhdmUgaXQgYXMgYSBuZXcgb2JqZWN0IGNhbGxlZCBcIndlaWdodHMxX3N1bVwiXG5cblxuIyBEaXZpZGUgd2VpZ2h0czFfc3VtIGJ5IHRoZSBudW1iZXIgb2Ygb2JzZXJ2YXRpb25zLiBVc2UgdGhlIGxlbmd0aCgpIGZ1bmN0aW9uIGZvciBuLiBTdG9yZSB5b3VyIGFuc3dlciBhcyBcIndlaWdodHMxX21lYW5cIlxuXG5cbiMgUHJpbnQgb3V0IFwid2VpZ2h0czFfbWVhblwiIGFuZCBjb21wYXJlIHlvdXIgYW5zd2VyIHRvIHRoZSBSIGZ1bmN0aW9uIFwibWVhbih3ZWlnaHRzMSlcIiIsInNvbHV0aW9uIjoiIyBWZWN0b3Igb2YgdGhlIHdlaWdodHMgc3RvcmVkIGluIHRoZSBvYmplY3QgXCJ3ZWlnaHRzMVwiXG53ZWlnaHRzMSA8LSBjKDEsNSw2LDQsNyw0LDksMilcblxuIyBTdW0gdXAgYWxsIHdlaWdodHMgc3RvcmVkIGluIFwid2VpZ2h0czFcIlwiLCB1c2luZyB0aGUgc3VtKCkgZnVuY3Rpb24sIGFuZCBzYXZlIGl0IGFzIGEgbmV3IG9iamVjdCBjYWxsZWQgXCJ3ZWlnaHRzMV9zdW1cIlxud2VpZ2h0czFfc3VtIDwtIHN1bSh3ZWlnaHRzMSlcblxuIyBEaXZpZGUgd2VpZ2h0czFfc3VtIGJ5IHRoZSBudW1iZXIgb2Ygb2JzZXJ2YXRpb25zLiBVc2UgdGhlIGxlbmd0aCgpIGZ1bmN0aW9uIGZvciBuLiBTdG9yZSB5b3VyIGFuc3dlciBhcyBcIndlaWdodHMxX21lYW5cIlxud2VpZ2h0czFfbWVhbiA8LSB3ZWlnaHRzMV9zdW0vbGVuZ3RoKHdlaWdodHMxKVxuXG4jIFByaW50IG91dCBcIndlaWdodHMxX21lYW5cIiBhbmQgY29tcGFyZSB5b3VyIGFuc3dlciB0byB0aGUgUiBmdW5jdGlvbiBcIm1lYW4od2VpZ2h0czEpXCJcbndlaWdodHMxX21lYW5cbm1lYW4od2VpZ2h0czEpIiwic2N0IjoidGVzdF9vYmplY3QoXCJ3ZWlnaHRzMV9zdW1cIilcbnRlc3Rfb2JqZWN0KFwid2VpZ2h0czFfbWVhblwiKVxuXG50ZXN0X291dHB1dF9jb250YWlucyhcIndlaWdodHMxX21lYW5cIiwgaW5jb3JyZWN0X21zZz0gXCJEaWQgeW91IHByaW50ICd3ZWlnaHRzMV9tZWFuJz9cIilcbnRlc3RfZnVuY3Rpb24oXCJtZWFuXCIsIGluY29ycmVjdF9tc2c9IFwiRGlkIHlvdSBydW4gJ21lYW4od2VpZ2h0czEpJz9cIilcbnN1Y2Nlc3NfbXNnKFwiR3JlYXQhXCIpIn0=
 </div>
@@ -481,14 +481,14 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFZlY3RvciBvZiB0aGUgd2VpZ2h0cyBzdG9yZWQgaW4g
 </div>
 </div>
 <div id="create-your-own-function" class="section level3">
-<h3><span class="header-section-number">1.0.4</span> Create your own function</h3>
+<h3>Create your own function</h3>
 Now it’s your turn to write your own function. Call it “my_mean” and have it calculate the mean of any given vector. Do this in RStudio on your local computer.
 <div style="margin-bottom:50px">
 
 </div>
 </div>
 <div id="things-to-think-about" class="section level3">
-<h3><span class="header-section-number">1.0.5</span> Things to think about…</h3>
+<h3>Things to think about…</h3>
 <p>How reliably does the sample mean represent the population mean? See the <a href="https://en.wikipedia.org/wiki/Law_of_large_numbers">Law of Large Numbers</a>.</p>
  
 <hr />

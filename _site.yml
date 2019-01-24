@@ -18,6 +18,9 @@ output:
     css: style.css
     toc: true
     toc_float: true
+    theme: cosmo
+    number_sections: false
+    
    
 
 

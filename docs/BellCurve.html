@@ -15,7 +15,7 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -425,7 +425,7 @@ div.tocify {
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <!-- <link href="style.css" rel="stylesheet" /> -->
 <div id="welcome-to-the-island" class="section level1">
-<h1><span class="header-section-number">1</span> Welcome to the island</h1>
+<h1>Welcome to the island</h1>
 <p>You arrive on the island, and you’re excited to collect data on a new species. All you know is that they are small giraffe-like creatures. After suiting up in your field gear, your guide leads you deep into the dense island brush, and you scan the ground for your first subject.</p>
 <p>After a one hour hike, you reach a clearing where tall cypress trees encircle low growth vegetation. You experience your first encounter with a little giraffe, whose cool drink from a puddle you seem to have interrupted. Its slender body does not even clear the height of a dandelion. You toss an apple core in its direction, and you’re pleasantly surprised that it trots over to you and begins hopping on and off your muddy boots in play. After observing this behavior for a while, you bring out your measuring tape and record its height.</p>
 <div style="margin-top:50px">
@@ -444,7 +444,7 @@ div.tocify {
 
 </div>
 <center>
-<img src="giraffe_lineup3.png" width="800" />
+<img src="giraffe_lineup4.png" width="800" />
 </center>
 <div style="margin-bottom:50px">
 
@@ -456,7 +456,7 @@ div.tocify {
 
 </div>
 <center>
-<img src="giraffe_island_dpi72.png" width="800" />
+<img src="giraffe_islands2.png" width="800" />
 </center>
 <div style="margin-bottom:50px">
 
@@ -464,7 +464,7 @@ div.tocify {
 </p>
 </div>
 <div id="the-data" class="section level1">
-<h1><span class="header-section-number">2</span> The Data</h1>
+<h1>The Data</h1>
 <!-- You record the data below in your logbook, and you make a plot to get a sense of how tall the tiny giraffes really are. -->
 <p>After a nice lunch on the beach, you decide to take a first look at the data. What’s the best way to look at data when you know nothing about it…?</p>
 <p>You can start by scanning the data for the shortest and tallest heights. You see the range is between 6 and 20 cm. So you draw a ruler in the sand with the extreme heights on either end. You’d like to see how many times each height occurs in your data set, and so you grab a little leaf to represent each individual giraffe’s height and place it just above your ruler mark. You put out a new leaf for each height and continue doing this for each individual to see which heights “stack up” along your ruler. To keep track of which heights came from different islands, you pick differently colored leaves for each group. Look below for a sped-up version of this process! The y-axis is frequency. The x-axis is the heights.</p>
@@ -479,7 +479,7 @@ div.tocify {
 <p>Happy with your progress thus far, you are excited to send your histogram results to your PhD mentor back in the homeland. Instead of taking a picture of your leaf histogram, you turn to R to create the perfect figure.</p>
 </div>
 <div id="our-dataframe" class="section level1">
-<h1><span class="header-section-number">3</span> Our Dataframe</h1>
+<h1>Our Dataframe</h1>
 <div style="margin-top:30px">
 
 </div>
@@ -497,7 +497,7 @@ div.tocify {
 ## 100 16.79124 Island #2</code></pre>
 </div>
 <div id="making-a-histogram-with-ggplot2" class="section level1">
-<h1><span class="header-section-number">4</span> Making a histogram with <code>ggplot2</code></h1>
+<h1>Making a histogram with <code>ggplot2</code></h1>
 <p>We will use the <em>ggplot2</em> package for all our graphing. There are many different ways that ggplot can be customized. Check out <a href="https://ggplot2.tidyverse.org/reference">this page</a> as a reference.</p>
 <p>We need some basic components as a bare minimum to get started. We can layer nicer components on top of this later to make the graph look nice. Our steps:</p>
 <ol style="list-style-type: decimal">
@@ -534,20 +534,20 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0
 <p><strong>Labels, axes, and plot background:</strong></p>
 </div>
 <div id="creates-a-bell-curve" class="section level1">
-<h1><span class="header-section-number">5</span> Creates a Bell Curve</h1>
+<h1>Creates a Bell Curve</h1>
 <p>The normal curve is shaped like a bell</p>
 </div>
 <div id="bell-curves-come-in-different-shapes-and-sizes" class="section level1">
-<h1><span class="header-section-number">6</span> Bell Curves come in different shapes and sizes</h1>
+<h1>Bell Curves come in different shapes and sizes</h1>
 <p>Introduce mu and sigma: Mu is center point. Sigma indicating width. 2x2 grid, showing 4 different distributions.</p>
 <p>** make the point that have different shapes.</p>
 <p>The giraffes on the south side of the island have a bell curve A.. The giraffes on the north side of the island have bell curve B…</p>
 <p>…might be overlapping too much with Variance.</p>
 </div>
 <div id="create-your-own-histogram" class="section level1">
-<h1><span class="header-section-number">7</span> Create your own histogram</h1>
+<h1>Create your own histogram</h1>
 <div id="sampling" class="section level3">
-<h3><span class="header-section-number">7.0.1</span> Sampling</h3>
+<h3>Sampling</h3>
 <p>Since we can’t take the height of EVERY giraffe on the islands, and it is unclear how many giraffes live on the island, we have to rely on taking the heights of randomly selected groups of giraffes. Let’s measure 100 different animals that were captured at various locations of the island terrain.</p>
 </div>
 </div>
