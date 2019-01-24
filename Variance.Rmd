@@ -1,6 +1,18 @@
 ---
 title: "The Spread of the Data"
 ---
+
+<!-- <link href="styles.css" rel="stylesheet">  -->
+<!--         <div class="image-descript"> -->
+<!-- 					<img class="main-image" src="giraffe_forest.png"> -->
+<!-- 					<div class="color-overlay"></div> -->
+<!-- 					<div class="image-text"> -->
+<!-- 						<div class="lil-image-text">Tiny Giraffes</div> -->
+<!-- 						<div class="big-image-text"><strong>Big Questions</strong></div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```

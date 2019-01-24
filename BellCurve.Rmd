@@ -1,5 +1,9 @@
 ---
 title: "Intro to the Bell Curve"
+output:
+  bookdown::html_document2:
+    includes:
+        in_header: big_image.html
 ---
 
 <!-- <link href="style.css" rel="stylesheet" /> -->
@@ -296,7 +300,7 @@ You pick `theme_light()` and you feel pretty good about your ggplot accomplishme
 # ggsave(filename = "/Users/Desiree/Documents/New R Projects/Cars/advisor_email.png", width=5, height=3, p)
 
 ```
-![]advisor_email.png
+![](advisor_email.png)
 
 
 **Labels, axes, and plot background:** 

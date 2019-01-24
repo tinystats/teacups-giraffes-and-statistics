@@ -1,22 +1,56 @@
 /* Whole document: */
 
+.navbar-default {
+    background-color: #22222270;
+    border: none;
+}
+
 body {
 	font-size: 18px;
 }
 
 .main-container {
-	max-width: 1300px !important;
+	max-width: 1326px !important;
+}
+
+
+ .container-fluid {                  /* margin: 0 Left-aligns container; margin: auto to "center" (Default)*/
+    margin-right: auto !important; 
+    margin-left: auto !important;
+} 
+
+
+.row-fluid{
+  display: flex;
+  position: relative;
+}
+
+.col-xs-12 .col-sm-4 .col-md-3{
+  width: 25%;
+  position: relative;
 }
 
 
 div.tocify {
+    width: 100% !important;
     max-width: 260px;
     max-height: 85%;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .tocify {
   border: none;
+  position: sticky; 
+  top: 60px; 
+  width: 100%;
+}
+
+#TOC {
+  position: sticky !important;
+}
+
+.toc-content {
+  width: 75%
 }
 
 .list-group-item {
@@ -55,4 +89,9 @@ div.tocify {
     color: DarkSlateGray;
     background-color: white;
     border: none;
+}
+
+.big_image {
+  margin-top: -60px;
+  width: 100%;
 }

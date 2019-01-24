@@ -3,6 +3,8 @@ output_dir: "docs"
 navbar:
   title: "Statistics with R"
   left:
+  - text: "Test"
+    href: Landing_page.html
   - text: "Home"
     href: index.html
   - text: "Modules"
@@ -15,6 +17,8 @@ navbar:
         href: Variance.html
 output: 
   bookdown::html_document2:
+    includes:
+        in_header: big_image.html
     css: style.css
     toc: true
     toc_float: true

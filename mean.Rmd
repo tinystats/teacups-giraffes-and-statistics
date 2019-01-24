@@ -1,9 +1,8 @@
 ---
 title: "Mean, Median, and Mode"
+
+
 ---
-
-
-
 
 # What are measures of centrality?
 

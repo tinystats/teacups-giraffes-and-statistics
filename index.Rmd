@@ -2,7 +2,7 @@
 title: "Home"
 ---
 
-This is the "welcome page" I added as an experiment. Here is an illustration of some teacup giraffes. If you're wondering how tall a teacup giraffe is...some are smaller than an iPhone.
+This is the Index Page. It automatically defaults as the landing page, but I wonder if we can instead specify a different html file as the landing page. 
 
 <center>
 <div style="margin-top:50px"></div>
