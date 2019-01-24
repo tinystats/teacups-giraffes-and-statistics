@@ -332,4 +332,3 @@ The giraffes on the north side of the island have bell curve B...
 ### Sampling
 Since we can't take the height of EVERY giraffe on the islands, and it is unclear how many giraffes live on the island, we have to rely on taking the heights of randomly selected groups of giraffes. Let's measure 100 different animals that were captured at various locations of the island terrain.
 
-

@@ -145,12 +145,3 @@ Notes:
 - Maybe have scale illo showing sum of squares being unbalanced/ unequal
 
 
-
-
-
-
-<hr />
-<p style="text-align: center;"> <span style="color: #808080;"> Created using </span></p>
-<p><center>![](https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg){width=40px}
-![](https://bookdown.org/yihui/rmarkdown/images/hex-rmarkdown.png){width=40px}
-![](https://www.rstudio.com/wp-content/uploads/2014/06/RStudio-Ball.png){width=40px}</p>
