@@ -40,12 +40,14 @@ div.tocify {
 
 .tocify {
   border: none;
+  position: -webkit-sticky;
   position: sticky; 
   top: 60px; 
   width: 100%;
 }
 
 #TOC {
+  position: -webkit-sticky !important;
   position: sticky !important;
 }
 
