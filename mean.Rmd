@@ -227,7 +227,7 @@ success_msg("Great!")
 
 
 ### Take a tea break!
-<center> ![](Teacup.png){width=300px} </center>
+<center> ![](Teacup.png){width=600px} </center>
 
 
 
