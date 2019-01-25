@@ -231,7 +231,7 @@ colnames(d) <- c("Height", "Location")
 #Fill in the incomplete arguments below
 
 p <- ggplot(data = d, aes(x = Height, fill = )) +
-  geom_histogram(binwidth = 1, color = )+
+  geom_histogram(binwidth = 1, color = ) +
   scale_fill_manual(values = c( ))
   
 p
@@ -241,7 +241,7 @@ p
 ```{r ex="histogram1", type="solution"}
 
 p <- ggplot(data = d, aes(x = Height, fill = Location)) +
-  geom_histogram(binwidth = 1, color = "white")+
+  geom_histogram(binwidth = 1, color = "white") +
   scale_fill_manual(values = c("green3", "turquoise3"))
   
 p
@@ -271,7 +271,7 @@ colnames(d) <- c("Height", "Location")
 # Add a complete theme to existing code
 
 p <- ggplot(data = d, aes(x = Height, fill = Location)) +
-  geom_histogram(binwidth = 1, color = "white")+
+  geom_histogram(binwidth = 1, color = "white") +
   scale_fill_manual(values = c("green3", "turquoise3"))
 
 p
@@ -282,7 +282,7 @@ p
 # Add a complete theme to existing code
 
 p <- ggplot(data = d, aes(x = Height, fill = Location)) +
-  geom_histogram(binwidth = 1, color = "white")+
+  geom_histogram(binwidth = 1, color = "white") +
   scale_fill_manual(values = c("green3", "turquoise3")) + theme_light()
 
 p
@@ -300,14 +300,148 @@ You pick `theme_light()` and you feel pretty good about your ggplot accomplishme
 # ggsave(filename = "/Users/Desiree/Documents/New R Projects/Cars/advisor_email.png", width=5, height=3, p)
 
 ```
-![](advisor_email.png)
+<p style=><center>
+![](advisor_email.png){width=600px}
+</center>
+<div style="margin-bottom:25px"></div>
 
+Lets start with something easy: removing the space between the bars and the x-axis. In ggplot... 
+
+```{r ex="histogram3", type="pre-exercise-code"}
+library(ggplot2)
+
+set.seed(12)
+
+x <- rnorm(50, 10, 2)
+x2 <- rnorm(50, 18, 1.2)
+x <- data.frame(x=x, type="Island #1")
+x2 <- data.frame(x=x2, type="Island #2")
+
+d <- rbind(x,x2)
+colnames(d) <- c("Height", "Location")
+
+```
+
+```{r ex="histogram3", type="sample-code"}
+# Remove space between bars and x-axis, and change labels
+
+p <- ggplot(data = d, aes(x = Height, fill = Location)) +
+  geom_histogram(binwidth = 1, color = "white") +
+  scale_fill_manual(values = c("green3", "turquoise3")) + 
+  theme_light() +
+  scale_y_continuous(expand = ) +
+  labs()
+
+p
+
+```
+
+```{r ex="histogram3", type="solution"}
+# Remove space between bars and x-axis, and change labels
+
+p <- ggplot(data = d, aes(x = Height, fill = Location)) +
+  geom_histogram(binwidth = 1, color = "white") +
+  scale_fill_manual(values = c("green3", "turquoise3")) + 
+  theme_light() +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(x="Teacup Giraffe heights", y="Frequency", fill=NULL)
+  
+p
+
+```
 
 **Labels, axes, and plot background:** 
 
+```{r ex="histogram4", type="pre-exercise-code"}
+library(ggplot2)
+
+set.seed(12)
+
+x <- rnorm(50, 10, 2)
+x2 <- rnorm(50, 18, 1.2)
+x <- data.frame(x=x, type="Island #1")
+x2 <- data.frame(x=x2, type="Island #2")
+
+d <- rbind(x,x2)
+colnames(d) <- c("Height", "Location")
+
+```
+
+```{r ex="histogram4", type="sample-code"}
+# Remove panel border and minor grid lines
+
+p <- ggplot(data = d, aes(x = Height, fill = Location)) +
+  geom_histogram(binwidth = 1, color = "white") +
+  scale_fill_manual(values = c("green3", "turquoise3")) + 
+  theme_light() +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(x="Teacup Giraffe heights", y="Frequency", fill=NULL) +
+  theme()
+
+p
+
+```
+
+```{r ex="histogram4", type="solution"}
+# Remove panel border and minor grid lines
+
+p <- ggplot(data = d, aes(x = Height, fill = Location)) +
+  geom_histogram(binwidth = 1, color = "white") +
+  scale_fill_manual(values = c("green3", "turquoise3")) + 
+  theme_light() +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(x="Teacup Giraffe heights", y="Frequency", fill=NULL) +
+  theme(panel.border=element_blank(), panel.grid.minor=element_blank())
+
+p
+
+```
 
 
+```{r ex="histogram5", type="pre-exercise-code"}
+library(ggplot2)
 
+set.seed(12)
+
+x <- rnorm(50, 10, 2)
+x2 <- rnorm(50, 18, 1.2)
+x <- data.frame(x=x, type="Island #1")
+x2 <- data.frame(x=x2, type="Island #2")
+
+d <- rbind(x,x2)
+colnames(d) <- c("Height", "Location")
+
+```
+
+```{r ex="histogram5", type="sample-code"}
+# Move legend
+
+p <- ggplot(data = d, aes(x = Height, fill = Location)) +
+  geom_histogram(binwidth = 1, color = "white") +
+  scale_fill_manual(values = c("green3", "turquoise3")) + 
+  theme_light() +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(x="Teacup Giraffe heights", y="Frequency", fill=NULL) +
+  theme(panel.border=element_blank(), panel.grid.minor=element_blank(), legend.position = , legend.background = ) +
+
+p
+
+```
+
+```{r ex="histogram5", type="solution"}
+# Move legend
+
+p <- ggplot(data = d, aes(x = Height, fill = Location)) +
+  geom_histogram(binwidth = 1, color = "white") +
+  scale_fill_manual(values = c("green3", "turquoise3")) + 
+  theme_light() +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(x="Teacup Giraffe heights", y="Frequency", fill=NULL) +
+  theme(panel.border=element_blank(), panel.grid.minor=element_blank(), legend.position = c(0.165,0.92), legend.background = element_blank())
+
+p
+
+```
 
 
 #Creates a Bell Curve
