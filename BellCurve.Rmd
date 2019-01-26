@@ -202,7 +202,7 @@ p
 
 Let's go over some quick ways we can make any ggplot look nicer. First, we need to tell ggplot that we want the data from the two islands to be different colors. And second, we need to specify the colors we want to use. 
 
-**Different color for each group:** Under aes(), we add a `fill =` argument. Here is where you put the name of the variable that contains the categories that you want to distinguish with different colors. To choose colors ggplot should use, we need to add a new function ` + scale_fill_manual()` and then specify the actual colors with `values = `. To read more about how to create your own color scale, see this [page](https://ggplot2.tidyverse.org/reference/scale_manual.html). If you have more than one color you need to specify, make sure you combine them with the `c()` function. 
+**Different color for each group:** Under aes(), we add a `fill =` argument. Here is where you put the name of the variable that contains the categories that you want to distinguish by different colors. To choose colors ggplot should use, we need to add a new function ` + scale_fill_manual()` and then specify the actual colors with `values = `. To read more about how to create your own color scale, see this [page](https://ggplot2.tidyverse.org/reference/scale_manual.html). If you have more than one color you need to specify, make sure you combine them with the `c()` function. 
 
 Colors in R can be specified in different ways. For example, you can use a string of the color name. See possible colors [here](http://sape.inf.usi.ch/quick-reference/ggplot2/colour). 
 
@@ -250,7 +250,7 @@ p
 
 **Playing around with "complete themes": ** ggplot has a nice way of changing many non-data display parameters at once though what is referred to as "complete themes". Check this [page](https://ggplot2.tidyverse.org/reference/ggtheme.html) for the available options.
 
-Have fun testing out a few different complete themes by adding the argument with a `+` sign. Try 3 different ones and take note of how the plot changes.
+Have fun testing out a few different complete themes by adding the argument with a `+` sign. Try 3 different complete themes and take note of how the plot changes.
 
 ```{r ex="histogram2", type="pre-exercise-code"}
 library(ggplot2)
@@ -288,7 +288,6 @@ p <- ggplot(data = d, aes(x = Height, fill = Location)) +
 p
 
 ```
-If you're not wholly happy with any of the complete themes, you can add a `theme()` argument to tweak the display of the existing theme. To read more about how to modify componenets of a complete theme, check out this [resource](https://ggplot2.tidyverse.org/reference/theme.html).
 
 You pick `theme_light()` and you feel pretty good about your ggplot accomplishment. You send your plot to your PhD advisor, and within what feels like only minutes, you have a new attachment in your email inbox:
 
@@ -305,7 +304,19 @@ You pick `theme_light()` and you feel pretty good about your ggplot accomplishme
 </center>
 <div style="margin-bottom:25px"></div>
 
-Lets start with something easy: removing the space between the bars and the x-axis. In ggplot... 
+
+
+You've got some more changes to make to your plot. Lets start with something easy:
+
+(1) **Remove the space between the bars and the x-axis**: Use the `scale_y_continuous()` argument, and inside the parentheses specify `expand =` followed by the x- and y-coordinate of where the y-axis plot should begin. This should be done using `c( )`. Below are some examples of how the `scale_y_continunous()` function can be used, with more documentation ![here](https://ggplot2.tidyverse.org/reference/scale_continuous.html).
+
+ * Set axis limits
+ * Set axis breaks 
+ * Transformations
+
+(2) **Change axes labels**: Add `labs()` to the existing ggplot layers and specify each axis you'd like to label as one of its arguments, e.g. `x = `, followed by the string for your label. If you'd like to learn more about manipulations you can do with `labs()`, see ![this reference](https://ggplot2.tidyverse.org/reference/labs.html). In addition, `labs()` can be used to remove labels by setting it to `NULL`.  In this case, we can also include `fill = NULL` to remove the legend label (recall that the categories for our legend were determined by the `fill` argument in `aes()` previously).
+
+Use the window below to remove the space and legend label, change the x-axis label to "Teacup Giraffe heights" and the y-axis label to "Frequency".
 
 ```{r ex="histogram3", type="pre-exercise-code"}
 library(ggplot2)
@@ -344,13 +355,20 @@ p <- ggplot(data = d, aes(x = Height, fill = Location)) +
   scale_fill_manual(values = c("green3", "turquoise3")) + 
   theme_light() +
   scale_y_continuous(expand = c(0,0)) +
-  labs(x="Teacup Giraffe heights", y="Frequency", fill=NULL)
+  labs(x= "Teacup Giraffe heights", y= "Frequency", fill= NULL)
   
 p
 
 ```
 
-**Labels, axes, and plot background:** 
+
+ (4) **Remove panel border** and (5) **Remove minor grid lines**
+ 
+To make detailed changes to the layout, we can add a `theme()` argumemt. Nested within `theme()` we can use additional argumemts, such as `panel.border= ` and `panel.grid.minor=`. Many of `theme()`'s arguments can be set to `element_blank()` to remove the element in question. 
+
+To read more about what can be modifed with `theme()`, check out this [resource](https://ggplot2.tidyverse.org/reference/theme.html).
+
+In the window below, use what you just learned to remove the panel border and the minor grid lines of the plot. 
 
 ```{r ex="histogram4", type="pre-exercise-code"}
 library(ggplot2)
@@ -397,6 +415,7 @@ p
 
 ```
 
+(6) **Move the Legend**: We will add two more arguments to `theme()` to move the legend and make its background transparent. Include `legend.position =` to specify the x- and y-coordinates, again using `c()`. To change the legend to be transparent, we are essentially removing the legend background. Add the argument `legend.background =`. Take a look at previous steps to determine how this is done.
 
 ```{r ex="histogram5", type="pre-exercise-code"}
 library(ggplot2)
@@ -443,9 +462,11 @@ p
 
 ```
 
+Hopefully your PhD in the homeland will be satisfied with your new ggplot!
 
 #Creates a Bell Curve
-The normal curve is shaped like a bell
+- TAke our histogram, overlay a bell curve.
+- What does it mean? Density / probability in very loosely. 
 
 
 #Bell Curves come in different shapes and sizes
@@ -453,18 +474,15 @@ The normal curve is shaped like a bell
 Introduce mu and sigma: Mu is center point. Sigma indicating width. 2x2 grid, showing 4 different distributions. 
 
  ** make the point that have different shapes. 
- 
-The giraffes on the south side of the island have a bell curve A..
-The giraffes on the north side of the island have bell curve B...
 
-...might be overlapping too much with Variance.
-
-# Create your own histogram
+...some will move to  Variance.
 
 
 
 ### Sampling
 Since we can't take the height of EVERY giraffe on the islands, and it is unclear how many giraffes live on the island, we have to rely on taking the heights of randomly selected groups of giraffes. Let's measure 100 different animals that were captured at various locations of the island terrain.
+
+
 
 ```{r fig.show="animate", animation.hook = 'gifski', fig.width=10, fig.height=2, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide'}
 library(ggplot2)

@@ -520,7 +520,7 @@ div.tocify {
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoicCA8LSBnZ3Bsb3QoZGF0YSA9IGQsIGFlcyh4ID0gSGVpZ2h0KSkgKyBcbiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGg9MSlcblxucCJ9
 </div>
 <p>Let’s go over some quick ways we can make any ggplot look nicer. First, we need to tell ggplot that we want the data from the two islands to be different colors. And second, we need to specify the colors we want to use.</p>
-<p><strong>Different color for each group:</strong> Under aes(), we add a <code>fill =</code> argument. Here is where you put the name of the variable that contains the categories that you want to distinguish with different colors. To choose colors ggplot should use, we need to add a new function <code>+ scale_fill_manual()</code> and then specify the actual colors with <code>values =</code>. To read more about how to create your own color scale, see this <a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">page</a>. If you have more than one color you need to specify, make sure you combine them with the <code>c()</code> function.</p>
+<p><strong>Different color for each group:</strong> Under aes(), we add a <code>fill =</code> argument. Here is where you put the name of the variable that contains the categories that you want to distinguish by different colors. To choose colors ggplot should use, we need to add a new function <code>+ scale_fill_manual()</code> and then specify the actual colors with <code>values =</code>. To read more about how to create your own color scale, see this <a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">page</a>. If you have more than one color you need to specify, make sure you combine them with the <code>c()</code> function.</p>
 <p>Colors in R can be specified in different ways. For example, you can use a string of the color name. See possible colors <a href="http://sape.inf.usi.ch/quick-reference/ggplot2/colour">here</a>.</p>
 <p><strong>Outline Color:</strong> To add a colored outline around the data contained in your <code>geom_</code> (i.e. the bars for ‘geom_histogram’), specify <code>color =</code> within the parentheses for the geom.</p>
 <p>In the window below, we have added some options that you can play around with. Use the descriptions above to specify the correct variable that <code>fill</code> should be set to as well as the fill and outline colors.</p>
@@ -529,11 +529,10 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiI0ZpbGwgaW4gdGhlIGluY29tcGxldGUgYXJndW1lbnRzIGJlbG93XG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9ICkpICtcbiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGggPSAxLCBjb2xvciA9ICkgK1xuICBzY2FsZV9maWxsX21hbnVhbCh2YWx1ZXMgPSBjKCApKVxuICBcbnAiLCJzb2x1dGlvbiI6InAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKVxuICBcbnAifQ==
 </div>
 <p><strong>Playing around with “complete themes”: </strong> ggplot has a nice way of changing many non-data display parameters at once though what is referred to as “complete themes”. Check this <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">page</a> for the available options.</p>
-<p>Have fun testing out a few different complete themes by adding the argument with a <code>+</code> sign. Try 3 different ones and take note of how the plot changes.</p>
+<p>Have fun testing out a few different complete themes by adding the argument with a <code>+</code> sign. Try 3 different complete themes and take note of how the plot changes.</p>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiIyBBZGQgYSBjb21wbGV0ZSB0aGVtZSB0byBleGlzdGluZyBjb2RlXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKVxuXG5wIiwic29sdXRpb24iOiIjIEFkZCBhIGNvbXBsZXRlIHRoZW1lIHRvIGV4aXN0aW5nIGNvZGVcblxucCA8LSBnZ3Bsb3QoZGF0YSA9IGQsIGFlcyh4ID0gSGVpZ2h0LCBmaWxsID0gTG9jYXRpb24pKSArXG4gIGdlb21faGlzdG9ncmFtKGJpbndpZHRoID0gMSwgY29sb3IgPSBcIndoaXRlXCIpICtcbiAgc2NhbGVfZmlsbF9tYW51YWwodmFsdWVzID0gYyhcImdyZWVuM1wiLCBcInR1cnF1b2lzZTNcIikpICsgdGhlbWVfbGlnaHQoKVxuXG5wIn0=
 </div>
-<p>If you’re not wholly happy with any of the complete themes, you can add a <code>theme()</code> argument to tweak the display of the existing theme. To read more about how to modify componenets of a complete theme, check out this <a href="https://ggplot2.tidyverse.org/reference/theme.html">resource</a>.</p>
 <p>You pick <code>theme_light()</code> and you feel pretty good about your ggplot accomplishment. You send your plot to your PhD advisor, and within what feels like only minutes, you have a new attachment in your email inbox:</p>
 <p style=>
 <center>
@@ -542,31 +541,51 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0
 <div style="margin-bottom:25px">
 
 </div>
-<p>Lets start with something easy: removing the space between the bars and the x-axis. In ggplot…</p>
+<p>You’ve got some more changes to make to your plot. Lets start with something easy:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Remove the space between the bars and the x-axis</strong>: Use the <code>scale_y_continuous()</code> argument, and inside the parentheses specify <code>expand =</code> followed by the x- and y-coordinate of where the y-axis plot should begin. This should be done using <code>c( )</code>. Below are some examples of how the <code>scale_y_continunous()</code> function can be used, with more documentation <embed src="https://ggplot2.tidyverse.org/reference/scale_continuous.html" />.</li>
+</ol>
+<ul>
+<li>Set axis limits</li>
+<li>Set axis breaks</li>
+<li>Transformations</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Change axes labels</strong>: Add <code>labs()</code> to the existing ggplot layers and specify each axis you’d like to label as one of its arguments, e.g. <code>x =</code>, followed by the string for your label. If you’d like to learn more about manipulations you can do with <code>labs()</code>, see <embed src="https://ggplot2.tidyverse.org/reference/labs.html" />. In addition, <code>labs()</code> can be used to remove labels by setting it to <code>NULL</code>. In this case, we can also include <code>fill = NULL</code> to remove the legend label (recall that the categories for our legend were determined by the <code>fill</code> argument in <code>aes()</code> previously).</li>
+</ol>
+<p>Use the window below to remove the space and legend label, change the x-axis label to “Teacup Giraffe heights” and the y-axis label to “Frequency”.</p>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiIyBSZW1vdmUgc3BhY2UgYmV0d2VlbiBiYXJzIGFuZCB4LWF4aXMsIGFuZCBjaGFuZ2UgbGFiZWxzXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKSArIFxuICB0aGVtZV9saWdodCgpICtcbiAgc2NhbGVfeV9jb250aW51b3VzKGV4cGFuZCA9ICkgK1xuICBsYWJzKClcblxucCIsInNvbHV0aW9uIjoiIyBSZW1vdmUgc3BhY2UgYmV0d2VlbiBiYXJzIGFuZCB4LWF4aXMsIGFuZCBjaGFuZ2UgbGFiZWxzXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKSArIFxuICB0aGVtZV9saWdodCgpICtcbiAgc2NhbGVfeV9jb250aW51b3VzKGV4cGFuZCA9IGMoMCwwKSkgK1xuICBsYWJzKHg9XCJUZWFjdXAgR2lyYWZmZSBoZWlnaHRzXCIsIHk9XCJGcmVxdWVuY3lcIiwgZmlsbD1OVUxMKVxuICBcbnAifQ==
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiIyBSZW1vdmUgc3BhY2UgYmV0d2VlbiBiYXJzIGFuZCB4LWF4aXMsIGFuZCBjaGFuZ2UgbGFiZWxzXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKSArIFxuICB0aGVtZV9saWdodCgpICtcbiAgc2NhbGVfeV9jb250aW51b3VzKGV4cGFuZCA9ICkgK1xuICBsYWJzKClcblxucCIsInNvbHV0aW9uIjoiIyBSZW1vdmUgc3BhY2UgYmV0d2VlbiBiYXJzIGFuZCB4LWF4aXMsIGFuZCBjaGFuZ2UgbGFiZWxzXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKSArIFxuICB0aGVtZV9saWdodCgpICtcbiAgc2NhbGVfeV9jb250aW51b3VzKGV4cGFuZCA9IGMoMCwwKSkgK1xuICBsYWJzKHg9IFwiVGVhY3VwIEdpcmFmZmUgaGVpZ2h0c1wiLCB5PSBcIkZyZXF1ZW5jeVwiLCBmaWxsPSBOVUxMKVxuICBcbnAifQ==
 </div>
-<p><strong>Labels, axes, and plot background:</strong></p>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Remove panel border</strong> and (5) <strong>Remove minor grid lines</strong></li>
+</ol>
+<p>To make detailed changes to the layout, we can add a <code>theme()</code> argumemt. Nested within <code>theme()</code> we can use additional argumemts, such as <code>panel.border=</code> and <code>panel.grid.minor=</code>. Many of <code>theme()</code>’s arguments can be set to <code>element_blank()</code> to remove the element in question.</p>
+<p>To read more about what can be modifed with <code>theme()</code>, check out this <a href="https://ggplot2.tidyverse.org/reference/theme.html">resource</a>.</p>
+<p>In the window below, use what you just learned to remove the panel border and the minor grid lines of the plot.</p>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiIyBSZW1vdmUgcGFuZWwgYm9yZGVyIGFuZCBtaW5vciBncmlkIGxpbmVzXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKSArIFxuICB0aGVtZV9saWdodCgpICtcbiAgc2NhbGVfeV9jb250aW51b3VzKGV4cGFuZCA9IGMoMCwwKSkgK1xuICBsYWJzKHg9XCJUZWFjdXAgR2lyYWZmZSBoZWlnaHRzXCIsIHk9XCJGcmVxdWVuY3lcIiwgZmlsbD1OVUxMKSArXG4gIHRoZW1lKClcblxucCIsInNvbHV0aW9uIjoiIyBSZW1vdmUgcGFuZWwgYm9yZGVyIGFuZCBtaW5vciBncmlkIGxpbmVzXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKSArIFxuICB0aGVtZV9saWdodCgpICtcbiAgc2NhbGVfeV9jb250aW51b3VzKGV4cGFuZCA9IGMoMCwwKSkgK1xuICBsYWJzKHg9XCJUZWFjdXAgR2lyYWZmZSBoZWlnaHRzXCIsIHk9XCJGcmVxdWVuY3lcIiwgZmlsbD1OVUxMKSArXG4gIHRoZW1lKHBhbmVsLmJvcmRlcj1lbGVtZW50X2JsYW5rKCksIHBhbmVsLmdyaWQubWlub3I9ZWxlbWVudF9ibGFuaygpKVxuXG5wIn0=
 </div>
+<ol start="6" style="list-style-type: decimal">
+<li><strong>Move the Legend</strong>: We will add two more arguments to <code>theme()</code> to move the legend and make its background transparent. Include <code>legend.position =</code> to specify the x- and y-coordinates, again using <code>c()</code>. To change the legend to be transparent, we are essentially removing the legend background. Add the argument <code>legend.background =</code>. Take a look at previous steps to determine how this is done.</li>
+</ol>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiIyBNb3ZlIGxlZ2VuZFxuXG5wIDwtIGdncGxvdChkYXRhID0gZCwgYWVzKHggPSBIZWlnaHQsIGZpbGwgPSBMb2NhdGlvbikpICtcbiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGggPSAxLCBjb2xvciA9IFwid2hpdGVcIikgK1xuICBzY2FsZV9maWxsX21hbnVhbCh2YWx1ZXMgPSBjKFwiZ3JlZW4zXCIsIFwidHVycXVvaXNlM1wiKSkgKyBcbiAgdGhlbWVfbGlnaHQoKSArXG4gIHNjYWxlX3lfY29udGludW91cyhleHBhbmQgPSBjKDAsMCkpICtcbiAgbGFicyh4PVwiVGVhY3VwIEdpcmFmZmUgaGVpZ2h0c1wiLCB5PVwiRnJlcXVlbmN5XCIsIGZpbGw9TlVMTCkgK1xuICB0aGVtZShwYW5lbC5ib3JkZXI9ZWxlbWVudF9ibGFuaygpLCBwYW5lbC5ncmlkLm1pbm9yPWVsZW1lbnRfYmxhbmsoKSwgbGVnZW5kLnBvc2l0aW9uID0gLCBsZWdlbmQuYmFja2dyb3VuZCA9ICkgK1xuXG5wIiwic29sdXRpb24iOiIjIE1vdmUgbGVnZW5kXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKSArIFxuICB0aGVtZV9saWdodCgpICtcbiAgc2NhbGVfeV9jb250aW51b3VzKGV4cGFuZCA9IGMoMCwwKSkgK1xuICBsYWJzKHg9XCJUZWFjdXAgR2lyYWZmZSBoZWlnaHRzXCIsIHk9XCJGcmVxdWVuY3lcIiwgZmlsbD1OVUxMKSArXG4gIHRoZW1lKHBhbmVsLmJvcmRlcj1lbGVtZW50X2JsYW5rKCksIHBhbmVsLmdyaWQubWlub3I9ZWxlbWVudF9ibGFuaygpLCBsZWdlbmQucG9zaXRpb24gPSBjKDAuMTY1LDAuOTIpLCBsZWdlbmQuYmFja2dyb3VuZCA9IGVsZW1lbnRfYmxhbmsoKSlcblxucCJ9
 </div>
+<p>Hopefully your PhD in the homeland will be satisfied with your new ggplot!</p>
 </div>
 <div id="creates-a-bell-curve" class="section level1">
 <h1>Creates a Bell Curve</h1>
-<p>The normal curve is shaped like a bell</p>
+<ul>
+<li>TAke our histogram, overlay a bell curve.</li>
+<li>What does it mean? Density / probability in very loosely.</li>
+</ul>
 </div>
 <div id="bell-curves-come-in-different-shapes-and-sizes" class="section level1">
 <h1>Bell Curves come in different shapes and sizes</h1>
 <p>Introduce mu and sigma: Mu is center point. Sigma indicating width. 2x2 grid, showing 4 different distributions.</p>
 <p>** make the point that have different shapes.</p>
-<p>The giraffes on the south side of the island have a bell curve A.. The giraffes on the north side of the island have bell curve B…</p>
-<p>…might be overlapping too much with Variance.</p>
-</div>
-<div id="create-your-own-histogram" class="section level1">
-<h1>Create your own histogram</h1>
+<p>…some will move to Variance.</p>
 <div id="sampling" class="section level3">
 <h3>Sampling</h3>
 <p>Since we can’t take the height of EVERY giraffe on the islands, and it is unclear how many giraffes live on the island, we have to rely on taking the heights of randomly selected groups of giraffes. Let’s measure 100 different animals that were captured at various locations of the island terrain.</p>
