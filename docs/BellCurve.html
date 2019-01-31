@@ -26,7 +26,64 @@
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <!DOCTYPE html>
-<div><img class="big_image" src="giraffe_forest_dpi72_1.png"></div>
+
+<style>
+.image-descript {
+    position: relative;
+}
+
+.main-image {
+		width: 100%;
+		display: block; /*This gets rid of the weird little space from inline-block*/
+	}
+
+.image-text{
+		position: absolute;
+		top:30%;
+		left:0;
+		right:0;
+		bottom:0;
+	}
+
+.lil-image-text { 
+		color: #ededea;
+		margin-top: 20px;
+    	margin-right: auto;
+    	margin-bottom: 20px;
+    	margin-left: auto;
+		padding-top: 2em;
+		text-align: center; 
+		display:block;
+		font-family: 'Lora', serif;
+    	font-size: 18px;
+    	font-weight: 400;
+    	line-height: 1.5em;
+    	letter-spacing: 1px;
+    	font-style: italic;
+    	color: #fff;
+	}
+
+
+.big-image-text { 
+		letter-spacing: 0.065em;
+		line-height: 1em;
+		font-size: 68px;
+		text-transform: uppercase;
+		text-align: center; 
+		display:block;
+		color: #fff;
+	}
+
+</style>
+
+<div class="image-descript"> 
+			<img class="big_image" src="giraffe_forest_dpi72_1.png"> 
+			<div class="color-overlay"></div>
+			<div class="image-text">
+				<div class="lil-image-text">Introduction to the</div>
+				<div class="big-image-text"><strong>NORMAL DISTRIBUTION</strong></div>
+			</div>
+		</div>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -435,7 +492,7 @@ Describe the characteristics of a normal distribution
 Create a histogram using <code>ggplot</code> and modify its appearance
 </li>
 <li>
-Sample and Population
+Define Sample and Population
 </li>
 <li>
 Explain why distributions of sample data that come from populations with normal distibutions don’t always look normal

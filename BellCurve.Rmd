@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
   <li> Define a distribution </li>
   <li> Describe the characteristics of a normal distribution </li>
   <li> Create a histogram using `ggplot` and modify its appearance </li>
-  <li> Sample and Population </li>
+  <li> Define Sample and Population </li>
   <li> Explain why distributions of sample data that come from populations with normal distibutions don't always look normal </li>
   </ol>
 </div>
