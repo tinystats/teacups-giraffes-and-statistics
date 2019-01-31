@@ -1,7 +1,9 @@
 ---
 title: "Mean, Median, and Mode"
-
-
+output:
+  bookdown::html_document2:
+    includes:
+      in_header: big_image.html
 ---
 
 # What are measures of centrality?
@@ -72,7 +74,7 @@ We can do this with a measure of centrality: the mean, the median, or the mode. 
 <div style="margin-bottom:50px"></div>
 
 
-### Taking the mean
+# Taking the mean
 The mean is the sum of all of the heights divided by the number of giraffes for the sample. All giraffes will be labeled "x", and the numerical subscript indicates the giraffes's number in the sample.
 
 <p>We'll use ${\bar{x}}$ (read "x-bar") to represent the mean of each sample, calculated with the following equation:</p>
@@ -110,7 +112,7 @@ To make this more efficient, instead of writing "${x_1 + x_2 + ... + x_n}$", we 
 <div style="margin-bottom:50px">
 </div>
 
-###Code it up
+#Code it up
 Using \@ref(eq:equation2), it's easy to translate this into code in R. The heights recorded from island 1 have been stored in a vector called `heights_island1`. Below we show the first few observations from this vector, using the `head()` function.
 <div style="margin-bottom:15px">
 </div>
@@ -177,7 +179,7 @@ success_msg("Great!")
 </div>
 
 
-###Create your own function
+#Create your own function
  Now it's your turn to write your own function. Call it "my_mean" and have it calculate the mean of any given vector. You're going to use the rules for writing a function in R that you've used previously. As a reminder, you'll use `function()` and embed your code (that you completed in the previous exercise) within curly brackets`{}`. The advantage of making a "homemade" function is that you can string together all the steps from the previous exercise into a single command.
 <div style="margin-bottom:15px">
 </div>
@@ -226,12 +228,12 @@ success_msg("Great!")
  <div style="margin-bottom:50px"></div>
 
 
-### Take a tea break!
+## Take a tea break!
 <center> ![](Teacup.png){width=600px} </center>
 
 
 
-### Taking the median
+# Taking the median
 To calculate the median go through the following steps:
 
 * Assess whether there is an odd or even number of observations
@@ -359,7 +361,7 @@ success_msg("Great!")
 <div style="margin-bottom:50px">
 </div>
 
-###Things to think about...
+#Things to think about...
 Remember that the sample mean is the estimate the entire population's mean (which would be impossibly large to measure). How reliably does the mean of a sample represent the population mean? *Warning*: if a small sample has been used, the sample mean may not be a reliable at all! Estimates from small samples are subject to the whims of randomness: the larger the sample, the closer the sample size appraches the population size, and the more reliable the sample estimate becomes.
 
 Pressing 'Play' on the plot below will illustrate this concept. 

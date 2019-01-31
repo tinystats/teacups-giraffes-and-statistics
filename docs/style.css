@@ -13,6 +13,9 @@ body {
 	max-width: 1326px !important;
 }
 
+.alert-info {
+  background-color: #a0d1ef !important;
+}
 
  .container-fluid {                  /* margin: 0 Left-aligns container; margin: auto to "center" (Default)*/
     margin-right: auto !important; 

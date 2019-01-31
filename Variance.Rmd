@@ -1,6 +1,25 @@
 ---
 title: "The Spread of the Data"
+output:
+  bookdown::html_document2:
+    includes:
+      in_header: big_image1.html
 ---
+
+<style>
+p.comment {
+background-color: #DBDBDB;
+padding: 10px;
+border: 1px solid black;
+margin-left: 25px;
+border-radius: 5px;
+}
+</style>
+<div class="alert alert-info">
+  **Module learning objectives:**
+  <br>1. 
+  <br>2. Write your own function for calculating variance
+</div>
 
 <!-- <link href="styles.css" rel="stylesheet">  -->
 <!--         <div class="image-descript"> -->
