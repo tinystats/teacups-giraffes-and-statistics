@@ -6,7 +6,15 @@
 }
 
 body {
-	font-size: 18px;
+	font-size: 19px;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+ul {
+  margin-bottom: 1em;
 }
 
   .main-container {

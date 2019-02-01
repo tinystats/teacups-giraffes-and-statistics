@@ -5,5 +5,3 @@ output:
     includes:
       in_header: Landing_page.html
 ---
-
-This is the Index Page. It automatically defaults as the landing page, but I wonder if we can instead specify a different html file as the landing page. 

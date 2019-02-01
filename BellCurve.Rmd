@@ -144,8 +144,8 @@ The histogram above shows the **distribution**, or shape, of your data. The dist
  Although the data can be distributed in many shapes, there are some general shapes that occur so frequently in nature that these distributions are given their own names. The most well-known is a distribution that has a similar shape to a bell, and it is called the *normal distribution* (or sometimes "the bell curve" or just "normal curve"). 
  
  There are a few characteristics of the normal distribution:
- * The mass of the distribution is at its center
- * There is symmetry about the center line
+  * The mass of the distribution is at its center
+  * There is symmetry about the center line
  
 Taking a look at the stones in the sand, you see two bell-shaped distributions. One for each island. Looks like giraffe heights on each island follow a normal distribution--- and that's a good thing because you remember your stats textbook always talking about how normally distributed data behaves well! Phew!
 
@@ -186,7 +186,7 @@ We need some basic components as a bare minimum to get started. We can layer nic
 (1) Specify the dataframe that we want to use using `ggplot()`. We will do this using the option `data =`. We also have to tell ggplot *what* to actually plot-- we do this with the argument that stands for aesthetics: `aes()`. In our case, only the x-axis variable `Height` needs to be specified.
 
 (2) Add a `geom` layer, which is the visual representation of the data points. In contrast to other ways we write code in R, ggplot options are added using a plus sign `+`. 
-In our case, we will write `+` and then `geom_histogram()`. To make your plot look similar to your sand drawing, you want to add an optional argument within the parentheses of `geom_histogram`, which will set the bin width to 1 cm: `geom_histogram( binwidth = 1 ).
+In our case, we will write `+` and then `geom_histogram()`. To make your plot look similar to your sand drawing, you want to add an optional argument within the parentheses of `geom_histogram`, which will set the bin width to 1 cm: `geom_histogram( binwidth = 1 )`.
 
 Here we are using `geom_histogram`, but there are many other `geom_` layers that you could use instead for different plot types. Check some of them out [here](https://ggplot2.tidyverse.org/reference/#section-layer-geoms).
 
@@ -279,7 +279,7 @@ p
 
 ```
 
-![](Painter.png)
+![](Painter.png){width=500px}
 
 **Playing around with "complete themes": ** ggplot has a nice way of changing many non-data display parameters at once though what is referred to as "complete themes". Check this [page](https://ggplot2.tidyverse.org/reference/ggtheme.html) for the available options.
 
