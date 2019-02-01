@@ -3,7 +3,7 @@ title: "The Spread of the Data"
 output:
   bookdown::html_document2:
     includes:
-      in_header: big_image1.html
+      in_header: Variance_image.html
 ---
 
 <style>

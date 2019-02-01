@@ -1,9 +1,9 @@
 ---
-title: "Intro to the Bell Curve"
+title: "The Normal Distribution"
 output:
   bookdown::html_document2:
     includes:
-      in_header: big_image.html
+      in_header: BellCurve_image.html
 ---
 
 <!-- <link href="style.css" rel="stylesheet" /> -->

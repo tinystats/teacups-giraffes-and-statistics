@@ -9,9 +9,9 @@ body {
 	font-size: 18px;
 }
 
-.main-container {
+  .main-container {
 	max-width: 1326px !important;
-}
+  }
 
 .alert-info {
   background-color: #a0d1ef !important;
@@ -96,10 +96,6 @@ div.tocify {
     border: none;
 }
 
-.big_image {
-  margin-top: -60px;
-  width: 100%;
-}
 
 .foot img {
    width: 50px;
@@ -110,10 +106,19 @@ div.tocify {
 .image-descript {
     position: relative;
 }
+
+/*.main-image is for landing page*/
 .main-image {
     width: 100%;
     display: block; /*This gets rid of the weird little space from inline-block*/
   }
+
+/*.big_image is for module pages*/
+.big_image {
+  margin-top: -60px;
+  width: 100%;
+}
+
 .image-text{
     position: absolute;
     top:30%;
@@ -127,15 +132,16 @@ div.tocify {
       margin-right: auto;
       margin-bottom: 20px;
       margin-left: auto;
-    padding-top: 1em;
+    padding-top: 2em;
     text-align: center; 
     display:block;
     font-family: 'Lora', serif;
-      font-size: 18px;
+      font-size: 22px;
       font-weight: 400;
       line-height: 1.5em;
       letter-spacing: 1px;
       font-style: italic;
+      font-weight: bold;
       color: #fff;
   }
 
@@ -147,4 +153,13 @@ div.tocify {
     text-align: center; 
     display:block;
     color: #fff;
+  }
+
+.color-overlay{
+    position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0,0,0,.1);
   }

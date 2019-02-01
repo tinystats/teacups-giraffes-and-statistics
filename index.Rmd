@@ -1,11 +1,9 @@
 ---
-title: "Home"
+title: "Index"
+output:
+  bookdown::html_document2:
+    includes:
+      in_header: Landing_page.html
 ---
 
 This is the Index Page. It automatically defaults as the landing page, but I wonder if we can instead specify a different html file as the landing page. 
-
-<center>
-<div style="margin-top:50px"></div>
-![](giraffes2.png){width=800px}
-<div style="margin-bottom:50px"></div>
-</center>
