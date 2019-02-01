@@ -106,3 +106,45 @@ div.tocify {
 }
 
 
+/* LARGE IMAGE AT TOP OF EACH MODULE PAGE*/
+.image-descript {
+    position: relative;
+}
+.main-image {
+    width: 100%;
+    display: block; /*This gets rid of the weird little space from inline-block*/
+  }
+.image-text{
+    position: absolute;
+    top:30%;
+    left:0;
+    right:0;
+    bottom:0;
+  }
+.lil-image-text { 
+    color: #ededea;
+    margin-top: 20px;
+      margin-right: auto;
+      margin-bottom: 20px;
+      margin-left: auto;
+    padding-top: 1em;
+    text-align: center; 
+    display:block;
+    font-family: 'Lora', serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.5em;
+      letter-spacing: 1px;
+      font-style: italic;
+      color: #fff;
+  }
+
+.big-image-text { 
+    letter-spacing: 0.065em;
+    line-height: 1em;
+    font-size: 68px;
+    text-transform: uppercase;
+    text-align: center; 
+    display:block;
+    color: #fff;
+  }

@@ -3,7 +3,7 @@ title: "Mean, Median, and Mode"
 output:
   bookdown::html_document2:
     includes:
-      in_header: big_image.html
+      in_header: mean_image.html
 ---
 
 # What are measures of centrality?
