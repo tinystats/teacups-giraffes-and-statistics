@@ -6,19 +6,15 @@ output:
       in_header: Variance_image.html
 ---
 
-<style>
-p.comment {
-background-color: #DBDBDB;
-padding: 10px;
-border: 1px solid black;
-margin-left: 25px;
-border-radius: 5px;
-}
-</style>
 <div class="alert alert-info">
   **Module learning objectives:**
-  <br>1. 
-  <br>2. Write your own function for calculating variance
+  <ol>
+  <li>  </li>
+  <li>  </li>
+  <li>  </li>
+  <li> Write function for the variance and standard deviation </li>
+  <li> Explain why the sample variance would be downwardly biased if we did not correct it by diving by (N-1) </li>
+  </ol>
 </div>
 
 <!-- <link href="styles.css" rel="stylesheet">  -->
@@ -140,6 +136,8 @@ We need to take into account how many observations contributed to these sum of s
 
 The problem with variance is that it is a scaleable number, and knowing the variance alone is not enough to gauge whether the spread is large or small without knowing the units of the data. So, the standard deviation fixes that. By taking the square root of the variance, we can "standardize" the sum of squares. The revised equation is below:
 
+Note: going back to the original scale of the data.....unsquaring. 
+
 
 <div style="margin-bottom:50px">
 </div>
@@ -147,17 +145,53 @@ The problem with variance is that it is a scaleable number, and knowing the vari
  (\#eq:equation3)
  \Large \sigma = \sqrt{\frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n}}
  \end{equation}
-<div style="margin-bottom:50px">
+<div style="margin-bottom:50px"></div>
 
 
 Bell curve - place holder
  point out outliers in illustration
  
+  * Example of how to calculate the variance with the giraffe illustrations
+ 
 Population vs sample (N vs N-1)
 
+  * We have to correct the calculated variance with by dividing by N-1. Let's understand why:
 
-</div>
+  * Let's recall that when we calculate the sum of squares, we only have the sample mean \bar{x} to go off of as our center point. 
+  
+  (Insert \bar{x} sum of squares graph)
 
+  * We must first acknowledge that while the population mu is unknowable, the chance that the sample \bar{x} and the population mu are the same is unlikely. 
+    + It's also worth pointing out that the risk that \bar{x} and mu are not even values close to each other is much increased when your sample \bar{x} has been calculated with a small sample. 
+    
+  * Recognizing that the true population mean value is probably some *other* value than our \bar{x} value, let's recalculate the sum of squares, this time using the true population mu as our center point, which we will represent with a line at an arbitrary distance away from the one at \bar{x} that we used previously.
+
+ (Next frame with mu SS in diff color than xbar SS)
+ 
+  * When we compare the SS in both of these scenarios (1: using \bar{x} or 2: using some other center line), we see that the sum of squares from the other line will *always* be greater than the \bar{x} SS. This is true because by definition of being the sample mean, the line at \bar{x} will always be the "center" of the values in our sample. It's location already minimizes the total distance of all the observations to a center. A line at any other location (i.e. the true population) would be a line that is not mimimizing the distance for observations in our sample!
+  
+  (Show OBVIOUS comparison of the stacked up squares from mu line being greater)
+
+  * Therefore, when we calculate the SS (and consequently, the variance and the standard deviation) using the sample mean \bar{x}, we are most likely arriving at a value that is downwardly biased compared to what the true variance or standard deviation would be if we were able to know and use the population mean mu. 
+  
+  * This is why we can "adjust" our sample variance by diving by N-1 instead of just N. By diving by a smaller value (i.e. N-1 instead of N), we can ensure that the overall value of the variance and standard deviation will a little larger, correcting for the downward bias we've described. 
+  
+ * How badly is the variance downwardly biased? * 
+  (NOTE: refer to just variance or also standard dev from here on....?)
+  Well, it depends on how far away \bar{x} is from the true mu. The further away it is, the worse the downward bias will be!
+  
+  * I want to avoid having a very downwardly biased variance! What controls how far away \bar{x} is from mu?
+  The sample size! Again, the larger the sample, the greater the likelihood that your sample mean will resemble the population mean. 
+  
+  
+  * Having a downwardly biased variance is not a good thing-- so if we focus on situations where samples end up having downwardly biased variance, what can we learn about these samples?
+  
+  (Insert behemoth dot plot)
+  
+  * When the samples whose means \bar{x} are far off from the true population mean, tend to have downwardly biased variance. [WHAT IS A BETTER POINT TO TRANSITION TO???]
+  
+  * Take a look at the points that are far away from the true population  mean-- the samples represented by these points are primarily had small sample sizes (dark blue color)
+  
 Notes: 
 - Things to think about: 
 - Show how the Sum of Square for a non-normal distribution is not balanced on either side of the mean
