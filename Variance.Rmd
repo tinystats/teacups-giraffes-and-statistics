@@ -62,6 +62,10 @@ You need a solid understanding of variance in order to grasp the mechanics of an
 <center>![](giraffe_ruler.png){width=800px}</center>
 <div style="margin-bottom:50px"></div>
 
+  * [WHERE TO PLACE THIS POINT?] Recall the normal distribution: When we inspect the distrubtions below visually, we can see that some distributions are more spread out than others. Bell curves that are more "squished together" are composed of individuals (observations?) that are more similar to one another, while bell curves that are more "spread out" are composed of individuals that 
+  
+  ![](bells_edited-04.png)
+
 ##How to calculate variance?
 First, the idea is to capture how far away individual observations lie from the known mean. In other words, we could subtract the mean from each height.
 
@@ -157,30 +161,30 @@ Population vs sample (N vs N-1)
 
   * We have to correct the calculated variance with by dividing by N-1. Let's understand why:
 
-  * Let's recall that when we calculate the sum of squares, we only have the sample mean \bar{x} to go off of as our center point. 
+  * Let's recall that when we calculate the sum of squares, we only have the sample mean $\bar{x}$ to go off of as our center point. 
   
-  (Insert \bar{x} sum of squares graph)
+  (Insert $\bar{x}$ sum of squares graph)
 
-  * We must first acknowledge that while the population mu is unknowable, the chance that the sample \bar{x} and the population mu are the same is unlikely. 
-    + It's also worth pointing out that the risk that \bar{x} and mu are not even values close to each other is much increased when your sample \bar{x} has been calculated with a small sample. 
+  * We must first acknowledge that while the population mu is unknowable, the chance that the sample $\bar{x}$ and the population mu are the same is unlikely. 
+    + It's also worth pointing out that the risk that $\bar{x}$ and mu are not even values close to each other is much increased when your sample $\bar{x}$ has been calculated with a small sample. 
     
-  * Recognizing that the true population mean value is probably some *other* value than our \bar{x} value, let's recalculate the sum of squares, this time using the true population mu as our center point, which we will represent with a line at an arbitrary distance away from the one at \bar{x} that we used previously.
+  * Recognizing that the true population mean value is probably some *other* value than our $\bar{x}$ value, let's recalculate the sum of squares, this time using the true population mu as our center point, which we will represent with a line at an arbitrary distance away from the one at $\bar{x}$ that we used previously.
 
  (Next frame with mu SS in diff color than xbar SS)
  
-  * When we compare the SS in both of these scenarios (1: using \bar{x} or 2: using some other center line), we see that the sum of squares from the other line will *always* be greater than the \bar{x} SS. This is true because by definition of being the sample mean, the line at \bar{x} will always be the "center" of the values in our sample. It's location already minimizes the total distance of all the observations to a center. A line at any other location (i.e. the true population) would be a line that is not mimimizing the distance for observations in our sample!
+  * When we compare the SS in both of these scenarios (1: using \bar{x} or 2: using some other center line), we see that the sum of squares from the other line will *always* be greater than the $\bar{x}$ SS. This is true because by definition of being the sample mean, the line at $\bar{x}$ will always be the "center" of the values in our sample. It's location already minimizes the total distance of all the observations to a center. A line at any other location (i.e. the true population) would be a line that is not mimimizing the distance for observations in our sample!
   
   (Show OBVIOUS comparison of the stacked up squares from mu line being greater)
 
-  * Therefore, when we calculate the SS (and consequently, the variance and the standard deviation) using the sample mean \bar{x}, we are most likely arriving at a value that is downwardly biased compared to what the true variance or standard deviation would be if we were able to know and use the population mean mu. 
+  * Therefore, when we calculate the SS (and consequently, the variance and the standard deviation) using the sample mean $\bar{x}$, we are most likely arriving at a value that is downwardly biased compared to what the true variance or standard deviation would be if we were able to know and use the population mean mu. 
   
   * This is why we can "adjust" our sample variance by diving by N-1 instead of just N. By diving by a smaller value (i.e. N-1 instead of N), we can ensure that the overall value of the variance and standard deviation will a little larger, correcting for the downward bias we've described. 
   
  * How badly is the variance downwardly biased? * 
   (NOTE: refer to just variance or also standard dev from here on....?)
-  Well, it depends on how far away \bar{x} is from the true mu. The further away it is, the worse the downward bias will be!
+  Well, it depends on how far away $\bar{x}$ is from the true mu. The further away it is, the worse the downward bias will be!
   
-  * I want to avoid having a very downwardly biased variance! What controls how far away \bar{x} is from mu?
+  * I want to avoid having a very downwardly biased variance! What controls how far away $\bar{x}$ is from mu?
   The sample size! Again, the larger the sample, the greater the likelihood that your sample mean will resemble the population mean. 
   
   
@@ -188,7 +192,7 @@ Population vs sample (N vs N-1)
   
   (Insert behemoth dot plot)
   
-  * When the samples whose means \bar{x} are far off from the true population mean, tend to have downwardly biased variance. [WHAT IS A BETTER POINT TO TRANSITION TO???]
+  * When the samples whose means $\bar{x}$ are far off from the true population mean, tend to have downwardly biased variance. [WHAT IS A BETTER POINT TO TRANSITION TO???]
   
   * Take a look at the points that are far away from the true population  mean-- the samples represented by these points are primarily had small sample sizes (dark blue color)
   
