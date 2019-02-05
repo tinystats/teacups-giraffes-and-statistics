@@ -9,11 +9,10 @@ output:
 <div class="alert alert-info">
   **Module learning objectives:**
   <ol>
-  <li>  </li>
-  <li>  </li>
-  <li>  </li>
-  <li> Write function for the variance and standard deviation </li>
-  <li> Explain why the sample variance would be downwardly biased if we did not correct it by diving by (N-1) </li>
+  <li> Describe how the standard deviations can   </li>
+  <li> Write a function for the variance and standard deviation </li>
+  <li> Explain why the sample variance would be downwardly biased if we did not correct it bydiving by (N-1) </li>
+  <li> Use knowledge of standard deviations to assess the probability of events</li>
   </ol>
 </div>
 
@@ -33,132 +32,144 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-# Back on the island...
-After successfully calculating the mean, you return to the memory of the first day you had collected your data...There was one that was your favorite-- it was especially cute! 
+# Measures of spread
+After successfully calculating the mean, you return to the memory of the first day you had collected your data...There was one that was your favorite-- it was especially cute! After a few days, you get acquainted with this very small one. The favorite. How rare is its smallness?
 
--After a few days, you get acquainted with this very small one. the favorite- how rare is its smallness?
+<center>![](holding.png){width=600px}</center>
+You return back to the data and you wonder-- how do you formally assess how spread out the values of height are among these small animals?
 
-...You return back to the data and you wonder-- how do you formally assess how spread out the values of height are among these small animals?
+You might start by calculating the simplest **measure of spread**, the **range**. This gives us a rough idea of the kinds of heights we can expect on a very basic level. But the range seems to ignore important contextual information (i.e. easily influenced by outliers).
 
+(Include plot where you see two different data sets with same range. One has outliers influencing the range-- while the other just has a lot more variability.)
 
-
-You might start by calculating the range. This gives us a rough idea of the kinds of heights we can expect on a very basic level. But, the range seems to ignore important information (i.e. outliers).
-
-(Include Interactive plot where you see two different data sets with same range. One has outliers influencing the range-- while the other just has a lot more variability.)
-
-The range is not good enough to capture the real difference.
+If we want to avoid undue influence of outliers for the measure of spread, the range is not good enough to provide us with a wholisitc, robust measure of all the data in the set.
 
 What is a more stable measurment?
 
-The answer is by calculating the variance.
+The answer is the **variance**.
 <div style="margin-top:50px"></div>
-<center>![](giraffe_forest.png){width=800px}</center>
+  <center>![](giraffes2.png){width=800px}</center>
 <div style="margin-bottom:50px"></div>
 
-##Why is variance important?
-You need a solid understanding of variance in order to grasp the mechanics of any statistical test.
+# Variance in plain language
+You need a solid understanding of variance in order to grasp the mechanics of any statistical test. But what does the concept variance really capture?
 
-<div style="margin-top:50px"></div>
-<center>![](giraffe_ruler.png){width=800px}</center>
-<div style="margin-bottom:50px"></div>
-
-  * [WHERE TO PLACE THIS POINT?] Recall the normal distribution: When we inspect the distrubtions below visually, we can see that some distributions are more spread out than others. Bell curves that are more "squished together" are composed of individuals (observations?) that are more similar to one another, while bell curves that are more "spread out" are composed of individuals that 
+  * [WHERE TO PLACE THIS POINT?] Recall the normal distribution: When we inspect the distributions below visually, we see that they all have the same mean, but we can see that some distributions are more spread out. Bell curves that are more "squished together" are composed of individuals that are more similar to one another, while bell curves that are more "spread out" are composed of individuals that have greater variability. Wider bell-curves mean greater variance! In plain language, the variance gives us an idea of how similar individuals are to one another, and to the average value. 
   
   ![](bells_edited-04.png)
 
-##How to calculate variance?
-First, the idea is to capture how far away individual observations lie from the known mean. In other words, we could subtract the mean from each height.
+#How to calculate variance
+Let's begin by going through the steps and equations for calcuating the variance of the *population*. We'll explain how to modify this for calculating the *sample* variance later on.
 
-Using \@ref(eq:equation2), it's easy to translate this into code in R.
+First, the idea is to capture how far away individual observations lie from the mean. In other words, we could subtract the mean from each height. This is called the *deviation* from the mean (not to be confused with the statistical term *deviance*). And since, we're calculating the *population* variance, we will use $\mu$ for the mean instead of ${\bar{x}}$ (which is only used for samples). 
 
-```{r, include=FALSE}
-tutorial::go_interactive(height = 400)
-```
-
-
-```{r ex="variance", type="sample-code"}
-
-heights1 <- c(1,5,6,4,7,4,9,2)
-
-# Subtract the mean from each height in the vector "heights1"
-
-
-# Print out "heights1_diff"
-
-
-```
-```{r ex="variance", type="solution"}
-heights1 <- c(1,5,6,4,7,4,9,2)
-
-# Subtract the mean from each height in the vector "heights1"
-heights1_diff <- heights1 - mean(heights1)
-
-# Print out "heights1_diff"
-heights1_diff
-```
-```{r ex="variance", type="sct"}
-test_object("heights1_diff")
-
-test_output_contains("heights1_diff", incorrect_msg= "Did you print 'heights1_diff'?")
-success_msg("Great!")
-```
-<div style="margin-top:50px"></div>
-
-This is a great start, but we're back to the problem of needing to summarize multiple values. Since these newly calculated values are both negative and positive, we quickly realize that adding them up (like the first step when calculating the mean) would not be a productive idea since the negatives cancel the positives.
+Calculating the deviations is a great start, but we're back to the problem of needing to summarize multiple values. Since these newly calculated values are both negative and positive, we quickly realize that adding them up (like the first step when calculating the mean) would not be a productive idea since the negatives cancel the positives.
 
 What's the easiest thing to do when you want to retain how far away a point is from the mean irrespective of whether it's above or below the mean? How about taking the absolute value?
 
-(Great explanation for why not to take the abs val)
+Though the absolute value would be a valid measure of the deviation, it turns out that it has some mathematical properties that don't make it the best choice, especially for more complex statistial analyses involving the variance later down the line. (As an example, in calculus, the function for the absolute value is not differentiable when x=0, which makes optimizing these functions more difficult).
 
-Instead, we square the difference. Now, we have positive values that we can sum up. We call the number we get, the sum of squares. 
+There is an alternative with simpler, "better behaved" mathematical properties: **taking the differences from the mean and squaring them**. Squaring will always give us a positive values, so the values can never cancel each other out (and in contrast to the absolute value, the squared differences will be continuously differentiable. It's worth pointing out, however, that a consequence of squaring deviations will tend to amplify the influence of values at extreme distances from the mean. You can read [this thread](https://stats.stackexchange.com/questions/118/why-square-the-difference-instead-of-taking-the-absolute-value-in-standard-devia) for a more detailed discussion about absolute values versus the squared deviations.). Now we have positive, squared deviation values that we can be summed to a single total. We call this total **the sum of squares**. 
 
 <div style="margin-bottom:50px">
 </div>
 \begin{equation}
  (\#eq:equation1)
- \Large {\sum_{i=1}^n (x_i - \bar{x})^2}
+ \Large {\sum_{i=1}^n (x_i - \mu)^2}
  \end{equation}
 <div style="margin-bottom:50px">
 </div>
 
+# Sum of Squares
 The sum of squares is an important calculation that we will see again for other statistical operations. 
 
 (Image of squares shown in a physical/concrete way)
 
-We need to take into account how many observations contributed to these sum of squares. So, we divide by our n, we take the average of the squared differences from the mean. This is the variance.
+# Variance 
+We need to take into account how many observations contributed to these sum of squares. So, we divide the sum of squares by our n. This step essentially takes the average of the squared differences from the mean. This is the variance.
 
 
 <div style="margin-bottom:50px">
 </div>
 \begin{equation}
  (\#eq:equation2)
- \Large \sigma^2 = \frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n}
+ \Large \sigma^2 = \frac{\sum_{i=1}^n (x_i - \mu)^2}{n}
  \end{equation}
 <div style="margin-bottom:50px">
 </div>
 
-
-The problem with variance is that it is a scaleable number, and knowing the variance alone is not enough to gauge whether the spread is large or small without knowing the units of the data. So, the standard deviation fixes that. By taking the square root of the variance, we can "standardize" the sum of squares. The revised equation is below:
-
-Note: going back to the original scale of the data.....unsquaring. 
-
+# Standard Deviation, $\sigma$
+The problem with variance is that it is scaleable number, and knowing the variance alone is not enough to gauge whether the spread is large or small because the units will be squared. It would not be very intuitive to interpret giraffe heights written in "millimeters squared"! So, the **standard deviation** fixes that. We "un-square" the variance, and now we return to the data's original units (millimeters, in our case) to get a number that can be compared with the original set. The revised equation is below:
 
 <div style="margin-bottom:50px">
 </div>
 \begin{equation}
  (\#eq:equation3)
- \Large \sigma = \sqrt{\frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n}}
+ \Large \sigma = \sqrt{\frac{\sum_{i=1}^n (x_i - \mu)^2}{n}}
  \end{equation}
 <div style="margin-bottom:50px"></div>
 
 
-Bell curve - place holder
- point out outliers in illustration
- 
-  * Example of how to calculate the variance with the giraffe illustrations
- 
-Population vs sample (N vs N-1)
+# Meaning of the standard deviation
+Another "standardized" aspect about the standard deviation is that we can apply it in a useful way to normal distributions to predict how "rare" or "common" particular observations may be during data collection. For the normal distribution, almost all of the data will fall within 3 standard deviations of the mean. This is rule of thumb is called the **empirical rule**, it is detailed below:
 
+  * The entire normal distribution includes 100% of the data, so then the interval created by **1 standard deviation above and below the mean includes 68% of all the data**. Observations within these bounds would be fairly common, but it would not be exceedingly rare to observe data that fall *outside* of these bounds. 
+  
+  * **2 standard deviations** above and below the mean encompasses **95%** of the data. Observations that fall within these bounds include the common and also infrequent observations. Observations that fall *outside* of 2 standard deviations would be uncommon.
+  
+  * **3 standard deviations** above and below the mean encompass **99.7%** of the data, capturing almost all possible observations in the set. Observations that fall oustide of these bounds into the extremes of distribution's tails would be exceedingly rare to observe (but still possible!).
+  
+  ![](General_empirical.png)
+  
+  
+# Example
+
+Let's calculate the variance and standard deviation using 6 observations of giraffe heights. Although we recognize that 6 observations do not really make up the *population* of teacup giraffes, let's pretend for this example that they do, so that we.
+
+(1) **Calculate the mean**, $\mu$, for the heights:
+
+```{r}
+h <- c( 87.5, 147, 140, 72.5, 125, 49)
+mean(h)
+```
+
+
+We'll plot the mean below with a gray line. 
+
+![](giraffe_variance1.png)
+ (2) **Find the deviation** from the mean, the difference between each giraffe's height and $\mu$
+ 
+```{r}
+deviation <- h - mean(h)
+deviation
+```
+ ![](giraffe_variance2.png)
+ 
+ 
+ (3) **Calculate Variance**: Square the deviation, add them all up to get the Sum of Squares, and then take the average of the Sum of Squares
+```{r}
+SS <- sum(deviation^2)
+variance <-  SS/(length(h))
+variance
+```
+(4) **Standard Deviation**: Take the square root of the variance
+
+```{r}
+sqrt(variance)
+```
+
+Because the standard devation is a standardized score-- we can now compare particular giraffes and see whether or not they lie within 1 standard deviation of the mean. 
+
+![](giraffe_variance3.png)
+
+We see the little blue spotted giraffe is more than 1 standard deviation below the mean -- and so, we can infer a little guy of his height is rather short! Similarly, the giraffe with bright pink spots is taller than 1 standard deviation above the mean-- quite tall!
+
+# One more thing
+
+  * As we alluded to earlier, in the example above we treated the 6 giraffe observations as a population and calculated the population variance. To calculate the variance for a sample instead (what we usually need to do), we will need to divide by N-1 instead of just N. 
+
+
+# Population vs Sample (N vs N-1)
   * We have to correct the calculated variance with by dividing by N-1. Let's understand why:
 
   * Let's recall that when we calculate the sum of squares, we only have the sample mean $\bar{x}$ to go off of as our center point. 
@@ -196,9 +207,62 @@ Population vs sample (N vs N-1)
   
   * Take a look at the points that are far away from the true population  mean-- the samples represented by these points are primarily had small sample sizes (dark blue color)
   
-Notes: 
-- Things to think about: 
-- Show how the Sum of Square for a non-normal distribution is not balanced on either side of the mean
-- Maybe have scale illo showing sum of squares being unbalanced/ unequal
+# Code it up
+  Using \@ref(eq:equation2), it's easy to translate the equation for the variance and standard deviation into code in R. 
+  
+  In the window below, you will write your own function that will calculate the:
+  (1) Deviation scores from the mean
+  (2) Sum of squares
+  (3) Divide by the length of the vector
+  
+  You should save each of these calculations as separate objects...
+  
+  
+  
+
+```{r, include=FALSE}
+tutorial::go_interactive(height = 400)
+```
+
+```{r ex= "variance", type="pre-exercise-code"}
+set.seed(12)
+heights_island1 <- rnorm(50,10,2)
+```
+
+```{r ex="variance", type="sample-code"}
+
+# Calulate the variance for the sample
+
+
+# Calculate the standard deviation for the sample
+
+
+```
+```{r ex="variance", type="solution"}
+heights1 <- c(1,5,6,4,7,4,9,2)
+# Subtract the mean from each height in the vector "heights1"
+heights1_diff <- heights1 - mean(heights1)
+
+# Print out "heights1_diff"
+heights1_diff
+```
+```{r ex="variance", type="sct"}
+test_object("heights1_diff")
+
+test_output_contains("heights1_diff", incorrect_msg= "Did you print 'heights1_diff'?")
+success_msg("Great!")
+```
+  
+# Standard Deviation Example Problem
+<center>![](giraffe_variance3.png){width = 500px}</center>
+
+  * What's the probability that we find a giraffe taller than the pink guy above? We happen to have this observation that's exactly 1 standard deviation above the mean. So this makes it easy to calculate the chances of observing a giraffe taller than the pink one.
+  
+  * illos: bell curve with the half the left side, the 50%. then half of the 68% (34%). Add them up, and subtract from 100%. 
+  
+
+# Things to think about: 
+  * Show how the Sum of Square for a non-normal distribution is not balanced on either side of the mean
+  * Maybe have scale illo showing sum of squares being unbalanced/ unequal
 
 

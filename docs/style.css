@@ -10,8 +10,9 @@ body {
 }
 
 
+
 img{
-  margin: auto;
+  margin: 0 auto; /*centers*/ 
   margin-top: 1em;
   margin-bottom: 1em;
 }
@@ -129,6 +130,7 @@ div.tocify {
   }
 
 /*.big_image is for module pages*/
+
 .big_image {
   margin-top: -60px;
   width: 100%;
@@ -143,11 +145,11 @@ div.tocify {
   }
 .lil-image-text { 
     color: #ededea;
-    margin-top: 20px;
+    margin-top: 0px;
       margin-right: auto;
       margin-bottom: 20px;
       margin-left: auto;
-    padding-top: 2em;
+    padding-top: 0px;
     text-align: center; 
     display:block;
     font-family: 'Lora', serif;
@@ -156,9 +158,15 @@ div.tocify {
       line-height: 1.5em;
       letter-spacing: 1px;
       font-style: italic;
-      font-weight: bold;
+      font-weight: normal;
       color: #fff;
   }
+
+
+/*@media screen and (max-width: 300px) {
+ .image-descript {
+  display: none;
+ }*/
 
 .big-image-text { 
     letter-spacing: 0.065em;

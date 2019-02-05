@@ -7,9 +7,9 @@ navbar:
     href: index.html
   - text: "Modules"
     menu:
-      - text: "Intro to the Bell Curve"
+      - text: "Intro to the Normal Distribution"
         href: BellCurve.html
-      - text: "The Mean"
+      - text: "Mean, Median, Mode"
         href: mean.html
       - text: "Spread of the Data"
         href: Variance.html

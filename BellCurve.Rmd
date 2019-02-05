@@ -135,17 +135,19 @@ knitr::opts_chunk$set(echo = TRUE)
 As you put the last leaf in place, your local guide saunters by and glances at your markings, "Oh nice, you've made a histogram!" 
 
 The histogram above shows the **distribution**, or shape, of your data. The distribution of a variable in your data set gives you information about:
- * All the values the variable takes on in your data set, when you split your data into reasonably sized groups
- * How often those values occurred
- * The shape, center, and amount of variability of the data
+    * All the values the variable takes on in your data set, when you split your data into reasonably sized groups
+    * How often those values occurred
+    * The shape, center, and amount of variability of the data
  
  In statistics, checking the distribution of the data is always one of the first steps of data anlaysis. By knowing "the shape" of the data, you get insights into some of the data's statistical properities (which becomes useful down the line, for example, when you need to decide whether a particular statistical test would be approrpriate). 
  
  Although the data can be distributed in many shapes, there are some general shapes that occur so frequently in nature that these distributions are given their own names. The most well-known is a distribution that has a similar shape to a bell, and it is called the *normal distribution* (or sometimes "the bell curve" or just "normal curve"). 
  
  There are a few characteristics of the normal distribution:
-  * The mass of the distribution is at its center
-  * There is symmetry about the center line
+    * The mass of the distribution is at its center
+    * There is symmetry about the center line
+  
+![](normal_hist.png)
  
 Taking a look at the stones in the sand, you see two bell-shaped distributions. One for each island. Looks like giraffe heights on each island follow a normal distribution--- and that's a good thing because you remember your stats textbook always talking about how normally distributed data behaves well! Phew!
 
@@ -279,7 +281,7 @@ p
 
 ```
 
-![](Painter.png){width=500px}
+<center>![](Painter.png){width=500px}</center>
 
 **Playing around with "complete themes": ** ggplot has a nice way of changing many non-data display parameters at once though what is referred to as "complete themes". Check this [page](https://ggplot2.tidyverse.org/reference/ggtheme.html) for the available options.
 
@@ -507,20 +509,6 @@ p
  <div style="margin-bottom:50px"></div>
 
 Hopefully your PhD advisor in the homeland will be satisfied with your new ggplot!
- <div style="margin-bottom:50px"></div>
-
-#Creates a Bell Curve
-- Take our histogram, overlay a bell curve.
-- What does it mean? Density / probability in very loosely. 
-
-
-#Bell Curves come in different shapes and sizes
-
-Introduce mu and sigma: Mu is center point. Sigma indicating width. 2x2 grid, showing 4 different distributions. 
-
- ** make the point that have different shapes. 
-...some will move to  Variance.
-
  <div style="margin-bottom:50px"></div>
 
 

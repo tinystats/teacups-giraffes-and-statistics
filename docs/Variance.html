@@ -25,8 +25,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<!DOCTYPE html>
-
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
@@ -402,10 +400,10 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="BellCurve.html">Intro to the Bell Curve</a>
+      <a href="BellCurve.html">Intro to the Normal Distribution</a>
     </li>
     <li>
-      <a href="mean.html">The Mean</a>
+      <a href="mean.html">Mean, Median, Mode</a>
     </li>
     <li>
       <a href="Variance.html">Spread of the Data</a>
@@ -434,16 +432,16 @@ div.tocify {
 <strong>Module learning objectives:</strong>
 <ol>
 <li>
+Describe how the standard deviations can
 </li>
 <li>
+Write a function for the variance and standard deviation
 </li>
 <li>
+Explain why the sample variance would be downwardly biased if we did not correct it bydiving by (N-1)
 </li>
 <li>
-Write function for the variance and standard deviation
-</li>
-<li>
-Explain why the sample variance would be downwardly biased if we did not correct it by diving by (N-1)
+Use knowledge of standard deviations to assess the probability of events
 </li>
 </ol>
 </div>
@@ -456,99 +454,145 @@ Explain why the sample variance would be downwardly biased if we did not correct
 <!--                        <div class="big-image-text"><strong>Big Questions</strong></div> -->
 <!--                    </div> -->
 <!--                </div> -->
-<div id="back-on-the-island" class="section level1">
-<h1>Back on the island…</h1>
-<p>After successfully calculating the mean, you return to the memory of the first day you had collected your data…There was one that was your favorite– it was especially cute!</p>
-<p>-After a few days, you get acquainted with this very small one. the favorite- how rare is its smallness?</p>
-<p>…You return back to the data and you wonder– how do you formally assess how spread out the values of height are among these small animals?</p>
-<p>You might start by calculating the range. This gives us a rough idea of the kinds of heights we can expect on a very basic level. But, the range seems to ignore important information (i.e. outliers).</p>
-<p>(Include Interactive plot where you see two different data sets with same range. One has outliers influencing the range– while the other just has a lot more variability.)</p>
-<p>The range is not good enough to capture the real difference.</p>
+<div id="measures-of-spread" class="section level1">
+<h1>Measures of spread</h1>
+<p>After successfully calculating the mean, you return to the memory of the first day you had collected your data…There was one that was your favorite– it was especially cute! After a few days, you get acquainted with this very small one. The favorite. How rare is its smallness?</p>
+<center>
+<img src="holding.png" width="600" />
+</center>
+<p>You return back to the data and you wonder– how do you formally assess how spread out the values of height are among these small animals?</p>
+<p>You might start by calculating the simplest <strong>measure of spread</strong>, the <strong>range</strong>. This gives us a rough idea of the kinds of heights we can expect on a very basic level. But the range seems to ignore important contextual information (i.e. easily influenced by outliers).</p>
+<p>(Include plot where you see two different data sets with same range. One has outliers influencing the range– while the other just has a lot more variability.)</p>
+<p>If we want to avoid undue influence of outliers for the measure of spread, the range is not good enough to provide us with a wholisitc, robust measure of all the data in the set.</p>
 <p>What is a more stable measurment?</p>
-The answer is by calculating the variance.
+The answer is the <strong>variance</strong>.
 <div style="margin-top:50px">
 
 </div>
 <center>
-<img src="giraffe_forest.png" width="800" />
+<img src="giraffes2.png" width="800" />
 </center>
 <div style="margin-bottom:50px">
 
 </div>
-<div id="why-is-variance-important" class="section level2">
-<h2>Why is variance important?</h2>
-<p>You need a solid understanding of variance in order to grasp the mechanics of any statistical test.</p>
-<div style="margin-top:50px">
-
 </div>
-<center>
-<img src="giraffe_ruler.png" width="800" />
-</center>
-<div style="margin-bottom:50px">
-
-</div>
+<div id="variance-in-plain-language" class="section level1">
+<h1>Variance in plain language</h1>
+<p>You need a solid understanding of variance in order to grasp the mechanics of any statistical test. But what does the concept variance really capture?</p>
 <ul>
-<li>[WHERE TO PLACE THIS POINT?] Recall the normal distribution: When we inspect the distrubtions below visually, we can see that some distributions are more spread out than others. Bell curves that are more “squished together” are composed of individuals (observations?) that are more similar to one another, while bell curves that are more “spread out” are composed of individuals that</li>
+<li>[WHERE TO PLACE THIS POINT?] Recall the normal distribution: When we inspect the distributions below visually, we see that they all have the same mean, but we can see that some distributions are more spread out. Bell curves that are more “squished together” are composed of individuals that are more similar to one another, while bell curves that are more “spread out” are composed of individuals that have greater variability. Wider bell-curves mean greater variance! In plain language, the variance gives us an idea of how similar individuals are to one another, and to the average value.</li>
 </ul>
 <div class="figure">
 <img src="bells_edited-04.png" />
 
 </div>
 </div>
-<div id="how-to-calculate-variance" class="section level2">
-<h2>How to calculate variance?</h2>
-<p>First, the idea is to capture how far away individual observations lie from the known mean. In other words, we could subtract the mean from each height.</p>
-<p>Using <a href="#eq:equation2">(2)</a>, it’s easy to translate this into code in R.</p>
-<div data-datacamp-exercise="" data-height="400" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJoZWlnaHRzMSA8LSBjKDEsNSw2LDQsNyw0LDksMilcblxuIyBTdWJ0cmFjdCB0aGUgbWVhbiBmcm9tIGVhY2ggaGVpZ2h0IGluIHRoZSB2ZWN0b3IgXCJoZWlnaHRzMVwiXG5cblxuIyBQcmludCBvdXQgXCJoZWlnaHRzMV9kaWZmXCIiLCJzb2x1dGlvbiI6ImhlaWdodHMxIDwtIGMoMSw1LDYsNCw3LDQsOSwyKVxuXG4jIFN1YnRyYWN0IHRoZSBtZWFuIGZyb20gZWFjaCBoZWlnaHQgaW4gdGhlIHZlY3RvciBcImhlaWdodHMxXCJcbmhlaWdodHMxX2RpZmYgPC0gaGVpZ2h0czEgLSBtZWFuKGhlaWdodHMxKVxuXG4jIFByaW50IG91dCBcImhlaWdodHMxX2RpZmZcIlxuaGVpZ2h0czFfZGlmZiIsInNjdCI6InRlc3Rfb2JqZWN0KFwiaGVpZ2h0czFfZGlmZlwiKVxuXG50ZXN0X291dHB1dF9jb250YWlucyhcImhlaWdodHMxX2RpZmZcIiwgaW5jb3JyZWN0X21zZz0gXCJEaWQgeW91IHByaW50ICdoZWlnaHRzMV9kaWZmJz9cIilcbnN1Y2Nlc3NfbXNnKFwiR3JlYXQhXCIpIn0=
-</div>
-<div style="margin-top:50px">
-
-</div>
-<p>This is a great start, but we’re back to the problem of needing to summarize multiple values. Since these newly calculated values are both negative and positive, we quickly realize that adding them up (like the first step when calculating the mean) would not be a productive idea since the negatives cancel the positives.</p>
+<div id="how-to-calculate-variance" class="section level1">
+<h1>How to calculate variance</h1>
+<p>Let’s begin by going through the steps and equations for calcuating the variance of the <em>population</em>. We’ll explain how to modify this for calculating the <em>sample</em> variance later on.</p>
+<p>First, the idea is to capture how far away individual observations lie from the mean. In other words, we could subtract the mean from each height. This is called the <em>deviation</em> from the mean (not to be confused with the statistical term <em>deviance</em>). And since, we’re calculating the <em>population</em> variance, we will use <span class="math inline">\(\mu\)</span> for the mean instead of <span class="math inline">\({\bar{x}}\)</span> (which is only used for samples).</p>
+<p>Calculating the deviations is a great start, but we’re back to the problem of needing to summarize multiple values. Since these newly calculated values are both negative and positive, we quickly realize that adding them up (like the first step when calculating the mean) would not be a productive idea since the negatives cancel the positives.</p>
 <p>What’s the easiest thing to do when you want to retain how far away a point is from the mean irrespective of whether it’s above or below the mean? How about taking the absolute value?</p>
-<p>(Great explanation for why not to take the abs val)</p>
-<p>Instead, we square the difference. Now, we have positive values that we can sum up. We call the number we get, the sum of squares.</p>
+<p>Though the absolute value would be a valid measure of the deviation, it turns out that it has some mathematical properties that don’t make it the best choice, especially for more complex statistial analyses involving the variance later down the line. (As an example, in calculus, the function for the absolute value is not differentiable when x=0, which makes optimizing these functions more difficult).</p>
+<p>There is an alternative with simpler, “better behaved” mathematical properties: <strong>taking the differences from the mean and squaring them</strong>. Squaring will always give us a positive values, so the values can never cancel each other out (and in contrast to the absolute value, the squared differences will be continuously differentiable. It’s worth pointing out, however, that a consequence of squaring deviations will tend to amplify the influence of values at extreme distances from the mean. You can read <a href="https://stats.stackexchange.com/questions/118/why-square-the-difference-instead-of-taking-the-absolute-value-in-standard-devia">this thread</a> for a more detailed discussion about absolute values versus the squared deviations.). Now we have positive, squared deviation values that we can be summed to a single total. We call this total <strong>the sum of squares</strong>.</p>
 <div style="margin-bottom:50px">
 
 </div>
 <span class="math display" id="eq:equation1">\[\begin{equation}
  \tag{1}
- \Large {\sum_{i=1}^n (x_i - \bar{x})^2}
+ \Large {\sum_{i=1}^n (x_i - \mu)^2}
  \end{equation}\]</span>
 <div style="margin-bottom:50px">
 
 </div>
+</div>
+<div id="sum-of-squares" class="section level1">
+<h1>Sum of Squares</h1>
 <p>The sum of squares is an important calculation that we will see again for other statistical operations.</p>
 <p>(Image of squares shown in a physical/concrete way)</p>
-<p>We need to take into account how many observations contributed to these sum of squares. So, we divide by our n, we take the average of the squared differences from the mean. This is the variance.</p>
+</div>
+<div id="variance" class="section level1">
+<h1>Variance</h1>
+<p>We need to take into account how many observations contributed to these sum of squares. So, we divide the sum of squares by our n. This step essentially takes the average of the squared differences from the mean. This is the variance.</p>
 <div style="margin-bottom:50px">
 
 </div>
 <span class="math display" id="eq:equation2">\[\begin{equation}
  \tag{2}
- \Large \sigma^2 = \frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n}
+ \Large \sigma^2 = \frac{\sum_{i=1}^n (x_i - \mu)^2}{n}
  \end{equation}\]</span>
 <div style="margin-bottom:50px">
 
 </div>
-<p>The problem with variance is that it is a scaleable number, and knowing the variance alone is not enough to gauge whether the spread is large or small without knowing the units of the data. So, the standard deviation fixes that. By taking the square root of the variance, we can “standardize” the sum of squares. The revised equation is below:</p>
-<p>Note: going back to the original scale of the data…..unsquaring.</p>
+</div>
+<div id="standard-deviation-sigma" class="section level1">
+<h1>Standard Deviation, <span class="math inline">\(\sigma\)</span></h1>
+<p>The problem with variance is that it is scaleable number, and knowing the variance alone is not enough to gauge whether the spread is large or small because the units will be squared. It would not be very intuitive to interpret giraffe heights written in “millimeters squared”! So, the <strong>standard deviation</strong> fixes that. We “un-square” the variance, and now we return to the data’s original units (millimeters, in our case) to get a number that can be compared with the original set. The revised equation is below:</p>
 <div style="margin-bottom:50px">
 
 </div>
 <span class="math display" id="eq:equation3">\[\begin{equation}
  \tag{3}
- \Large \sigma = \sqrt{\frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n}}
+ \Large \sigma = \sqrt{\frac{\sum_{i=1}^n (x_i - \mu)^2}{n}}
  \end{equation}\]</span>
 <div style="margin-bottom:50px">
 
 </div>
-<p>Bell curve - place holder point out outliers in illustration</p>
+</div>
+<div id="meaning-of-the-standard-deviation" class="section level1">
+<h1>Meaning of the standard deviation</h1>
+<p>Another “standardized” aspect about the standard deviation is that we can apply it in a useful way to normal distributions to predict how “rare” or “common” particular observations may be during data collection. For the normal distribution, almost all of the data will fall within 3 standard deviations of the mean. This is rule of thumb is called the <strong>empirical rule</strong>, it is detailed below:</p>
 <ul>
-<li>Example of how to calculate the variance with the giraffe illustrations</li>
+<li><p>The entire normal distribution includes 100% of the data, so then the interval created by <strong>1 standard deviation above and below the mean includes 68% of all the data</strong>. Observations within these bounds would be fairly common, but it would not be exceedingly rare to observe data that fall <em>outside</em> of these bounds.</p></li>
+<li><p><strong>2 standard deviations</strong> above and below the mean encompasses <strong>95%</strong> of the data. Observations that fall within these bounds include the common and also infrequent observations. Observations that fall <em>outside</em> of 2 standard deviations would be uncommon.</p></li>
+<li><p><strong>3 standard deviations</strong> above and below the mean encompass <strong>99.7%</strong> of the data, capturing almost all possible observations in the set. Observations that fall oustide of these bounds into the extremes of distribution’s tails would be exceedingly rare to observe (but still possible!).</p></li>
 </ul>
-<p>Population vs sample (N vs N-1)</p>
+<div class="figure">
+<img src="General_empirical.png" />
+
+</div>
+</div>
+<div id="example" class="section level1">
+<h1>Example</h1>
+<p>Let’s calculate the variance and standard deviation using 6 observations of giraffe heights. Although we recognize that 6 observations do not really make up the <em>population</em> of teacup giraffes, let’s pretend for this example that they do, so that we.</p>
+<ol style="list-style-type: decimal">
+<li><strong>Calculate the mean</strong>, <span class="math inline">\(\mu\)</span>, for the heights:</li>
+</ol>
+<pre class="r"><code>h &lt;- c( 87.5, 147, 140, 72.5, 125, 49)
+mean(h)</code></pre>
+<p>We’ll plot the mean below with a gray line.</p>
+<p><img src="giraffe_variance1.png" /> (2) <strong>Find the deviation</strong> from the mean, the difference between each giraffe’s height and <span class="math inline">\(\mu\)</span></p>
+<pre class="r"><code>deviation &lt;- h - mean(h)
+deviation</code></pre>
+<div class="figure">
+<img src="giraffe_variance2.png" />
+
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Calculate Variance</strong>: Square the deviation, add them all up to get the Sum of Squares, and then take the average of the Sum of Squares</li>
+</ol>
+<pre class="r"><code>SS &lt;- sum(deviation^2)
+variance &lt;-  SS/(length(h))
+variance</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Standard Deviation</strong>: Take the square root of the variance</li>
+</ol>
+<pre class="r"><code>sqrt(variance)</code></pre>
+<p>Because the standard devation is a standardized score– we can now compare particular giraffes and see whether or not they lie within 1 standard deviation of the mean.</p>
+<div class="figure">
+<img src="giraffe_variance3.png" />
+
+</div>
+<p>We see the little blue spotted giraffe is more than 1 standard deviation below the mean – and so, we can infer a little guy of his height is rather short! Similarly, the giraffe with bright pink spots is taller than 1 standard deviation above the mean– quite tall!</p>
+</div>
+<div id="one-more-thing" class="section level1">
+<h1>One more thing</h1>
+<ul>
+<li>As we alluded to earlier, in the example above we treated the 6 giraffe observations as a population and calculated the population variance. To calculate the variance for a sample instead (what we usually need to do), we will need to divide by N-1 instead of just N.</li>
+</ul>
+</div>
+<div id="population-vs-sample-n-vs-n-1" class="section level1">
+<h1>Population vs Sample (N vs N-1)</h1>
 <ul>
 <li><p>We have to correct the calculated variance with by dividing by N-1. Let’s understand why:</p></li>
 <li><p>Let’s recall that when we calculate the sum of squares, we only have the sample mean <span class="math inline">\(\bar{x}\)</span> to go off of as our center point.</p></li>
@@ -578,8 +622,32 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJoZWlnaHRzMSA8LSBjKDEsNSw2LDQsNyw0LDksMilcblxu
 <li><p>When the samples whose means <span class="math inline">\(\bar{x}\)</span> are far off from the true population mean, tend to have downwardly biased variance. [WHAT IS A BETTER POINT TO TRANSITION TO???]</p></li>
 <li><p>Take a look at the points that are far away from the true population mean– the samples represented by these points are primarily had small sample sizes (dark blue color)</p></li>
 </ul>
-<p>Notes: - Things to think about: - Show how the Sum of Square for a non-normal distribution is not balanced on either side of the mean - Maybe have scale illo showing sum of squares being unbalanced/ unequal</p>
 </div>
+<div id="code-it-up" class="section level1">
+<h1>Code it up</h1>
+<p>Using <a href="#eq:equation2">(2)</a>, it’s easy to translate the equation for the variance and standard deviation into code in R.</p>
+<p>In the window below, you will write your own function that will calculate the: (1) Deviation scores from the mean (2) Sum of squares (3) Divide by the length of the vector</p>
+<p>You should save each of these calculations as separate objects…</p>
+<div data-datacamp-exercise="" data-height="400" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBDYWx1bGF0ZSB0aGUgdmFyaWFuY2UgZm9yIHRoZSBzYW1wbGVcblxuXG4jIENhbGN1bGF0ZSB0aGUgc3RhbmRhcmQgZGV2aWF0aW9uIGZvciB0aGUgc2FtcGxlIiwic29sdXRpb24iOiJoZWlnaHRzMSA8LSBjKDEsNSw2LDQsNyw0LDksMilcbiMgU3VidHJhY3QgdGhlIG1lYW4gZnJvbSBlYWNoIGhlaWdodCBpbiB0aGUgdmVjdG9yIFwiaGVpZ2h0czFcIlxuaGVpZ2h0czFfZGlmZiA8LSBoZWlnaHRzMSAtIG1lYW4oaGVpZ2h0czEpXG5cbiMgUHJpbnQgb3V0IFwiaGVpZ2h0czFfZGlmZlwiXG5oZWlnaHRzMV9kaWZmIiwic2N0IjoidGVzdF9vYmplY3QoXCJoZWlnaHRzMV9kaWZmXCIpXG5cbnRlc3Rfb3V0cHV0X2NvbnRhaW5zKFwiaGVpZ2h0czFfZGlmZlwiLCBpbmNvcnJlY3RfbXNnPSBcIkRpZCB5b3UgcHJpbnQgJ2hlaWdodHMxX2RpZmYnP1wiKVxuc3VjY2Vzc19tc2coXCJHcmVhdCFcIikifQ==
+</div>
+</div>
+<div id="standard-deviation-example-problem" class="section level1">
+<h1>Standard Deviation Example Problem</h1>
+<center>
+<img src="giraffe_variance3.png" />{width = 500px}
+</center>
+<ul>
+<li><p>What’s the probability that we find a giraffe taller than the pink guy above? We happen to have this observation that’s exactly 1 standard deviation above the mean. So this makes it easy to calculate the chances of observing a giraffe taller than the pink one.</p></li>
+<li><p>illos: bell curve with the half the left side, the 50%. then half of the 68% (34%). Add them up, and subtract from 100%.</p></li>
+</ul>
+</div>
+<div id="things-to-think-about" class="section level1">
+<h1>Things to think about:</h1>
+<ul>
+<li>Show how the Sum of Square for a non-normal distribution is not balanced on either side of the mean</li>
+<li>Maybe have scale illo showing sum of squares being unbalanced/ unequal</li>
+</ul>
 </div>
 
 <!DOCTYPE html>

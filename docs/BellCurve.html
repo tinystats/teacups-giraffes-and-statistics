@@ -25,8 +25,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<!DOCTYPE html>
-
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
@@ -402,10 +400,10 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="BellCurve.html">Intro to the Bell Curve</a>
+      <a href="BellCurve.html">Intro to the Normal Distribution</a>
     </li>
     <li>
-      <a href="mean.html">The Mean</a>
+      <a href="mean.html">Mean, Median, Mode</a>
     </li>
     <li>
       <a href="Variance.html">Spread of the Data</a>
@@ -507,6 +505,10 @@ Explain why distributions of sample data that come from populations with normal 
 <p>In statistics, checking the distribution of the data is always one of the first steps of data anlaysis. By knowing “the shape” of the data, you get insights into some of the data’s statistical properities (which becomes useful down the line, for example, when you need to decide whether a particular statistical test would be approrpriate).</p>
 <p>Although the data can be distributed in many shapes, there are some general shapes that occur so frequently in nature that these distributions are given their own names. The most well-known is a distribution that has a similar shape to a bell, and it is called the <em>normal distribution</em> (or sometimes “the bell curve” or just “normal curve”).</p>
 <p>There are a few characteristics of the normal distribution: * The mass of the distribution is at its center * There is symmetry about the center line</p>
+<div class="figure">
+<img src="normal_hist.png" />
+
+</div>
 <p>Taking a look at the stones in the sand, you see two bell-shaped distributions. One for each island. Looks like giraffe heights on each island follow a normal distribution— and that’s a good thing because you remember your stats textbook always talking about how normally distributed data behaves well! Phew!</p>
 Happy with your progress thus far, you are excited to send your histogram results to your PhD mentor back in the homeland. Instead of taking a picture of your leaf histogram, you turn to R to create the perfect figure.
 <div style="margin-bottom:50px">
@@ -521,13 +523,6 @@ Happy with your progress thus far, you are excited to send your histogram result
 
 </div>
 <pre class="r"><code>tail(d)</code></pre>
-<pre><code>##       Height  Location
-## 95  19.24044 Island #2
-## 96  17.58925 Island #2
-## 97  18.54274 Island #2
-## 98  17.16631 Island #2
-## 99  17.71318 Island #2
-## 100 16.79124 Island #2</code></pre>
 <div style="margin-bottom:50px">
 
 </div>
@@ -566,10 +561,9 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiI0ZpbGwgaW4gdGhlIGluY29tcGxldGUgYXJndW1lbnRzIGJlbG93XG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9ICkpICtcbiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGggPSAxLCBjb2xvciA9ICkgK1xuICBzY2FsZV9maWxsX21hbnVhbCh2YWx1ZXMgPSBjKCApKVxuICBcbnAiLCJzb2x1dGlvbiI6InAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKVxuICBcbnAifQ==
 </div>
-<div class="figure">
+<center>
 <img src="Painter.png" width="500" />
-
-</div>
+</center>
 <p><strong>Playing around with “complete themes”: </strong> ggplot has a nice way of changing many non-data display parameters at once though what is referred to as “complete themes”. Check this <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">page</a> for the available options.</p>
 <p>Have fun testing out a few different complete themes by adding the argument with a <code>+</code> sign. Try 3 different complete themes and take note of how the plot changes.</p>
 <div style="margin-bottom:50px">
@@ -647,21 +641,6 @@ Hopefully your PhD advisor in the homeland will be satisfied with your new ggplo
 
 </div>
 </div>
-<div id="creates-a-bell-curve" class="section level1">
-<h1>Creates a Bell Curve</h1>
-<ul>
-<li>Take our histogram, overlay a bell curve.</li>
-<li>What does it mean? Density / probability in very loosely.</li>
-</ul>
-</div>
-<div id="bell-curves-come-in-different-shapes-and-sizes" class="section level1">
-<h1>Bell Curves come in different shapes and sizes</h1>
-<p>Introduce mu and sigma: Mu is center point. Sigma indicating width. 2x2 grid, showing 4 different distributions.</p>
-<p>** make the point that have different shapes. …some will move to Variance.</p>
-<div style="margin-bottom:50px">
-
-</div>
-</div>
 <div id="sampling" class="section level1">
 <h1>Sampling</h1>
 <p>A <strong>sample</strong> is a subset of the population. If we sample randomly, then our hope is that our sample data will be representative of the population. But what IS the population? The <strong>population</strong> is defined as ALL available observations in a defined geographic area at a given point in time– in our case, ALL existing giraffes on one of the islands while you are there.</p>
@@ -681,7 +660,7 @@ Hopefully your PhD advisor in the homeland will be satisfied with your new ggplo
 <div style="margin-bottom:50px">
 
 </div>
-<img src="BellCurve_files/figure-html/unnamed-chunk-23-.gif" width="960" />
+<img src="BellCurve_files/figure-html/unnamed-chunk-33-.gif" width="960" />
 <div style="margin-bottom:50px">
 
 </div>
