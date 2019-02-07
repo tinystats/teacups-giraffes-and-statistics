@@ -106,25 +106,25 @@ The problem with variance is that its value is not easily interpretable, and kno
 <div style="margin-bottom:50px"></div>
 
 # One more thing
-The equations above are for calculating the variance and standard deviation of a population. In real life applications, the population equations will almost never be used during data analysis. To calculate the variance and standard deviation for a sample instead (which will usually be the case), we will need to divide by N-1 instead of just n. Note that the we also change to the corresponding symbols for the sample mean ($\bar{x}$) and sample size (uppercase $N$).
+The equations above are for calculating the variance and standard deviation of a population. In real life applications, the population equations will almost never be used during data analysis. To calculate the variance and standard deviation for a sample instead (which will usually be the case), we will need to divide by N-1 instead of just n. Note that the we also change to the corresponding symbols for the sample mean ($\bar{x}$),  sample size (uppercase $N$), and use a lowercase $s$ in place of $\sigma$. 
 
-When we apply this change, our equation for the **sample variance** is:
+When we apply this change, our equation for the **sample variance, $s^2$ ** is:
 
 <div style="margin-bottom:50px">
 </div>
 \begin{equation}
  (\#eq:equation4)
- \Large \sigma^2 = \frac{\sum_{i=1}^N (x_i - \bar{x})^2}{N}
+ \Large s^2 = \frac{\sum_{i=1}^N (x_i - \bar{x})^2}{N}
  \end{equation}
 <div style="margin-bottom:50px"></div>
 
-And for **sample standard deviation**:
+And for **sample standard deviation, $s$**:
 
 <div style="margin-bottom:50px">
 </div>
 \begin{equation}
  (\#eq:equation5)
- \Large \sigma = \sqrt{\frac{\sum_{i=1}^N (x_i - \bar{x})^2}{N}}
+ \Large s = \sqrt{\frac{\sum_{i=1}^N (x_i - \bar{x})^2}{N}}
  \end{equation}
 <div style="margin-bottom:50px"></div>
 
@@ -293,7 +293,7 @@ We have to correct the calculated variance with by dividing by N-1. Let's unders
 
   * Therefore, when we calculate the SS (and consequently, the variance and the standard deviation) using the sample mean $\bar{x}$, we are most likely arriving at a value that is downwardly biased compared to what the true variance or standard deviation would be if we were able to know and use the population mean mu. 
   
-  * This is why we can "adjust" our sample variance by diving by N-1 instead of just N. By diving by a smaller value (i.e. N-1 instead of N), we can ensure that the overall value of the variance and standard deviation will a little larger, correcting for the downward bias we've described. 
+  * This is why we can "adjust" our sample variance by diving by N-1 instead of just N. By diving by a smaller value (i.e. N-1 instead of N), we can ensure that the overall value of the variance and standard deviation will be a little larger, correcting for the downward bias we've described. 
   
 # Things to think about...
 **How badly can the variance be downwardly biased?**
@@ -311,7 +311,27 @@ We have to correct the calculated variance with by dividing by N-1. Let's unders
     * Take a look at the points that are far away from the true population  mean-- the samples represented by these points primarily came from small sample sizes (dark blue color).
   
   (STATIC BAR PLOT)
-   * comment about static bar plot. You can hover over the bars below to see what the value actually is. 
+   * How the correction works: Without correction, the sample variance would be downwardly biased by a factor of N/(N-1).
+   * In the plot below we see what percent of the "true" population variance an uncorrected sample variance achieves. The variances from smaller samples do the worst job of approaching 100% of the full variance. 
+
+   * You can hover over the bars below to see what the percentage actually is. If we multiply this percentage by the correction, we correct for the discrepancy between sample and population variance. We demonstrate this below for samples of size N = 3. 
+   
+```{r}
+
+N = 3
+correction = N/(N-1)
+
+hover_value = 0.66666667 # Correct to hovered value for N = 3
+
+# Apply correction
+percent_of_true_variance <- hover_value * correction
+
+paste( "After correcting, the sample variance explains ", percent_of_true_variance * 100, "% of the true variance.", sep = "", collapse = NULL)
+
+
+```
+
+  * Try hovering over the percentage values for the different sample sizes below, and see yourself that correction adjusts the sample variance to the full variance. 
 
 **More things to think about**
   * Show how the Sum of Square for a non-normal distribution is not balanced on either side of the mean
