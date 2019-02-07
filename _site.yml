@@ -13,6 +13,8 @@ navbar:
         href: mean.html
       - text: "Spread of the Data"
         href: Variance.html
+      - text: "Covariance and Correlation"
+        href: covariance_and_correlation.html
 output: 
   bookdown::html_document2:
     includes:

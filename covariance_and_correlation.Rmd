@@ -1,0 +1,16 @@
+---
+title: "Covariance and Correlation"
+output:
+  bookdown::html_document2:
+    includes:
+      in_header: covariance_and_correlation_image.html
+---
+
+<div style="margin-bottom:50px">
+</div>
+\begin{equation}
+ (\#eq:equation1)
+ \Large {\sum_{i=1}^n (x_i - \mu_{x})^2 (y_i - \mu{y})^2}
+ \end{equation}
+<div style="margin-bottom:50px">
+</div>
