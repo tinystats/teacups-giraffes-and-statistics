@@ -584,10 +584,12 @@ Explain why the sample variance would be downwardly biased if we did not correct
 </ol>
 <pre class="r"><code>h &lt;- c(113, 146.5, 132, 70.5, 121, 55) 
 mean(h)</code></pre>
+<pre><code>## [1] 106.3333</code></pre>
 <p>We’ll plot the mean {x} below with a gray line.</p>
 <p><img src="giraffe_variance1.png" /> (2) <strong>Find the deviation</strong> from the mean, the difference between each giraffe’s height and <span class="math inline">\(\bar{x}\)</span></p>
 <pre class="r"><code>deviation &lt;- h - mean(h)
 deviation</code></pre>
+<pre><code>## [1]   6.666667  40.166667  25.666667 -35.833333  14.666667 -51.333333</code></pre>
 <div class="figure">
 <img src="giraffe_variance2.png" />
 
@@ -598,10 +600,12 @@ deviation</code></pre>
 <pre class="r"><code>SS &lt;- sum(deviation^2)
 variance &lt;-  SS/(length(h)-1) # Divides by N-1
 variance</code></pre>
+<pre><code>## [1] 1290.167</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li><strong>Standard Deviation</strong>: Take the square root of the variance</li>
 </ol>
 <pre class="r"><code>sqrt(variance)</code></pre>
+<pre><code>## [1] 35.91889</code></pre>
 <p>Because the standard devation is a standardized score– we can now compare particular giraffes and see whether or not they lie within 1 standard deviation of the mean.</p>
 <div class="figure">
 <img src="giraffe_variance3.png" />
