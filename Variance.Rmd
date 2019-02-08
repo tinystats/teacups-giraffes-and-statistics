@@ -285,7 +285,88 @@ We have to correct the calculated variance with by dividing by N-1. Let's unders
     
   * Recognizing that the true population mean value is probably some *other* value than our $\bar{x}$ value, let's recalculate the sum of squares, this time using the true population $\mu$ as our center point, which we will represent with a line at an arbitrary distance away from the one at $\bar{x}$ that we used previously.
 
- (Next frame with mu SS in diff color than xbar SS)
+```{r fig.show="animate", animation.hook = 'gifski', fig.width=7.2, fig.height=10, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.01666667}
+library(ggplot2)
+s <- data.frame(x=c(113, 146.5, 132, 70.5, 121, 55), y=c(8.75,1.25,3.75,3.75,6.25,1.25))
+s <- s[order(s$x),]
+s <- s[c(1,2,3,6,5,4),]
+s2 <- s
+s <- s[c(1,2,6,5,4,3),]
+m <- mean(s[,1])
+m2 <- 85
+lim <- c(-73, 60)
+d <- data.frame(x1=s[,1], x2=rep(m, 6), y1=s$y, y2=(abs(s[,1]-m))+s$y)
+co <- c("#6FB4CE", "#D97FDA", "#DC5F24", "#C46A79", "#f93188", "#F88336")
+co2 <- c("grey30", "grey40", "grey80", "grey70", "grey60", "grey50")
+
+
+s2$y <- (s2$y)*-1
+s2[3,2] <- -8.75
+s2 <- s2[c(1,2,4:6,3),]
+d2 <- data.frame(x1=s2[,1], x2=rep(m2, 6), y1=s2$y, y2=(-abs(s2[,1]-m2))+s2$y)
+
+v <- do.call(cbind, lapply(1:6, function(x) seq(d[x,]$x1, d[x,]$x2, by = (d[x,]$x2-d[x,]$x1)/29)))
+vv <- lapply(1:30, function(y) data.frame(x1=v[y,], x2=d$x1, y1=s$y, y2=(abs(s[,1]-m))+s$y))
+
+v2 <- do.call(cbind, lapply(1:6, function(x) seq(d2[x,]$x1, d2[x,]$x2, by = (d2[x,]$x2-d2[x,]$x1)/29)))
+vv2 <- lapply(1:30, function(y) data.frame(x1.2=v2[y,], x2.2=d2$x1, y1.2=s2$y, y2.2=(abs(s2[,1]-m2))+s2$y))
+
+vv <- lapply(1:30, function(x) cbind(vv[[x]], vv2[[x]]))
+
+pp <- function(x){
+  p1 <- ggplot()+geom_point(data=s, aes(x=x, y=y),color=co, size=4)+geom_point(data=s2, aes(x=x, y=y),color=co2, size=4)+theme_light()+ylim(lim)+geom_segment(aes(x = x2, y = y1, xend = x1, yend = y1), data = x, color=co, size=2)+geom_segment(aes(x = x2.2, y = y1.2, xend = x1.2, yend = y1.2), data = x, color=co2, size=2)+labs(x="Teacup giraffe heights", y=NULL)+theme(panel.border=element_blank(),panel.grid.minor=element_blank(), axis.ticks=element_blank())+
+    geom_segment(aes(x=m, xend=m, y=0, yend=lim[2]), linetype="dashed", color="black", size=2)+
+    geom_segment(aes(x=m2, xend=m2, y=0, yend=lim[1]), linetype="solid", color="black", size=2)+
+    annotate('text', x = 80, y = -60, label = "mu",parse = TRUE,size=15)+
+    annotate('text', x = 111.33, y = 53, label = "bar(x)",parse = TRUE,size=15)
+  p1
+}
+
+lapply(vv, function(x) pp(x))
+
+h <- do.call(cbind, lapply(1:6, function(x) seq(d[x,]$y1, d[x,]$y2, by = (d[x,]$y2-d[x,]$y1)/29)))
+hh <- lapply(1:30, function(y) data.frame(x1=s[,1], x2=rep(m, 6), y1=s$y, y2=h[y,]))
+
+h2 <- do.call(cbind, lapply(1:6, function(x) seq(d2[x,]$y1, d2[x,]$y2, by = (d2[x,]$y2-d2[x,]$y1)/29)))
+hh2 <- lapply(1:30, function(y) data.frame(x1.2=s2[,1], x2.2=rep(m2, 6), y1.2=s2$y, y2.2=h2[y,]))
+
+hh <- lapply(1:30, function(x) cbind(hh[[x]], hh2[[x]]))
+
+pp2 <- function(x){
+  p2 <- ggplot()+geom_point(data=s, aes(x=x, y=y),color=co, size=4)+geom_point(data=s2, aes(x=x, y=y),color=co2, size=4)+theme_light()+ylim(lim)+geom_segment(aes(x = x1, y = y1, xend = x2, yend = y1), data = d, color=co, size=2)+geom_segment(aes(x = x1, y = y1, xend = x2, yend = y1), data = d2, color=co2, size=2)+
+  geom_segment(aes(x = x1.2, y = y2.2, xend = x1.2, yend = y1.2), data = x, color=co2, size=2)+geom_segment(aes(x = x1, y = y2, xend = x1, yend = y1), data = x, color=co, size=2)+labs(x="Teacup giraffe heights", y=NULL)+theme(panel.border=element_blank(),panel.grid.minor=element_blank(), axis.ticks=element_blank())+
+    geom_segment(aes(x=m, xend=m, y=0, yend=lim[2]), linetype="dashed", color="black", size=2)+
+    geom_segment(aes(x=m2, xend=m2, y=0, yend=lim[1]), linetype="solid", color="black", size=2)+
+    annotate('text', x = 80, y = -60, label = "mu",parse = TRUE,size=15)+
+    annotate('text', x = 111.33, y = 53, label = "bar(x)",parse = TRUE,size=15)
+p2
+}
+
+lapply(hh, function(x) pp2(x))
+
+pp22 <- function(x){
+  p2 <- ggplot()+theme_light()+geom_rect(data=d, mapping=aes(xmin=x1, xmax=x2, ymin=y1, ymax=y2), color=alpha(co, x),fill=co, alpha=x/5, size=2)+geom_rect(data=d2, mapping=aes(xmin=x1, xmax=x2, ymin=y1, ymax=y2), color=alpha(co2, x),fill=co2, alpha=x/5, size=2)+ylim(lim)+geom_segment(aes(x = x1, y = y1, xend = x2, yend = y1), data = d, color=co, size=2)+geom_segment(aes(x = x1, y = y1, xend = x2, yend = y1), data = d2, color=co2, size=2)+
+  geom_segment(aes(x = x1, y = y2, xend = x1, yend = y1), data = d, color=co, size=2)+geom_segment(aes(x = x1, y = y2, xend = x1, yend = y1), data = d2, color=co2, size=2)+geom_point(data=s, aes(x=x, y=y),color=co, size=4)+geom_point(data=s2, aes(x=x, y=y),color=co2, size=4)+
+    labs(x="Teacup giraffe heights", y=NULL)+theme(panel.border=element_blank(),panel.grid.minor=element_blank(), axis.ticks=element_blank())+
+    geom_segment(aes(x=m, xend=m, y=0, yend=lim[2]), linetype="dashed", color="black", size=2)+
+    geom_segment(aes(x=m2, xend=m2, y=0, yend=lim[1]), linetype="solid", color="black", size=2)+
+    annotate('text', x = 80, y = -60, label = "mu",parse = TRUE,size=15)+
+    annotate('text', x = 111.33, y = 53, label = "bar(x)",parse = TRUE,size=15)
+p2
+}
+lapply(seq(0,1,0.1), function(x) pp22(x))
+
+pp3 <- function(x){
+p3 <- ggplot()+theme_light()+geom_rect(data=d, mapping=aes(xmin=x1, xmax=x2, ymin=y1, ymax=y2), color=co,fill=co, alpha=0.2, size=2)+geom_rect(data=d2, mapping=aes(xmin=x1, xmax=x2, ymin=y1, ymax=y2), color=co2,fill=co2, alpha=0.2, size=2)+geom_point(data=s, aes(x=x, y=y), color=co, size=4)+geom_point(data=s2, aes(x=x, y=y), color=co2, size=4)+ylim(lim)+labs(x="Teacup giraffe heights", y=NULL)+theme(panel.border=element_blank(),panel.grid.minor=element_blank(), axis.ticks=element_blank())+
+    geom_segment(aes(x=m, xend=m, y=0, yend=lim[2]), linetype="dashed", color="black", size=2)+
+    geom_segment(aes(x=m2, xend=m2, y=0, yend=lim[1]), linetype="solid", color="black", size=2)+
+    annotate('text', x = 80, y = -60, label = "mu",parse = TRUE,size=15)+
+    annotate('text', x = 111.33, y = 53, label = "bar(x)",parse = TRUE,size=15)
+p3
+}
+lapply(1:15, function(x) pp3())
+
+```
  
   * When we compare the SS in both of these scenarios (1: using \bar{x} or 2: using some other center line), we see that the sum of squares from the other line will *always* be greater than the $\bar{x}$ SS. This is true because by definition of being the sample mean, the line at $\bar{x}$ will always be the "center" of the values in our sample. It's location already minimizes the total distance of all the observations to a center. A line at any other location (i.e. the true population) would be a line that is not mimimizing the distance for observations in our sample!
   
@@ -304,13 +385,119 @@ We have to correct the calculated variance with by dividing by N-1. Let's unders
   The sample size! Again, the larger the sample, the greater the likelihood that your sample mean will resemble the population mean. 
   
   * Having a downwardly biased variance is not a good thing-- so if we focus on situations where samples end up having downwardly biased variance, what can we learn about these samples, so that we know what to avoid?
-  
-  (Insert behemoth dot plot)
-  
+
+```{r, tut=FALSE, echo=FALSE, message= FALSE}
+library(ggplot2)
+library(plotly)
+set.seed(12)
+d <- rnorm(50, 10, 2)
+d1 <- rnorm(50, 18, 1.2)
+d <- c(d,d1)
+m <- mean(d)
+v <- var(d)
+gen_data <- function(x){
+  d2 <- sample(size=sample(size=1, seq(from = 2, to = 10, by = 1)), d)
+  dd <- data.frame(mean=mean(d2), unb_var=var(d2), b_var=var(d2)* (length(d2) - 1) / length(d2), N=length(d2), perc=(var(d2)* (length(d2) - 1) / length(d2))/var(d))
+}
+
+data <- do.call(rbind, lapply(1:1003, function(x) gen_data()))
+
+ff <- function(x){
+  d <- data[1:x,]
+  d$frame <- x+1
+  return(d)
+}
+
+pd <- do.call(rbind, lapply(seq(9, 1000, 10), function(x) ff(x)))
+
+p <- data.frame(mean=Inf, unb_var=Inf, b_var=Inf, N=2, perc=Inf, frame=0)
+pd <- rbind(pd, p)
+
+vline <- function(x = 0, color = "black") {
+  list(
+    type = "line", 
+    y0 = 0, 
+    y1 = 1, 
+    yref = "paper",
+    x0 = x, 
+    x1 = x, 
+    line = list(color = color, dash="dash", width=3)
+  )
+}
+
+hline <- function(y = 0, color = "black") {
+  list(
+    type = "line", 
+    x0 = 0, 
+    x1 = 1, 
+    xref = "paper",
+    y0 = y, 
+    y1 = y, 
+    line = list(color = color, dash="dash", width=3)
+  )
+}
+
+
+
+p <- pd %>%
+  plot_ly(
+    type = 'scatter',
+    mode='markers',
+    x = ~mean,
+    y = ~b_var,
+    frame = ~frame,
+    color = ~N,
+    colors = c("midnightblue", "skyblue2"),
+    marker = list(size = 20, opacity=0.75),
+    hoverinfo="text",
+    text=~paste("Mean:", round(mean, 2), "\nVariance:",
+                round(b_var, 2))
+  )%>% 
+  animation_opts(
+    frame = 1,
+    transition = 0,
+    redraw = FALSE
+  )%>%
+    layout(
+      xaxis = list(range=c(7,21), zeroline=FALSE, title="Mean"),
+      yaxis = list(range=c(-1,40), zeroline=FALSE, title="Biased variance"), 
+      shapes = list(vline(m), hline(v)))%>%
+  animation_slider(currentvalue = list(prefix = "Number of Samples: ", font = list(color="black")))
+  htmltools::save_html(p,"mega_dots.html")
+```  
+
+<center><iframe style="margin: 0px;" src="mega_dots.html" width="570" height="400" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
+
   * When the samples whose means $\bar{x}$ are far off from the true population mean, they tend to have downwardly biased variance. 
     * Take a look at the points that are far away from the true population  mean-- the samples represented by these points primarily came from small sample sizes (dark blue color).
   
-  (STATIC BAR PLOT)
+```{r, tut=FALSE, echo=FALSE, message= FALSE}
+library(ggplot2)
+library(plotly)
+data <- do.call(rbind, lapply(1:20000, function(x) gen_data()))
+mm <- aggregate(b_var~N, data=data, function(y) (mean(y)/var(d))*100)
+
+
+p2 <- mm %>%
+  plot_ly(
+    type = 'bar',
+    x = ~N,
+    y = ~b_var,
+    color = ~N,
+    colors = c("midnightblue", "skyblue2"),
+    marker = list(size = 2, opacity=1),
+    hoverinfo="y"
+  )%>% 
+  config(displayModeBar = F) %>%
+  layout(
+    yaxis = list(range=c(0,90), zeroline=FALSE, title="Biased Sample variance / Pop. variance (%)"), 
+    xaxis = list(title="Sample Size"))%>%
+  hide_colorbar()
+  htmltools::save_html(p2,"static_bar.html")
+```
+
+<center><iframe style="margin: 0px;" src="static_bar.html" width="570" height="400" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
+
    * How the correction works: Without correction, the sample variance would be downwardly biased by a factor of N/(N-1).
    * In the plot below we see what percent of the "true" population variance an uncorrected sample variance achieves. The variances from smaller samples do the worst job of approaching 100% of the full variance. 
 

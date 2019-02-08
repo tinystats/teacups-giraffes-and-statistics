@@ -368,7 +368,7 @@ div.tocify {
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify" style="position: static;">
+<div id="TOC" class="tocify">
 </div>
 </div>
 
@@ -425,7 +425,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore"></h1>
+<h1 class="title toc-ignore">The Spread of the Data</h1>
 
 </div>
 
@@ -654,7 +654,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 </ul></li>
 <li>Recognizing that the true population mean value is probably some <em>other</em> value than our <span class="math inline">\(\bar{x}\)</span> value, let’s recalculate the sum of squares, this time using the true population <span class="math inline">\(\mu\)</span> as our center point, which we will represent with a line at an arbitrary distance away from the one at <span class="math inline">\(\bar{x}\)</span> that we used previously.</li>
 </ul>
-<p>(Next frame with mu SS in diff color than xbar SS)</p>
+<p><img src="Variance_files/figure-html/unnamed-chunk-10-.gif" width="691.2" /></p>
 <ul>
 <li>When we compare the SS in both of these scenarios (1: using {x} or 2: using some other center line), we see that the sum of squares from the other line will <em>always</em> be greater than the <span class="math inline">\(\bar{x}\)</span> SS. This is true because by definition of being the sample mean, the line at <span class="math inline">\(\bar{x}\)</span> will always be the “center” of the values in our sample. It’s location already minimizes the total distance of all the observations to a center. A line at any other location (i.e. the true population) would be a line that is not mimimizing the distance for observations in our sample!</li>
 </ul>
@@ -671,16 +671,27 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 <li><p>I want to avoid having a very downwardly biased variance! What controls how far away <span class="math inline">\(\bar{x}\)</span> is from <span class="math inline">\(\mu\)</span>? The sample size! Again, the larger the sample, the greater the likelihood that your sample mean will resemble the population mean.</p></li>
 <li><p>Having a downwardly biased variance is not a good thing– so if we focus on situations where samples end up having downwardly biased variance, what can we learn about these samples, so that we know what to avoid?</p></li>
 </ul>
-<p>(Insert behemoth dot plot)</p>
+<center>
+<iframe style="margin: 0px;" src="mega_dots.html" width="570" height="400" scrolling="yes" seamless="seamless" frameBorder="0">
+</iframe>
+</center>
 <ul>
 <li>When the samples whose means <span class="math inline">\(\bar{x}\)</span> are far off from the true population mean, they tend to have downwardly biased variance.
 <ul>
 <li>Take a look at the points that are far away from the true population mean– the samples represented by these points primarily came from small sample sizes (dark blue color).</li>
 </ul></li>
 </ul>
-<p>(STATIC BAR PLOT) * How the correction works: Without correction, the sample variance would be downwardly biased by a factor of N/(N-1). * In the plot below we see what percent of the “true” population variance an uncorrected sample variance achieves. The variances from smaller samples do the worst job of approaching 100% of the full variance.</p>
+<pre><code>## Warning: textfont.color doesn&#39;t (yet) support data arrays
+
+## Warning: textfont.color doesn&#39;t (yet) support data arrays</code></pre>
+<center>
+<iframe style="margin: 0px;" src="static_bar.html" width="570" height="400" scrolling="yes" seamless="seamless" frameBorder="0">
+</iframe>
+</center>
 <ul>
-<li>You can hover over the bars below to see what the percentage actually is. If we multiply this percentage by the correction, we correct for the discrepancy between sample and population variance. We demonstrate this below for samples of size N = 3.</li>
+<li>How the correction works: Without correction, the sample variance would be downwardly biased by a factor of N/(N-1).</li>
+<li><p>In the plot below we see what percent of the “true” population variance an uncorrected sample variance achieves. The variances from smaller samples do the worst job of approaching 100% of the full variance.</p></li>
+<li><p>You can hover over the bars below to see what the percentage actually is. If we multiply this percentage by the correction, we correct for the discrepancy between sample and population variance. We demonstrate this below for samples of size N = 3.</p></li>
 </ul>
 <div data-datacamp-exercise="" data-height="400" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJOID0gM1xuY29ycmVjdGlvbiA9IE4vKE4tMSlcblxuaG92ZXJfdmFsdWUgPSAwLjY2NjY2NjY3ICMgQ29ycmVjdCB0byBob3ZlcmVkIHZhbHVlIGZvciBOID0gM1xuXG4jIEFwcGx5IGNvcnJlY3Rpb25cbnBlcmNlbnRfb2ZfdHJ1ZV92YXJpYW5jZSA8LSBob3Zlcl92YWx1ZSAqIGNvcnJlY3Rpb25cblxucGFzdGUoIFwiQWZ0ZXIgY29ycmVjdGluZywgdGhlIHNhbXBsZSB2YXJpYW5jZSBleHBsYWlucyBcIiwgcGVyY2VudF9vZl90cnVlX3ZhcmlhbmNlICogMTAwLCBcIiUgb2YgdGhlIHRydWUgdmFyaWFuY2UuXCIsIHNlcCA9IFwiXCIsIGNvbGxhcHNlID0gTlVMTCkifQ==
