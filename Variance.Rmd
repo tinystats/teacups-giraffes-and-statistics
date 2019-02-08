@@ -79,7 +79,68 @@ There is an alternative with simpler, "better behaved" mathematical properties: 
 # Sum of Squares
 The sum of squares is an important calculation that we will see again for other statistical operations. The animation below illustrations how these sums of squares are "constructed" starting with the sample observations and then squaring each one's distance away from the mean.  
 
-(Image of squares shown in a physical/concrete way)
+```{r fig.show="animate", animation.hook = 'gifski', fig.width=7.2, fig.height=4.8, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.01666667, fig.align='center'}
+library(ggplot2)
+s <- data.frame(x=c(113, 146.5, 132, 70.5, 121, 55), y=c(8.75,1.25,3.75,3.75,6.25,1.25))
+s <- s[order(s$x),]
+s <- s[c(1,2,3,6,5,4),]
+s2 <- s
+s <- s[c(1,2,6,5,4,3),]
+m <- mean(s[,1])
+m2 <- 85
+lim <- c(0, 60)
+d <- data.frame(x1=s[,1], x2=rep(m, 6), y1=s$y, y2=(abs(s[,1]-m))+s$y)
+co <- c("#6FB4CE", "#D97FDA", "#DC5F24", "#C46A79", "#f93188", "#F88336")
+
+v <- do.call(cbind, lapply(1:6, function(x) seq(d[x,]$x1, d[x,]$x2, by = (d[x,]$x2-d[x,]$x1)/29)))
+vv <- lapply(1:30, function(y) data.frame(x1=v[y,], x2=d$x1, y1=s$y, y2=(abs(s[,1]-m))+s$y))
+
+pp <- function(x){
+  p1 <- ggplot()+geom_point(data=s, aes(x=x, y=y),color=co, size=4)+
+    theme_light()+ylim(lim)+geom_segment(aes(x = x2, y = y1, xend = x1, yend = y1), data = x, color=co, size=2)+labs(x="Teacup giraffe height", y=NULL)+theme(panel.border=element_blank(),panel.grid.minor=element_blank(), axis.ticks=element_blank())+
+    geom_segment(aes(x=m, xend=m, y=0, yend=lim[2]), linetype="dashed", color="black", size=2)+
+    annotate('text', x = 111.33, y = 53, label = "bar(x)",parse = TRUE,size=15)
+  p1
+}
+
+lapply(vv, function(x) pp(x))
+
+h <- do.call(cbind, lapply(1:6, function(x) seq(d[x,]$y1, d[x,]$y2, by = (d[x,]$y2-d[x,]$y1)/29)))
+hh <- lapply(1:30, function(y) data.frame(x1=s[,1], x2=rep(m, 6), y1=s$y, y2=h[y,]))
+
+pp2 <- function(x){
+  p2 <- ggplot()+geom_point(data=s, aes(x=x, y=y),color=co, size=4)+
+    theme_light()+ylim(lim)+geom_segment(aes(x = x1, y = y1, xend = x2, yend = y1), data = d, color=co, size=2)+
+  geom_segment(aes(x = x1, y = y2, xend = x1, yend = y1), data = x, color=co, size=2)+labs(x="Teacup giraffe height", y=NULL)+theme(panel.border=element_blank(),panel.grid.minor=element_blank(), axis.ticks=element_blank())+
+    geom_segment(aes(x=m, xend=m, y=0, yend=lim[2]), linetype="dashed", color="black", size=2)+
+    annotate('text', x = 111.33, y = 53, label = "bar(x)",parse = TRUE,size=15)
+p2
+}
+
+lapply(hh, function(x) pp2(x))
+
+pp22 <- function(x){
+  p2 <- ggplot()+theme_light()+geom_rect(data=d, mapping=aes(xmin=x1, xmax=x2, ymin=y1, ymax=y2), color=alpha(co, x),fill=co, alpha=x/5, size=2)+ylim(lim)+geom_segment(aes(x = x1, y = y1, xend = x2, yend = y1), data = d, color=co, size=2)+
+  geom_segment(aes(x = x1, y = y2, xend = x1, yend = y1), data = d, color=co, size=2)+
+    geom_point(data=s, aes(x=x, y=y),color=co, size=4)+
+    labs(x="Teacup giraffe height", y=NULL)+theme(panel.border=element_blank(),panel.grid.minor=element_blank(), axis.ticks=element_blank())+
+    geom_segment(aes(x=m, xend=m, y=0, yend=lim[2]), linetype="dashed", color="black", size=2)+
+    annotate('text', x = 111.33, y = 53, label = "bar(x)",parse = TRUE,size=15)
+p2
+}
+lapply(seq(0,1,0.1), function(x) pp22(x))
+
+pp3 <- function(x){
+p3 <- ggplot()+theme_light()+geom_rect(data=d, mapping=aes(xmin=x1, xmax=x2, ymin=y1, ymax=y2), color=co,fill=co, alpha=0.2, size=2)+
+  geom_point(data=s, aes(x=x, y=y), color=co, size=4)+
+  ylim(lim)+labs(x="Teacup giraffe height", y=NULL)+theme(panel.border=element_blank(),panel.grid.minor=element_blank(), axis.ticks=element_blank())+
+    geom_segment(aes(x=m, xend=m, y=0, yend=lim[2]), linetype="dashed", color="black", size=2)+
+    annotate('text', x = 111.33, y = 53, label = "bar(x)",parse = TRUE,size=15)
+p3
+}
+lapply(1:15, function(x) pp3())
+
+```
 
 # Variance, $\sigma^2$
 We need to take into account how many observations contributed to these sum of squares. So, we divide the sum of squares by our n. This step essentially takes the average of the squared differences from the mean. This is the variance.
