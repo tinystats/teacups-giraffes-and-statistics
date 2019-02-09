@@ -6,6 +6,103 @@ output:
       in_header: covariance_and_correlation_image.html
 ---
 
+
+* First intro narrative component: includes 2nd variable
+
+* Is there any relationship to height and why...
+
+* How can relationships between 2 variables be assessed?
+
+* Say you want to get one measure of how two variables change together-- one such measure is **the covariance**. 
+
+- The covariance elegantly combines the deviations of observations from two different variables into a single value. 
+
+- We begin with scores representing the distance of each observation from the means of both x and on y. 
+
+- Why deviations? Because we want to answer the question: do the x values and y values move together with respect their means or not. 
+
+- We still want to construct shapes with the deviation scores. 
+
+BLIke the variance, the values can fall on either side of the mean... 
+
+- The four things (but more like 3) different things that could happen are:
+
+  - 
+  - 
+  -
+  - quick little thumbnails.
+
+- So we multiply the two deviation scores. This is called the crossproduct. NOTE: We are in the dimension of a squared term. This will become important later. 
+
+Insert equation. 
+
+- SIDE NOTE: 
+Let's explore the attributes of the crossproduct. 
+  (1) We should note that the signs of the cross product will depend on whether or not the two x- and y- values from the same observation move in the same directions relative to their means. 
+  (2)  The magnitude of the cross-product will scale with the absolute value of the deviation scores.
+  
+- We sum the crossproducts and divide them by N (or N-1 in sample)-  so that we take into account how many observations contributed to this quantity. This final value is called the **covariance**. 
+
+- BUT-- the covariance is not an intuitive value. 
+Not only is this a squared term (which makes it difficult to interpret just like the variance was) but it is also is the product of two variables on possibly different scales.
+
+- For example, what would a covariance with units of mm^2* g^2 mean?
+
+- another point to make is that value of the covariance will be vastly different if we had decided to change the units (mm vs cm -- or g vs kg). Quora sentence. 
+
+-AS a result, we need to standardize!
+
+# How do we standardize the Covariance?
+
+- We need to rescale the covariance to fall within the boundaries of 0 and maximum spread of the data. 
+- The solution is to divide by the product of the standard deviations for each variable (The square root of the variances) -- the resulting value is called the Pearson correlation coefficient. The equation is shown below:
+-Eq.
+
+# What the does correlation mean?
+
+# Code it up. 
+
+write your function
+
+
+# Why do we divide by the product of the standard deviations? 
+Well, it's complicated, but it builds on the mathematical principle that the covariance between x and y will always end up being less than or equal to the product of the standard deviations of each variable on its own. If you don't take our word for it, press play below to see how the relationship between s(x)*s(y) and cov(x,y) looks. 
+
+{INSERT PLOT}
+
+  * Why are there clearly defined boundaries?
+    + Because at the edges is wehre the COv is the greatest value it can be-- it is equal to the sxsy there.
+    + The slope is 1. 
+    
+  * Where in the plot/ shape do the strongest correlations end up?
+      + On the edges -- when the absolute value of the numerator and denominator of the equation are equal-- the quotient will = 1 (or negative 1, depending on the sign of the covariance in the numerator)
+      
+
+# Examples: How we can manipulate different parts of the equation to predictably influence the resulting correlation value. 
+
+Comparing 4 point in perfect correlation, with not perfect
+
+(1) COV DIFF, but STANDARD DEVIATION
+(2) COVARIANCE is the SAME/ LARGER DIFF (Desiree's example)
+(3) both change (similar to 1 but pushed further...)
+
+
+# Correlation is not causation
+
+# Correlation does not capture relationships that are not linear
+
+
+^^ one of the above can be made into things to think about. 
+
+
+
+
+
+
+
+
+
+
 <div style="margin-bottom:50px">
 </div>
 \begin{equation}
@@ -14,3 +111,4 @@ output:
  \end{equation}
 <div style="margin-bottom:50px">
 </div>
+

@@ -142,6 +142,10 @@ lapply(1:15, function(x) pp3())
 
 ```
 
+Once the squares have been "constructed", we sum their squares, producing a single value.
+
+![](Squares1.png)
+
 # Variance, $\sigma^2$
 We need to take into account how many observations contributed to these sum of squares. So, we divide the sum of squares by our n. This step essentially takes the average of the squared differences from the mean. This is the variance.
 

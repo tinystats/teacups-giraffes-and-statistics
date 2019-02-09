@@ -368,7 +368,7 @@ div.tocify {
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
+<div id="TOC" class="tocify" style="position: static;">
 </div>
 </div>
 
@@ -425,7 +425,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">The Spread of the Data</h1>
+<h1 class="title toc-ignore"></h1>
 
 </div>
 
@@ -508,6 +508,11 @@ Explain why the sample variance would be downwardly biased if we did not correct
 <h1>Sum of Squares</h1>
 <p>The sum of squares is an important calculation that we will see again for other statistical operations. The animation below illustrations how these sums of squares are “constructed” starting with the sample observations and then squaring each one’s distance away from the mean.</p>
 <p><img src="Variance_files/figure-html/unnamed-chunk-1-.gif" width="691.2" style="display: block; margin: auto;" /></p>
+<p>Once the squares have been “constructed”, we sum their squares, producing a single value.</p>
+<div class="figure">
+<img src="Squares1.png" />
+
+</div>
 </div>
 <div id="variance-sigma2" class="section level1">
 <h1>Variance, <span class="math inline">\(\sigma^2\)</span></h1>
