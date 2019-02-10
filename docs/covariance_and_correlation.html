@@ -430,15 +430,134 @@ div.tocify {
 </div>
 
 
+<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
+<div id="gathering-data-on-another-variable" class="section level1">
+<h1>Gathering data on another variable</h1>
+<p>Back to the narrative of the teacup giraffes: we now include a 2nd variable * Is there any relationship to height? Why… * You wonder how the relationships between 2 variables can be assessed.</p>
+<ul>
+<li><p>Say you want to quantify how two variables change together– one such measure is the <strong>covariance</strong>.</p></li>
+<li><p>The covariance elegantly combines the deviations of observations from two different variables into a single value.</p></li>
+<li>We begin with scores representing the distance of each observation from the means of both x and on y. We call these the <strong>deviation</strong> scores on x and on y, respectively.</li>
+<li><p>Deviation scores will take on either a postive or negative sign.</p></li>
+<li><p>Why do we use the deviations? Because we want to answer the question ‘do the x values and y values move together with respect their means or not’.</p></li>
+<li><p>We still want to construct shapes with the deviation scores.</p></li>
+</ul>
+<p>BLIke the variance, the values can fall on either side of the mean…</p>
+<ul>
+<li><p>The four things (but more like 3) different things that could happen are:</p></li>
+<li></li>
+<li></li>
+<li></li>
+<li><p>quick little thumbnails.</p></li>
+<li>So we multiply the two deviation scores. This is called the <strong>crossproduct</strong>.</li>
+<li><p>NOTE: We are in the dimension of a squared term. This will become important later.</p></li>
+</ul>
 <div style="margin-bottom:50px">
 
 </div>
 <span class="math display" id="eq:equation1">\[\begin{equation}
  \tag{1}
- \Large {\sum_{i=1}^n (x_i - \mu_{x})^2 (y_i - \mu{y})^2}
+ \Large (x_i - \mu_{x})(y_i - \mu_{y})
  \end{equation}\]</span>
 <div style="margin-bottom:50px">
 
+</div>
+<ul>
+<li>SIDE NOTE: Let’s explore the attributes of the crossproduct.</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>We should note that the signs of the cross product will depend on whether or not the two x- and y- values from the same observation move in the same directions relative to their means.</li>
+<li>The magnitude of the cross-product will scale with the absolute value of the deviation scores.</li>
+</ol>
+<ul>
+<li>We <strong>sum the crossproducts</strong>:</li>
+</ul>
+<div style="margin-bottom:50px">
+
+</div>
+<span class="math display" id="eq:equation2">\[\begin{equation}
+ \tag{2}
+ \Large \sum_{i=1}^n (x_i - \mu_x)(y_i - \mu_y)
+ \end{equation}\]</span>
+<div style="margin-bottom:50px">
+
+</div>
+<p>And then <strong>divide them by N (or N-1 in sample)</strong> so that we have taken into account how many observations contributed to this quantity. This final value is called the <strong>covariance</strong>.</p>
+<div style="margin-bottom:50px">
+
+</div>
+<span class="math display" id="eq:equation3">\[\begin{equation}
+ \tag{3}
+ \Large cov = {\frac{1}{N}\sum_{i=1}^n (x_i - \mu_x)(y_i - \mu_y)}
+ \end{equation}\]</span>
+<div style="margin-bottom:50px">
+
+</div>
+<ul>
+<li><p>BUT– the covariance is not an intuitive value. Not only is this a squared term (which makes it difficult to interpret just like the variance was) but it is also is the product of two variables on possibly different scales.</p></li>
+<li><p>For example, what would a covariance with units of mm<sup>2* g</sup>2 mean?</p></li>
+<li><p>another point to make is that value of the covariance will be vastly different if we had decided to change the units (mm vs cm – or g vs kg). Quora sentence.</p></li>
+</ul>
+<p>-As a result, we need to standardize!</p>
+</div>
+<div id="how-do-we-standardize-the-covariance" class="section level1">
+<h1>How do we standardize the Covariance?</h1>
+<ul>
+<li>We need to rescale the covariance to fall within the boundaries of 0 and maximum spread of the data.</li>
+<li>The solution is to divide by the product of the standard deviations for each variable (The square root of the variances) – the resulting value is called the <strong>Pearson correlation coefficient</strong>. The equation is shown below:</li>
+</ul>
+<div style="margin-bottom:50px">
+
+</div>
+<span class="math display" id="eq:equation1">\[\begin{equation}
+ \tag{1}
+ \Large \frac{ \frac{1}{N} \sum_{i=1}^n (x_i - \mu_x)(y_i - \mu_y)}{\sigma_x \sigma_y}
+ \end{equation}\]</span>
+<div style="margin-bottom:50px">
+
+</div>
+</div>
+<div id="what-the-does-correlation-mean" class="section level1">
+<h1>What the does correlation mean?</h1>
+</div>
+<div id="code-it-up." class="section level1">
+<h1>Code it up.</h1>
+<p>In the window below, write your own function to compute the sample covariance of two variables, and call it <code>my_covariance( )</code>. Then create a second function called <code>my_correlation( )</code> in which you will compute the correlation of two variables. You may incorporate your function <code>my_covariance( )</code> into this section function to save yourself some steps.</p>
+<p>You will need to write both functions so that they will take two parameters. The parameters for <code>my_covariance( )</code> have been setup for you.</p>
+<div data-datacamp-exercise="" data-height="400" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoibXlfY292YXJpYW5jZSA8LSBmdW5jdGlvbih4LHkpe1xuXG4gIHJldHVybiggKVxufVxuXG5teV9jb3JyZWxhdGlvbiA8LSBmdW5jdGlvbih4LHkpe1xuXG4gcmV0dXJuKCApXG59Iiwic29sdXRpb24iOiJteV9jb3ZhcmlhbmNlIDwtIGZ1bmN0aW9uKHgseSl7XG4gIG1feCA8LSBtZWFuKHgpXG4gIG1feSA8LSBtZWFuKHkpXG5cbiAgZGV2aWF0aW9uX3ggPC0geCAtIG1feFxuICBkZXZpYXRpb25feSA8LSB5IC0gbV95XG4gIFxuICBjcm9zc3Byb2R1Y3QgPC0gZGV2aWF0aW9uX3ggKiBkZXZpYXRpb25feVxuXG4gIGNvdmFyaWFuY2UgPC0gIGNyb3NzcHJvZHVjdCAvIChsZW5ndGgoeCktMSkgIyBEaXZpZGVzIGJ5IE4tMVxuICByZXR1cm4oY292YXJpYW5jZSlcbn1cblxubXlfY29ycmVsYXRpb24gPC0gZnVuY3Rpb24oeCx5KXtcbiBjb3JyZWxhdGlvbiA8LSBteV9jb3ZhcmlhbmNlKHgseSkgLyAoc2QoeCkqc2QoeSkpXG4gcmV0dXJuKGNvcnJlbGF0aW9uKVxufSJ9
+</div>
+</div>
+<div id="why-divide-by-sigma_xsigma_y" class="section level1">
+<h1>Why divide by <span class="math inline">\(\sigma_x\sigma_y\)</span>?</h1>
+<p>Well, it’s complicated, but it builds on the mathematical principle that the covariance between x and y will never exceed the product of the standard deviations of each variable. This means the maximum If you don’t take our word for it, press play below to see how the relationship between s(x)*s(y) and cov(x,y) looks.</p>
+<p>{INSERT PLOT}</p>
+<p>As you look at the plot above, you may have the following questions: * Why are there clearly defined boundaries? + Because at the edges is wehre the COv is the greatest value it can be– it is equal to the sxsy there. + The slope is 1.</p>
+<ul>
+<li>Where in the plot/ shape do the strongest correlations end up?
+<ul>
+<li>On the edges – when the absolute value of the numerator and denominator of the equation are equal– the quotient will = 1 (or negative 1, depending on the sign of the covariance in the numerator)</li>
+</ul></li>
+</ul>
+</div>
+<div id="examples" class="section level1">
+<h1>Examples</h1>
+<p>How we can manipulate different parts of the equation to predictably influence the resulting correlation value.</p>
+<p>Comparing 4 point in perfect correlation, with not perfect</p>
+<ol style="list-style-type: decimal">
+<li>COV DIFF, but STANDARD DEVIATION</li>
+<li>COVARIANCE is the SAME/ LARGER DIFF (Desiree’s example)</li>
+<li>both change (similar to 1 but pushed further…)</li>
+</ol>
+</div>
+<div id="correlation-is-not-causation" class="section level1">
+<h1>Correlation is not causation</h1>
+<p>Correlation is not causation.</p>
+</div>
+<div id="correlation-does-not-capture-relationships-that-are-not-linear" class="section level1">
+<h1>Correlation does not capture relationships that are not linear</h1>
+<p>If the relationship is not linear, then correlation will not be meaningful.</p>
+<p>^^ one of the above can be made into things to think about.</p>
 </div>
 
 <!DOCTYPE html>
