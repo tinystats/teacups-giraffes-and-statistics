@@ -573,12 +573,12 @@ p2 <- mm %>%
 N = 3
 correction = N/(N-1)
 
-hover_value = 0.66666667 # Correct to hovered value for N = 3
+hover_value = 67.22902 # % Value when hovering over bar for N = 3
 
 # Apply correction
 percent_of_true_variance <- hover_value * correction
 
-paste( "After correcting, the sample variance explains ", percent_of_true_variance * 100, "% of the true variance.", sep = "", collapse = NULL)
+paste( "After correcting, the sample variance explains ", percent_of_true_variance, "% of the true variance.", sep = "", collapse = NULL)
 
 
 ```
