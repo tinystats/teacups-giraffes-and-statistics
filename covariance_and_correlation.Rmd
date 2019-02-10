@@ -96,6 +96,8 @@ Not only is this a squared term (which makes it difficult to interpret just like
 </div>
 
 # What the does correlation mean?
+You can interpret the correlation as...
+
 
 # Code it up. 
 In the window below, write your own function to compute the sample covariance of two variables, and call it `my_covariance( )`. Then create a second function called `my_correlation( )` in which you will compute the correlation of two variables. You may incorporate your function `my_covariance( )` into this section function to save yourself some steps.

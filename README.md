@@ -1,2 +1,2 @@
-# cars
-testing R markdown out
+# Statistics with R
+Uses RMarkdown to create a series of modules for learning R basics and statistics.
