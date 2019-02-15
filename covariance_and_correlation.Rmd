@@ -435,15 +435,7 @@ cor_var <- function(x){
   return(d)
 }
 
-m <- list(
-  l = 50,
-  r = 50,
-  b = 10,
-  t = 10,
-  pad = 4
-)
-
-d <- lapply(1:4006, function(x) cor_var())
+d <- lapply(1:5006, function(x) cor_var())
 dd <- as.data.frame(do.call(rbind, lapply(d, function(x) cbind(var(x)[1,1], var(x)[2,2], var(x)[1,2], cor(x)[1,2]))))
 colnames(dd) <- c("var_x", "var_y", "cov_xy", "cor")
 dd$p_sd <- sqrt(dd$var_x)*sqrt(dd$var_y)
@@ -454,13 +446,23 @@ ff <- function(x){
   return(d)
 }
 
-pd <- do.call(rbind, lapply(seq(39, 4000, 40), function(x) ff(x)))
+pd <- do.call(rbind, lapply(seq(49, 5000, 50), function(x) ff(x)))
 
 p <- data.frame(var_x=Inf, var_y=Inf, cov_xy=Inf, cor=0, p_sd=Inf, frame=0)
 pd <- rbind(pd, p)
 
+m <- list(
+  l = 100,
+  r = 100,
+  b = 10,
+  t = 10,
+  pad = 4
+)
+
 p <- pd %>%
   plot_ly(
+    width=700, 
+    height=450,
     type = 'scatter',
     mode='markers',
     x = ~cov_xy,
@@ -478,16 +480,17 @@ p <- pd %>%
     transition = 0,
     redraw = FALSE
   )%>%
-  layout( margin= m,
+  config(displayModeBar = F) %>%
+  layout(margin= m, autosize=F,
     xaxis = list(range=c(-3,3), zeroline=FALSE, title="Covariance"),
-    yaxis = list(range=c(-0.1,4), zeroline=FALSE, title="Product of standard deviations")
+    yaxis = list(range=c(-0.1,4.5), zeroline=FALSE, title="Product of standard deviations")
     )%>%
-  animation_slider(currentvalue = list(prefix = "Number of Samples: ", font = list(color="grey70", size=13)))
+  animation_slider(currentvalue = list(prefix = "Number of Samples: ", font = list(color="grey70", size=14)))
 
 htmltools::save_html(p,"cov_vs_sxsy.html")
 
 ```
-<center><iframe style="margin: 0;" src="cov_vs_sxsy.html" width="800" height="650" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
+<center><iframe style="margin: 0;" src="cov_vs_sxsy.html" width="720" height="500" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
 
 As you look at the plot above, you may have the following questions:
   * Why are there clearly defined boundaries?
@@ -505,7 +508,7 @@ As you look at the plot above, you may have the following questions:
 ## Correlation does not capture relationships that are not linear
 If the relationship is not linear, then correlation will not be meaningful. Check out the plot below. There is a clear U-shaped relationship between the two variables, but the correlation coefficient for these data is very close to 0. To meausure non-linear relationships a different metric must be used.
 
-<center>![](corr_curve.png){width=70%}</center>
+<center>![](corr_curve.png){width=60%}</center>
   
   
 

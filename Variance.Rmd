@@ -450,14 +450,14 @@ Well, it depends on how far away $\bar{x}$ is from the true $\mu$. The further a
   
   * Having a downwardly biased variance is not a good thing-- so if we focus on situations where samples end up having downwardly biased variance, what can we learn about these samples, so that we know what to avoid?
 
-```{r, tut=FALSE, echo=FALSE, message= FALSE}
+```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE}
 library(ggplot2)
 library(plotly)
 set.seed(12)
 d <- rnorm(50, 10, 2)
 d1 <- rnorm(50, 18, 1.2)
 d <- c(d,d1)
-m <- mean(d)
+mm <- mean(d)
 v <- var(d)
 gen_data <- function(x){
   d2 <- sample(size=sample(size=1, seq(from = 2, to = 10, by = 1)), d)
@@ -501,10 +501,18 @@ hline <- function(y = 0, color = "black") {
   )
 }
 
-
+m <- list(
+  l = 100,
+  r = 100,
+  b = 10,
+  t = 10,
+  pad = 4
+)
 
 p <- pd %>%
   plot_ly(
+    width=700, 
+    height=450,
     type = 'scatter',
     mode='markers',
     x = ~mean,
@@ -522,20 +530,21 @@ p <- pd %>%
     transition = 0,
     redraw = FALSE
   )%>%
-    layout(
-      xaxis = list(range=c(7,21), zeroline=FALSE, title="Mean"),
-      yaxis = list(range=c(-1,40), zeroline=FALSE, title="Biased variance"), 
-      shapes = list(vline(m), hline(v)))%>%
-  animation_slider(currentvalue = list(prefix = "Number of Samples: ", font = list(color="black")))
+  config(displayModeBar = F) %>%
+    layout(margin=m,autosize=F, 
+      xaxis = list(range=c(7,20.5), zeroline=FALSE, title="Mean"),
+      yaxis = list(range=c(-2,38), zeroline=FALSE, title="Biased variance"), 
+      shapes = list(hline(v),vline(mm)))%>%
+  animation_slider(currentvalue = list(prefix = "Number of Samples: ", font = list(color="grey70", size=14)))
   htmltools::save_html(p,"mega_dots.html")
 ```  
 
-<center><iframe style="margin: 0px;" src="mega_dots.html" width="570" height="400" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
+<center><iframe style="margin: 0px;" src="mega_dots.html" width="720" height="500" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
 
   * When the samples whose means $\bar{x}$ are far off from the true population mean, they tend to have downwardly biased variance. 
     * Take a look at the points that are far away from the true population  mean-- the samples represented by these points primarily came from small sample sizes (dark blue color).
   
-```{r, tut=FALSE, echo=FALSE, message= FALSE}
+```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE}
 library(ggplot2)
 library(plotly)
 data <- do.call(rbind, lapply(1:20000, function(x) gen_data()))
@@ -544,6 +553,8 @@ mm <- aggregate(b_var~N, data=data, function(y) (mean(y)/var(d))*100)
 
 p2 <- mm %>%
   plot_ly(
+    width=650, 
+    height=350,
     type = 'bar',
     x = ~N,
     y = ~b_var,
@@ -553,14 +564,14 @@ p2 <- mm %>%
     hoverinfo="y"
   )%>% 
   config(displayModeBar = F) %>%
-  layout(
+  layout(margin=m,autosize=F,
     yaxis = list(range=c(0,90), zeroline=FALSE, title="Biased Sample variance / Pop. variance (%)"), 
     xaxis = list(title="Sample Size"))%>%
   hide_colorbar()
   htmltools::save_html(p2,"static_bar.html")
 ```
 
-<center><iframe style="margin: 0px;" src="static_bar.html" width="570" height="400" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
+<center><iframe style="margin: 0px;" src="static_bar.html" width="670" height="400" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
 
    * How the correction works: Without correction, the sample variance would be downwardly biased by a factor of N/(N-1).
    * In the plot below we see what percent of the "true" population variance an uncorrected sample variance achieves. The variances from smaller samples do the worst job of approaching 100% of the full variance. 

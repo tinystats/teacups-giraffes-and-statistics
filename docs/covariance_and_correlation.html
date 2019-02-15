@@ -368,7 +368,7 @@ div.tocify {
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify" style="position: static;">
+<div id="TOC" class="tocify">
 </div>
 </div>
 
@@ -425,7 +425,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore"></h1>
+<h1 class="title toc-ignore">Covariance and Correlation</h1>
 
 </div>
 
@@ -631,7 +631,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 <p>Well it’s complicated, but it builds on the mathematical principle that the covariance of x and y will never exceed the product of the standard deviations of x and y. This means that the maximum correlation value will occur when the absolute value of the covariance and the product of the standard deviations are equal.</p>
 <p>If you don’t take our word for it, press play below to see what the relationship between <span class="math inline">\({s}_x{s}_y\)</span> and <span class="math inline">\({cov(x,y)}\)</span> looks like.</p>
 <center>
-<iframe style="margin: 0;" src="cov_vs_sxsy.html" width="800" height="650" scrolling="yes" seamless="seamless" frameBorder="0">
+<iframe style="margin: 0;" src="cov_vs_sxsy.html" width="720" height="500" scrolling="yes" seamless="seamless" frameBorder="0">
 </iframe>
 </center>
 <p>As you look at the plot above, you may have the following questions: * Why are there clearly defined boundaries? + Because at the edges is where the covariance is the greatest value that it can be– it is equal to the product of the standard deviations there. + The slope is 1 at this boundary.</p>
@@ -649,7 +649,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 <h2>Correlation does not capture relationships that are not linear</h2>
 <p>If the relationship is not linear, then correlation will not be meaningful. Check out the plot below. There is a clear U-shaped relationship between the two variables, but the correlation coefficient for these data is very close to 0. To meausure non-linear relationships a different metric must be used.</p>
 <center>
-<img src="corr_curve.png" style="width:70.0%" />
+<img src="corr_curve.png" style="width:60.0%" />
 </center>
 </div>
 <div id="correlation-is-not-causation" class="section level2">
