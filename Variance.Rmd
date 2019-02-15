@@ -9,6 +9,7 @@ output:
 <div class="alert alert-info">
   **Module learning objectives:**
   <ol> 
+  <li> Describe the steps for constructing the sum of squares </>
   <li> Describe how the standard deviations can allow us to forecast which data values will be common or rare   </li>
   <li> Write a function for the variance and standard deviation </li>
   <li> Explain why the sample variance would be downwardly biased if we did not correct it by diving by (N-1) </li>
@@ -335,22 +336,21 @@ sd(heights_island1)
 
 <div style="margin-bottom:50px">
 
-**[TEA AND MARMALADE BREAK]**
+<center>![](Marmalade.png){width=650px}</center>
 
 # Population vs Sample (N vs N-1)
-
 We have to correct the calculated variance with by dividing by N-1. Let's understand why:
 
   * Let's recall that when we calculate the sum of squares, we only have the sample mean $\bar{x}$ to go off of as our center point. 
   
-  (Insert $\bar{x}$ sum of squares graph)
+  <center>![](Static_ssq.png){width=500px}</center>
 
   * We must first acknowledge that while the population $\mu$ is unknowable, the chance that the sample $\bar{x}$ and the population $\mu$ are the same is unlikely. 
     + It's also worth pointing out that the risk that $\bar{x}$ and $\mu$ are not even values close to each other is much increased when $\bar{x}$ has been calculated from a small sample. 
     
   * Recognizing that the true population mean value is probably some *other* value than our $\bar{x}$ value, let's recalculate the sum of squares, this time using the true population $\mu$ as our center point, which we will represent with a line at an arbitrary distance away from the one at $\bar{x}$ that we used previously.
 
-```{r fig.show="animate", animation.hook = 'gifski', fig.width=7.2, fig.height=10, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.01666667}
+```{r fig.show="animate", animation.hook = 'gifski', fig.width=7.2, fig.height=10, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.01666667, fig.align = 'center'}
 library(ggplot2)
 s <- data.frame(x=c(113, 146.5, 132, 70.5, 121, 55), y=c(8.75,1.25,3.75,3.75,6.25,1.25))
 s <- s[order(s$x),]
@@ -435,7 +435,7 @@ lapply(1:15, function(x) pp3())
  
   * When we compare the SS in both of these scenarios (1: using \bar{x} or 2: using some other center line), we see that the sum of squares from the other line will *always* be greater than the $\bar{x}$ SS. This is true because by definition of being the sample mean, the line at $\bar{x}$ will always be the "center" of the values in our sample. It's location already minimizes the total distance of all the observations to a center. A line at any other location (i.e. the true population) would be a line that is not mimimizing the distance for observations in our sample!
   
-  (Show OBVIOUS comparison of the stacked up squares from mu line being greater)
+<center>![](Squares2.png){width=750px}</center>
 
   * Therefore, when we calculate the SS (and consequently, the variance and the standard deviation) using the sample mean $\bar{x}$, we are most likely arriving at a value that is downwardly biased compared to what the true variance or standard deviation would be if we were able to know and use the population mean mu. 
   
@@ -443,8 +443,7 @@ lapply(1:15, function(x) pp3())
   
 # Things to think about...
 **How badly can the variance be downwardly biased?**
-  (NOTE: refer to just variance or also standard dev from here on....?)
-  Well, it depends on how far away $\bar{x}$ is from the true $\mu$. The further away it is, the worse the downward bias will be!
+Well, it depends on how far away $\bar{x}$ is from the true $\mu$. The further away it is, the worse the downward bias will be!
   
   * I want to avoid having a very downwardly biased variance! What controls how far away $\bar{x}$ is from $\mu$?
   The sample size! Again, the larger the sample, the greater the likelihood that your sample mean will resemble the population mean. 
@@ -584,9 +583,4 @@ paste( "After correcting, the sample variance explains ", percent_of_true_varian
 ```
 
   * Try hovering over the percentage values for the different sample sizes below, and see yourself that correction adjusts the sample variance to the full variance. 
-
-**More things to think about**
-  * Show how the Sum of Square for a non-normal distribution is not balanced on either side of the mean
-  * Maybe have scale illo showing sum of squares being unbalanced/ unequal
-
 

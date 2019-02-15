@@ -435,6 +435,8 @@ div.tocify {
 <strong>Module learning objectives:</strong>
 <ol>
 <li>
+Describe the steps for constructing the sum of squares &lt;/&gt;
+<li>
 Describe how the standard deviations can allow us to forecast which data values will be common or rare
 </li>
 <li>
@@ -643,7 +645,9 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 </div>
 <div style="margin-bottom:50px">
 
-<p><strong>[TEA AND MARMALADE BREAK]</strong></p>
+<center>
+<img src="Marmalade.png" width="650" />
+</center>
 </div>
 <div id="population-vs-sample-n-vs-n-1" class="section level1">
 <h1>Population vs Sample (N vs N-1)</h1>
@@ -651,7 +655,9 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 <ul>
 <li>Let’s recall that when we calculate the sum of squares, we only have the sample mean <span class="math inline">\(\bar{x}\)</span> to go off of as our center point.</li>
 </ul>
-<p>(Insert <span class="math inline">\(\bar{x}\)</span> sum of squares graph)</p>
+<center>
+<img src="Static_ssq.png" width="500" />
+</center>
 <ul>
 <li>We must first acknowledge that while the population <span class="math inline">\(\mu\)</span> is unknowable, the chance that the sample <span class="math inline">\(\bar{x}\)</span> and the population <span class="math inline">\(\mu\)</span> are the same is unlikely.
 <ul>
@@ -659,11 +665,13 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 </ul></li>
 <li>Recognizing that the true population mean value is probably some <em>other</em> value than our <span class="math inline">\(\bar{x}\)</span> value, let’s recalculate the sum of squares, this time using the true population <span class="math inline">\(\mu\)</span> as our center point, which we will represent with a line at an arbitrary distance away from the one at <span class="math inline">\(\bar{x}\)</span> that we used previously.</li>
 </ul>
-<p><img src="Variance_files/figure-html/unnamed-chunk-11-.gif" width="691.2" /></p>
+<p><img src="Variance_files/figure-html/unnamed-chunk-11-.gif" width="691.2" style="display: block; margin: auto;" /></p>
 <ul>
 <li>When we compare the SS in both of these scenarios (1: using {x} or 2: using some other center line), we see that the sum of squares from the other line will <em>always</em> be greater than the <span class="math inline">\(\bar{x}\)</span> SS. This is true because by definition of being the sample mean, the line at <span class="math inline">\(\bar{x}\)</span> will always be the “center” of the values in our sample. It’s location already minimizes the total distance of all the observations to a center. A line at any other location (i.e. the true population) would be a line that is not mimimizing the distance for observations in our sample!</li>
 </ul>
-<p>(Show OBVIOUS comparison of the stacked up squares from mu line being greater)</p>
+<center>
+<img src="Squares2.png" width="750" />
+</center>
 <ul>
 <li><p>Therefore, when we calculate the SS (and consequently, the variance and the standard deviation) using the sample mean <span class="math inline">\(\bar{x}\)</span>, we are most likely arriving at a value that is downwardly biased compared to what the true variance or standard deviation would be if we were able to know and use the population mean mu.</p></li>
 <li><p>This is why we can “adjust” our sample variance by diving by N-1 instead of just N. By diving by a smaller value (i.e. N-1 instead of N), we can ensure that the overall value of the variance and standard deviation will be a little larger, correcting for the downward bias we’ve described.</p></li>
@@ -671,7 +679,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 </div>
 <div id="things-to-think-about" class="section level1">
 <h1>Things to think about…</h1>
-<p><strong>How badly can the variance be downwardly biased?</strong> (NOTE: refer to just variance or also standard dev from here on….?) Well, it depends on how far away <span class="math inline">\(\bar{x}\)</span> is from the true <span class="math inline">\(\mu\)</span>. The further away it is, the worse the downward bias will be!</p>
+<p><strong>How badly can the variance be downwardly biased?</strong> Well, it depends on how far away <span class="math inline">\(\bar{x}\)</span> is from the true <span class="math inline">\(\mu\)</span>. The further away it is, the worse the downward bias will be!</p>
 <ul>
 <li><p>I want to avoid having a very downwardly biased variance! What controls how far away <span class="math inline">\(\bar{x}\)</span> is from <span class="math inline">\(\mu\)</span>? The sample size! Again, the larger the sample, the greater the likelihood that your sample mean will resemble the population mean.</p></li>
 <li><p>Having a downwardly biased variance is not a good thing– so if we focus on situations where samples end up having downwardly biased variance, what can we learn about these samples, so that we know what to avoid?</p></li>
@@ -704,7 +712,6 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJOID0gM1xuY29ycmVjdGlvbiA9IE4vKE4tMSlcblxuaG92
 <ul>
 <li>Try hovering over the percentage values for the different sample sizes below, and see yourself that correction adjusts the sample variance to the full variance.</li>
 </ul>
-<p><strong>More things to think about</strong> * Show how the Sum of Square for a non-normal distribution is not balanced on either side of the mean * Maybe have scale illo showing sum of squares being unbalanced/ unequal</p>
 </div>
 
 <!DOCTYPE html>
