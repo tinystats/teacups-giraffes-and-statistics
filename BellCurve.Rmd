@@ -4,6 +4,7 @@ output:
   bookdown::html_document2:
     includes:
       in_header: BellCurve_image.html
+      after_body: foot.html
 ---
 
 <!-- <link href="style.css" rel="stylesheet" /> -->
@@ -16,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 <div class="alert alert-info">
   **Module learning objectives:**
   <ol>
-  <li> Define a distribution </li>
+  <li> Define a distribution </li>z
   <li> Describe the characteristics of a normal distribution </li>
   <li> Create a histogram using `ggplot` and modify its appearance </li>
   <li> Define Sample and Population </li>

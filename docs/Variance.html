@@ -368,7 +368,7 @@ div.tocify {
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
+<div id="TOC" class="tocify" style="position: static;">
 </div>
 </div>
 
@@ -425,7 +425,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">The Spread of the Data</h1>
+<h1 class="title toc-ignore"></h1>
 
 </div>
 
@@ -689,10 +689,8 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 </iframe>
 </center>
 <ul>
-<li>When the samples whose means <span class="math inline">\(\bar{x}\)</span> are far off from the true population mean, they tend to have downwardly biased variance.
-<ul>
-<li>Take a look at the points that are far away from the true population mean– the samples represented by these points primarily came from small sample sizes (dark blue color).</li>
-</ul></li>
+<li><p>When the samples whose means <span class="math inline">\(\bar{x}\)</span> are far off from the true population mean, they tend to have downwardly biased variance.</p></li>
+<li><p>Take a look at the points that are far away from the true population mean– the samples represented by these points primarily came from small sample sizes (dark blue color).</p></li>
 </ul>
 <center>
 <iframe style="margin: 0px;" src="static_bar.html" width="670" height="400" scrolling="yes" seamless="seamless" frameBorder="0">
@@ -700,15 +698,14 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 </center>
 <ul>
 <li>How the correction works: Without correction, the sample variance would be downwardly biased by a factor of N/(N-1).</li>
-<li><p>In the plot below we see what percent of the “true” population variance an uncorrected sample variance achieves. The variances from smaller samples do the worst job of approaching 100% of the full variance.</p></li>
+<li><p>In the plot above we see what percent of the “true” population variance an uncorrected sample variance achieves. The variances from smaller samples do the worst job of approaching 100% of the full variance.</p></li>
 <li><p>You can hover over the bars below to see what the percentage actually is. If we multiply this percentage by the correction, we correct for the discrepancy between sample and population variance. We demonstrate this below for samples of size N = 3.</p></li>
+<li><p>Try hovering over the bars values above for the different sample sizes, and see yourself that correction adjusts the sample variance to the full variance. You can you the window below to change the N and the hover values and then run the code.</p></li>
 </ul>
+<p><strong>[MAKE THIS NOT A DATA CAMP WINDOW?]</strong></p>
 <div data-datacamp-exercise="" data-height="400" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJOID0gM1xuY29ycmVjdGlvbiA9IE4vKE4tMSlcblxuaG92ZXJfdmFsdWUgPSA2Ny4yMjkwMiAjICUgVmFsdWUgd2hlbiBob3ZlcmluZyBvdmVyIGJhciBmb3IgTiA9IDNcblxuIyBBcHBseSBjb3JyZWN0aW9uXG5wZXJjZW50X29mX3RydWVfdmFyaWFuY2UgPC0gaG92ZXJfdmFsdWUgKiBjb3JyZWN0aW9uXG5cbnBhc3RlKCBcIkFmdGVyIGNvcnJlY3RpbmcsIHRoZSBzYW1wbGUgdmFyaWFuY2UgZXhwbGFpbnMgXCIsIHBlcmNlbnRfb2ZfdHJ1ZV92YXJpYW5jZSwgXCIlIG9mIHRoZSB0cnVlIHZhcmlhbmNlLlwiLCBzZXAgPSBcIlwiLCBjb2xsYXBzZSA9IE5VTEwpIn0=
 </div>
-<ul>
-<li>Try hovering over the percentage values for the different sample sizes below, and see yourself that correction adjusts the sample variance to the full variance.</li>
-</ul>
 </div>
 
 <!DOCTYPE html>

@@ -18,7 +18,6 @@ navbar:
 output: 
   bookdown::html_document2:
     includes:
-        after_body: foot.html
     css: style.css
     toc: true
     toc_float: true

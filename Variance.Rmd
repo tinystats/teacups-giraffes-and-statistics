@@ -4,6 +4,7 @@ output:
   bookdown::html_document2:
     includes:
       in_header: Variance_image.html
+      after_body: foot.html
 ---
 
 <div class="alert alert-info">
@@ -542,7 +543,8 @@ p <- pd %>%
 <center><iframe style="margin: 0px;" src="mega_dots.html" width="720" height="500" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
 
   * When the samples whose means $\bar{x}$ are far off from the true population mean, they tend to have downwardly biased variance. 
-    * Take a look at the points that are far away from the true population  mean-- the samples represented by these points primarily came from small sample sizes (dark blue color).
+  
+  * Take a look at the points that are far away from the true population  mean-- the samples represented by these points primarily came from small sample sizes (dark blue color).
   
 ```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE}
 library(ggplot2)
@@ -574,9 +576,13 @@ p2 <- mm %>%
 <center><iframe style="margin: 0px;" src="static_bar.html" width="670" height="400" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
 
    * How the correction works: Without correction, the sample variance would be downwardly biased by a factor of N/(N-1).
-   * In the plot below we see what percent of the "true" population variance an uncorrected sample variance achieves. The variances from smaller samples do the worst job of approaching 100% of the full variance. 
+   * In the plot above we see what percent of the "true" population variance an uncorrected sample variance achieves. The variances from smaller samples do the worst job of approaching 100% of the full variance. 
 
    * You can hover over the bars below to see what the percentage actually is. If we multiply this percentage by the correction, we correct for the discrepancy between sample and population variance. We demonstrate this below for samples of size N = 3. 
+   
+  * Try hovering over the bars values above for the different sample sizes, and see yourself that correction adjusts the sample variance to the full variance. You can you the window below to change the N and the hover values and then run the code. 
+  
+  **[MAKE THIS NOT A DATA CAMP WINDOW?]**
    
 ```{r}
 
@@ -593,5 +599,4 @@ paste( "After correcting, the sample variance explains ", percent_of_true_varian
 
 ```
 
-  * Try hovering over the percentage values for the different sample sizes below, and see yourself that correction adjusts the sample variance to the full variance. 
 

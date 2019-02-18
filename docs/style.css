@@ -9,16 +9,22 @@ body {
 	font-size: 19px;
 }
 
+h1 {
+  padding-top: 2em !important;
+  margin-top: -1em !important;
+}
 
+h1.title.toc-ignore {
+  display: none;
+}
 
 img{
-  margin: 0 auto; /*centers*/ 
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-left: auto !important;
+  margin-right: auto !important; /*centers*/ 
 }
 
 p {
-  margin: 0 0 1em;
+  margin: 0 0 1em 0 !important;
 }
 
 ul {
@@ -30,6 +36,7 @@ ul {
   }
 
 .alert-info {
+  padding: 1.5em;
   background-color: #a0d1ef !important;
 }
 
@@ -49,6 +56,7 @@ ul {
   position: relative;
 }
 
+/*TOCIFY code*/
 
 div.tocify {
     width: 100% !important;
@@ -106,15 +114,42 @@ div.tocify {
 }
 
 .list-group-item.active:hover {
-    z-index: 2;
-    color: DarkSlateGray;
-    background-color: white;
-    border: none;
+  z-index: 2;
+  color: DarkSlateGray;
+  background-color: white;
+  border: none;
 }
 
 
-.foot img {
-   width: 50px;
+.foot_image {
+  width: 50px;
+  filter: grayscale(100%);
+}
+
+.foot {
+  font-size: .75em;
+  text-transform: uppercase;
+  color: #808080;
+  text-align: center;
+}
+
+.foot hr{
+  width: 80%;
+}
+
+.tocify-extend-page {
+  height: 0px !important;
+}
+
+
+/* DATA CAMP WINDOWS */
+
+.powered-by-datacamp {
+  display: none !important;
+}
+
+.datacamp-exercise {
+  margin: 0 0 1em 0 !important;
 }
 
 
@@ -125,14 +160,18 @@ div.tocify {
 
 /*.main-image is for landing page*/
 .main-image {
-    width: 100%;
-    display: block; /*This gets rid of the weird little space from inline-block*/
-  }
+  width: 100%;
+  display: block; /*This gets rid of the weird little space from inline-block*/
+  margin-top: -50px;
+  margin-bottom: 10px;
+}
+
 
 /*.big_image is for module pages*/
 
 .big_image {
-  margin-top: -60px;
+  margin-top: -50px;
+  margin-bottom: 2em;
   width: 100%;
 }
 
@@ -169,20 +208,81 @@ div.tocify {
  }*/
 
 .big-image-text { 
-    letter-spacing: 0.065em;
-    line-height: 1em;
-    font-size: 68px;
-    text-transform: uppercase;
-    text-align: center; 
-    display:block;
-    color: #fff;
+  letter-spacing: 0.065em;
+  line-height: 1em;
+  font-size: 68px;
+  text-transform: uppercase;
+  text-align: center; 
+  display:block;
+  color: #fff;
+}
+
+.color-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.1);
+}
+
+/* Landing Page*/
+
+.back-panel {
+  max-width: 1500px;
+  background: white;
+  margin: 0 auto;
+  margin-top: 3em;
+  padding: 0 0em;
+}
+
+.back-panel-contents {
+  width: 99%;
+  display: flex;
+  margin: 0 auto;
+}
+
+.color-textbox {
+  width:70%;
+  background: #4accc2;
+  display: table;
+  color: white;
+  text-align: center;
+  font-weight: normal;
+  font-size: 2rem;
+  padding: 3rem 8rem 8rem 8rem;
+  display: table-cell;
+  font-weight: normal;
+  text-transform: normal;
+  margin-bottom: 3em;
+}
+
+.color-textbox-blue {
+  background: #5eade3;
+}
+
+.color-textbox-title {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.5rem;
+  padding: 4rem 0 0 0;
+}
+
+
+.landing-subimage {
+  width:30%;
+}
+
+@media only screen and (max-width: 768px) {
+  div.col-xs-12.col-sm-4.col-md-3 {
+    display: none;
   }
 
-.color-overlay{
-    position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background-color: rgba(0,0,0,.1);
+  .toc-content {
+    width: 100%;
   }
+}
+
+
+

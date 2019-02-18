@@ -4,6 +4,7 @@ output:
   bookdown::html_document2:
     includes:
       in_header: covariance_and_correlation_image.html
+      after_body: foot.html
 ---
 
 <div class="alert alert-info">
@@ -183,7 +184,7 @@ The covariance elegantly combines the deviations of observations from two differ
 
 We observe this below with a subset of 5 points from our scatterplot. Positive deviations are shown in red, negative deviations in blue. 
 
-**[INSERT FULL SCATTERPLOT WITH 5 OBS CIRCLED]**
+
 <center>![](points.png){width=650px}</center>
 
 Why do we use the deviations? Because we want to know whether the x-values and y-values move together with respect to their means or not'. For example, when an observation's deviation on x is above $\bar{x}$, will its deviation on y also be above $/bar{y}$? Using this line of thought, we can begin to systematically characterize how "together" the x and y values will change as we move from one observation to the next. 
@@ -297,7 +298,7 @@ lapply(1:15, function(x) pp3())
 <div style="margin-bottom:50px">
 </div>
 
- **[ADD IN SUMMED SHAPES ILLO]**
+<center>![](Shapes 2.png){width=90%}</center>
 
 (4) We then **divide the sum of the crossproduct by N (or N-1 in sample)**  so that we have taken into account how many observations contributed to this quantity. This final number is called the **covariance**, and its value tells us how much our two variables fluctuate together. The higher the absolute value of the covariance is, the more closely the two variables fluctuates together. 
 
@@ -413,11 +414,12 @@ my_correlation <- function(x,y){
 
 Wow, you can see that there is a negative relaionship between giraffe heights and how much celery giraffes eat. Could this be due to celery being a negative calorie vegetable? Are teacup giraffes onto something here?
 
-**[Celery and giraffe illustration]**
+<center>![](Celery.png){width=50%}</center>
 
 # The Standardizer
 You can take a look at the illustration below to see a conceptual summary of how correlation will standarize the covariance, translating it into an easily interpretable metric that will always be bound by -1 and 1. 
 
+![](Factory.png)
 
 # Why divide by $\sigma_x\sigma_y$? 
 Well it's complicated, but it builds on the mathematical principle that the covariance of x and y will never exceed the product of the standard deviations of x and y. This means that the maximum correlation value will occur when the absolute value of the covariance and the product of the standard deviations are equal. 
@@ -503,13 +505,12 @@ As you look at the plot above, you may have the following questions:
   
 **[Another piece of the puzzle involves the fact that the correlation is a scaleless value.]**
     
-# Things to think about...
+# Things to think about
 
 ## Correlation does not capture relationships that are not linear
 If the relationship is not linear, then correlation will not be meaningful. Check out the plot below. There is a clear U-shaped relationship between the two variables, but the correlation coefficient for these data is very close to 0. To meausure non-linear relationships a different metric must be used.
 
 <center>![](corr_curve.png){width=60%}</center>
-  
   
 
 

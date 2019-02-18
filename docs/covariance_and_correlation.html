@@ -31,9 +31,9 @@
 <link href="style.css" rel="stylesheet">
 
   <div class="image-descript"> 
-		<img class="big_image" src="cave.png">
+		<img class="big_image" src="log.png">
 		<div class="image-text">
-			<div class="lil-image-text">Insert nice phrase:</div>
+			<div class="lil-image-text">A Tale of Two Variables:</div>
 			<div class="big-image-text"><strong>COVARIANCE & CORRELATION</strong></div>
 		</div>
   </div>
@@ -368,7 +368,7 @@ div.tocify {
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
+<div id="TOC" class="tocify" style="position: static;">
 </div>
 </div>
 
@@ -425,7 +425,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Covariance and Correlation</h1>
+<h1 class="title toc-ignore"></h1>
 
 </div>
 
@@ -501,7 +501,6 @@ Looking at the scatterplot, there seems to be a relationship, but you will need 
 <li>As we did for the variance, we begin by measuring how far each observation lies from the mean. But unlike the calcuation for the variance, each observation now includes two variables (each with its own mean) that we need to account for. We will need to <strong>calculate the observation’s distance from each variable’s mean</strong>. We call each distance the <strong>deviation</strong> scores on x and on y, respectively. Like the variance, the observation can fall above or below the mean, and as a result the corresponding deviation score will have either a positive or negative sign.</li>
 </ol>
 <p>We observe this below with a subset of 5 points from our scatterplot. Positive deviations are shown in red, negative deviations in blue.</p>
-<strong>[INSERT FULL SCATTERPLOT WITH 5 OBS CIRCLED]</strong>
 <center>
 <img src="points.png" width="650" />
 </center>
@@ -548,7 +547,9 @@ Looking at the scatterplot, there seems to be a relationship, but you will need 
 <div style="margin-bottom:50px">
 
 </div>
-<p><strong>[ADD IN SUMMED SHAPES ILLO]</strong></p>
+<center>
+<img src="Shapes%202.png" style="width:90.0%" />
+</center>
 <ol start="4" style="list-style-type: decimal">
 <li>We then <strong>divide the sum of the crossproduct by N (or N-1 in sample)</strong> so that we have taken into account how many observations contributed to this quantity. This final number is called the <strong>covariance</strong>, and its value tells us how much our two variables fluctuate together. The higher the absolute value of the covariance is, the more closely the two variables fluctuates together.</li>
 </ol>
@@ -620,11 +621,17 @@ The equations for correlation are shown below:
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoibXlfY292YXJpYW5jZSA8LSBmdW5jdGlvbih4LHkpe1xuXG4gIHJldHVybiggKVxufVxuXG5teV9jb3JyZWxhdGlvbiA8LSBmdW5jdGlvbih4LHkpe1xuXG4gcmV0dXJuKCApXG59Iiwic29sdXRpb24iOiJteV9jb3ZhcmlhbmNlIDwtIGZ1bmN0aW9uKHgseSl7XG4gIG1feCA8LSBtZWFuKHgpXG4gIG1feSA8LSBtZWFuKHkpXG5cbiAgZGV2aWF0aW9uX3ggPC0geCAtIG1feFxuICBkZXZpYXRpb25feSA8LSB5IC0gbV95XG4gIFxuICBjcm9zc3Byb2R1Y3QgPC0gZGV2aWF0aW9uX3ggKiBkZXZpYXRpb25feVxuXG4gIGNvdmFyaWFuY2UgPC0gIGNyb3NzcHJvZHVjdCAvIChsZW5ndGgoeCktMSkgIyBEaXZpZGVzIGJ5IE4tMVxuICByZXR1cm4oY292YXJpYW5jZSlcbn1cblxubXlfY29ycmVsYXRpb24gPC0gZnVuY3Rpb24oeCx5KXtcbiBjb3JyZWxhdGlvbiA8LSBteV9jb3ZhcmlhbmNlKHgseSkgLyAoc2QoeCkqc2QoeSkpXG4gcmV0dXJuKGNvcnJlbGF0aW9uKVxufSJ9
 </div>
 <p>Wow, you can see that there is a negative relaionship between giraffe heights and how much celery giraffes eat. Could this be due to celery being a negative calorie vegetable? Are teacup giraffes onto something here?</p>
-<p><strong>[Celery and giraffe illustration]</strong></p>
+<center>
+<img src="Celery.png" style="width:50.0%" />
+</center>
 </div>
 <div id="the-standardizer" class="section level1">
 <h1>The Standardizer</h1>
 <p>You can take a look at the illustration below to see a conceptual summary of how correlation will standarize the covariance, translating it into an easily interpretable metric that will always be bound by -1 and 1.</p>
+<div class="figure">
+<img src="Factory.png" />
+
+</div>
 </div>
 <div id="why-divide-by-sigma_xsigma_y" class="section level1">
 <h1>Why divide by <span class="math inline">\(\sigma_x\sigma_y\)</span>?</h1>
@@ -644,7 +651,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 <p><strong>[Another piece of the puzzle involves the fact that the correlation is a scaleless value.]</strong></p>
 </div>
 <div id="things-to-think-about" class="section level1">
-<h1>Things to think about…</h1>
+<h1>Things to think about</h1>
 <div id="correlation-does-not-capture-relationships-that-are-not-linear" class="section level2">
 <h2>Correlation does not capture relationships that are not linear</h2>
 <p>If the relationship is not linear, then correlation will not be meaningful. Check out the plot below. There is a clear U-shaped relationship between the two variables, but the correlation coefficient for these data is very close to 0. To meausure non-linear relationships a different metric must be used.</p>
@@ -662,12 +669,10 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 
 <div class="foot">
 	<hr /> 
-	<p style="text-align: center;"> <span style="color: #808080;"> Created using </span></p>
-	<p style="text-align: center;">
+	<p> Created using </p>
 	<img class="foot_image" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg">
 	<img class="foot_image" src="https://bookdown.org/yihui/rmarkdown/images/hex-rmarkdown.png">
 	<img class="foot_image" src="https://www.rstudio.com/wp-content/uploads/2014/06/RStudio-Ball.png">
-	</p>
 </div>
 
 

@@ -17,7 +17,6 @@ output:
 </div>
 
 # What are measures of centrality?
-
 <div style="margin-top:50px"></div>
 <p style=><center>
 ```{r, echo=FALSE}
@@ -371,7 +370,7 @@ success_msg("Great!")
 <div style="margin-bottom:50px">
 </div>
 
-#Things to think about...
+#Things to think about
 Remember that the sample mean is the estimate the entire population's mean (which would be impossibly large to measure). How reliably does the mean of a sample represent the population mean? *Warning*: if a small sample has been used, the sample mean may not be a reliable at all! Estimates from small samples are subject to the whims of randomness: the larger the sample, the closer the sample size appraches the population size, and the more reliable the sample estimate becomes.
 
 Pressing 'Play' on the plot below will illustrate this concept. 
