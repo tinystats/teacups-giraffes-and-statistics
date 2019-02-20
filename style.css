@@ -21,6 +21,7 @@ h1.title.toc-ignore {
 img{
   margin-left: auto !important;
   margin-right: auto !important; /*centers*/ 
+  margin-bottom: 1em !important;
 }
 
 p {
@@ -123,7 +124,9 @@ div.tocify {
 
 .foot_image {
   width: 50px;
-  filter: grayscale(100%);
+  filter: grayscale(0%);
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 .foot {
@@ -165,6 +168,26 @@ div.tocify {
   margin-top: -50px;
   margin-bottom: 10px;
 }
+
+
+body, html {
+  height: 100%;
+}
+
+.parallax-main-image { 
+  /* The image used */
+  background-image: url("giraffe_forest_dpi72.png");
+
+  /* Set a specific height */
+  height: 100%; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 
 
 /*.big_image is for module pages*/
@@ -217,6 +240,19 @@ div.tocify {
   color: #fff;
 }
 
+
+@media only screen and (max-width: 768px) {
+  .lil-image-text {
+    font-size: 15px;
+  }
+
+  .big-image-text {
+    line-height: normal;
+    font-size: 31px;
+  }
+}
+
+
 .color-overlay {
   position: absolute;
   top: 0;
@@ -237,7 +273,7 @@ div.tocify {
 }
 
 .back-panel-contents {
-  width: 99%;
+  width: 100%;
   display: flex;
   margin: 0 auto;
 }
@@ -245,15 +281,9 @@ div.tocify {
 .color-textbox {
   width:70%;
   background: #4accc2;
-  display: table;
   color: white;
   text-align: center;
   font-weight: normal;
-  font-size: 2rem;
-  padding: 3rem 8rem 8rem 8rem;
-  display: table-cell;
-  font-weight: normal;
-  text-transform: normal;
   margin-bottom: 3em;
 }
 
@@ -261,22 +291,82 @@ div.tocify {
   background: #5eade3;
 }
 
-.color-textbox-title {
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  font-size: 2.5rem;
-  padding: 4rem 0 0 0;
+
+.color-textbox-orchid {
+  background: orchid;
 }
 
+.color-textbox-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 3.2rem;
+  padding: 8rem 3rem 0rem 3rem;
+}
+
+.color-textbox-text {
+  font-size: 3rem;
+  padding: 3rem 8rem 0rem 8rem;
+  font-weight: normal;
+  text-transform: normal;
+}
 
 .landing-subimage {
   width:30%;
 }
 
-@media only screen and (max-width: 768px) {
-  div.col-xs-12.col-sm-4.col-md-3 {
-    display: none;
+
+
+/* SMARTPHONES PORTRAIT */
+@media only screen and (min-width: 300px) and (max-width: 479px) {
+.lil-image-text {
+    font-size: 1rem;
+  }
+
+  .big-image-text {
+    line-height: normal;
+    font-size: 1.5rem;
+  }
+
+  .back-panel {
+    margin-top: 0;
+  }
+  .back-panel-contents {
+    display: block;
+  }
+
+  .landing-subimage {
+    width: 75%;
+    margin: 0 auto;
+  }
+
+  .color-textbox {
+    width: 100%;
+    padding: 1.25rem;
+  }
+
+  .color-textbox-title{
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    padding: 0rem;
+  }
+
+  .color-textbox-text{
+    font-size: 1.5rem;
+    padding: 0rem;
+  }
+
+}
+
+/* Tablet */
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  .color-textbox-title{
+    font-size: 2rem;
+    padding: 4rem 0rem 0em 0rem;
+  }
+
+  .color-textbox-text{
+    font-size: 2rem;
+    padding: 1rem 5rem 0rem 5rem;
   }
 
   .toc-content {
@@ -285,4 +375,19 @@ div.tocify {
 }
 
 
+@media only screen and (min-width: 769px) and (max-width: 1041px) {
+  .color-textbox-title{
+    font-size: 2rem;
+    padding: 6rem 0rem 0rem 0rem;
+  }
+
+  .color-textbox-text{
+    font-size: 2rem;
+    padding: 1rem 5rem 0rem 5rem;
+  }
+
+  .toc-content {
+    width: 100%;
+  }
+}
 
