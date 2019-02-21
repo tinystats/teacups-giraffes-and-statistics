@@ -8,7 +8,7 @@ navbar:
   - text: "Modules"
     menu:
       - text: "Intro to R"
-        href: Intro_to_R.html
+        href: introToR.html
       - text: "Intro to the Normal Distribution"
         href: BellCurve.html
       - text: "Mean, Median, Mode"
