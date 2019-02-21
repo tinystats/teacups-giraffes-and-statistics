@@ -17,24 +17,25 @@ knitr::opts_chunk$set(echo = TRUE)
 <div class="alert alert-info">
   **Module learning objectives:**
   <ol>
-  <li> Define a distribution </li>z
+  <li> Define what a distribution is </li>
   <li> Describe the characteristics of a normal distribution </li>
   <li> Create a histogram using `ggplot` and modify its appearance </li>
-  <li> Define Sample and Population </li>
+  <li> Define sample and population </li>
   <li> Explain why distributions of sample data that come from populations with normal distibutions don't always look normal </li>
   </ol>
 </div>
 
 # Welcome to the island
 
-You arrive on the island, and you're excited to collect data on a new species. All you know is that they are small giraffe-like creatures. After suiting up in your field gear, your guide leads you deep into the dense island brush, and you scan the ground for your first subject.
+Two weeks after starting grad school, you're assigned to go to a small island east of Madagascar to study a mysterious mammalian species that has caught your advisor's interest. After a long trip on various ships and smaller boats, you arrive on the island, excited to collect data on this new species. 
 
-After a one hour hike, you reach a clearing where tall cypress trees encircle low growth vegetation. You experience your first encounter with a little giraffe, whose cool drink from a puddle you seem to have interrupted. Its slender body does not even clear the height of a dandelion. You toss an apple core in its direction, and you're pleasantly surprised that it trots over to you and begins hopping on and off your muddy boots in play. After observing this behavior for a while, you bring out your measuring tape and record its height. 
-Shortly after you leave the clearing, you spot another little giraffe sliding down a rock, stopping directly in your path. You're surprised how much larger this one is--about as tall as a banana. This pattern repeats itself, and you realize that although all small, mini-giraffes are variable in size.
+The only information your advisor has given you is that they are small giraffe-like creatures. He called them teacup giraffes. You waste no time to suit up in your field gear, and your guide leads you deep into the dense island brush. Filled with anticipation, you start searching for your first subject.
 
-<center>![](two_giraffes.png){width=300px}</center>
+After a one hour hike, you reach a clearing where tall cypress trees encircle low growth vegetation. Suddenly, you experience your first encounter with a little giraffe, whose cool drink from a puddle you seem to have interrupted. Smaller than you had imagined--its slender body does not even clear the height of a dandelion. You toss a celery stick in its direction, and you're pleasantly surprised that it immediately trots over to you and starts vigorously munching, creating a celery confetti cloud. After observing this behavior for a while and taking some notes on how quickly it devours your celery supply, you bring out your measuring tape and record the giraffe's height.
 
-The next week is spent trekking and measuring every giraffe you can manage to bring near enough. You've capitalized on the fact that they seem to find the pistachios from your lunch very tasty, and you're relieved that they seem to be sufficiently social to approach long enough for a reliable measurment with your tape measure. With the help of your guide, you manage to measure 50 giraffes in the first week.
+A few minuters later, you leave the clearing and forge a path through thick ferns and palm leaves. You pause for a drink from your water bottle long enough to pinpoint a fast-paced crunching noise. In the shade of a fallen tree, there's another teacup giraffe annihilating a small patch of wild celery for its afternoon snack. You're surprised how much smaller this one is--about as tall as your Swiss army knife. Throughout the day you encounter several teacup giraffes, and you realize that although all petite, they are remarkably variable in stature.
+
+The next week is spent trekking and measuring every giraffe you can manage to get near enough. You take advantage of the fact that they come running everytime you pull out a celery stalk from your lunch bag, and you're relieved that it takes them long enough to finish snacking for you to measure their height. With the help of your guide, you manage to measure 50 giraffes in the first week.
 
 <p><div style="margin-top:50px"></div>
 <center>![](giraffe_lineup4.png){width=800px}</center>
@@ -47,12 +48,11 @@ There is a second island not too far away, where you guide has indicated there m
 <div style="margin-bottom:50px"></div></p>
 
 
-# The Data
-<!-- You record the data below in your logbook, and you make a plot to get a sense of how tall the tiny giraffes really are. -->
+# Visualize the data
 
-After a nice lunch on the beach, you decide to take a first look at the data. What's the best way to look at data when you know nothing about it...?
+After collecting 100 measurements, you decide to take a first look at the data. What's the best way to look at data when you know nothing about it...? You take a long walk on the beach to ponder this.
 
-You can start by scanning the data for the shortest and tallest heights. You see the range is between 6 and 20 cm. So you draw a ruler in the sand with the extreme heights on either end. You'd like to see how many times each height occurs in your data set, and so you grab a little leaf to represent each individual giraffe's height and place it just above your ruler mark. You put out a new leaf for each height and continue doing this for each individual to see which heights "stack up" along your ruler. To keep track of which heights came from different islands, you pick differently colored leaves for each group. Look below for a sped-up version of this process! The y-axis is frequency. The x-axis is the heights.
+You can start by scanning the values for the shortest and tallest heights. You see the range is between 6 and 20cm. So you draw a ruler in the sand with the extreme heights on either end. You'd like to see how many times each height occurs in your data set, and so you grab a small colorful stone from the shore to represent each individual giraffe's height and place it just above your ruler mark. You put out a new stone for each height and continue doing this for each individual to see which heights "stack up" along your ruler. To keep track of which heights came from different islands, you pick differently colored stones for each group. Look below for a sped-up version of this process! The y-axis is frequency. The x-axis is the height.
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -127,31 +127,39 @@ knitr::opts_chunk$set(echo = TRUE)
 <iframe style="margin:0px; padding:0px; display:block; border:0px" src="two_animated_hist.html" width="650" height="450" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe>
 </center>
 
-As you put the last leaf in place, your local guide saunters by and glances at your markings, "Oh nice, you've made a histogram!" 
+As you put the last stone in place, your local guide saunters by and glances at your markings, "What a nice histogram!" 
 
-The histogram above shows the **distribution**, or shape, of your data. The distribution of a variable in your data set gives you information about:
-    * All the values the variable takes on in your data set, when you split your data into reasonably sized groups
-    * How often those values occurred
-    * The shape, center, and amount of variability of the data
+
+# Distributions
+
+The histogram above shows the **distribution**, or shape, of your data. The distribution of a variable in a data set gives you information about:
+
+  * All the values the variable takes on in your data set, when the data are split into reasonably sized groups
+  * How often each value occurs
+  * The shape, center, and amount of variability in the data
  
- In statistics, checking the distribution of the data is always one of the first steps of data anlaysis. By knowing "the shape" of the data, you get insights into some of the data's statistical properities (which becomes useful down the line, for example, when you need to decide whether a particular statistical test would be approrpriate). 
- 
- Although the data can be distributed in many shapes, there are some general shapes that occur so frequently in nature that these distributions are given their own names. The most well-known is a distribution that has a similar shape to a bell, and it is called the *normal distribution* (or sometimes "the bell curve" or just "normal curve"). 
+Checking the distribution of the data is always one of the first steps of data anlaysis. By knowing the shape of the data, you gain insights into some of the data's statistical properties (which become useful down the line, for example, when you need to decide whether a particular statistical test would be appropriate). 
+
+# The normal distribution
+
+Although the data can be distributed in many shapes, there are some general shapes that occur so frequently in nature that these distributions are given their own names. The most well-known distribution has a shape similar to a bell and is called the *normal distribution* (or sometimes "the bell curve" or just "normal curve"). 
  
  There are a few characteristics of the normal distribution:
-    * The mass of the distribution is at its center
-    * There is symmetry about the center line
+ 
+  * There is a single peak
+  * The mass of the distribution is at its center
+  * There is symmetry about the center line
   
 ![](normal_hist.png)
  
-Taking a look at the stones in the sand, you see two bell-shaped distributions. One for each island. Looks like giraffe heights on each island follow a normal distribution--- and that's a good thing because you remember your stats textbook always talking about how normally distributed data behaves well! Phew!
+Taking a look at the stones in the sand, you see two bell-shaped distributions. One for each island. It looks like giraffe heights on each island follow a normal distribution--- and that's a good thing because you remember your stats textbook always talking about how normally distributed data behaves well! Phew!
 
-Happy with your progress thus far, you are excited to send your histogram results to your PhD mentor back in the homeland. Instead of taking a picture of your leaf histogram, you turn to R to create the perfect figure.
+Happy with your progress thus far, you are excited to send your histogram results to your PhD mentor back in the homeland. Instead of taking a picture of your stone histogram, you turn to R to create the perfect figure.
 <div style="margin-bottom:50px"></div></p>
 
-# Our Dataframe
+# Our dataframe
 
-The heights from your logbook have been stored in a dataframe called `d`. Below we show the last few observations from this vector, using the `tail()` function, which all happen to be from Island #2.
+Time to apply your [Intro to R knowledge](Intro_to_R.html). The heights from your logbook have been stored in a data frame called `d`. Below we show the last few observations from this vector, using the `tail()` function, which all happen to be from Island #2.
 
 <div style="margin-bottom:15px">
 </div>
@@ -176,18 +184,17 @@ tail(d)
 
 # Making a histogram with `ggplot2`
 
-We will use the *ggplot2* package for all our graphing. There are many different ways that ggplot can be customized. Check out [this page](https://ggplot2.tidyverse.org/reference) as a reference. 
+We will use the *ggplot2* package for all our graphing. Check out [this page](https://ggplot2.tidyverse.org/reference) as a reference. 
 
-We need some basic components as a bare minimum to get started. We can layer nicer components on top of this later to make the graph look nice. Our steps:
+We need some basic components as a bare minimum to get started. We can customize components later to make the graph more to our liking. The steps we will go through are:
 
-(1) Specify the dataframe that we want to use using `ggplot()`. We will do this using the option `data =`. We also have to tell ggplot *what* to actually plot-- we do this with the argument that stands for aesthetics: `aes()`. In our case, only the x-axis variable `Height` needs to be specified.
+  * First we need to tell R that we want to create a ggplot. This is done by **using the `ggplot( )` function**. Within the parentheses, we can specify the data frame that contains what we want to plot, using the option `data = d`. We also have to tell ggplot *what* columns of the data frame to actually plot-- we do this with the argument that stands for aesthetics: `aes( )`. In our case, only the x-axis variable `Height` needs to be specified.
 
-(2) Add a `geom` layer, which is the visual representation of the data points. In contrast to other ways we write code in R, ggplot options are added using a plus sign `+`. 
-In our case, we will write `+` and then `geom_histogram()`. To make your plot look similar to your sand drawing, you want to add an optional argument within the parentheses of `geom_histogram`, which will set the bin width to 1 cm: `geom_histogram( binwidth = 1 )`.
+  * Next, **add a `geom` layer**, which will determine the type of visual representation that will be used for the data. Different ggplot layers and options are added using a plus sign `+`. In our case, we will write `+` and then `geom_histogram( )`. To make your plot look similar to your sand drawing, you want to add an optional argument within the parentheses of `geom_histogram`, which will set the bin width to 1cm: `geom_histogram( binwidth = 1 )`.
 
 Here we are using `geom_histogram`, but there are many other `geom_` layers that you could use instead for different plot types. Check some of them out [here](https://ggplot2.tidyverse.org/reference/#section-layer-geoms).
 
-A note about the `+`: You can keep adding new specifications on one long continuous line of code, separating each one with a `+`.  However, if you'd like to make the code easier to read by adding each specification to a new line, make sure the `+` to the end of the first line and not the new one.
+A note about the `+`: You can keep adding new specifications on one long continuous line of code, separating each one with a `+`.  However, if you'd like to make the code easier to read by adding each specification to a new line, make sure the `+` is added to the end of the first line and not the new one.
 
 It's a good idea to save any ggplot you make as an object. It's a helpful practice for when you'll do more complicated graphing later (e.g. combining plots).
 
@@ -225,19 +232,26 @@ p
 ```
 <div style="margin-bottom:50px"></div></p>
 
-Let's go over some quick ways we can make any ggplot look nicer. First, we need to tell ggplot that we want the data from the two islands to be different colors. And second, we need to specify the colors we want to use. 
+# Customize your ggplot
+
+Let's go over some quick ways we can customize any ggplot. First, we can tell ggplot that we want the data from the two islands to be different colors. And second, we can to specify the colors we want to use. 
 
 
-**Different color for each group:** Under aes(), we add a `fill =` argument. Here is where you put the name of the variable that contains the categories that you want to distinguish by different colors. To choose colors ggplot should use, we need to add a new function ` + scale_fill_manual()` and then specify the actual colors with `values = `. To read more about how to create your own color scale, see this [page](https://ggplot2.tidyverse.org/reference/scale_manual.html). If you have more than one color you need to specify, make sure you combine them with the `c()` function. 
+**Different color for each group:** Within `aes( )`, we add a `fill = ` argument. Here is where you put the name of the variable that contains the categories that you want to distinguish with different colors. 
 
-Colors in R can be specified in different ways. For example, you can use a string of the color name. See possible colors [here](http://sape.inf.usi.ch/quick-reference/ggplot2/colour). 
+You might be wondering why we don't use the `color= ` here instead (which is a valid argument for `aes( )`), and this is because we want to change the color of the *fill* of the bars, while `color = ` would change only the bar outline color (see below).
 
-**Outline Color:** To add a colored outline around the data contained in your `geom_` (i.e. the bars for 'geom_histogram'), specify `color = ` within the parentheses for the geom. 
+To choose colors ggplot should use, we need to add a new option ` + scale_fill_manual( )` and then specify the colors with the argument `values = `. To read more about how to create your own color scale, see this [page](https://ggplot2.tidyverse.org/reference/scale_manual.html). If you have more than one color you need to specify, make sure you combine them within the `c( )` function. 
+
+Colors in R can be specified in different ways. For example, you can use a string of the color name (see possible colors [here](http://sape.inf.usi.ch/quick-reference/ggplot2/colour)) or with [hex color codes](https://htmlcolorcodes.com/).
+
+**Outline Color:** To change the color of the outline, specify `color = ` within the parentheses of the `geom_` (i.e. `geom_histogram`). 
 
 
-In the window below, we have added some options that you can play around with. Use the descriptions above to specify the correct variable that `fill` should be set to as well as the fill and outline colors.
+In the window below, we have added some options that you can play around with. Use the descriptions above to:
 
-Try out some color specifications on your own, and then check out the solution to see what we picked.
+ * Specify the variable that `fill` should be set to, as well as the colors for the fill and outline.
+ * Try out some color specifications on your own, and then check out the solution to see what we picked.
 
  <div style="margin-bottom:50px"></div>
 
@@ -280,8 +294,8 @@ p
 
 **Playing around with "complete themes": ** ggplot has a nice way of changing many non-data display parameters at once though what is referred to as "complete themes". Check this [page](https://ggplot2.tidyverse.org/reference/ggtheme.html) for the available options.
 
-
-Have fun testing out a few different complete themes by adding the argument with a `+` sign. Try 3 different complete themes and take note of how the plot changes.
+ * Have fun testing out a few different complete themes by adding the argument with a `+` sign. 
+ * Try 3 different complete themes and take note of how the plot changes.
 
  <div style="margin-bottom:50px"></div>
 
@@ -323,7 +337,7 @@ p
 ```
  <div style="margin-bottom:50px"></div>
 
-You pick `theme_light()` and you feel pretty good about your ggplot accomplishment. You send your plot to your PhD advisor, and within what feels like only minutes, you have a new attachment in your email inbox:
+After trying different themes, you pick `theme_light()` and feel pretty good about your ggplot accomplishment. You send your plot to your PhD advisor, and within what feels like only minutes, you have a new attachment in your email inbox:
 
  <div style="margin-bottom:50px"></div>
 
@@ -342,9 +356,11 @@ You pick `theme_light()` and you feel pretty good about your ggplot accomplishme
 <div style="margin-bottom:25px"></div>
 
 
-You've got some more changes to make to your plot. Lets start with something easy:
+You've got some more changes to make to your plot. Let's start with something easy:
  
-(1) **Remove the space between the bars and the x-axis**: Use the `scale_y_continuous()` argument, and inside the parentheses specify `expand =` followed by the x- and y-coordinate of where the y-axis plot should begin. This should be done using `c( )`. Below are some examples of how the `scale_y_continunous()` function can be used, with more documentation [here](https://ggplot2.tidyverse.org/reference/scale_continuous.html).
+(1) **Remove the space between the bars and the x-axis**: Use the `scale_y_continuous()` argument, and inside the parentheses specify `expand = ` followed by two numbers within the `c( )` command. These two numbers represent how much above or below the data's range you would like to extend the y-axis by. 
+
+The function `scale_y_continuous` can be used for other purposes. See some examples and more documentation can be found [here](https://ggplot2.tidyverse.org/reference/scale_continuous.html).
 
  * Set axis limits
  * Set axis breaks 
@@ -352,10 +368,14 @@ You've got some more changes to make to your plot. Lets start with something eas
  
 <div style="margin-bottom:25px"></div>
 
+(2) **Change axes labels**: Add `labs( )` to the existing ggplot layers and specify each axis you'd like to label as arguments, e.g. `x = `, followed by the string for your label. If you'd like to learn more about manipulations you can do with `labs( )`, see [this reference](https://ggplot2.tidyverse.org/reference/labs.html). 
 
-(2) **Change axes labels**: Add `labs()` to the existing ggplot layers and specify each axis you'd like to label as one of its arguments, e.g. `x = `, followed by the string for your label. If you'd like to learn more about manipulations you can do with `labs()`, see [this reference](https://ggplot2.tidyverse.org/reference/labs.html). In addition, `labs()` can be used to remove labels by setting it to `NULL`.  In this case, we can also include `fill = NULL` to remove the legend label (recall that the categories for our legend were determined by the `fill` argument in `aes()` previously).
+(3) In addition, `labs( )` can be used to **remove labels**. In this case, we can also include `fill = NULL` to remove the legend label (recall that the categories for our legend were determined by the `fill` argument in `aes()` previously).
 
-Use the window below to remove the space and legend label, change the x-axis label to "Teacup Giraffe heights" and the y-axis label to "Frequency".
+Use the window below to:
+
+ * Remove the space and legend label
+ * Change the x-axis label to "Teacup Giraffe heights" and the y-axis label to "Frequency".
 
  <div style="margin-bottom:50px"></div>
 ```{r ex="histogram3", type="pre-exercise-code"}
@@ -402,9 +422,9 @@ p
 ```
  <div style="margin-bottom:50px"></div>
 
-(4) **Remove panel border** and (5) **Remove minor grid lines**: To make detailed changes to the layout, we can add a `theme()` argumemt. Nested within `theme()` we can use additional argumemts, such as `panel.border= ` and `panel.grid.minor=`. Many of `theme()`'s arguments can be set to `element_blank()` to remove the element in question. To read more about what can be modifed with `theme()`, check out this [resource](https://ggplot2.tidyverse.org/reference/theme.html).
+(4) **Remove panel border** and 5.**Remove minor grid lines**: To make detailed changes to the layout, we can add a `theme( )` argument. Nested within `theme( )` we can use additional arguments, such as `panel.border= ` and `panel.grid.minor= `. Many `theme( )` arguments can be set to `element_blank( )` to remove the element in question. To read more about what can be modifed with `theme( )`, check out this [resource](https://ggplot2.tidyverse.org/reference/theme.html).
 
-In the window below, use what you just learned to remove the panel border and the minor grid lines of the plot. 
+ * In the window below, use what you just learned to remove the panel border and the minor grid lines of the plot. 
 
 <div style="margin-bottom:50px"></div>
 ```{r ex="histogram4", type="pre-exercise-code"}
@@ -453,7 +473,9 @@ p
 ```
  <div style="margin-bottom:50px"></div>
 
-(6) **Move the Legend**: We will add two more arguments to `theme()` to move the legend and make its background transparent. Include `legend.position =` to specify the x- and y-coordinates, again using `c()`. To change the legend to be transparent, we are essentially removing the legend background. Add the argument `legend.background =`. Take a look at previous steps to determine how this is done.
+(6) **Move the Legend**: We will add two more arguments to `theme( )` to move the legend and make its background transparent. To change its position, use `legend.position = ` followed by the `c( )` command, in which you will specify the x- and y- positions. These values must be between 0 and 1. Specifying `c(0,0)`, for example, would place the legend at the bottom left of the plot, while `c(1,1)` would place it at the top right.
+
+To change the legend background to be transparent, we essentially remove it. Add the argument `legend.background =`. Take a look at previous steps to determine how you remove an element.
 
  <div style="margin-bottom:50px"></div>
 
@@ -507,23 +529,26 @@ Hopefully your PhD advisor in the homeland will be satisfied with your new ggplo
  <div style="margin-bottom:50px"></div>
 
 
-# Sampling
-A **sample** is a subset of the population. If we sample randomly, then our hope is that our sample data will be representative of the population. But what IS the population? The **population** is defined as ALL available observations in a defined geographic area at a given point in time-- in our case, ALL existing giraffes on one of the islands while you are there. 
+# Things to think about
 
-Since we couldn't take the height of EVERY giraffe on the island (the population), and it is unclear how many giraffes live on the island, we had to rely on taking the heights of randomly selected groups of giraffes (a sample). You decided that you had the resources to collect 50 giraffe heights on each of the islands. Will a sample of 50 be good enough to get a sense for the true values of the population?
+Since we could not take the height of every giraffe on each of the two islands, and it is unclear how many giraffes live on the islands, we had to rely on taking the heights of randomly selected groups of giraffes. 
 
-Well, the larger our sample is, the more of the population it will include, and thus, the more closely the sample will resemble the population in its statistical attributes (e.g the distribution). We then must acknowledge that the smaller our sample is, the less likely it is that it will be representative of the population. 
+A **sample**, in our case the 50 giraffes from each island, is a subset of a population. The **population** is defined as all available observations in a defined geographic area at a given point in time-- in this case, all existing giraffes on one of the islands while you are there. 
 
+If we pick our sample in a random way, then our hope is that our sample data will be representative of the population. The larger our sample is, the more of the population it will include, and thus, the more closely the sample will resemble the population in its statistical attributes (e.g the distribution). We then must acknowledge that the smaller our sample is, the less likely it is that it will be representative of the population. 
 
 The animation below illustrates how small samples can depart from the characteristics of the population. 
 
-* The panels below show samples that all come from the SAME population. 
+* The panels below show samples that all come from the same population. 
 * Each frame of a panel, is a new sample drawn of the specified size.
 * Observe that the smaller samples tend to:
     + Have oddly shaped distributions
     + Jump around a lot
   
 **Take heed that with inadequate sample sizes, your sample data may barely resemble the population you're interested in!**
+
+
+You decided that you had the resources to collect data on 50 giraffes on each of the islands. Will a sample of 50 be good enough to get a sense for the true values of the giraffe populations?
 
  <div style="margin-bottom:50px"></div>
 

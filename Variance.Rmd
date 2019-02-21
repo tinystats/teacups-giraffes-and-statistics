@@ -10,10 +10,10 @@ output:
 <div class="alert alert-info">
   **Module learning objectives:**
   <ol> 
-  <li> Describe the steps for constructing the sum of squares </>
-  <li> Describe how the standard deviations can allow us to forecast which data values will be common or rare   </li>
+  <li> Describe the steps for constructing the sum of squares </li>
+  <li> Describe how the standard deviations can allow us to determine which data values are common or rare </li>
   <li> Write a function for the variance and standard deviation </li>
-  <li> Explain why the sample variance would be downwardly biased if we did not correct it by diving by (N-1) </li>
+  <li> Explain why the sample variance would be downwardly biased if we did not correct it by diving by (n-1) </li>
   </ol>
 </div>
 
@@ -34,52 +34,52 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 # Measures of spread
-After successfully calculating the mean, you return to the memory of the first day you had collected your data. There was one teacup giraffe that was your favorite-- it was especially cute! After a few days, you get acquainted with this very small one. The favorite. How rare is its smallness?
+After successfully computing the mean, you return to the memory of the first day you had collected data. There was one teacup giraffe that was your favorite-- it was relatively small with purple spots and perky tail! You begin to wonder how rare it would be to encounter a giraffe smaller than this one. To answer this question, you need to be able to calculate a **measure of spread**. 
 
 <center>![](holding.png){width=600px}</center>
-You return back to the data and you wonder-- how do you formally assess how spread out the values of height are among these small animals?
 
-You might start by calculating the simplest **measure of spread**, the **range**. This gives us a rough idea of the kinds of heights we can expect on a very basic level. But the range seems to ignore important contextual information. For example, two data sets can have very different spreads but still have the same range.
+You might start by quantifying the simplest measure of spread, the **range**. This at least tells us the boundaries within which all the sample heights fall, but the range ignores important contextual information. For example, two data sets can have very different spreads but still have the same range.
 
 <center>![](Range.png){width=600px}</center>
 
-If we want to avoid undue influence of outliers for the measure of spread, the range is not good enough to provide us with a wholisitc, robust measure of all the data in the set.
+If we want to avoid undue influence of outliers for the measure of spread, the range is not good enough to provide us with a wholistic, robust measure.
 
 What is a more stable measurment? The answer is the **variance**.
 
 # Variance in plain language
 You need a solid understanding of variance in order to grasp the mechanics of any statistical test. But what does the concept variance really capture?
 
-  * Recall the normal distribution: When we inspect the distributions below visually, we see that they all have the same mean, but we can see that some distributions are more spread out. Bell curves that are more "squished together" are composed of observations that are more similar to one another, while bell curves that are more "spread out" are composed of observations that have greater variability. Wider bell-curves mean greater variance! In plain language, the variance gives us an idea of how similar observations are to one another, and to the average value. 
+  * Recall the normal distribution: when we inspect the distributions below visually, we see that they all have the same mean, but some distributions are more spread out. Bell curves that are more "squished together" are composed of observations that are more similar to one another, while bell curves that are more "spread out" are composed of observations that have greater variability. Wider bell-curves mean greater variance! In plain language, the variance gives us an idea of how similar observations are to one another, and to the average value. 
   
   ![](bells_edited-04.png)
 
-#How to calculate variance
-Let's begin by going through the steps and equations for calcuating the variance of the *population*. We'll explain how to modify this for calculating the *sample* variance later on.
+# How to calculate variance
+Let's begin by going through the steps and equations for calculating the variance of a *population*. We'll explain how to modify this for calculating the *sample* variance later on.
 
-First, the idea is to capture how far away individual observations lie from the mean. In other words, we could subtract the mean from each height. This is called the **deviation** from the mean (not to be confused with the statistical term *deviance*). And since, we're calculating the *population* variance, we will use $\mu$ for the mean instead of ${\bar{x}}$ (which is only used for samples). 
+First, the idea is to capture how far away individual observations lie from the mean. In other words, we could subtract the mean from each observation. This is called the **deviation** from the mean. And since we're calculating a *population* variance, we will use $\mu$ for the mean instead of ${\bar{x}}$. 
 
 Calculating the deviations is a great start, but we're back to the problem of needing to summarize multiple values. Since these newly calculated values are both negative and positive, we quickly realize that adding them up (like the first step when calculating the mean) would not be a productive idea since the negatives cancel the positives.
 
 What's the easiest thing to do when you want to retain how far away a point is from the mean irrespective of whether it's above or below the mean? How about taking the absolute value?
 
-## Why we don't take the absolute value
-Though the absolute value would be a valid measure of the deviation, it turns out that it has some mathematical properties that don't make it the best choice, especially for more complex statistial analyses involving the variance later down the line. (As an example, in calculus, the function for the absolute value is not differentiable when x=0, which makes optimizing these functions more difficult).
+Though the absolute value of the deviation would be a valid measure of distance from the mean, it turns out that it has some mathematical properties that don't make it the best choice, especially for more complex statistial analyses involving the variance later down the line. 
 
-## Why we square the deviations
-There is an alternative with simpler, "better behaved" mathematical properties: **taking the differences from the mean and squaring them**. Squaring will always give us a positive values, so the values can never cancel each other out (and in contrast to the absolute value, the squared differences will be continuously differentiable. It's worth pointing out, however, that a consequence of squaring deviations will tend to amplify the influence of values at extreme distances from the mean. You can read [this thread](https://stats.stackexchange.com/questions/118/why-square-the-difference-instead-of-taking-the-absolute-value-in-standard-devia) for a more detailed discussion about absolute values versus the squared deviations.). Now we have positive, squared deviation values that we can be summed to a single total. We call this total **the sum of squares**. 
+# Why we square the deviations
+There is an alternative with simpler, "better behaved" mathematical properties: ** squaring the deviations**. Squaring will always give us positive values, so the values can never cancel each other out. It's worth pointing out, however, that a consequence of squaring deviations will tend to amplify the influence of values at extreme distances from the mean. You can read [this thread] (https://stats.stackexchange.com/questions/118/why-square-the-difference-instead-of-taking-the-absolute-value-in-standard-devia) for a more detailed discussion about absolute values versus squared deviations. 
+
+# Sum of squares
+Now we have positive, squared deviation values that can be summed to a single total. We call this total **the sum of squares**, and the equation is shown below. 
 
 <div style="margin-bottom:50px">
 </div>
 \begin{equation}
  (\#eq:equation1)
- \Large {\sum_{i=1}^n (x_i - \mu)^2}
+ \Large {\sum_{i=1}^N (x_i - \mu)^2}
  \end{equation}
 <div style="margin-bottom:50px">
 </div>
 
-# Sum of Squares
-The sum of squares is an important calculation that we will see again for other statistical operations. The animation below illustrations how these sums of squares are "constructed" starting with the sample observations and then squaring each one's distance away from the mean.  
+The sum of squares is an important calculation that we will see again for other statistical operations. The animation below illustrates how these sums of squares are "constructed" starting with the sample observations and then squaring each one's distance away from the mean.  
 
 ```{r fig.show="animate", animation.hook = 'gifski', fig.width=7.2, fig.height=4.8, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.01666667, fig.align='center'}
 library(ggplot2)
@@ -149,31 +149,31 @@ Once the squares have been "constructed", we sum their squares, producing a sing
 ![](Squares1.png)
 
 # Variance, $\sigma^2$
-We need to take into account how many observations contributed to these sum of squares. So, we divide the sum of squares by our n. This step essentially takes the average of the squared differences from the mean. This is the variance.
+We need to take into account how many observations contributed to these sum of squares. So, we divide the sum of squares by N. This step essentially takes the average of the squared differences from the mean. This is the variance.
 
 
 <div style="margin-bottom:50px">
 </div>
 \begin{equation}
  (\#eq:equation2)
- \Large \sigma^2 = \frac{\sum_{i=1}^n (x_i - \mu)^2}{n}
+ \Large \sigma^2 = \frac{\sum_{i=1}^N (x_i - \mu)^2}{N}
  \end{equation}
 <div style="margin-bottom:50px">
 </div>
 
 # Standard Deviation, $\sigma$
-The problem with variance is that its value is not easily interpretable, and knowing the variance alone is not enough to gauge whether the spread is large or small because the units will be squared. It would not be very intuitive to interpret giraffe heights written in "millimeters squared"! So, the **standard deviation** fixes that. We "un-square" the variance, and now we return to the data's original units (millimeters) to get a number that can be compared with the original set. The standard deviation equation is below:
+The problem with variance is that its value is not easily interpretable, the units will be squared and therefore not on the same scale as the mean. It would not be very intuitive to interpret giraffe heights written in *millimeters squared*! The **standard deviation** fixes that. We "un-square" the variance, and now we return to the data's original units (millimeters). The standard deviation equation is below:
 
 <div style="margin-bottom:50px">
 </div>
 \begin{equation}
  (\#eq:equation3)
- \Large \sigma = \sqrt{\frac{\sum_{i=1}^n (x_i - \mu)^2}{n}}
+ \Large \sigma = \sqrt{\frac{\sum_{i=1}^N (x_i - \mu)^2}{N}}
  \end{equation}
 <div style="margin-bottom:50px"></div>
 
 # One more thing
-The equations above are for calculating the variance and standard deviation of a population. In real life applications, the population equations will almost never be used during data analysis. To calculate the variance and standard deviation for a sample instead (which will usually be the case), we will need to divide by N-1 instead of just n. Note that the we also change to the corresponding symbols for the sample mean ($\bar{x}$),  sample size (uppercase $N$), and use a lowercase $s$ in place of $\sigma$. 
+The equations above are for calculating the variance and standard deviation of a population. In real life applications, the population equations will almost never be used during data analysis. To calculate the variance and standard deviation for a sample instead, we will need to divide by n-1 instead of N, which we explain at the end of this module. Note that the we also change to the corresponding symbols for the sample mean ($\bar{x}$),  sample size (lowercase $n$), and use a lowercase $s$ in place of $\sigma$. 
 
 When we apply this change, our equation for the **sample variance, $s^2$ ** is:
 
@@ -181,7 +181,7 @@ When we apply this change, our equation for the **sample variance, $s^2$ ** is:
 </div>
 \begin{equation}
  (\#eq:equation4)
- \Large s^2 = \frac{\sum_{i=1}^N (x_i - \bar{x})^2}{N}
+ \Large s^2 = \frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n-1}
  \end{equation}
 <div style="margin-bottom:50px"></div>
 
@@ -191,25 +191,25 @@ And for **sample standard deviation, $s$**:
 </div>
 \begin{equation}
  (\#eq:equation5)
- \Large s = \sqrt{\frac{\sum_{i=1}^N (x_i - \bar{x})^2}{N}}
+ \Large s = \sqrt{\frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n-1}}
  \end{equation}
 <div style="margin-bottom:50px"></div>
 
 # Meaning of the standard deviation
-Since we're now focusing on samples, let's think about how we can apply the standard deviation in a useful way to normal distributions to predict how "rare" or "common" particular observations may be during sample data collection. For the normal distribution, almost all of the data will fall within 3 standard deviations of the mean. This rule of thumb, called the **empirical rule**, is illustrated below. You can [(read more about it here)](https://newonlinecourses.science.psu.edu/stat200/lesson/2/2.2/2.2.7).
+Since we're now focusing on samples, let's think about how we can apply the standard deviation in a useful way to normal distributions to predict how "rare" or "common" particular observations in a data set may be. For the normal distribution, almost all of the data will fall within ± 3 standard deviations from the mean. This rule of thumb, called the **empirical rule**, is illustrated below and you can [(read more about it here)](https://newonlinecourses.science.psu.edu/stat200/lesson/2/2.2/2.2.7).
 
-  * The entire normal distribution includes 100% of the data, so then the interval created by **1 standard deviation above and below the mean includes 68% of all the data**. Observations within these bounds would be fairly common, but it would not be exceedingly rare to observe data that fall *outside* of these bounds. 
+![](General_empirical.png)
+
+  * The entire normal distribution includes 100% of the data. The empirical rule states that the interval created by **1 standard deviation above and below the mean includes 68% of all the data**. Observations within these bounds would be fairly common, but it would not be exceedingly rare to observe data that fall *outside* of these bounds. 
   
   * **2 standard deviations above and below the mean** encompasses **95%** of the data. Observations that fall within these bounds include the common and also infrequent observations. Observations that fall *outside* of 2 standard deviations would be uncommon.
   
   * **3 standard deviations above and below the mean** encompass **99.7%** of the data, capturing almost all possible observations in the set. Observations that fall oustide of these bounds into the extremes of distribution's tails would be exceedingly rare to observe (but still possible if you sample large enough groups to detect these rare events!).
   
-  ![](General_empirical.png)
-  
   
 # Example
 
-Let's calculate the variance and standard deviation using 6 observations of giraffe heights from a subset of our data.
+Let's calculate the variance and standard deviation using 6 observations of giraffe heights from a subset of our data, including your favorite small one with the purple spots.
 
 (1) **Calculate the sample mean**, $\bar{x}$:
 
@@ -219,10 +219,10 @@ mean(h)
 ```
 
 
-We'll plot the mean \bar{x} below with a gray line. 
+We'll plot the mean $\bar{x}$ below with a gray line. 
 
 ![](giraffe_variance1.png)
- (2) **Find the deviation** from the mean, the difference between each giraffe's height and $\bar{x}$
+ (2) **Find the deviation** from the mean, the difference between each giraffe's height and $\bar{x}$.
  
 ```{r}
 deviation <- h - mean(h)
@@ -231,39 +231,41 @@ deviation
  ![](giraffe_variance2.png)
  
  
- (3) **Calculate Variance**: Square the deviations, add them all up to get the Sum of Squares, and then take the average of the Sum of Squares (adjusted to "N-1" because we're using a sample)
+ (3) **Calculate Variance**: Square the deviations, add them all up to get the sum of squares, and then take the average of the sum of squares (adjusted to "n-1" because we're using a sample).
 ```{r}
 SS <- sum(deviation^2)
 variance <-  SS/(length(h)-1) # Divides by N-1
 variance
 ```
-(4) **Standard Deviation**: Take the square root of the variance
+(4) **Standard Deviation**: Take the square root of the variance.
 
 ```{r}
 sqrt(variance)
 ```
 
-Because the standard devation is a standardized score-- we can now compare particular giraffes and see whether or not they lie within 1 standard deviation of the mean. 
+Because the standard devation is a standardized score-- we can now focus on particular giraffes and see whether or not they lie within 1 standard deviation of the mean. 
 
 ![](giraffe_variance3.png)
 
-We see the little blue spotted giraffe is more than 1 standard deviation below the mean -- and so we can conclude that a little guy of his height is rather short! Similarly, the giraffe with bright pink spots is taller than 1 standard deviation above the mean-- quite tall!
+We see the little blue spotted giraffe is more than 1 standard deviation below the mean-- and so we can conclude that a little guy of his height is rather short-- even smaller than your favorite! Similarly, the giraffe with bright pink spots is taller than 1 standard deviation above the mean-- quite tall!
 
 ## Standard deviation application example
-Using the standard deviation and the empirical rule described earlier, we can now ask questions related to the probability of finding a giraffe taller or shorter than any given height. 
+Using the standard deviation and the empirical rule described earlier, we now finally have the tools to answer our original question from the start of the module: how probable it is to find a giraffe smaller than our favorite purple-spotted one?
 
-  * We happen to have one observation whose height is almost exactly 1 standard deviation below the mean (the one with purple spots and a perky tail), so this makes it easy to assess the probability of encountering a giraffe shorter than him.
+  * Our giraffe of interest happens to be almost exactly 1 standard deviation below the mean, so this makes it easy to assess the probability of encountering a giraffe shorter than him.
 
-  * If we assume our sample comes from a normally distributed population, then **what percentage of giraffes can we assume are shorter than the one with purple spots?**
+  * If we assume our sample comes from a normally distributed population, then **what percentage of giraffes will be shorter than the one with purple spots?**
   
    ![](Empirical_example.png)
   
-We can apply the knowledge that the full percentage area under the curve is 100% and what we know from the empirical rule to conclude that there is approximately 16% of giraffes will be shorter than the one with purple spots. Maybe this explains why the little blue spotted giraffes is so cute--- it is not so common to find ones so small!
+We can apply the knowledge that the full percentage area under the curve is 100%, and what we know from the empirical rule, to conclude that there is approximately 16% of giraffes will be shorter than the one with purple spots. So, it would be common to find giraffes taller than our favorite but somewhat of a treat to find ones smaller--like the blue one!
+
+Maybe this explains why the little blue spotted giraffe is so cute--- it is not so common to find ones so small!
 
 # Code it up
-  Using \@ref(eq:equation4) and \@ref(eq:equation5), it's easy to translate the equations for the variance and standard deviation into code in R. 
+Using \@ref(eq:equation4) and \@ref(eq:equation5), it's easy to translate the equations for the variance and standard deviation into code in R. 
   
-  * In the window below, you will write two separate functions one to calculate the sample variance and another to calculate the sample standard deviation. Your functions will be named `my_variance` and `my_sd`. 
+  * In the window below, you will write two separate functions, one to calculate the sample variance and another to calculate the sample standard deviation. Name your functions `my_variance` and `my_sd`. 
   
   * Test your functions on the vector `heights_island1` and compare the output of your "handwritten" functions with the base R function of `var( )` and `sd( )`. 
   
@@ -339,17 +341,17 @@ sd(heights_island1)
 
 <center>![](Marmalade.png){width=650px}</center>
 
-# Population vs Sample (N vs N-1)
-We have to correct the calculated variance with by dividing by N-1. Let's understand why:
+# Population vs Sample ($N$ vs $n-1$)
+We have to correct the calculated variance by dividing by $n-1$. Let's explain why:
 
   * Let's recall that when we calculate the sum of squares, we only have the sample mean $\bar{x}$ to go off of as our center point. 
   
   <center>![](Static_ssq.png){width=500px}</center>
 
-  * We must first acknowledge that while the population $\mu$ is unknowable, the chance that the sample $\bar{x}$ and the population $\mu$ are the same is unlikely. 
+  * We must first acknowledge that while the population $\mu$ is unknowable, the chance that the sample $\bar{x}$ and the population $\mu$ are the same is unlikely.
     + It's also worth pointing out that the risk that $\bar{x}$ and $\mu$ are not even values close to each other is much increased when $\bar{x}$ has been calculated from a small sample. 
     
-  * Recognizing that the true population mean value is probably some *other* value than our $\bar{x}$ value, let's recalculate the sum of squares, this time using the true population $\mu$ as our center point, which we will represent with a line at an arbitrary distance away from the one at $\bar{x}$ that we used previously.
+  * Recognizing that the true population mean value is probably some *other* value than $\bar{x}$, let's recalculate the sum of squares. This time we will use an imaginary true population $\mu$ as our center point, which in the animation below will be represented with a line at an arbitrary distance away from $\bar{x}$.
 
 ```{r fig.show="animate", animation.hook = 'gifski', fig.width=7.2, fig.height=10, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.01666667, fig.align = 'center'}
 library(ggplot2)
@@ -434,22 +436,21 @@ lapply(1:15, function(x) pp3())
 
 ```
  
-  * When we compare the SS in both of these scenarios (1: using \bar{x} or 2: using some other center line), we see that the sum of squares from the other line will *always* be greater than the $\bar{x}$ SS. This is true because by definition of being the sample mean, the line at $\bar{x}$ will always be the "center" of the values in our sample. It's location already minimizes the total distance of all the observations to a center. A line at any other location (i.e. the true population) would be a line that is not mimimizing the distance for observations in our sample!
+  * When we compare the sum of squares in both of these scenarios: 1) using $\bar{x}$ or 2) using our imaginary $\mu$, we see that the sum of squares from $\mu$ will *always* be greater than the $\bar{x}$ sum of squares. This is true because by definition of being the sample mean, the line at $\bar{x}$ will always be the "center" of the values in our sample. Its location already minimizes the total distance of all the observations to the center. A line at any other location (i.e. $\mu$) would be a line that is not mimimizing the distance for observations in our sample.
   
 <center>![](Squares2.png){width=750px}</center>
 
-  * Therefore, when we calculate the SS (and consequently, the variance and the standard deviation) using the sample mean $\bar{x}$, we are most likely arriving at a value that is downwardly biased compared to what the true variance or standard deviation would be if we were able to know and use the population mean mu. 
+  * Therefore, when we calculate the sum of squraes (and consequently, the variance and the standard deviation) using the sample mean $\bar{x}$, we are most likely arriving at a value that is downwardly biased compared to what the true variance or standard deviation would be if we were able to know and use the population mean $\mu$. 
   
-  * This is why we can "adjust" our sample variance by diving by N-1 instead of just N. By diving by a smaller value (i.e. N-1 instead of N), we can ensure that the overall value of the variance and standard deviation will be a little larger, correcting for the downward bias we've described. 
+  * This is why we need to adjust our sample variance by diving by $n-1$ instead of just $N$. By diving by a smaller value (i.e. $n-1$ instead of N), we ensure that the overall value of the variance and standard deviation will be a little larger, correcting for the downward bias we just described. 
   
-# Things to think about...
-**How badly can the variance be downwardly biased?**
+# Things to think about
+**How badly might the sample variance be downwardly biased?**
 Well, it depends on how far away $\bar{x}$ is from the true $\mu$. The further away it is, the worse the downward bias will be!
   
-  * I want to avoid having a very downwardly biased variance! What controls how far away $\bar{x}$ is from $\mu$?
-  The sample size! Again, the larger the sample, the greater the likelihood that your sample mean will resemble the population mean. 
+  * Of course, we want to avoid having a very downwardly biased variance. What controls how far away $\bar{x}$ is from $\mu$? The sample size! As pointed out previously, the larger the sample, the greater the likelihood that your sample mean will resemble the population mean. 
   
-  * Having a downwardly biased variance is not a good thing-- so if we focus on situations where samples end up having downwardly biased variance, what can we learn about these samples, so that we know what to avoid?
+  * Press Play on the animation below. The plot shows the relationship between bias in the variance, the sample size, and the distance between $\bar{x} and $\mu$. Each dot represents one out of a thousand random samples all from the same population. The vertical dotted line represents $\mu$, and the horizontal dotted line represents the true population variance.
 
 ```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE}
 library(ggplot2)
@@ -544,7 +545,11 @@ p <- pd %>%
 
   * When the samples whose means $\bar{x}$ are far off from the true population mean, they tend to have downwardly biased variance. 
   
-  * Take a look at the points that are far away from the true population  mean-- the samples represented by these points primarily came from small sample sizes (dark blue color).
+  * Take a look at the points that are furthest away from the true population mean-- the samples represented by these points primarily came from small sample sizes (dark blue dots).
+  
+# How the correction works: 
+
+The plot below shows the percentage of the true population variance that an uncorrected sample variance achieves on average. These data were generated by sampling from the same population as the animation above. This time the data have been grouped into bars by how many observations each random sample had. 
   
 ```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE}
 library(ggplot2)
@@ -575,26 +580,28 @@ p2 <- mm %>%
 
 <center><iframe style="margin: 0px;" src="static_bar.html" width="670" height="400" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
 
-   * How the correction works: Without correction, the sample variance would be downwardly biased by a factor of N/(N-1).
-   * In the plot above we see what percent of the "true" population variance an uncorrected sample variance achieves. The variances from smaller samples do the worst job of approaching 100% of the full variance. 
+   * Notice that the variances from smaller samples do the worst job of approaching 100% of the true variance. In fact, without correction the sample variance is downwardly biased by a factor of $n/(n-1)$.
 
-   * You can hover over the bars below to see what the percentage actually is. If we multiply this percentage by the correction, we correct for the discrepancy between sample and population variance. We demonstrate this below for samples of size N = 3. 
-   
-  * Try hovering over the bars values above for the different sample sizes, and see yourself that correction adjusts the sample variance to the full variance. You can you the window below to change the N and the hover values and then run the code. 
+   * You can hover over the bars above to see what the average percentage of the true variance actually is for the different samples sizes. If we multiply this percentage by the correction, we fix the discrepancy between sample and population variance. We demonstrate this below for samples of size n = 3. 
   
-  **[MAKE THIS NOT A DATA CAMP WINDOW?]**
-   
-```{r}
+```{r, tut= FALSE} 
+n = 3
+correction = n/(n-1)
 
-N = 3
-correction = N/(N-1)
-
-hover_value = 67.22902 # % Value when hovering over bar for N = 3
+hover_value = 67.22902 # % value when hovering over bar for n = 3
 
 # Apply correction
 percent_of_true_variance <- hover_value * correction
 
-paste( "After correcting, the sample variance explains ", percent_of_true_variance, "% of the true variance.", sep = "", collapse = NULL)
+percent_of_true_variance 
+```
+As we can see, the correction works by adjusting the downwardly biased sample variance to close to 100% of the true variance. 
+
+Try hovering over a few other bars and see yourself that correction works indepdent of the sample size. You can you the window below as a calculator.  to change the N and the hover values and then run the code. 
+
+```{r}
+# Model your code off of the example for n = 3 
+
 
 
 ```

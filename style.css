@@ -18,11 +18,7 @@ h1.title.toc-ignore {
   display: none;
 }
 
-img{
-  margin-left: auto !important;
-  margin-right: auto !important; /*centers*/ 
-  margin-bottom: 1em !important;
-}
+
 
 p {
   margin: 0 0 1em 0 !important;
@@ -312,6 +308,11 @@ body, html {
 
 .landing-subimage {
   width:30%;
+  margin-bottom: 3em;
+}
+
+.images-landing {
+  margin-bottom: 0em !important;
 }
 
 
@@ -342,6 +343,7 @@ body, html {
   .color-textbox {
     width: 100%;
     padding: 1.25rem;
+    margin-bottom: 1.5rem;
   }
 
   .color-textbox-title{
@@ -358,7 +360,40 @@ body, html {
 }
 
 /* Tablet */
-@media only screen and (min-width: 480px) and (max-width: 768px) {
+@media only screen and (min-width: 480px) and (max-width: 540px) {
+  .color-textbox-title{
+    font-size: 1.5rem;
+    padding: 2.25rem 0rem 0em 0rem;
+  }
+
+  .color-textbox-text{
+    font-size: 1.4rem;
+    padding: 1rem 5rem 0rem 5rem;
+  }
+
+  .toc-content {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 541px) and (max-width: 649px) {
+  .color-textbox-title{
+    font-size: 2rem;
+    padding: 2.5rem 0rem 0em 0rem;
+  }
+
+  .color-textbox-text{
+    font-size: 1.75rem;
+    padding: 1rem 5rem 0rem 5rem;
+  }
+
+  .toc-content {
+    width: 100%;
+  }
+}
+
+
+@media only screen and (min-width: 650px) and (max-width: 768px) {
   .color-textbox-title{
     font-size: 2rem;
     padding: 4rem 0rem 0em 0rem;

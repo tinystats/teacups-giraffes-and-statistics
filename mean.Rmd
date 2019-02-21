@@ -4,6 +4,7 @@ output:
   bookdown::html_document2:
     includes:
       in_header: mean_image.html
+      after_body: foot.html
 ---
 
 <div class="alert alert-info">
@@ -12,7 +13,8 @@ output:
   <li> Describe 3 measures of centrality   </li>
   <li> Explain the mathematical notation used for calculating the mean</li>
   <li> Write a function which calculates the mean for any vector </li>
-  <li> Describe how the reliability of a sample statistic will scale with increasing sample size </li>
+  <li> Write a function which calculates the median for any vector
+  <li> Describe how the reliability of a sample mean will scale with increasing sample size </li>
   </ol>
 </div>
 
@@ -39,13 +41,13 @@ d <- rbind(x,x2)
 </center>
 <div style="margin-bottom:25px"></div>
 
-You've just collected a lot of height data and graphed it. Although informative, a graphical display of these data is difficult to summarize-- we need to describe these heights with a single number that will be meaningful and allow us to do statistics.
+You've just collected a lot data and graphed heights. Although informative, a graphical display of these data is difficult to summarize-- we need to describe these heights with a single number that will be meaningful and allow us to do statistics.
 
-We can do this with a measure of centrality: the mean, the median, or the mode. A measure of centrality describes the concept that one number in the "center" of the data set is a good summary of the entire set. What's the best measure of the center? 
+We can do this with a **measure of centrality**, the concept that one number in the "center" of the data set is a good summary of all the values. Below are examples of different measures of centrality. 
 
-* The **mean** is the average and the measure of centrality that you are probably most familiar with. We describe it in detail below.
+ * The **mean** is the average and the measure of centrality that you are probably most familiar with. This is a good measure to use when the data are normally distributed. We describe it in detail below. 
 
-* The **median** is the number in the middle of the data set. Half of the observations lie above the median and half below. The median is used as the measure of centrality when your data are not normally distributed and are instead skewed to the left of right.
+ * The **median** is the value in the middle of the data set. Half of the observations lie above the median and half below. When the data are normally distributed, the median and the mean will be very close to each other. When your data are not normally distributed (skewed to the left of right) the median is a more appropriate measure of centrality (see the animation below).
  <center>
  <div style="margin-bottom:20px"></div>
 ```{r, fig.show='animate', animation.hook = 'gifski', fig.width=6, fig.height=2, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.5}
@@ -78,15 +80,15 @@ We can do this with a measure of centrality: the mean, the median, or the mode. 
 <div style="margin-bottom:20px"></div>
 </center>
 
-* The **mode** is the number (or height in our case) that occurs most frequently in the data set. It's not typically used in statistics, and we won't cover it further here.
+* The **mode** is the value (height, in our case) that occurs most frequently in the data set. It's not typically used in statistics, and we won't cover it further here.
 
 <div style="margin-bottom:50px"></div>
 
-
 # Taking the mean
-The mean is the sum of all of the heights divided by the number of giraffes for the sample. All giraffes will be labeled "x", and the numerical subscript indicates the giraffes's number in the sample.
+The mean of a variable is the sum of its values, divided by the number of values. 
 
-<p>We'll use ${\bar{x}}$ (read "x-bar") to represent the mean of each sample, calculated with the following equation:</p>
+This concept can be represented with equation below. In our case, each "x" represents a giraffe height (i.e. a single observation), and the numerical subscript indicates its order in the sample. We'll use ${\bar{x}}$ (read "x-bar") to represent the mean of the height variable.
+
 <div style="margin-bottom:50px"></div>
 \begin{equation}
  (\#eq:equation1)
@@ -104,25 +106,30 @@ To make this more efficient, instead of writing "${x_1 + x_2 + ... + x_n}$", we 
 <div style="margin-bottom:50px">
 </div>
 
-<p> This might look intimidating, but equation \@ref(eq:equation2) is really showing the same thing as \@ref(eq:equation1). Let's break the symbols apart a bit (see annotated equation \@ref(eq:equation3) below). The sigma means 'add up'. What are we adding up? All the heights "x", which we call our *observations*. The "i&nbsp;=&nbsp;" part indicates which term to begin adding. For our purposes, this will always be the first observation, when i = 1. The character on top of the sigma is the last observation we include in our summation. In this case it's n --because we're adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: n. </p>
+This might look intimidating, but equation \@ref(eq:equation2) is really showing the same thing as \@ref(eq:equation1). Let's go through the steps again, breaking the symbols apart a bit (see annotated equation \@ref(eq:equation3) below). The sigma means 'add up'. What are we adding up? All the heights "x". The "i&nbsp;=&nbsp;" part indicates which term to begin with. For our purposes, this will always be the first observation, hence i = 1. The character on top of the sigma is the last observation we include in our summation. In this case it's n --because we're adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: again, n.
 
 <div style="margin-bottom:50px">
 </div>
 
-<p>
+
 <center>
 \begin{equation}
  (\#eq:equation3)
 \vcenter{\img[width=400px]{eq_annotated.png}}
  \end{equation}
 </center>
-</p>
+
+
+# Notation for sample vs population
+
+Recall our discussion about a sample verus a population [](BellCurve.html). Different symbols are used to represent the mean for each of these. We've already discussed ${bar_x}$ for the sample mean. The analogous symbol for the population mean is ${\mu}$ (read "mu"). Additionally, when referring to the size of the population, we will use a capital ${N}$ instead of a lowercase one. 
 
 <div style="margin-bottom:50px">
 </div>
 
 #Code it up
-Using \@ref(eq:equation2), it's easy to translate this into code in R. The heights recorded from island 1 have been stored in a vector called `heights_island1`. Below we show the first few observations from this vector, using the `head()` function.
+
+Using \@ref(eq:equation2), it's easy to translate this equation into code in R. The heights recorded from island 1 have been stored in a vector called `heights_island1`. Below we show the first few observations from this vector, using the `head()` function.
 <div style="margin-bottom:15px">
 </div>
 ```{r, echo=FALSE}
@@ -152,10 +159,10 @@ heights_island1 <- rnorm(50,10,2)
 
 ```{r ex="mean", type="sample-code"}
 
-# Sum up all heights stored in heights, using the sum() function, and save it as a new object called "heights_island1_sum"
+# Sum up all observations stored in heights, using the sum( ) function, and save it as a new object called "heights_island1_sum"
 
 
-# Divide heightsisland1_sum by the number of observations. Use the length() function for n. Store your answer as "heights_island1_mean"
+# Divide heights_island1_sum by the number of observations. Use the length( ) function for n. Store your answer as "heights_island1_mean"
 
 
 # Print out "heights_island1_mean" and compare your answer to the R function "mean(heights_island1)"
@@ -164,7 +171,7 @@ heights_island1 <- rnorm(50,10,2)
 
 ```{r ex="mean", type="solution"}
 
-# Sum up all heights stored in "heights_island1", using the sum() function, and save it as a new object called "heights_island1_sum"
+# Sum up all observations stored in "heights_island1", using the sum() function, and save it as a new object called "heights_island1_sum"
 heights_island1_sum <- sum(heights_island1)
 
 # Divide heights_island1_sum by the number of observations. Use the length() function for n. Store your answer as "heights1_mean"
@@ -188,8 +195,8 @@ success_msg("Great!")
 </div>
 
 
-#Create your own function
- Now it's your turn to write your own function. Call it "my_mean" and have it calculate the mean of any given vector. You're going to use the rules for writing a function in R that you've used previously. As a reminder, you'll use `function()` and embed your code (that you completed in the previous exercise) within curly brackets`{}`. The advantage of making a "homemade" function is that you can string together all the steps from the previous exercise into a single command.
+# Create your own function
+Now it's your turn to write your own function. Call it "my_mean" and have it calculate the mean of any given vector. You're going to use the rules for writing a function in R that you've used previously. As a reminder, you'll use `function( )` and embed your code (that you completed in the window above) within curly brackets`{ }`. The advantage of making a "homemade" function is that you can string together all the steps from the previous exercise into a single command.
 <div style="margin-bottom:15px">
 </div>
 ```{r ex="mean_function", type="pre-exercise-code"}
@@ -205,7 +212,7 @@ my_mean <- function(vector){
   
 }
 
-#Verify that your function correctly calculates the mean.
+# Verify that your function correctly calculates the mean
 my_mean(heights_island1)
 mean(heights_island1) 
 
@@ -220,7 +227,7 @@ my_mean <- function(vector){
   return(b)
 }
 
-#Verify that your function correctly calculates the mean.
+# Verify that your function correctly calculates the mean.
 my_mean(heights_island1)
 mean(heights_island1) 
 
@@ -232,12 +239,12 @@ success_msg("Great!")
 ```
 <div style="margin-bottom:15px">
 </div>
- You can also complete the exercise above in RStudio on your local computer. This way you will be able to save your `my_mean()` function and script for future use.
+ You can also complete the exercise above in RStudio on your local computer. This way you will be able to save your `my_mean( )` function and script for future use.
  
  <div style="margin-bottom:50px"></div>
 
 
-## Take a tea break!
+# Take a tea break!
 <center> ![](Teacup.png){width=600px} </center>
 
 
@@ -251,11 +258,11 @@ To calculate the median go through the following steps:
 * If an even number, then:
     + Find the value at the position: n / 2
     + Find the value at the position: (n / 2) + 1
-    + The median will be the mean of the values of at these two positions.
+    + The median will be the mean of the values at these two positions.
   
-Before you write your own median function, the two concepts need to be introduced: 1) the modulus operator `%%` and 2) `if...else` statements. 
+Before you write your own median function, two concepts need to be introduced: 1) the modulus operator `%%` and 2) `if...else` statements. 
 
-The modulus operation gives the remainder after division of one number by another. For example, in R `11 %% 5` returns the `1`, which is the remainer of `11` divided by `5`.  If the modulus operation returns `0`, then there is no remainder. It is useful to apply the modulus operation `x %% 2` to determine whether a number `x` is even or odd by testing whether or not the result is exactly equal to 0. See example code below.
+The **modulus operation** gives the remainder after division of one number by another. For example, in R `11 %% 5` returns the `1`, which is the remainer of `11` divided by `5`.  If the modulus operation returns `0`, then there is no remainder. It is useful to apply the modulus operation `x %% 2` to determine whether a number `x` is even or odd by testing if the result is exactly equal to 0. See example code below.
 <div style="margin-bottom:15px">
 
 <style>
@@ -282,7 +289,7 @@ The modulus operation gives the remainder after division of one number by anothe
 </div>
 <div style="margin-bottom:15px">
 </div>
-The `if...else` statements are useful when you want to specify distinct outcomes for objects dependent on whether they meet your set criteria. See below.
+An `if...else` statement is useful when you want to specify distinct outcomes for objects dependent on whether they meet your set criteria. See below.
 <div style="margin-bottom:15px">
 </div>
 ```{r ex="if_else", type="pre-exercise-code"}
@@ -309,7 +316,7 @@ if((length(heights_island1)-1) %% 2 == 0) {
 <div style="margin-bottom:15px">
 </div>
 
-Now that you have a sense for how the `%%` operator can be used to test whether a number is EVEN  or ODD, and how `if...else` statements work, use both of these concepts in the window below to write your own function that calculates the median of any vector. 
+Now that you have a sense for how the `%%` operator can be used to test whether a number is EVEN or ODD, and how `if...else` statements work, use both of these concepts in the window below to write your own function that calculates the median of any vector. 
 
 <div style="margin-bottom:15px">
 </div>
@@ -326,14 +333,14 @@ heights_island1 <- rnorm(50,10,2)
 # Complete the code below to create your own function that will calculate the median of any vector
 
 my_median <- function(vector){
-  if(){
+  if( ){
    
   }else{ 
    
   }
 }
 
-#Verify that your function correctly calculates the median.
+# Verify that your function correctly calculates the median.
 my_median(heights_island1)
 median(heights_island1) 
 
@@ -356,7 +363,7 @@ my_median <- function(vector){
   return(median)
 }
 
-#Verify that your function correctly calculates the median.
+# Verify that your function correctly calculates the median.
 my_median(heights_island1)
 median(heights_island1) 
 
@@ -370,19 +377,11 @@ success_msg("Great!")
 <div style="margin-bottom:50px">
 </div>
 
-#Things to think about
-Remember that the sample mean is the estimate the entire population's mean (which would be impossibly large to measure). How reliably does the mean of a sample represent the population mean? *Warning*: if a small sample has been used, the sample mean may not be a reliable at all! Estimates from small samples are subject to the whims of randomness: the larger the sample, the closer the sample size appraches the population size, and the more reliable the sample estimate becomes.
+
+# Things to think about
+Remember that the sample mean is an estimate of the entire population's mean (which would often be impossibly large to measure). How reliably does the mean of a sample represent the population mean? *Warning*: if a small sample has been used, the sample mean may not be a reliable at all! Estimates from small samples are subject to the whims of randomness. On the other hand, the larger the sample, the closer the sample size appraches the population size, and the more reliable the sample estimate becomes.
 
 Pressing 'Play' on the plot below will illustrate this concept. 
-
-* This animation shows the values of means calculated from increasingly larger samples. 
-* Each point in this line is the mean calculated from a random sample. The TRUE mean of the population is 0.
-* The x-axis shows the sample size: small samples on the left, and larger samples to the right. 
-* The y-axis shows what the mean is for a sample of that particular size. Though the y-values vary here, remember that if the sample were a GOOD estimate of the population, the y-values should be very close to 0.  
-* But you can see that when the samples are small the sample mean isn't always a good representation of the population that it was sampled from--and that's not a good thing.
-
-For further reading see the [Law of Large Numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers).
-
 
 ```{r, tut=FALSE, echo=FALSE, message= FALSE}
 library(emdbook)
@@ -441,7 +440,6 @@ htmltools::save_html(p,"Law_of_large_numbers.html")
 ```
 <center><iframe style="margin: 0px;" src="Law_of_large_numbers.html" width="570" height="400" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
 
-
  <script type="text/x-mathjax-config">
     MathJax.Ajax.config.path["img"] = "https://cdn.rawgit.com/pkra/mathjax-img/1.0.0/";
     MathJax.Hub.Config({
@@ -450,3 +448,10 @@ htmltools::save_html(p,"Law_of_large_numbers.html")
     tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]},
     });
  </script>
+
+* The animation above shows the values of means calculated from increasingly larger samples: small samples on the left and larger samples to the right (on the x-axis).
+* Each point on the zig-zag line is the mean calculated from a random sample. The true mean of the population is 0.
+* The y-axis shows what the mean is for a sample of that particular size. Though the y-values vary here, remember that if the sample were a good estimate of the population, the y-values should be very close to 0.  
+* You can see that when the samples are small the sample mean isn't necessarily a good representation of the population that it was sampled from--and that is not a good thing.
+
+For further reading see the [Law of Large Numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers).
