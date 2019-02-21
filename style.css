@@ -170,20 +170,6 @@ body, html {
   height: 100%;
 }
 
-.parallax-main-image { 
-  /* The image used */
-  background-image: url("giraffe_forest_dpi72.png");
-
-  /* Set a specific height */
-  height: 100%; 
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 
 
 /*.big_image is for module pages*/
@@ -274,6 +260,10 @@ body, html {
   margin: 0 auto;
 }
 
+.back-panel-contents_row-reverse {
+  flex-direction: row-reverse;
+}
+
 .color-textbox {
   width:70%;
   background: #4accc2;
@@ -310,6 +300,7 @@ body, html {
   width:30%;
   margin-bottom: 3em;
 }
+
 
 .images-landing {
   margin-bottom: 0em !important;
