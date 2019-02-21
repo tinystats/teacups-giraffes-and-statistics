@@ -372,7 +372,7 @@ div.tocify {
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify" style="position: static;">
+<div id="TOC" class="tocify">
 </div>
 </div>
 
@@ -404,7 +404,7 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="Intro_to_R.html">Intro to R</a>
+      <a href="introToR.html">Intro to R</a>
     </li>
     <li>
       <a href="BellCurve.html">Intro to the Normal Distribution</a>
@@ -432,7 +432,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore"></h1>
+<h1 class="title toc-ignore">The Spread of the Data</h1>
 
 </div>
 
@@ -671,7 +671,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 </ul></li>
 <li>Recognizing that the true population mean value is probably some <em>other</em> value than <span class="math inline">\(\bar{x}\)</span>, let’s recalculate the sum of squares. This time we will use an imaginary true population <span class="math inline">\(\mu\)</span> as our center point, which in the animation below will be represented with a line at an arbitrary distance away from <span class="math inline">\(\bar{x}\)</span>.</li>
 </ul>
-<p><img src="Variance_files/figure-html/unnamed-chunk-11-.gif" width="691.2" style="display: block; margin: auto;" /></p>
+<p><img src="Variance_files/figure-html/unnamed-chunk-11-.gif" width="483.84" style="display: block; margin: auto;" /></p>
 <ul>
 <li>When we compare the sum of squares in both of these scenarios: 1) using <span class="math inline">\(\bar{x}\)</span> or 2) using our imaginary <span class="math inline">\(\mu\)</span>, we see that the sum of squares from <span class="math inline">\(\mu\)</span> will <em>always</em> be greater than the <span class="math inline">\(\bar{x}\)</span> sum of squares. This is true because by definition of being the sample mean, the line at <span class="math inline">\(\bar{x}\)</span> will always be the “center” of the values in our sample. Its location already minimizes the total distance of all the observations to the center. A line at any other location (i.e. <span class="math inline">\(\mu\)</span>) would be a line that is not mimimizing the distance for observations in our sample.</li>
 </ul>
