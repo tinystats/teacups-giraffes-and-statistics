@@ -1,7 +1,7 @@
 name: "cars"
 output_dir: "docs"
 navbar:
-  title: "Statistics with R"
+  title: " "
   left:
   - text: "Home"
     href: index.html
@@ -17,6 +17,8 @@ navbar:
         href: Variance.html
       - text: "Covariance and Correlation"
         href: covariance_and_correlation.html
+  - text: "About the Authors"
+    href: aboutTheAuthors.html
 output: 
   bookdown::html_document2:
     includes:
