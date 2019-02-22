@@ -165,6 +165,21 @@ div.tocify {
   margin-bottom: 10px;
 }
 
+.button {
+  border: 2px solid white;
+  background-color: #0000001a;
+  text-align: center;
+  color: white;
+  padding: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  margin: 0 auto;
+  width: 150px;
+  text-transform: uppercase;
+}
+
+.button-landing-page
+
 
 body, html {
   height: 100%;
@@ -188,7 +203,7 @@ body, html {
     bottom:0;
   }
 .lil-image-text { 
-    color: #ededea;
+    color: white;
     margin-top: 0px;
       margin-right: auto;
       margin-bottom: 20px;
@@ -198,7 +213,7 @@ body, html {
     display:block;
     font-family: 'Lora', serif;
       font-size: 22px;
-      font-weight: 400;
+      font-weight: 500;
       line-height: 1.5em;
       letter-spacing: 1px;
       font-style: italic;
@@ -220,6 +235,7 @@ body, html {
   text-align: center; 
   display:block;
   color: #fff;
+  margin-bottom: 3rem;
 }
 
 
@@ -416,4 +432,37 @@ body, html {
     width: 100%;
   }
 }
+
+
+.image-text-about-the-authors {
+  top:44%;
+}
+
+.about-the-author-color-textbox {
+  width:33.3%;
+  background: white;
+  color: black;
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: 1em;
+}
+
+.about-the-author-color-textbox-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.2rem;
+  padding: 8rem 3rem 0rem 3rem;
+}
+
+.about-the-author-color-textbox-text {
+  font-size: 2rem;
+  padding: 3rem 8rem 0rem 8rem;
+  font-weight: normal;
+  text-transform: normal;
+}
+
+.about-the-author-subimage {
+  width: 33%;
+}
+
 

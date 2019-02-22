@@ -1,0 +1,7 @@
+---
+title: "About the authors"
+output:
+  bookdown::html_document2:
+    includes:
+      in_header: aboutTheAuthors_image.html
+---
