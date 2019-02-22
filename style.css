@@ -55,6 +55,7 @@ ul {
 
 /*TOCIFY code*/
 
+
 div.tocify {
     width: 100% !important;
     max-width: 260px;
@@ -136,8 +137,9 @@ div.tocify {
   width: 80%;
 }
 
+
 .tocify-extend-page {
-  height: 0px !important;
+  height: 0px !important; /* Gets rid of extra space after footer*/
 }
 
 
@@ -247,6 +249,10 @@ body, html {
   .big-image-text {
     line-height: normal;
     font-size: 31px;
+  }
+
+  .col-xs-12 .col-sm-4 .col-md-3 {
+    display: none !important;
   }
 }
 
@@ -462,7 +468,7 @@ body, html {
 }
 
 .about-the-author-subimage {
-  width: 33%;
+  width: 40%;
 }
 
 

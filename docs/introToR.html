@@ -389,7 +389,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Statistics with R</a>
+      <a class="navbar-brand" href="index.html"> </a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -420,6 +420,9 @@ div.tocify {
     </li>
   </ul>
 </li>
+<li>
+  <a href="aboutTheAuthors.html">About the Authors</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -438,9 +441,15 @@ div.tocify {
 
 
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
+<div id="ready-to-begin" class="section level1">
+<h1>Ready to begin?</h1>
+<p>You’re about to start an adventure to learn R and statistics. If this is your first time working with R, then you should begin on this page. If you’re comfortable with R basics and you’d like to start with the statistical content, please proceed onto the islands with this <a href="mean.html">link</a>.</p>
+</div>
 <div id="using-interactive-windows" class="section level1">
 <h1>Using interactive windows</h1>
-<p>Throughout this material we will use an interactive version of R provided by <a href="datacamp.com">DataCamp</a>. Although this way of using R comes with some limitations regarding functionality, it will give us the benefit of being able to run R code without switching from a web browser to a standalone application such as <a href="rstudio.com">RStudio</a>. Below you can see an example of an interactive R window. On the left side of the window (under the tab titled <em>script.R</em>) is where you will write code to be executed in R. To run code you have written, click the yellow <em>Run</em> button and observe how the right side of the window gets filled with information. A copy of your code will show up in black and if no errors where made the answer will be returned right below in brown text. Error messages are red and begin with <em>Error:</em>. Now spend a few minutes using the <em>Script</em> window below as a calculator and run simple calculations by clicking <em>Run</em>.</p>
+<p>Throughout this material we will use an interactive version of R provided by <a href="https://www.datacamp.com/">DataCamp</a>. Although this way of using R comes with some limitations regarding functionality, it will give us the benefit of being able to run R code without switching from a web browser to a standalone application such as <a href="https://www.rstudio.com/">RStudio</a>.</p>
+<p>Below you can see an example of an interactive R window. On the left side of the window (under the tab titled <em>script.R</em>) is where you will write code to be executed. To run code you have written, click the yellow <em>Run</em> button and observe how the right side of the window gets filled with information. A copy of your code will show up in black, and if no errors were made the answer will be returned right below in brown text. Error messages are red and begin with <em>Error:</em>.</p>
+<p>Now spend a few minutes using the <em>Script</em> window below as a calculator and run simple calculations by clicking <em>Run</em>.</p>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIyKzMifQ==
 </div>
@@ -448,66 +457,89 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIyKzMifQ==
 <div id="objects-in-r" class="section level1">
 <h1>Objects in R</h1>
 <p>R is an object oriented programming language, meaning when working in R we will create different types of objects and use operators and functions to manipulate these objects.</p>
-<p>To create a new object in R we first pick a name for the object and tell R what to assign to it using assignment operators; either <code>=</code> or the combination of <code>&lt;</code> and <code>-</code> creating a small arrow <code>&lt;-</code>. Use the window below to assign numbers to objects and output the content by typing out the name of the object. After creating two numerical objects, use the mathematical operator <code>+</code> to add these objects together and see what happens when you run the code.</p>
+<p>To create a new object in R we first pick a name for the object and tell R what to assign to it using <strong>assignment operators</strong>; either <code>=</code> or the combination of <code>&lt;</code> and <code>-</code> creating a small arrow <code>&lt;-</code>.</p>
+<ul>
+<li>Use the window below to assign numbers to objects and output the content by typing out the name of the object.</li>
+<li>After creating two numerical objects, use the mathematical operator <code>+</code> to add these objects together and see what happens when you run the code.</li>
+</ul>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJteV9vYmplY3QgPC0gXG5teV9vYmplY3RcblxubXlfb2JqZWN0MiA8LSBcblxubXlfb2JqZWN0ICsgbXlfb2JqZWN0MiJ9
 </div>
 </div>
 <div id="common-functions" class="section level1">
 <h1>Common functions</h1>
-<p>Most of the time when we work in R, we will use functions; either pre-written functions or ones we write ourselves. Functions make it easy to use sets of code instructions repeatedly (without filling our scripts with the code underlying the function) and help us carry out specific tasks without every time having to go through the details of how the task is executed. To use functions in R, we type the name of the function followed by parentheses (e.g. <code>print()</code>). Within the parentheses is where we will specify the function input and options, separated by commas <code>,</code>. One function you will use a lot is the <em>combine</em> function (<code>c()</code>), which as the name suggests lets you combine different types of values. In the window below, create an object combining a set of numerical values using <code>c()</code>, and use <code>,</code> to separate the different values. Then sum up the content of this object using <code>sum()</code>.</p>
+<p>Most of the time when we work in R, we will use functions; either pre-written functions or ones we write ourselves. <strong>Functions</strong> make it easy to use sets of code instructions repeatedly (without filling our scripts with the code underlying the function) and help us carry out multiple tasks in a single step without having to go through the details of how the steps are executed.</p>
+<p>To use functions in R, we type the name of the function followed by parentheses (e.g. <code>print( )</code>). Within the parentheses is where we will specify the function input and options, separated by commas <code>,</code>. One function you will use a lot is the <strong>combine function</strong> (<code>c( )</code>), which as the name suggests lets you combine different types of values.</p>
+<ul>
+<li>In the window below, create an object combining a set of numerical values using <code>c( )</code>, spearating the different values with commas.</li>
+<li>Then sum up the content of this object using <code>sum( )</code>.</li>
+</ul>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJteV9jb21iaW5lZF92YWx1ZXMgPC0gYygsKSBcbnN1bShteV9jb21iaW5lZF92YWx1ZXMpIn0=
 </div>
 </div>
 <div id="writing-your-own-function" class="section level1">
 <h1>Writing your own function</h1>
-<p>R makes it easy to create user defined functions by using <code>function()</code>. Here is how it works:</p>
+<p>R makes it easy to create user defined functions by using <code>function( )</code>. Here is how it works:</p>
 <ul>
-<li>Give your function an object name and assign the function to it, e.g. <code>my_function &lt;- function()</code>.</li>
+<li>Give your function an object name and assign the function to it, e.g. <code>my_function_name &lt;- function( )</code>.</li>
 <li>Within the parentheses you specify inputs and options just like how pre-written functions work, e.g. <code>function(input_data)</code></li>
 <li>Next, put all the code you want your function to execute inside curly brackets like this: <code>function(input_data){code to run}</code></li>
-<li>Use <code>return()</code> to specify what you want to your function to output once it is done running the code.</li>
+<li>Use <code>return( )</code> to specify what you want to your function to output once it is done running the code.</li>
 </ul>
-<p>In the window below first create a object containing a set of numerical values. Then complete the function taking this object as input, summing up the values and taking the square root of the sum. To take the square root, we use the <code>sqrt()</code> function.</p>
+<p>Practice this in the window below: * First create an object containing a set of numerical values and call it <code>my_combined_values</code>. * We’ve started writing a function for you that will sum up values and take the square root of the sum. To take the square root, we use the <code>sqrt( )</code> function.<br />
+* Complete this function by filling in <code>input_data</code> for the sum( ), and then filling in the remaining empty parentheses with the appropriate object names.</p>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJteV9jb21iaW5lZF92YWx1ZXMgPC0gYygsKSBcbm15X2Z1bmN0aW9uIDwtIGZ1bmN0aW9uKGlucHV0X2RhdGEpe1xuICBzIDwtIHN1bSggKVxuICBzcyA8LSBzcXJ0KCApXG4gIHJldHVybiggKVxufVxubXlfZnVuY3Rpb24obXlfY29tYmluZWRfdmFsdWVzKSJ9
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJteV9jb21iaW5lZF92YWx1ZXMgPC0gYygsKSBcbm15X2Z1bmN0aW9uX25hbWUgPC0gZnVuY3Rpb24oaW5wdXRfZGF0YSl7XG4gIHMgPC0gc3VtKCApXG4gIHNzIDwtIHNxcnQoIClcbiAgcmV0dXJuKCApXG59XG5teV9mdW5jdGlvbl9uYW1lKG15X2NvbWJpbmVkX3ZhbHVlcykifQ==
 </div>
 </div>
 <div id="functions-within-functions" class="section level1">
 <h1>Functions within functions</h1>
-<p>It is also possible (and sometimes very useful) to put a function within another function. For example, we could combine two of the steps in the window above like this: <code>my_function(c(2,2))</code>, resulting in one line of code both generating the values and directly calculating the square root of the sum of them.</p>
+<p>It is also possible (and sometimes very useful) to put a function within another function. For example, we could combine two of the steps in the window above like this: <code>my_function_name(c(2,2))</code>, resulting in one line of code that both generates the values and directly calculates the square root of their sum.</p>
 </div>
 <div id="vectors" class="section level1">
 <h1>Vectors</h1>
-<p>The <code>c( )</code> function will combine values and create a specific type of data structure called an <em>atomic vector</em>. A vector is a simple one-dimensional structure that can contain only one type of values. This means that storing multiple numeric values in a vector, as we have already done, works just fine. But there are other types of values that can be used in R, for example <em>character</em> values. These values are created by putting text or numbers within quotes such as <code>&quot;Giraffe&quot;</code>. If we try to combine numeric and a character values in the same vector, R will convert both values to the character type.</p>
+<p>The <code>c( )</code> function will combine values and create a specific type of data structure called an <strong>atomic vector</strong>. A vector is a simple one-dimensional structure that can contain only one type of value. This means that storing multiple numeric values in a vector, as we have already done, works just fine. But there are other types of values that can be used in R, for example <strong>character</strong> values. These values are created by putting text or numbers within quotes such as <code>&quot;Giraffe&quot;</code>. If we try to combine numeric and character values in the same vector, R will convert both values to the character type.</p>
 <pre class="r"><code>c(&quot;Giraffe&quot;, 123)</code></pre>
 <pre><code>## [1] &quot;Giraffe&quot; &quot;123&quot;</code></pre>
-<p>This behavior is not always desirable, so it is a good idea to try to only combine values of the same type</p>
-<p>Another type of variable in R is the boolean (TRUE/FALSE) type. Boolean or logical vectors can only take two different values; TRUE of FALSE (case sensitive). You will see these types of values mostly when logical operators (e.g. are used to test how different objects relate to each other. For example, the logical operator <code>==</code> can be used to tests if two different objects are exactly the same and <code>TRUE</code> will be returned if identity is fulfilled.</p>
+<p>This behavior is not always desirable, so it is a good idea to try to only combine values of the same type.</p>
+</div>
+<div id="boolean-values-and-logical-operators" class="section level1">
+<h1>Boolean values and logical operators</h1>
+<p>Another type of variable in R is the boolean (TRUE/FALSE) type. <strong>Boolean</strong> or logical vectors can only take two different values; TRUE or FALSE (case sensitive). You will see these types of values mostly when logical operators are used to test how different objects relate to each other. For example, the <strong>logical operator</strong> <code>==</code> can be used to test if two different objects are exactly the same and <code>TRUE</code> will be returned only if the identity is fulfilled.</p>
 <pre class="r"><code>&quot;Giraffe&quot;==&quot;Teacup&quot;</code></pre>
 <pre><code>## [1] FALSE</code></pre>
 <pre class="r"><code>sqrt(100)==10</code></pre>
 <pre><code>## [1] TRUE</code></pre>
-<p>Vectors are one of multiple data structures in R. We will not cover all types of structures here, but the perhaps most common one encountered when analyzing data in R is the <em>data frame</em>. Data frames are two dimensional, which basically means that data frames let you store multiple vectors as columns in one object. One constraint though is that all vectors/columns need to be of the same length. In the window below, use the <code>data.frame()</code> function to create a data frame with two columns called <em>x</em> and <em>y</em>. When creating data frames we specify a column by giving it a name and assigning values to it, e.g. <code>data.frame(x=c(&quot;Giraffe&quot;, &quot;Teacup&quot;))</code>. Also observe what happens when you try to combine a x and y vector of different lengths.</p>
-<div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJ4IDwtIGMoLClcbnkgPC0gYygsKVxuZCA8LSBkYXRhLmZyYW1lKHg9eCwgeT15KVxuZCJ9
 </div>
-<p>As you could see above, running a line of code with just the name of a data structure (in this case just the letter <em>d</em>) will print the full data frame in the console output (if no errors were made!). If you instead are interested in only one of the columns, this can be specified by using the <code>$</code> operator, e.g <code>d$x</code>. Try it out below!</p>
+<div id="data-frames" class="section level1">
+<h1>Data frames</h1>
+<p>Vectors are one of multiple data structures in R. We will not cover all types of structures here, but perhaps the most common one encountered when analyzing data in R is the <strong>data frame</strong>. Data frames are two dimensional, which basically means that data frames let you store multiple vectors in one object. Oftentimes, each vector will be a new column in the data frame. One constraint though is that all vectors/columns need to be of the same length.</p>
+<ul>
+<li>In the window below, use the <code>data.frame()</code> function to create a data frame with two columns called <em>x</em> and <em>y</em>. When creating data frames we specify a column by giving the column a name and assigning values or vectors to it, e.g. <code>data.frame(x= c(&quot;Giraffe&quot;, &quot;Teacup&quot;))</code>.</li>
+<li>Also observe what happens when you try to combine an x and y vector of different lengths.</li>
+</ul>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJkIDwtIGRhdGEuZnJhbWUoeD1jKDEwLCA0NSksIHk9YygyLCA1KSlcbmQkIn0=
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJ4IDwtIGMoLClcbnkgPC0gYygsKVxuXG5kIDwtIGRhdGEuZnJhbWUoeD0geCwgeT0geSlcbmQifQ==
 </div>
+<p>As you could see above, running a line of code with just the name of a data structure (in this case, the letter <em>d</em>) will print the full data frame in the console output (if no errors were made!). If you instead are interested in only one of the columns, this can be specified by using the <code>$</code> operator, e.g <code>d$x</code>. Try it out below!</p>
+<div data-datacamp-exercise="" data-height="160" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJkIDwtIGRhdGEuZnJhbWUoeD0gYygxMCwgNDUpLCB5PSBjKDIsIDUpKVxuZCQifQ==
+</div>
+</div>
+<div id="youre-ready-to-go" class="section level1">
+<h1>You’re ready to go!</h1>
+<p>This was a brief introduction into R, but now you know what you need to get started with the <a href="mean.html">first module</a>!</p>
 </div>
 
 <!DOCTYPE html>
 
 <div class="foot">
-	<hr /> 
-	<p> Created using </p>
-	<img class="foot_image" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg">
-	<img class="foot_image" src="https://bookdown.org/yihui/rmarkdown/images/hex-rmarkdown.png">
-	<img class="foot_image" src="https://www.rstudio.com/wp-content/uploads/2014/06/RStudio-Ball.png">
-	<img class="foot_image" src="https://cdn.datacamp.com/dcl/assets/images/logo_blue.svg">
+	<hr> 
+	<p style="text-align: center;"> <span style="color: #808080; display: inline-block; width: 33%;"> 	This project was created entirely in RStudio using R Markdown with features making use of DataCamp Light windows and published on GitHub pages. 
+ </span></p>
+	<p style="text-align: center;">
+	</p>
 </div>
 
 
