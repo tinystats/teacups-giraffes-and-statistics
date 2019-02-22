@@ -19,11 +19,11 @@ output:
 </div>
 
 # Gathering data on another variable
-Over the course of your time on the islands, you notice that the teacup giraffes seem to have an affinity for celery, which you begin to use to entice them with in order to have them come close enough for a height measurment. One of the small ones had eaten so much of it! You decide to quantify how much celery each of the giraffes consumed to see if there is any relationship to height.
+Over the course of your time on the islands, you notice that the teacup giraffes seem to have an affinity for celery, which you have already used to entice so they come close enough for a height measurement. Suprisingly, one of the small ones had eaten so much of it! You decide to quantify how much celery each of the giraffes consumed to see if there is any relationship to height.
 
-You systematically measure the amout of celery eaten and add it to your log of data, which is stored as a dataframe called `giraffe_data`.
+You systematically measure the amount of celery eaten and add it to your log of data, which is stored as a data frame called `giraffe_data`.
 
-We can check out the first entries of the data by using the `head( )` command:
+We can check out the first entries of the data frame by using the `head( )` command:
 ```{r, echo= FALSE}
 
 set.seed(12)
@@ -52,24 +52,25 @@ points <- giraffe_data[c(12, 50, 14, 43, 32),]
 ```{r}
 head(giraffe_data)
 ```
-It's difficult to get an idea if there's any relationship by just looking at the values. We learn so much more from creating a plot. Let's revisit our newly acquired ggplot skills to make a scatter plot. 
 
+# Make a scatter plot
+It's difficult to get an idea if there's any relationship by just looking at the data frame. We learn so much more from creating a plot. Let's revisit our newly acquired ggplot skills to make a scatter plot.
 
-A lot of the code used [previously](https://dcossyleon.github.io/cars/BellCurve.html) can be re-used for the scatterplot. Two main differences are the following:
+A lot of the code used [previously](https://dcossyleon.github.io/cars/BellCurve.html) can be re-used for the scatter plot. Two main differences are the following:
 
-(1) Because we now have an additional variable, we need to **assign a `y = ` for the `aes( )` command within `ggplot( )`** Create the plot so that `Celery_Eaten` will be on the y-axis. 
+(1) Because we now have an additional variable, we need to **assign a `y = ` for the `aes( )` command within `ggplot( )`**. Create the plot so that `Celery_Eaten` will be on the y-axis. 
 
 (2) **Add (`+`) a `geom_point( )`** element instead of `geom_hist( )`
 
 
-Also, we will add lines to our plot, representing the mean of each variable. Here's how you'll do that:
+Also, we will add lines to our plot, representing the mean of each variable. Here's how we'll do that:
 
-(3) **Add a horizontal line** by adding (`+`) a `geom_hline( )` component. This takes the argument `yintercept = `, which is where you will specify the value for where the horitzontal line should cross the y-intercept. 
-    * Since we want this to cross at the mean, you can use the `mean( )` function instead of specifying a numeric value directly.
+(3) **Add a horizontal line** by adding (`+`) a `geom_hline( )` component. This takes the argument `yintercept = `, which equals the value for where the horizontal line should cross the y-intercept. 
+    * Since we want to place this line at the mean of y variable ${\bar_y}$, we can use the `mean( )` function instead of specifying a numeric value directly.
  
 (4) **Add a vertical line** by following the same structure as above but using `geom_vline( )` and `xintercept = ` instead. This vertical line will represent the mean (${\bar{x}}$) of the heights.
 
-Construct a scatterplot of the data using the window below: 
+Construct a scatter plot of the data using the window below: 
 
 ```{r, include=FALSE}
 tutorial::go_interactive(height = 400)
@@ -101,7 +102,7 @@ giraffe_data <- as.data.frame(giraffe_data)
 
 ```{r ex="scatter", type="sample-code"}
 
-# Create a scatterplot below
+# Create a scatterplot using the instructions above
 
 
 ```
@@ -109,7 +110,9 @@ giraffe_data <- as.data.frame(giraffe_data)
 ```{r ex="scatter", type="solution"}
 
 p <-  ggplot(data= giraffe_data, aes(x= Heights, y=Celery_Eaten)) +
-  geom_point() + geom_vline(xintercept = mean(giraffe_data$Heights)) + geom_hline(yintercept = mean(giraffe_data$Celery_Eaten))
+  geom_point() + 
+  geom_vline(xintercept = mean(giraffe_data$Heights)) + 
+  geom_hline(yintercept = mean(giraffe_data$Celery_Eaten))
 
 p
 
@@ -120,7 +123,7 @@ p
 ```
 
 
-Great, now you have a scatter plot! But recalling the email from your advisor the last time you plotted data-- you decide you'd like to customize the look of the plot the same way you did when you created the ggplot histogram. 
+Great, now you have a scatter plot! But recalling the email from your advisor the last time you plotted data, you decide you'd like to customize the look of the plot the same way you did when you created the ggplot histogram. 
 
 Play around with some aesthetics in the window below, and then run the solution to see what we chose. 
 
@@ -154,7 +157,6 @@ giraffe_data <- as.data.frame(giraffe_data)
 ```
 
 ```{r ex="customize", type="sample-code"}
-
 # Customize your ggplot
  
 ```
@@ -171,44 +173,47 @@ p
 
 ```
 
-Looking at the scatterplot, there seems to be a relationship, but you will need to quantify this more formally to be sure.
-<div style="margin-bottom:50px">
+Looking at the scatter plot, there seems to be a relationship between height and celery eaten, but you will need to quantify this more formally to be sure.
 
+# Relationship between two variables
+How can the relationship (and its strength) between two variables can be quantified? This can be done by assessing how the two variables change together-- one such measure is the **covariance**. 
 
-# Covariance
-How can the relationship between two variables (and its strength) can be quantified? This can be done by assessing how the two variables change together-- one such measure is the **covariance**. 
+The covariance elegantly combines the deviations of observations from two different variables into a single value. This is how it's done:
 
-The covariance elegantly combines the deviations of observations from two different variables into a single value. 
+(1) As we did for the variance, we begin by measuring how far each observation lies from its mean. But unlike when we calculated the variance, each observation now includes two variables. We will need to **calculate the observation's distance from each variable's mean**. We call each distance the **deviation** scores on x and on y, respectively. Like the variance, the observation can fall above or below the mean, and as a result the corresponding deviation score will have either a positive or negative sign. 
 
-(1) As we did for the variance, we begin by measuring how far each observation lies from the mean. But unlike the calcuation for the variance, each observation now includes two variables (each with its own mean) that we need to account for. We will need to **calculate the observation's distance from each variable's mean**. We call each distance the **deviation** scores on x and on y, respectively. Like the variance, the observation can fall above or below the mean, and as a result the corresponding deviation score will have either a positive or negative sign. 
-
-We observe this below with a subset of 5 points from our scatterplot. Positive deviations are shown in red, negative deviations in blue. 
-
+We observe this below with a subset of 5 points from our scatter plot. Positive deviations are shown in red, negative deviations in blue. 
 
 <center>![](points.png){width=650px}</center>
 
-Why do we use the deviations? Because we want to know whether the x-values and y-values move together with respect to their means or not'. For example, when an observation's deviation on x is above $\bar{x}$, will its deviation on y also be above $/bar{y}$? Using this line of thought, we can begin to systematically characterize how "together" the x and y values will change as we move from one observation to the next. 
+Why do we use the deviations? Because we want to know whether the x-values and y-values move together with respect to their means or not. For example, when an observation's deviation on x is above $\bar{x}$, will its deviation on y also be above $\bar{y}$? Using this line of thought, we can begin to systematically characterize how "together" the x and y values will change as we go through all observations. 
 
-## Crossproduct
-After obtaining the deviation scores, we need to combine them into a single measure. We do not do not simply combine the deviation scores themselves by adding (please see the [page about the variance](Variance.html) for a discussion of why this is). Instead, we take both deviation scores and from the same observation and multiply them together to create a "shape". (Analagous to when we multiplied a single deviation score by itself to create a "square" in the variance calculation).
+# Crossproduct
+After obtaining the deviation scores, we need to combine them into a single measure. We do not simply combine the deviation scores themselves by adding (please see the [page about the variance](Variance.html) for a discussion of why this is). Instead, we take both deviation scores from the same observation and multiply them together to create a two-dimensional "shape" (analagous to when we multiplied a single deviation score by itself to create a square in the variance calculation).
 
-**NOTE:** The resulting value is now on the order of a squared term. This will become important later.
+**NOTE:** The resulting value is now on the order of a "squared" term. This will become important later.
 
-(2) **Multiply the two deviation scores.** This is called the **crossproduct**. The shapes created by the crossproduct will serve as the squared terms that we can then use in the next step to sum and summarize the deviations into a single value. 
+(2) **Multiply the two deviation scores.** This is called the **crossproduct**. The shapes created by the crossproduct will serve as the "squared" terms that we can then use in the next step to sum and summarize the deviations into a single value. 
+
+The equation is shown below for the *sample* crossproduct of the deviation scores. 
 
 <div style="margin-bottom:50px">
 </div>
 \begin{equation}
  (\#eq:equation1)
- \Large (x_i - \mu_{x})(y_i - \mu_{y})
+ \Large (x_i - \bar{x})(y_i - \bar{y})
  \end{equation}
 <div style="margin-bottom:50px">
 </div>
 
-## Let's explore the attributes of the crossproduct: 
-  * First, we should note that the **overall sign** of the crossproduct will depend on whether or not the two x- and y- values from the same observation move in the same directions relative to their means. This will either create "negative" shapes (shown in blue) or "positive" shapes (in red). A third outcome is that the crossproduct could also be 0 -- this will occur when an observation falls on the mean (that deviation score would be 0).
+ Let's explore the attributes of the crossproduct: 
+ 
+ <div style="margin-bottom:50px">
+</div>
+
+  * First, we should note that the *overall sign* of the crossproduct will depend on whether or not the two x- and y- values from the same observation move in the same directions relative to their means. Look at the annotated plot below. The crossproducts will either create "negative" shapes (shown in blue) or "positive" shapes (in red). A third outcome is that the crossproduct could also be 0 -- this will occur when an observation falls on the mean.
   
-  * Second, the **magnitude of the crossproduct** will scale with the absolute value of the deviation scores. In other words, the further away both deviation scores are from their means, the larger the area will be of shapes they create. In general, the larger the magnitude the crossproduct the more strongly the two variables move together. 
+  * Second, the **magnitude of the crossproduct** will scale with the absolute value of the deviation scores. In other words, the further away both deviation scores are from their means, the larger the area of their shapes will be.
   
 <center>![](points1.png){width=60%}</center>
 
@@ -285,53 +290,57 @@ p3
 }
 lapply(1:15, function(x) pp3())
 ```
-
+<div style="margin-bottom:50px">
+</div>
  
-(3) **Sum the crossproducts** As we add the crossproducts, some of the "negative" and "positive" values of the shapes will cancel each other out. This is okay because this tells us important information about our two variables. If the negative and positive shapes cancel each other out completely, it would mean that there was no relationship between the two variables. The sum of the crossproduct gives us a single number. The equation is shown below.
+(3) **Sum the crossproducts.** The sum of the crossproduct gives us a single number.
+<div style="margin-bottom:50px">
+</div>
+<center>![](Shapes 2.png){width=90%}</center>
+<div style="margin-bottom:50px">
+</div>
+
+As we add the crossproducts, some of the "negative" and "positive" values of the shapes will cancel each other out. This is okay because this tells us important information about our two variables. If the negative and positive shapes cancel each other out completely, it would mean that there is no relationship. In most cases this will not happen, and the sum of the crossproducts will be positive or negative. In general, the larger the magnitude of the sum of the crossproducts, the more strongly the two variables move together. The equation is shown below.
 
 <div style="margin-bottom:50px">
 </div>
 \begin{equation}
  (\#eq:equation2)
- \Large \sum_{i=1}^n (x_i - \mu_x)(y_i - \mu_y)
+ \Large \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})
  \end{equation}
 <div style="margin-bottom:50px">
 </div>
 
-<center>![](Shapes 2.png){width=90%}</center>
+# Covariance
+(4) We then **divide the sum of the crossproduct by $n-1$ (or $N$ in the population equation)** so that we have taken into account how many observations contributed to this quantity. (Why $n-1$? See [here](Variance.html).) This final number is called the **covariance**, and its value tells us how much our two variables fluctuate together. The higher the absolute value, the stronger the relationship.
 
-(4) We then **divide the sum of the crossproduct by N (or N-1 in sample)**  so that we have taken into account how many observations contributed to this quantity. This final number is called the **covariance**, and its value tells us how much our two variables fluctuate together. The higher the absolute value of the covariance is, the more closely the two variables fluctuates together. 
-
-The equation for the covariance (abbreviated cov) of the variables x and y is shown below. As a preference of style, we multiply by $\frac{1}{N}$ instead of dividing the entire term by $N$. 
+The equation for the covariance (abbreviated cov) of the variables x and y is shown below. As a preference of style, we multiply by $\frac{1}{n-1}$ instead of dividing the entire term by $n-1$. 
 
 <div style="margin-bottom:50px">
 </div>
 \begin{equation}
  (\#eq:equation3)
- \Large cov(x,y) = {\frac{1}{N}\sum_{i=1}^N (x_i - \mu_x)(y_i - \mu_y)}
+ \Large cov(x,y) = {\frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}
  \end{equation}
 <div style="margin-bottom:50px">
 </div>
 
 
-## Problem of interpretation
-However, the covariance is not an intuitive value. Remember that we have been working with terms that are on the squared scale, which is not only difficult to interpret (just like the variance was) but it is also is the product of two variables on possibly different scales. How could we interpret a covariance with units of millimeters^2 * grams^2 mean?
+# Problem of interpretation
+However, the covariance is not an intuitive value. Remember that we have been working with terms that are on the "squared"" scale, which is not only difficult to interpret (just like the variance is) but it is also the product of two variables on possibly different scales. How could we interpret a covariance with units of millimeters*grams mean?
 
-Another point to make is that value of the covariance will be vastly different if we had decided to change the units (mm vs cm, or g vs kg). 
+Another point to make is that value of the covariance will be vastly different if we had decided to change the units (millimeters vs centimeters, or grams vs kilograms). 
 
-As a result, the covariance is not an easy metric to work with or to compare with other covariances. So, we need to standardize it!
-
+As a result, the covariance is not an easy metric to work with or to compare with other covariances. So we need to standardize it!
 
 # Pearson correlation coefficient, $r$
-## How do we standardize the Covariance?
-We need to rescale the covariance to fall within the boundaries of 0 and the maximum spread of the data with respect to their means. **THIS SENTENCE MAY NOT BE TRUE**
+How do we standardize the covariance?
 
 The solution is to (1) take the standard deviations of each variable, (2) multiply them together, and (3) divide the covariance by this product -- the resulting value is called the **Pearson correlation coefficient**. When referring to the population correlation coefficient, the symbol $\rho$ (pronounced "rho") is used. When referring to the sample correlation coefficient, a lowercase $r$ is used (often called "Pearson's r").
 
-The equations for correlation are shown below:
 <div style="margin-bottom:50px">
 
-**Population correlation**
+Here is the equation for the **population correlation**:
 </div>
 \begin{equation}
  (\#eq:equation4)
@@ -342,7 +351,7 @@ The equations for correlation are shown below:
 
 <div style="margin-bottom:50px">
 </div>
-**Sample correlation**
+This equation is used for the **Sample correlation**:
 \begin{equation}
  (\#eq:equation5)
  \Large r(x,y) = \frac{ \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{s_x s_y}
@@ -353,15 +362,19 @@ The equations for correlation are shown below:
 # What the does correlation mean?
 We can interpret the correlation as a measure of **the strength and direction** of the relationship between two variables. It is a "standardized" version of the covariance. 
 
-  * The correlation will always be between -1 and 1. At these extreme the values, the two variables have the strongest relationship possible, in which each data point will fall exactly on a line. When the absolute value of the correlation coefficient approaches 0, this implies that the observations are more "scattered". 
-  * The sign of the correlation coefficient indicates the direction of the linear relationship.  When $r$= 0 there is no relationship between the variables. Look at the figure below to see what observations of different $r$ values look. 
+  * The correlation will always be between -1 and 1. At these extreme the values, the two variables have the strongest relationship possible, in which each data point will fall exactly on a line. When the absolute value of the correlation coefficient approaches 0, the observations will be more "scattered". 
+  * The sign of the correlation coefficient indicates the direction of the linear relationship.  When $r$= 0 there is no relationship between the variables. Look at the figure below to see what observations of different $r$ values look like. 
 
 <center>![](diff_corr.png){width=90%}</center>
 
 # Code it up
-In the window below, write your own function to compute the sample covariance of two variables, and call it `my_covariance( )`. Then create a second function called `my_correlation( )` in which you will compute the correlation of two variables. You may incorporate your function `my_covariance( )` into this section to save yourself some steps.
 
-You will need to write both functions so that they will take two parameters. The parameters for `my_covariance( )` have been setup for you.
+* In the window below, write your own function to compute the sample covariance of two variables, and call it `my_covariance( )`. 
+* Then create a second function called `my_correlation( )` in which you will compute the correlation of two variables. You may incorporate your function `my_covariance( )` in this step to save yourself some time.
+* Once you've created both functions, use them to compute the covariance and correlation between `Heights` and `Celery_Eaten` within the data frame `giraffe_data`.
+* Finally, compare your functions' outputs with the base R functions for covariance, `cov( )` and `cor( )`. 
+
+Remember, you will need to write both functions so that they will take two parameters, one for each variable. The parameters for `my_covariance( )` have been setup for you.
 
 ```{r, include=FALSE}
 
@@ -370,7 +383,26 @@ tutorial::go_interactive(height = 400)
 
 ```{r ex= "correlation", type="pre-exercise-code"}
 set.seed(12)
-heights_island1 <- rnorm(50,10,2)
+x1 <- rnorm(50, 10, 2)
+
+x2 <- scale(matrix(rnorm(50), ncol=1))
+x12 <- cbind(scale(x1),x2)
+
+c1 <- var(x12)
+chol1 <- solve(chol(c1))
+newx <-  x12 %*% chol1
+
+newc <- matrix(c(1,-0.52, -0.52, 1), ncol=2)
+chol2 <- chol(newc)
+finalx <- newx %*% chol2 * sd(x1) + mean(x1)
+
+finalx[,2] <- (2*finalx[,2]-5)
+
+giraffe_data <- finalx
+colnames(giraffe_data) <- c("Heights", "Celery_Eaten")
+
+giraffe_data <- as.data.frame(giraffe_data)
+points <- giraffe_data[c(12, 50, 14, 43, 32),]
 ```
 
 ```{r ex="correlation", type="sample-code"}
@@ -385,6 +417,19 @@ my_correlation <- function(x,y){
  return( )
 }
 
+
+# Use your function my_covariance( ) to compute the covariance between Heights and Celery_Eaten
+
+
+# Compare the output with the base R function cov( )
+
+
+# Use your function my_correlation( ) to compute the correlation between Heights and Celery_Eaten
+
+
+# Compare the output with the base R function cor( )
+
+
 ```
 
 ```{r ex="correlation", type="solution"}
@@ -397,7 +442,7 @@ my_covariance <- function(x,y){
   
   crossproduct <- deviation_x * deviation_y
 
-  covariance <-  crossproduct / (length(x)-1) # Divides by N-1
+  covariance <-  sum(crossproduct) / (length(x)-1) # Divides by N-1
   return(covariance)
 }
 
@@ -406,13 +451,31 @@ my_correlation <- function(x,y){
  return(correlation)
 }
 
-```
-```{r ex="variance", type="sct"}
+
+# Use your function my_covariance( ) to compute the covariance between Heights and Celery_Eaten
+ my_covariance(giraffe_data$Heights, giraffe_data$Celery_Eaten)
+
+# Compare the output
+ cov(giraffe_data$Heights, giraffe_data$Celery_Eaten)
+
+
+# Use your function my_correlation( ) to compute the correlation between Heights and Celery_Eaten
+ my_correlation(giraffe_data$Heights, giraffe_data$Celery_Eaten)
+
+# Compare the output
+ cor(giraffe_data$Heights, giraffe_data$Celery_Eaten)
+
+
+
 
 ```
 
 
-Wow, you can see that there is a negative relaionship between giraffe heights and how much celery giraffes eat. Could this be due to celery being a negative calorie vegetable? Are teacup giraffes onto something here?
+
+<div style="margin-bottom:50px">
+</div>
+
+Wow, you can see that there is a negative relaionship between giraffe heights and how much celery teacup giraffes eat. Could this be due to celery being a negative calorie vegetable? Are these giraffes onto something?
 
 <center>![](Celery.png){width=50%}</center>
 
@@ -422,7 +485,7 @@ You can take a look at the illustration below to see a conceptual summary of how
 ![](Factory.png)
 
 # Why divide by $\sigma_x\sigma_y$? 
-Well it's complicated, but it builds on the mathematical principle that the covariance of x and y will never exceed the product of the standard deviations of x and y. This means that the maximum correlation value will occur when the absolute value of the covariance and the product of the standard deviations are equal. 
+Well it's complicated, (see [here](https://www.quora.com/What-is-an-intuitive-explanation-for-why-the-sample-correlation-coefficient-is-equal-to-the-sample-covariance-divided-by-the-standard-deviations-of-x-and-y-multiplied-by-one-another) and [here](https://math.stackexchange.com/questions/158449/proving-that-the-magnitude-of-the-sample-correlation-coefficient-is-at-most-1)) but it builds on the mathematical principle that the covariance of x and y will never exceed the product of the standard deviations of x and y. This means that the maximum correlation value will occur when the absolute value of the covariance and the product of the standard deviations are equal. 
 
 
 If you don't take our word for it, press play below to see what the relationship between ${s}_x{s}_y$ and ${cov(x,y)}$ looks like. 
@@ -495,27 +558,26 @@ htmltools::save_html(p,"cov_vs_sxsy.html")
 <center><iframe style="margin: 0;" src="cov_vs_sxsy.html" width="720" height="500" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
 
 As you look at the plot above, you may have the following questions:
+
   * Why are there clearly defined boundaries?
+  
     + Because at the edges is where the covariance is the greatest value that it can be-- it is equal to the product of the standard deviations there.
+    
     + The slope is 1 at this boundary.
     
   * Where in the plot do the strongest correlations end up?
-      + On the edges -- when the absolute value of the numerator and denominator of the equation are equal-- the quotient will = 1 (or negative 1, depending on the sign of the covariance in the numerator).
-      
   
-**[Another piece of the puzzle involves the fact that the correlation is a scaleless value.]**
+      + On the edges -- when the absolute value of the numerator and denominator of the equation are equal-- the quotient will = 1 (or negative 1, depending on the sign of the covariance in the numerator).
     
 # Things to think about
 
-## Correlation does not capture relationships that are not linear
-If the relationship is not linear, then correlation will not be meaningful. Check out the plot below. There is a clear U-shaped relationship between the two variables, but the correlation coefficient for these data is very close to 0. To meausure non-linear relationships a different metric must be used.
+**Correlation does not capture relationships that are not linear**: If the relationship is not linear, then correlation will not be meaningful. Check out the plot below. There is a clear U-shaped relationship between the two variables, but the correlation coefficient for these data is very close to 0. To meausure non-linear relationships a different metric must be used.
 
 <center>![](corr_curve.png){width=60%}</center>
   
 
 
-## Correlation is not causation
- Just because there is a linear relationship between two variables does not mean we have evidence that one variable causes the other. Even if there really was a cause-and-effect relationship, with correlation we cannot say which variable is the cause and which is the effect. It's also possible that there exists some other unmeasured variable affecting the linear relationship we observe. And of course, any apparent relationship may be due to nothing more than random chance.
+**Correlation is not causation**: Just because there is a linear relationship between two variables does not mean we have evidence that one variable causes the other. Even if there really was a cause-and-effect relationship, with correlation we cannot say which variable is the cause and which is the effect. It's also possible that there exists some other unmeasured variable affecting the linear relationship we observe. And of course, any apparent relationship may be due to nothing more than random chance.
 
 
 
