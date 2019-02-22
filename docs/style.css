@@ -180,8 +180,32 @@ div.tocify {
   text-transform: uppercase;
 }
 
-.button-landing-page
+.button:hover {
+  background-color: white;
+  color: DarkSlateGray;
+  text-decoration: none !important;
+}
 
+a.button-landing-page {
+    color: white !important;
+    border: none;
+    text-decoration: none !important;
+}
+
+
+a.button-landing-page:focus{
+    z-index: 2;
+    color: DarkSlateGray;
+    border: none;
+    text-decoration: none !important;
+}
+
+a.button-landing-page:hover{
+    z-index: 2;
+    color: DarkSlateGray;
+    border: none;
+    text-decoration: none !important;
+}
 
 body, html {
   height: 100%;
