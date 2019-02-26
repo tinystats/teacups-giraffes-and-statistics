@@ -265,22 +265,6 @@ body, html {
 }
 
 
-@media only screen and (max-width: 768px) {
-  .lil-image-text {
-    font-size: 15px;
-  }
-
-  .big-image-text {
-    line-height: normal;
-    font-size: 31px;
-  }
-
-  .col-xs-12 .col-sm-4 .col-md-3 {
-    display: none !important;
-  }
-}
-
-
 .color-overlay {
   position: absolute;
   top: 0;
@@ -495,4 +479,17 @@ body, html {
   width: 40%;
 }
 
+@media only screen and (max-width: 768px) {
+  .lil-image-text {
+    font-size: 15px;
+  }
 
+  .big-image-text {
+    line-height: normal;
+    font-size: 31px;
+  }
+
+  .col-xs-12.col-sm-4.col-md-3 {
+    display: none !important;
+  }
+}
