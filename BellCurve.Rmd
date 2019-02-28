@@ -44,7 +44,7 @@ The next week is spent trekking and measuring every giraffe you can manage to ge
 There is a second island not too far away, where you guide has indicated there may be more giraffes. You wonder how the population of giraffes on the second island may be different, and so you make arrangements to go to Island #2 the following week. It is not too long until you have added another 50 measurements of these tiny giraffes from this second excursion.
 
 <p><div style="margin-top:50px"></div>
-<center>![](giraffe_islands2.png){width=800px}</center>
+<center>![](giraffe_islands2.jpg){width=800px}</center>
 <div style="margin-bottom:50px"></div></p>
 
 

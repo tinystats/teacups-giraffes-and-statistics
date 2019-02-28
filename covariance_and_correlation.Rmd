@@ -66,7 +66,7 @@ A lot of the code used [previously](https://dcossyleon.github.io/cars/BellCurve.
 Also, we will add lines to our plot, representing the mean of each variable. Here's how we'll do that:
 
 (3) **Add a horizontal line** by adding (`+`) a `geom_hline( )` component. This takes the argument `yintercept = `, which equals the value for where the horizontal line should cross the y-intercept. 
-    * Since we want to place this line at the mean of y variable ${\bar_y}$, we can use the `mean( )` function instead of specifying a numeric value directly.
+    * Since we want to place this line at the mean of y variable (${\bar{y}}$), we can use the `mean( )` function instead of specifying a numeric value directly.
  
 (4) **Add a vertical line** by following the same structure as above but using `geom_vline( )` and `xintercept = ` instead. This vertical line will represent the mean (${\bar{x}}$) of the heights.
 

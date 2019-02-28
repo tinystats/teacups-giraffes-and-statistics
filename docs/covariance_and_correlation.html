@@ -27,6 +27,15 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <head>
 	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135221736-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-135221736-1');
+	</script>
 </head>
 
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
@@ -35,7 +44,7 @@
 <link href="style.css" rel="stylesheet">
 
   <div class="image-descript"> 
-		<img class="big_image" src="Log.png">
+		<img class="big_image" src="Log.jpg">
 		<div class="image-text">
 			<div class="lil-image-text">A Tale of Two Variables:</div>
 			<div class="big-image-text"><strong>COVARIANCE & CORRELATION</strong></div>
@@ -488,7 +497,7 @@ Describe the purpose of dividing by the product of the standard deviations when 
 <ol start="3" style="list-style-type: decimal">
 <li><strong>Add a horizontal line</strong> by adding (<code>+</code>) a <code>geom_hline( )</code> component. This takes the argument <code>yintercept =</code>, which equals the value for where the horizontal line should cross the y-intercept.
 <ul>
-<li>Since we want to place this line at the mean of y variable <span class="math inline">\({\bar_y}\)</span>, we can use the <code>mean( )</code> function instead of specifying a numeric value directly.</li>
+<li>Since we want to place this line at the mean of y variable (<span class="math inline">\({\bar{y}}\)</span>), we can use the <code>mean( )</code> function instead of specifying a numeric value directly.</li>
 </ul></li>
 <li><strong>Add a vertical line</strong> by following the same structure as above but using <code>geom_vline( )</code> and <code>xintercept =</code> instead. This vertical line will represent the mean (<span class="math inline">\({\bar{x}}\)</span>) of the heights.</li>
 </ol>
