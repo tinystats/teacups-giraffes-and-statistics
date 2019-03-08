@@ -78,6 +78,8 @@ tutorial::go_interactive(height = 400)
 
 ```{r ex= "scatter", type="pre-exercise-code"}
 set.seed(12)
+library(ggplot2)
+
 x1 <- rnorm(50, 10, 2)
 
 x2 <- scale(matrix(rnorm(50), ncol=1))
@@ -132,6 +134,7 @@ tutorial::go_interactive(height = 400)
 ```
 
 ```{r ex= "customize", type="pre-exercise-code"}
+library(ggplot2)
 set.seed(12)
 x1 <- rnorm(50, 10, 2)
 
