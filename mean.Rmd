@@ -59,7 +59,7 @@ We can do this with a **measure of centrality**, the concept that one number in 
 # skew3 <- seq(1.9, 1, -0.1)
 # skew4 <- seq(0.95, 0.55, -0.05)
 # skew <- c(skew, skew2, skew3, skew4)
-# plot <- function(x){
+# plot1 <- function(x){
 # 	d <- lapply(1:40, function(x){
 # 		d <- data.frame(x=rsnorm(100000, mean=0, sd=2, xi=skew[x]), frame=x)
 # 		return(d)
@@ -71,7 +71,7 @@ We can do this with a **measure of centrality**, the concept that one number in 
 # }
 # 
 # gif_file <-  file.path(getwd(), 'median.gif')
-# save_gif(plot(), gif_file= gif_file, progress = FALSE, loop= TRUE, delay= 0.5, width=400, height= 133, res= 100)
+# save_gif(plot1(), gif_file= gif_file, progress = FALSE, loop= TRUE, delay= 0.5, width=400, height= 133, res= 100)
 # 
 # utils::browseURL(gif_file)
 
