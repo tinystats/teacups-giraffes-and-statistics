@@ -452,7 +452,7 @@ div.tocify {
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <div id="ready-to-begin" class="section level1">
 <h1>Ready to begin?</h1>
-<p>You’re about to start an adventure to learn R and statistics. If this is your first time working with R, then you should begin on this page. If you’re comfortable with R basics and you’d like to start with the statistical content, please proceed onto the islands with this <a href="mean.html">link</a>.</p>
+<p>You’re about to start an adventure to learn R and statistics. If this is your first time working with R, then you should begin on this page. If you’re comfortable with R basics and you’d like to start with the statistical content, please proceed onto the islands with this <a href="BellCurve.html">link</a>.</p>
 </div>
 <div id="using-interactive-windows" class="section level1">
 <h1>Using interactive windows</h1>
@@ -466,7 +466,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIyKzMifQ==
 <div id="objects-in-r" class="section level1">
 <h1>Objects in R</h1>
 <p>R is an object oriented programming language, meaning when working in R we will create different types of objects and use operators and functions to manipulate these objects.</p>
-<p>To create a new object in R we first pick a name for the object and tell R what to assign to it using <strong>assignment operators</strong>; either <code>=</code> or the combination of <code>&lt;</code> and <code>-</code> creating a small arrow <code>&lt;-</code>.</p>
+<p>To create a new object in R we first pick a name for the object and tell R what to assign to it using <strong>assignment operators</strong>; either <code>=</code> or a small arrow <code>&lt;-</code> made from the combination of <code>&lt;</code> and <code>-</code>.</p>
 <ul>
 <li>Use the window below to assign numbers to objects and output the content by typing out the name of the object.</li>
 <li>After creating two numerical objects, use the mathematical operator <code>+</code> to add these objects together and see what happens when you run the code.</li>
@@ -478,9 +478,9 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJteV9vYmplY3QgPC0gXG5teV9vYmplY3RcblxubXlfb2Jq
 <div id="common-functions" class="section level1">
 <h1>Common functions</h1>
 <p>Most of the time when we work in R, we will use functions; either pre-written functions or ones we write ourselves. <strong>Functions</strong> make it easy to use sets of code instructions repeatedly (without filling our scripts with the code underlying the function) and help us carry out multiple tasks in a single step without having to go through the details of how the steps are executed.</p>
-<p>To use functions in R, we type the name of the function followed by parentheses (e.g. <code>print( )</code>). Within the parentheses is where we will specify the function input and options, separated by commas <code>,</code>. One function you will use a lot is the <strong>combine function</strong> (<code>c( )</code>), which as the name suggests lets you combine different types of values.</p>
+<p>To use functions in R, we type the name of the function followed by parentheses (e.g. <code>print( )</code>). Within the parentheses is where we will specify the function input and options, separated by commas <code>,</code>. One function you will use a lot is the <strong>combine function</strong> <code>c( )</code>, which as the name suggests lets you concatenate different types of values.</p>
 <ul>
-<li>In the window below, create an object combining a set of numerical values using <code>c( )</code>, spearating the different values with commas.</li>
+<li>In the window below, create an object combining a set of numerical values using <code>c( )</code>, separating the different values with commas.</li>
 <li>Then sum up the content of this object using <code>sum( )</code>.</li>
 </ul>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
@@ -496,15 +496,22 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJteV9jb21iaW5lZF92YWx1ZXMgPC0gYygsKSBcbnN1bSht
 <li>Next, put all the code you want your function to execute inside curly brackets like this: <code>function(input_data){code to run}</code></li>
 <li>Use <code>return( )</code> to specify what you want to your function to output once it is done running the code.</li>
 </ul>
-<p>Practice this in the window below: * First create an object containing a set of numerical values and call it <code>my_combined_values</code>. * We’ve started writing a function for you that will sum up values and take the square root of the sum. To take the square root, we use the <code>sqrt( )</code> function.<br />
-* Complete this function by filling in <code>input_data</code> for the sum( ), and then filling in the remaining empty parentheses with the appropriate object names.</p>
+<p>Use the following instructions to complete the function in the window below:</p>
+<ul>
+<li>We’ve started writing a function for you that will sum up values and take the square root of the sum. To take the square root, we use the <code>sqrt( )</code> function.<br />
+</li>
+<li>Complete this function by filling in <code>input_data</code> for the sum( ), and then filling in the remaining empty parentheses with the appropriate object names.
+<ul>
+<li>Now create an object containing a set of numerical values and call it <code>my_combined_values</code>. Then try out your new function on this object, which will compute the square root of the object’s sum.</li>
+</ul></li>
+</ul>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJteV9jb21iaW5lZF92YWx1ZXMgPC0gYygsKSBcbm15X2Z1bmN0aW9uX25hbWUgPC0gZnVuY3Rpb24oaW5wdXRfZGF0YSl7XG4gIHMgPC0gc3VtKCApXG4gIHNzIDwtIHNxcnQoIClcbiAgcmV0dXJuKCApXG59XG5teV9mdW5jdGlvbl9uYW1lKG15X2NvbWJpbmVkX3ZhbHVlcykifQ==
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFVzZSB0aGUgaW5zdHJ1Y3Rpb25zIGFib3ZlIHRvIGNvbXBsZXRlIHRoZSBmdW5jdGlvbiBiZWxvd1xubXlfZnVuY3Rpb25fbmFtZSA8LSBmdW5jdGlvbihpbnB1dF9kYXRhKXtcbiAgcyA8LSBzdW0oIClcbiAgc3MgPC0gc3FydCggKVxuICByZXR1cm4oIClcbn1cblxuIyBDcmVhdGUgYSBuZXcgb2JqZWN0IGFuZCB0cnkgb3V0IHlvdXIgbmV3IGZ1bmN0aW9uXG5teV9jb21iaW5lZF92YWx1ZXMgPC0gYygsKSBcblxubXlfZnVuY3Rpb25fbmFtZShteV9jb21iaW5lZF92YWx1ZXMpIn0=
 </div>
 </div>
 <div id="functions-within-functions" class="section level1">
 <h1>Functions within functions</h1>
-<p>It is also possible (and sometimes very useful) to put a function within another function. For example, we could combine two of the steps in the window above like this: <code>my_function_name(c(2,2))</code>, resulting in one line of code that both generates the values and directly calculates the square root of their sum.</p>
+<p>It is also possible (and sometimes very useful) to put a function within another function. For example, we could combine multiple steps into one like this: <code>sqrt(prod(c(1,2)))</code>, resulting in one line of code that both generates the values and directly calculates the square root of the product of those values.</p>
 </div>
 <div id="vectors" class="section level1">
 <h1>Vectors</h1>
@@ -529,16 +536,16 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJteV9jb21iaW5lZF92YWx1ZXMgPC0gYygsKSBcbm15X2Z1
 <li>Also observe what happens when you try to combine an x and y vector of different lengths.</li>
 </ul>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJ4IDwtIGMoLClcbnkgPC0gYygsKVxuXG5kIDwtIGRhdGEuZnJhbWUoeD0geCwgeT0geSlcbmQifQ==
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJ4X3ZhbHVlcyA8LSBjKCwpXG55X3ZhbHVlcyA8LSBjKCwpXG5cbmQgPC0gZGF0YS5mcmFtZSh4ID0geF92YWx1ZXMsIHkgPSB5X3ZhbHVlcylcbmQifQ==
 </div>
-<p>As you could see above, running a line of code with just the name of a data structure (in this case, the letter <em>d</em>) will print the full data frame in the console output (if no errors were made!). If you instead are interested in only one of the columns, this can be specified by using the <code>$</code> operator, e.g <code>d$x</code>. Try it out below!</p>
+<p>As you could see above, running a line of code with just the name of a data structure (in this case, the letter <em>d</em>) will print the full data frame in the console output (if no errors were made!). If you instead are interested in only one of the columns, this can be specified by using the <code>$</code> operator followed by the column’s name, e.g <code>d$x</code>. Try it out below!</p>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJkIDwtIGRhdGEuZnJhbWUoeD0gYygxMCwgNDUpLCB5PSBjKDIsIDUpKVxuZCQifQ==
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJkIDwtIGRhdGEuZnJhbWUoeD0gYygxMCwgNDUpLCB5PSBjKDIsIDUpKVxuZCR4In0=
 </div>
 </div>
 <div id="youre-ready-to-go" class="section level1">
 <h1>You’re ready to go!</h1>
-<p>This was a brief introduction into R, but now you know what you need to get started with the <a href="mean.html">first module</a>!</p>
+<p>This was a brief introduction into R, but now you know what you need to get started with the <a href="https://dcossyleon.github.io/teacups-giraffes-and-statistics/BellCurve.html">first module</a>!</p>
 </div>
 
 <!DOCTYPE html>
