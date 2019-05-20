@@ -382,7 +382,7 @@ success_msg("Great!")
 Remember that the sample mean is an estimate of the entire population's mean (which would often be impossibly large to measure). How reliably does the mean of a sample represent the population mean? *Warning*: if a small sample has been used, the sample mean may not be a reliable at all! Estimates from small samples are subject to the whims of randomness. On the other hand, the larger the sample, the closer the sample size appraches the population size, and the more reliable the sample estimate becomes.
 
 Pressing 'Play' on the plot below will illustrate this concept. 
-
+<a name="mean_animation">
 ```{r, tut=FALSE, echo=FALSE, message= FALSE}
 library(emdbook)
 library(plotly)
@@ -438,6 +438,7 @@ config(displayModeBar = F) %>%
 htmltools::save_html(p,"Law_of_large_numbers.html")
 
 ```
+</a>
 <center><iframe style="margin: 0px;" src="Law_of_large_numbers.html" width="570" height="400" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
 
  <script type="text/x-mathjax-config">

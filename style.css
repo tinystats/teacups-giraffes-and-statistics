@@ -414,7 +414,7 @@ body, html {
 }
 
 
-@media only screen and (min-width: 650px) and (max-width: 768px) {
+@media only screen and (min-width: 650px) and (max-width: 767px) {
   .color-textbox-title{
     font-size: 2rem;
     padding: 4rem 0rem 0em 0rem;
@@ -431,14 +431,16 @@ body, html {
 }
 
 
-@media only screen and (min-width: 769px) and (max-width: 1041px) {
+/*iPad portrait*/
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
   .color-textbox-title{
-    font-size: 2rem;
+    font-size: 2.35rem;
     padding: 6rem 0rem 0rem 0rem;
   }
 
   .color-textbox-text{
-    font-size: 2rem;
+    font-size: 2.25rem;
     padding: 1rem 5rem 0rem 5rem;
   }
 
@@ -447,6 +449,27 @@ body, html {
   }
 }
 
+
+/*iPad Pro portarit */
+
+@media only screen and (min-width: 1024px) and (max-width: 1225px) {
+  .color-textbox-title{
+    font-size: 3rem;
+    padding: 6rem 0rem 0rem 0rem;
+  }
+
+  .color-textbox-text{
+    font-size: 3rem;
+    padding: 1rem 5rem 0rem 5rem;
+  }
+
+  .toc-content {
+    width: 100%;
+  }
+}
+
+
+/* ABOUT THE AUTHORS CSS */
 
 .image-text-about-the-authors {
   top:44%;
