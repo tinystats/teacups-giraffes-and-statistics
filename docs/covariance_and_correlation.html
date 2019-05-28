@@ -665,9 +665,32 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxueDEgPC0gcm5v
 </div>
 <div id="the-standardizer" class="section level1">
 <h1>The Standardizer</h1>
-<p>You can take a look at the illustration below to see a conceptual summary of how correlation will standarize the covariance, translating it into an easily interpretable metric that will always be bound by -1 and 1.</p>
+<p>You can take a look at the animation below to see a conceptual summary of how correlation will standarize the covariance, translating it into an easily interpretable metric that will always be bound by -1 and 1.</p>
+<!-- # ```{r, fig.show='animate', animation.hook = 'gifski', interval= 0.15, fig.width=10, fig.height=5, echo=FALSE, results="hide", message=FALSE} -->
+<!-- #  -->
+<!-- # getwd() -->
+<!-- #  -->
+<!-- # library(jpeg) -->
+<!-- # library(gifski) -->
+<!-- # frames <- list.files(path="factory/") -->
+<!-- #  -->
+<!-- # factory <- function(x){ -->
+<!-- # img <- readJPEG(paste0("factory/",frames[x]), native=TRUE) -->
+<!-- # plot(0:1, 0:1, type="n", ann=FALSE, axes=FALSE) -->
+<!-- # rasterImage(img,0,0,1,1) -->
+<!-- # } -->
+<!-- #  -->
+<!-- # lapply(1:175, function(x) factory(x)) -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # gif_file <-  file.path(getwd(), 'factory.gif') -->
+<!-- # # save_gif(lapply(1:175, function(x) factory(x)), gif_file= gif_file, progress = TRUE, loop= TRUE, delay= 0.5, width=400, height= 133) -->
+<!-- # #  -->
+<!-- # # utils::browseURL(gif_file) -->
+<!-- #  -->
+<!-- # ``` -->
 <div class="figure">
-<img src="Factory.png" />
+<img src="factory.gif" />
 
 </div>
 </div>
