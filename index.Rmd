@@ -5,5 +5,3 @@ output:
     includes:
       in_header: Landing_page.html
 ---
-
-HELLO HASSE
