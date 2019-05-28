@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Intro to Inference</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<head>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135221736-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-135221736-1');
+	</script>
+</head>
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+
+  <div class="image-descript"> 
+		<img class="big_image" src="Archer1.jpg">
+		<div class="image-text">
+			<div class="lil-image-text">Introduction to Inference:</div>
+			<div class="big-image-text"><strong>Standard Error</strong></div>
+		</div>
+  </div>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify" style="position: static;">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"> </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Modules
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="introToR.html">Intro to R</a>
+    </li>
+    <li>
+      <a href="BellCurve.html">Intro to the Normal Distribution</a>
+    </li>
+    <li>
+      <a href="mean.html">Mean, Median, Mode</a>
+    </li>
+    <li>
+      <a href="Variance.html">Spread of the Data</a>
+    </li>
+    <li>
+      <a href="covariance_and_correlation.html">Covariance and Correlation</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="aboutTheAuthors.html">About the Authors</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore"></h1>
+
+</div>
+
+
+<div class="alert alert-info">
+<strong>Module learning objectives:</strong>
+<ol>
+<li>
+Determine how to quantify the accuracy and precision of an estimate
+</li>
+<li>
+Describe the concept of statistical inference
+</li>
+<li>
+Understand the concept of sampling distributions
+</li>
+<li>
+Describe the relationship between the spread of the sampling distribution and sample size
+</li>
+<li>
+Define and calculate standard error
+</li>
+<li>
+Calculate standard error using a single sample’s standard deviation
+</li>
+<li>
+Use the standard error to construct 95% confidence intervals
+</li>
+</ol>
+</div>
+<div id="how-accurate-is-our-estimate-of-the-mean" class="section level1">
+<h1>How accurate is our estimate of the mean?</h1>
+<p>Let’s revisit the first few days during which we collected Island 1 heights. We were able to calculate the mean of our sample <span class="math inline">\({\bar{x}}\)</span> and verify that the heights were normally distributed. However, we know that <span class="math inline">\({\bar{x}}\)</span> is only an <em>estimate</em> of the true population mean, <span class="math inline">\({\mu}\)</span>, which would be the true value of interest. It is unlikely that we will ever know the value of <span class="math inline">\({\mu}\)</span>, since access to all possible observations is rare. Therefore we will have to rely on <span class="math inline">\({\bar{x}}\)</span> estimates from random samples drawn from the population as the best approximation of <span class="math inline">\({\mu}\)</span>.</p>
+<p>Not all sample means are created equal. Some are better estimates than others. Recall the <a href="mean.html#mean_animation">animation</a> showing the relationship between sample size and variability of the mean. As we learned from this animation, large samples are necessary to get an accurate estimate of <span class="math inline">\({\mu}\)</span>.</p>
+<p>The reason we care about our sample estimate’s accuracy is because we want to be able to test hypotheses about the population by making inferences. <strong>Statistical inference</strong> uses math to draw conclusions about the population taking sample uncertainty into account. One common use of statistical inference is related to hypotheses. For example, say that our hypothesis is that the population value of giraffe heights on Island 1 is less than 11 cm. We can make some inferences about whether or not our hypothesis is true based on what we learn from our sample of giraffe heights. We’ll revisit this question a few times.</p>
+<p>The mean of our sample of 50 giraffes from Island 1 was:</p>
+<pre class="r"><code>mean(heights_island1)</code></pre>
+<pre><code>## [1] 9.714141</code></pre>
+</div>
+<div id="creating-a-sampling-distribution" class="section level1">
+<h1>Creating a sampling distribution</h1>
+<p>How can we quantify the accuracy and precision of this estimate, given its sample size? One way to illustrate this is to generate data not just from a single sample but from many samples of the same size (N) drawn from the same population. Imagine that after you complete the first collection of 50 observations from Island 1, you wake up one morning with no memory of collecting data at all—and so you go out and collect 50 giraffe heights again, and subsequently calculate the mean. Further imagine that this groundhog day (or more correctly, groundhog week) situation repeats itself many, many times.</p>
+<p>When you finally return to your sanity, you find stacks of notebooks filled with mean values from each of your individual data collections.</p>
+<center>
+<img src="Notebooks.jpg" width="600" />
+</center>
+<p>Instead of viewing this as a massive waste of time, you make the best out of the situation and create a histogram of all the means, in other words you create a plot showing the distribution of the sample means.</p>
+<p>The animation below illustrates the process of creating this final histogram–called the <strong>sampling distribution</strong>.</p>
+<p>On the left side, each histogram represents a sample (e.g. your first week’s data collection) and correspondingly, each dot signifies an observation. After each histogram is completed, <span class="math inline">\({\bar{x}}\)</span> is calculated. This <span class="math inline">\({\bar{x}}\)</span> value is then subsequently added to the histogram of the sampling distibution. As you can see below, this process is repeated multiple times, allowing the sampling distribution to build up.</p>
+<p>[ANIMATION]</p>
+<p>Looking at the spread of <span class="math inline">\({\bar{x}}\)</span> values that this groundhog experience generated, we can get a sense of the range of all possible estimates of <span class="math inline">\({\mu}\)</span> that a sample of 50 giraffes can produce.</p>
+<p>[ STATIC PLOT]</p>
+<p>This is the first hint of the precision of our estimate, which we’ll quantify in more detail later on, but for now it’s enough to notice that the range of possible <span class="math inline">\({\bar{x}}\)</span> values is ____ to _____. (Desiree thinks people might get confused and need some extra context….). This means that <span class="math inline">\({\bar{x}}\)</span> values outside of this range are essentially improbable.</p>
+<p>Let’s return to our hypothesis that the true mean of giraffe heights on Island 1 is less than 11 cm. Our sampling distribution suggests that <span class="math inline">\({\mu}\)</span> is less than 11 cm [CHOOSE A NUMBER THAT FALLS OUTSIDE OF THIS SAMPLING DISTRIBUTION RANGE] since values greater than that are not within the range of this sampling distribution.</p>
+</div>
+<div id="sample-size-and-sampling-distribution" class="section level1">
+<h1>Sample size and sampling distribution</h1>
+<p>Back to the idea that larger samples are “better”, we can explore what happens if we repeat the groundhog scenario, this time sampling 500 individuals each time, instead of 50. For completeness, let’s imagine the same marathon data collection using samples that are smaller—of 5 giraffes each. We compare the histograms from all three scenarios below.</p>
+<p>[Three sampling distributions]</p>
+<p>What do we notice?</p>
+<ol style="list-style-type: decimal">
+<li>All histograms look normal.</li>
+<li>All distributions have approximately the same mean.</li>
+<li>Distributions generated from larger samples are less dispersed.</li>
+</ol>
+<p>The mean of the sampling distribution is a mean of means. It can be interpreted as the mean that results from a large sample made up of all the individual observations from each of the samples whose <span class="math inline">\({\bar{x}}\)</span> values are included in the sampling distribution.</p>
+<p>[Desiree illustration: something to help keep track of all the “means” and the “samples”]</p>
+<p>Try changing the number of observations that make up each sample, and see what the resulting sampling distribution looks like as well as the standard deviation of this distribution. See if you can confirm for yourself that the above points are true.</p>
+<p>[INSERT DATACAMP WINDOW]</p>
+</div>
+<div id="standard-error-of-the-mean" class="section level1">
+<h1>Standard Error of the Mean</h1>
+<p>As we’ve done before, we want to quantify this spread of mean estimates with a single value. We’ve already learned how to quantify a measure of spread–the standard deviation. If we take the standard deviations of each of the three different sampling scenarios above, then we accept that <em>distributions based on smaller samples should have larger standard deviations</em>.</p>
+<p>Using our three sampling distributions from above, calculate the standard deviation of each one. Confirm that the italicized point above is true in the window below. (If you’re working in R locally, use your “homemade” standard deviation function from the <a href="Variance.html">Variance</a> module.)</p>
+<p>[DATA CAMP WINDOW]</p>
+<p>When you calculate the standard deviation of a sampling distribution of <span class="math inline">\({\bar{x}}\)</span> values, you are calculating the <strong>standard error of the mean (SEM)</strong>, or just “standard error”. This is the value that we use to capture the level of precision of our sample estimate. But, we need a better and more efficient way to arrive at this value without relying on a groundhog day situation. Keep reading to learn more.</p>
+</div>
+<div id="time-for-a-tea-break" class="section level1">
+<h1>Time for a tea break!</h1>
+<center>
+<img src="Slingshot.jpg" width="700" />
+</center>
+</div>
+<div id="standard-error-in-practice" class="section level1">
+<h1>Standard Error in practice</h1>
+<p>The equation used for calculating the standard error of the mean using theory (i.e. without going out and resampling MANY times) is a bit complicated, but if you’re interested, you can learn more about it <a href="https://stats.stackexchange.com/questions/89154/general-method-for-deriving-the-standard-error">here</a>. But, we can capture the relationship of the terms in the equation with the plot below.</p>
+<p>[INSERT PLOT SHOWING y-axis SEM and x-axis N]</p>
+<p>Look at the plot above, hover over the points, and see if you can deduce how standard error of the mean, standard deviation, and sample size are related. Here are some hints to help you come up with the equation:</p>
+<ul>
+<li>SEM will be on one side of the equation, standard devation, and N will be on the other.</li>
+<li>The equation will involve division.</li>
+<li>There is one more missing piece of the puzzle: When you look at the shape of the plot above. What type of function does this remind you of? We haven’t covered this explicitly, but take a look <a href="https://www.mathsisfun.com/sets/functions-common.html">here</a> and see if you get any ideas.</li>
+</ul>
+<p>Use the window below as a calculator to see if you can figure out the equation.</p>
+<p>[DataCamp window exercise]</p>
+<p>In case you weren’t able to figure it out, check out this <a href="https://en.wikipedia.org/wiki/Standard_error">link</a> for the equation for calculating the SEM. Remember that we’re working with the sample standard deviation (<span class="math inline">\(s\)</span>), so make sure you find the correct equation.</p>
+</div>
+<div id="confirming-that-the-sem-equation-works" class="section level1">
+<h1>Confirming that the SEM equation works</h1>
+<p>Let’s test out this equation against what we concluded from the sampling distributions example with the N=50 case. Does the SEM seem like a good approximiation of the sampling distribution?</p>
+<p>The object <code>heights_island1</code> contains our sample of N=50. And the object <code>sampling_distibution_N50</code> contains the data from the corresponding “groundhog” sampling distribution.</p>
+<p>[DataCamp window exercise, set.seed for the regular Island 1 sample. set.seed for N=50 sampling distribution]</p>
+</div>
+<div id="how-do-we-apply-the-sem" class="section level1">
+<h1>How do we apply the SEM?</h1>
+<p>Now that we have a better understanding of how to gauge the precision of our sample estimates, we can test our hypothesis once and for all using inference.</p>
+<p>To formally make inferences, we need to revisit the principles of the <a href="Variance.html#empirical">empirical rule</a> to construct confidience intervals. (Confidence intervals are just one way to make inferences– we’ll discuss other ways later.)</p>
+<p>It just so happens that +/- 2 SEM from a point estimate will capture ~95% of the sampling distribution (remember, that the SEM is just the standard deviation of the sampling distribution, so the empirical rule applies just the same here). Actually, we were a little bit sloppy earlier when we said 2 standard deviations captures 95% of a normal distribution; this will actually give you __% of the data. The true value is 1.96–and this is what we use to construct a 95% confidence interval (CI).</p>
+<p>A 95% CI is the range of values that we are 95% certain contains the true mean of the population. We want to know whether our guess of 11 cm falls above of this range of certainty. If it does – we can be sure enough that the true average of giraffe heights on Island 1 is less than 11cm.</p>
+Use the window below to find out and make your first inference! [DataCamp WINDOW]
+<center>
+<img src="BabyInference.jpg" width="600" />
+</center>
+</div>
+<div id="things-to-think-about" class="section level1">
+<h1>Things to think about</h1>
+<p>95% CI is not a measure of <a href="https://www.graphpad.com/guides/prism/7/statistics/stat_more_about_confidence_interval.htm?toc=0&amp;printWindow">variability</a></p>
+<p>[NIcer looking version of the plot]</p>
+</div>
+
+<!DOCTYPE html>
+
+<div class="foot">
+	<hr> 
+	<p style="text-align: center;"> <span style="color: #808080; display: inline-block; width: 33%;"> 	This project was created entirely in RStudio using R Markdown with features making use of DataCamp Light windows and published on GitHub pages. 
+ </span></p>
+	<p style="text-align: center;">
+	</p>
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
