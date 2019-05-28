@@ -483,9 +483,33 @@ Wow, you can see that there is a negative relaionship between giraffe heights an
 <center>![](Celery.png){width=50%}</center>
 
 # The Standardizer
-You can take a look at the illustration below to see a conceptual summary of how correlation will standarize the covariance, translating it into an easily interpretable metric that will always be bound by -1 and 1. 
+You can take a look at the animation below to see a conceptual summary of how correlation will standarize the covariance, translating it into an easily interpretable metric that will always be bound by -1 and 1. 
 
-![](Factory.png)
+<!-- # ```{r, fig.show='animate', animation.hook = 'gifski', interval= 0.15, fig.width=10, fig.height=5, echo=FALSE, results="hide", message=FALSE} -->
+<!-- #  -->
+<!-- # getwd() -->
+<!-- #  -->
+<!-- # library(jpeg) -->
+<!-- # library(gifski) -->
+<!-- # frames <- list.files(path="factory/") -->
+<!-- #  -->
+<!-- # factory <- function(x){ -->
+<!-- # img <- readJPEG(paste0("factory/",frames[x]), native=TRUE) -->
+<!-- # plot(0:1, 0:1, type="n", ann=FALSE, axes=FALSE) -->
+<!-- # rasterImage(img,0,0,1,1) -->
+<!-- # } -->
+<!-- #  -->
+<!-- # lapply(1:175, function(x) factory(x)) -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # gif_file <-  file.path(getwd(), 'factory.gif') -->
+<!-- # # save_gif(lapply(1:175, function(x) factory(x)), gif_file= gif_file, progress = TRUE, loop= TRUE, delay= 0.5, width=400, height= 133) -->
+<!-- # #  -->
+<!-- # # utils::browseURL(gif_file) -->
+<!-- #  -->
+<!-- # ``` -->
+
+![](/Users/desiree/Documents/New R Projects/Cars/factory.gif)
 
 # Why divide by $\sigma_x\sigma_y$? 
 Well it's complicated, (see [here](https://www.quora.com/What-is-an-intuitive-explanation-for-why-the-sample-correlation-coefficient-is-equal-to-the-sample-covariance-divided-by-the-standard-deviations-of-x-and-y-multiplied-by-one-another) and [here](https://math.stackexchange.com/questions/158449/proving-that-the-magnitude-of-the-sample-correlation-coefficient-is-at-most-1)) but it builds on the mathematical principle that the covariance of x and y will never exceed the product of the standard deviations of x and y. This means that the maximum correlation value will occur when the absolute value of the covariance and the product of the standard deviations are equal. 
