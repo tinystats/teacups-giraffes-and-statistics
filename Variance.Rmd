@@ -198,8 +198,9 @@ And for **sample standard deviation, $s$**:
 # Meaning of the standard deviation
 Since we're now focusing on samples, let's think about how we can apply the standard deviation in a useful way to normal distributions to predict how "rare" or "common" particular observations in a data set may be. For the normal distribution, almost all of the data will fall within ± 3 standard deviations from the mean. This rule of thumb, called the **empirical rule**, is illustrated below and you can [(read more about it here)](https://newonlinecourses.science.psu.edu/stat200/lesson/2/2.2/2.2.7).
 <a name="empirical">
-![](General_empirical.png)
+![](General_empirical.jpg)
 </a>
+
   * The entire normal distribution includes 100% of the data. The empirical rule states that the interval created by **1 standard deviation above and below the mean includes 68% of all the data**. Observations within these bounds would be fairly common, but it would not be exceedingly rare to observe data that fall *outside* of these bounds. 
   
   * **2 standard deviations above and below the mean** encompasses approximately **95%** of the data. Observations that fall within these bounds include the common and also infrequent observations. Observations that fall *outside* of 2 standard deviations would be uncommon.
