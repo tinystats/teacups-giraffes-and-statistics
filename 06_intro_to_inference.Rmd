@@ -6,10 +6,6 @@ output:
       in_header: inference1_image.html
       after_body: foot.html
 ---
-
-
-THIS IS A TEST
-
 <div class="alert alert-info">
   **Module learning objectives:**
   <ol>
