@@ -98,9 +98,33 @@ When you calculate the standard deviation of a sampling distribution of ${\bar{x
 
 # Standard Error in practice
 The equation used for calculating the standard error of the mean using theory (i.e. without going out and resampling MANY times) is a bit complicated, but if you're interested, you can learn more about it [here](https://stats.stackexchange.com/questions/89154/general-method-for-deriving-the-standard-error). But, we can capture the relationship of the terms in the equation with the plot below.
+<center>
+```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE}
+library(plotly)
 
-[INSERT PLOT SHOWING y-axis SEM and x-axis N]
+d <- data.frame(N=seq(5,1000, 5), sd=2.1)
+d$sterr <- d$sd/sqrt(d$N)
 
+d %>%
+  plot_ly(
+    width=700, 
+    height=450,
+    type = 'scatter',
+    mode='markers',
+    x = ~N,
+    y = ~sterr,
+    marker = list(size = 10, opacity=0.75),
+    hoverinfo="text",
+    text=~paste("Standard Error:", round(sterr, 3), "\nN:", round(N, 1))
+  )%>%
+  config(displayModeBar = F) %>%
+layout(
+  xaxis = list(zeroline = F),
+  yaxis = list(title="Standard Error",zeroline = F) 
+  )
+
+```
+</center>
 Look at the plot above, hover over the points, and see if you can deduce how standard error of the mean, standard deviation, and sample size are related. Here are some hints to help you come up with the equation:
 
 * SEM will be on one side of the equation, standard devation, and N will be on the other.
