@@ -145,6 +145,36 @@ The mean of the sampling distribution is a mean of means. It can be interpreted 
 
 Try changing the number of observations that make up each sample, and see what the resulting sampling distribution looks like as well as the standard deviation of this distribution. See if you can confirm for yourself that the above points are true.
 
+
+```{r, include=FALSE}
+tutorial::go_interactive(height = 160)
+```
+
+```{r ex="histogram5", type="pre-exercise-code"}
+library(ggplot2)
+
+plot_hist <- function(N){
+  m <- do.call(rbind, lapply(1:1000, function(x) mean(rnorm(N, 10, 2))))
+  m <- as.data.frame(m)
+  colnames(m) <- "Height"
+  ggplot(data = m, aes(x = Height)) +
+  geom_histogram(binwidth = 0.1, color = "white", fill="green3") +
+  theme_light() +
+  scale_y_continuous(expand = c(0,0)) +
+  xlim(5,15) + 
+  labs(x=paste0("Sample means N = ", N), y="Frequency") +
+  theme(panel.border=element_blank(), panel.grid.minor=element_blank())  
+}
+
+```
+
+```{r ex="histogram5", type="sample-code"}
+
+plot_hist(N=)
+
+```
+
+
 # Standard Error of the Mean
 As we've done before, we want to quantify this spread of mean estimates with a single value. We've already learned how to quantify a measure of spread--the standard deviation. If we take the standard deviations of each of the three different sampling scenarios above, then we accept that *distributions based on smaller samples should have larger standard deviations*. 
 
