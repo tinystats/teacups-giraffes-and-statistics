@@ -89,7 +89,49 @@ Let's return to our hypothesis that the true mean of giraffe heights on Island 1
 
 Back to the idea that larger samples are "better", we can explore what happens if we repeat the groundhog scenario, this time sampling 500 individuals each time, instead of 50. For completeness, let's imagine the same marathon data collection using samples that are smaller---of 5 giraffes each. We compare the histograms from all three scenarios below.
 
-[Three sampling distributions]
+<center>
+```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, fig.height=6, fig.width=6}
+library(ggplot2)
+
+samp <- function(n){
+  x <- rnorm(n, 9.7, 2.1)
+  m <- mean(x)
+  s <- sd(x)
+  return(c(m,s))
+}
+
+d <- as.data.frame(do.call(rbind, lapply(1:10000, function(x) samp(5))))
+d2 <- as.data.frame(do.call(rbind, lapply(1:10000, function(x) samp(50))))
+d3<- as.data.frame(do.call(rbind, lapply(1:10000, function(x) samp(500))))
+colnames(d) <- colnames(d2) <- colnames(d3) <- c("mean", "sd")
+
+p <- ggplot(data = d, aes(x = mean)) +
+  geom_histogram(binwidth = 0.06, color = "white", fill="green3") +
+  theme_light() +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(x="Sample means N=5", y=NULL) +
+  theme(panel.border=element_blank(), panel.grid.minor=element_blank(), legend.position = , legend.background = ) +
+  xlim(6.7,12.7) 
+
+p2 <- ggplot(data = d2, aes(x = mean)) +
+  geom_histogram(binwidth = 0.06, color = "white", fill="green3") +
+  theme_light() +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(x="Sample means N=50", y="Frequency") +
+  theme(panel.border=element_blank(), panel.grid.minor=element_blank(), legend.position = , legend.background = ) +
+  xlim(6.7,12.7)
+
+p3 <- ggplot(data = d3, aes(x = mean)) +
+  geom_histogram(binwidth = 0.06, color = "white", fill="green3") +
+  theme_light() +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(x="Sample means N=500", y=NULL) +
+  theme(panel.border=element_blank(), panel.grid.minor=element_blank(), legend.position = , legend.background = ) +
+  xlim(6.7,12.7)
+
+cowplot::plot_grid(p3,p2,p, ncol = 1, align = "hv") 
+```
+</center>
 
 What do we notice?
 
