@@ -80,9 +80,9 @@ ggplot(data = d2, aes(x = mean)) +
 ```
 </center>
 
-This is the first hint of the precision of our estimate, which we'll quantify in more detail later on, but for now it's enough to notice that the range of possible ${\bar{x}}$ values is ____ to _____. (Desiree thinks people might get confused and need some extra context....). This means that ${\bar{x}}$ values outside of this range are essentially improbable.
+This is the first hint of the precision of our estimate, which we'll quantify in more detail later on, but for now it's enough to notice that the range of possible ${\bar{x}}$ values is `r min(d2$mean)`  to `r max(d2$mean)`. This means that ${\bar{x}}$ values outside of this range are essentially improbable.
 
-Let's return to our hypothesis that the true mean of giraffe heights on Island 1 is less than 11 cm. Our sampling distribution suggests that ${\mu}$ is less than 11 cm [CHOOSE A NUMBER THAT FALLS OUTSIDE OF THIS SAMPLING DISTRIBUTION RANGE] since values greater than that are not within the range of this sampling distribution. 
+Let's return to our hypothesis that the true mean of giraffe heights on Island 1 is less than 11 cm. Our sampling distribution suggests that ${\mu}$ is less than 11 cm since values greater than that are not within the range of this sampling distribution. 
 
 
 # Sample size and sampling distribution
