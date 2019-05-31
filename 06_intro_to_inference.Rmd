@@ -672,6 +672,7 @@ heights_island1_95CI
 
 <center> ![](Babyinference.jpg){width=600px} </center>
 
+
 # Things to think about
 95% CI is not a measure of [variability](https://www.graphpad.com/guides/prism/7/statistics/stat_more_about_confidence_interval.htm?toc=0&printWindow)
 
