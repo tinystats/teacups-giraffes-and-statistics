@@ -52,9 +52,325 @@ The animation below illustrates the process of creating this final histogram--ca
 
 On the left side, each histogram represents a sample (e.g. your first week's data collection) and correspondingly, each dot signifies an observation. After each histogram is completed, ${\bar{x}}$ is calculated. This ${\bar{x}}$ value is then subsequently added to the histogram of the sampling distibution. As you can see below, this process is repeated multiple times, allowing the sampling distribution to build up.
 
+<center>
+```{r fig.show="animate", animation.hook = 'gifski', fig.width=7, fig.height=3, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.08, loop=FALSE}
+library(ggplot2)
+library(tweenr)
+library(parallel)
+library(MASS)
+ppplot <- function(sub){
+x <- round(rnorm(50, 9.7, 2.1))
+m <- mean(x)
+df <- data.frame(x = x, y = 23)
+dfs <- list(df)
+for(i in seq_len(nrow(df))) {
+  dftemp <- tail(dfs, 1)
+  dftemp[[1]]$y[i] <- sum(dftemp[[1]]$x[seq_len(i)] == dftemp[[1]]$x[i])
+  dfs <- append(dfs, dftemp)
+}
+dfs <- append(dfs, dfs[rep(length(dfs), 3)])
+dft <- tween_states(dfs, 10, 1, 'cubic-in', 50)
+dft$y <- dft$y - 0.5
+dft <- dft[dft$y != 23, ]
 
-[ANIMATION]
+ppl <- function(frame){
+  p <- ggplot(data=dft[dft$.frame==frame,],aes(x=x, y=y))+geom_point(shape=16, color="green3", size=4)+ylim(0,16)+xlim(3,17)+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank())+labs(x="Giraffe Heights", y=NULL)
+  df <- data.frame()
+  p2 <- ggplot(df) + geom_point() + xlim(0, 16) + ylim(3, 17)+theme_void()
+  p3 <- ggplot(df) + geom_point() + xlim(9, 11) + ylim(0, 150)+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank())+labs(x="Sample means", y=NULL)
+  cowplot::plot_grid(p,p2,p3, align="h",rel_widths = c(1,0.55, 1), ncol = 3)
+  
+}
 
+ppl2 <- function(frame){
+  p <- ggplot(data=dft[dft$.frame==53,],aes(x=x, y=y))+geom_point(shape=16, color="green3", size=4)+ylim(0,16)+xlim(3,17)+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank())+geom_vline(xintercept = m, linetype=2)+labs(x="Giraffe Heights", y=NULL)
+  p
+  df <- data.frame()
+  lb1 <- paste0("bar(x)", "[", sub, "]", " == ", round(m,2))
+  p2 <- ggplot(df) + geom_point() + xlim(0, 16) + ylim(3, 17)+theme_void()+annotate("text", x = 8, y=10, label=lb1, parse = TRUE, size=7)+annotate("segment", x = 1, xend = 15, y = 8, yend = 8, colour = "black", size=1, arrow=arrow(type = "closed", length = unit(0.3,"cm")))
+  p3 <- ggplot(df) + geom_point() + xlim(9, 11) + ylim(0, 150)+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank())+annotate("segment", x = m, xend = m, y = 20, yend = 4, colour = "black", size=1, arrow=arrow(type = "closed", length = unit(0.3,"cm")))+labs(x="Sample means", y=NULL)
+  cowplot::plot_grid(p,p2,p3, align="h", rel_widths = c(1,0.55,1), ncol = 3)
+}
+
+pf <- list(lapply(seq(1,53,2),function(x) ppl(x)), lapply(rep(53,3), function(x) ppl(x)), lapply(1:20, function(x) ppl2()))
+return(pf)
+}
+mclapply(1:2, function(x) ppplot(x), mc.cores = 8, mc.cleanup = TRUE)
+
+circleFun <- function(center=c(0,0), diameter=1, npoints=100, start=0, end=2, filled=TRUE){
+  tt <- seq(start*pi, end*pi, length.out=npoints)
+  df <- data.frame(
+    x = center[1] + diameter / 2 * cos(tt),
+    y = center[2] + diameter / 2 * sin(tt)
+  )
+  if(filled==TRUE) { 
+    df <- rbind(df, center)
+  }
+  return(df)
+}
+fullCircle <- circleFun(c(1, -1), 2.3, start=0, end=2, filled=FALSE)
+fullCircle2 <- circleFun(c(1, -1), 2, start=0, end=2, filled=FALSE)
+fullCircle3 <- circleFun(c(1, -1), 1.3, start=0, end=2, filled=FALSE)
+fullCircle4 <- circleFun(c(1, -1), 0.3, start=0, end=2, filled=FALSE)
+fullCircle5 <- circleFun(c(1, -1), 0.1, start=0, end=2, filled=FALSE)
+
+tris <- circleFun(c(1, -1), 1.6, start=1.2, end=-0.2, filled=FALSE, npoints=50)
+tris2 <- circleFun(c(1, -1), 0.2, start=1.4, end=0, filled=FALSE, npoints=50)
+tris3 <- circleFun(c(1, -1), 0.2, start=1, end=-0.4, filled=FALSE,npoints=50)
+
+s <- c(rep(1,10), 1:50)
+
+trii <- lapply(s, function(x) data.frame(x=c(tris[x,1],tris2[x,1],tris3[x,1]), y=c(tris[x,2],tris2[x,2],tris3[x,2])))
+
+quarterCircle <- circleFun(c(1,-1), diameter = 1.85, start=1, end=1.25, filled=TRUE)
+quarterCircle2 <- circleFun(c(1,-1), diameter = 1.85, start=0.75, end=1, filled=TRUE)
+quarterCircle3 <- circleFun(c(1,-1), diameter = 1.85, start=0.5, end=0.75, filled=TRUE)
+quarterCircle4 <- circleFun(c(1,-1), diameter = 1.85, start=0.25, end=0.5, filled=TRUE)
+quarterCircle5 <- circleFun(c(1,-1), diameter = 1.85, start=0.25, end=0, filled=TRUE)
+quarterCircle6 <- circleFun(c(1,-1), diameter = 1.85, start=2, end=1.75, filled=TRUE)
+
+x <- round(rnorm(50, 9.7, 2.1))
+m <- mean(x)
+df <- data.frame(x = x, y = 23)
+dfs <- list(df)
+for(i in seq_len(nrow(df))) {
+  dftemp <- tail(dfs, 1)
+  dftemp[[1]]$y[i] <- sum(dftemp[[1]]$x[seq_len(i)] == dftemp[[1]]$x[i])
+  dfs <- append(dfs, dftemp)
+}
+dfs <- append(dfs, dfs[rep(length(dfs), 3)])
+dft <- tween_states(dfs, 10, 1, 'cubic-in', 50)
+dft$y <- dft$y - 0.5
+dft <- dft[dft$y != 23, ]
+dft <- dft[dft$.frame %in% c(1:26, seq(27, 53, 2)),]
+dft$.frame <- rep(1:40, each=50)
+
+plots <- function(dd){
+p <- ggplot() + 
+  geom_polygon(data=fullCircle, aes(x, y), color="#40596b", fill="#40596b") +
+  geom_polygon(data=fullCircle2, aes(x, y), color="white", fill="white") +
+  geom_polygon(data=quarterCircle, aes(x,y), color="#cdd6e0", fill="#cdd6e0") + 
+  geom_polygon(data=quarterCircle2, aes(x,y), color="#acb3ba", fill="#acb3ba") + 
+  geom_polygon(data=quarterCircle3, aes(x,y), color="#ffd15c", fill="#ffd15c") +
+  geom_polygon(data=quarterCircle4, aes(x,y), color="#f8b64c", fill="#f8b64c") +
+  geom_polygon(data=quarterCircle5, aes(x,y), color="#ff7058", fill="#ff7058") +
+  geom_polygon(data=quarterCircle6, aes(x,y), color="#f1543f", fill="#f1543f") +
+  geom_polygon(data=fullCircle3, aes(x,y), color="white", fill="white") +
+  geom_polygon(data=fullCircle4, aes(x,y), color="#40596b", fill="#40596b") +
+  geom_polygon(data=trii[[dd]], aes(x,y), color="#40596b", fill="#40596b") +
+  geom_polygon(data=fullCircle5, aes(x,y), color="white", fill="white") +
+  coord_equal() +
+  theme_void()
+  ddd <- ifelse(dd<20, 1, ifelse(dd<35, 2, ifelse(dd<45, 3, ifelse(dd<50, 4, ifelse(dd<53, 5, ifelse(dd<55, 6, ifelse(dd<57, 7, ifelse(dd<59, 8, base::sample(1:10,1)))))))))
+  p2 <- ggplot(data=dft[dft$.frame==dd,],aes(x=x, y=y))+geom_point(shape=16, color="green3", size=4)+ylim(0,16)+xlim(3,17)+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank())+labs(x="Giraffe Heights", y=NULL)
+  df <- data.frame()
+  p3 <- ggplot(df) + geom_point() + xlim(9, 11) + ylim(0, 150)+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank())+labs(x="Sample means", y=NULL)
+  cowplot::plot_grid(p2,p,p3, align="h",rel_widths = c(1,0.55, 1), ncol=3)
+}
+
+lapply(seq(1,40,3), function(x) plots(x))
+
+hists <- function(x){
+  x <- round(rnorm(50, 10, 2))
+  m <- mean(x)
+  return(m)
+}  
+
+dh <- do.call(rbind, lapply(1:1000, function(x) hists()))
+
+ hh <- function(x){
+  d <- data.frame(Height=dh[1:x])
+  return(d)
+}
+
+dhh <<- lapply(1:1000, function(x) hh(x))
+
+plots2 <- function(dd){
+p <- ggplot() + 
+  geom_polygon(data=fullCircle, aes(x, y), color="#40596b", fill="#40596b") +
+  geom_polygon(data=fullCircle2, aes(x, y), color="white", fill="white") +
+  geom_polygon(data=quarterCircle, aes(x,y), color="#cdd6e0", fill="#cdd6e0") + 
+  geom_polygon(data=quarterCircle2, aes(x,y), color="#acb3ba", fill="#acb3ba") + 
+  geom_polygon(data=quarterCircle3, aes(x,y), color="#ffd15c", fill="#ffd15c") +
+  geom_polygon(data=quarterCircle4, aes(x,y), color="#f8b64c", fill="#f8b64c") +
+  geom_polygon(data=quarterCircle5, aes(x,y), color="#ff7058", fill="#ff7058") +
+  geom_polygon(data=quarterCircle6, aes(x,y), color="#f1543f", fill="#f1543f") +
+  geom_polygon(data=fullCircle3, aes(x,y), color="white", fill="white") +
+  geom_polygon(data=fullCircle4, aes(x,y), color="#40596b", fill="#40596b") +
+  geom_polygon(data=trii[[dd]], aes(x,y), color="#40596b", fill="#40596b") +
+  geom_polygon(data=fullCircle5, aes(x,y), color="white", fill="white") +
+  coord_equal() +
+  theme_void()
+  ddd <- ifelse(dd<20, 1, ifelse(dd<35, 2, ifelse(dd<45, 3, ifelse(dd<50, 4, ifelse(dd<53, 5, ifelse(dd<55, 6, ifelse(dd<57, 7, ifelse(dd<59, 8, base::sample(1:10,1)))))))))
+  set.seed(ddd)
+  x <- round(rnorm(50, 9.7, 2.1))
+m <- mean(x)
+df <- data.frame(x = x, y = 23)
+dfs <- list(df)
+for(i in seq_len(nrow(df))) {
+  dftemp <- tail(dfs, 1)
+  dftemp[[1]]$y[i] <- sum(dftemp[[1]]$x[seq_len(i)] == dftemp[[1]]$x[i])
+  dfs <- append(dfs, dftemp)
+}
+dfs <- append(dfs, dfs[rep(length(dfs), 3)])
+dft <- tween_states(dfs, 10, 1, 'cubic-in', 50)
+dft$y <- dft$y - 0.5
+dft <- dft[dft$y != 23, ]
+  p2 <- ggplot(data=dft[dft$.frame==53,],aes(x=x, y=y))+geom_point(shape=16, color="green3", size=4)+ylim(0,16)+xlim(3,17)+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank())+geom_vline(xintercept = m, linetype=2)+labs(x="Giraffe Heights", y=NULL)
+  df <- data.frame()
+
+p3 <- ggplot(data = dhh[[dd-40]], aes(x = Height)) +
+  geom_histogram(binwidth = 0.1, color = "white", fill="green3") +
+  theme_light() +
+  scale_y_continuous(limits = c(0,150)) +
+  labs(x=NULL, y=NULL) +
+  xlim(9,11) + 
+  theme(panel.border=element_blank(), panel.grid.minor=element_blank()) +
+  labs(x="Sample means", y=NULL)
+  cowplot::plot_grid(p2,p,p3, align="h",rel_widths = c(1,0.55, 1), ncol=3)
+}
+lapply(seq(41,50,2), function(x) plots2(x))
+lapply(seq(51,60,1), function(x) plots2(x))
+
+
+plots3 <- function(dd){
+  
+p <- ggplot() + 
+  geom_polygon(data=fullCircle, aes(x, y), color="#40596b", fill="#40596b") +
+  geom_polygon(data=fullCircle2, aes(x, y), color="white", fill="white") +
+  geom_polygon(data=quarterCircle, aes(x,y), color="#cdd6e0", fill="#cdd6e0") + 
+  geom_polygon(data=quarterCircle2, aes(x,y), color="#acb3ba", fill="#acb3ba") + 
+  geom_polygon(data=quarterCircle3, aes(x,y), color="#ffd15c", fill="#ffd15c") +
+  geom_polygon(data=quarterCircle4, aes(x,y), color="#f8b64c", fill="#f8b64c") +
+  geom_polygon(data=quarterCircle5, aes(x,y), color="#ff7058", fill="#ff7058") +
+  geom_polygon(data=quarterCircle6, aes(x,y), color="#f1543f", fill="#f1543f") +
+  geom_polygon(data=fullCircle3, aes(x,y), color="white", fill="white") +
+  geom_polygon(data=fullCircle4, aes(x,y), color="#40596b", fill="#40596b") +
+  geom_polygon(data=trii[[60]], aes(x,y), color="#40596b", fill="#40596b") +
+  geom_polygon(data=fullCircle5, aes(x,y), color="white", fill="white") +
+  coord_equal() +
+  theme_void()
+
+x <- round(rnorm(50, 9.7, 2.1))
+m <- mean(x)
+df <- data.frame(x = x, y = 23)
+dfs <- list(df)
+for(i in seq_len(nrow(df))) {
+  dftemp <- tail(dfs, 1)
+  dftemp[[1]]$y[i] <- sum(dftemp[[1]]$x[seq_len(i)] == dftemp[[1]]$x[i])
+  dfs <- append(dfs, dftemp)
+}
+dfs <- append(dfs, dfs[rep(length(dfs), 3)])
+dft <- tween_states(dfs, 10, 1, 'cubic-in', 50)
+dft$y <- dft$y - 0.5
+dft <- dft[dft$y != 23, ]
+
+  p2 <- ggplot(data=dft[dft$.frame==53,],aes(x=x, y=y))+geom_point(shape=16, color="green3", size=4)+ylim(0,16)+xlim(3,17)+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank())+geom_vline(xintercept = m, linetype=2)+labs(x="Giraffe Heights", y=NULL)
+  
+hh <- function(x){
+  d <- data.frame(Height=dh[1:x])
+  return(d)
+}
+
+dhh <- lapply(1:1000, function(x) hh(x))
+p3 <- ggplot(data = dhh[[dd+40]], aes(x = Height)) +
+  geom_histogram(binwidth = 0.1, color = "white", fill="green3") +
+  theme_light() +
+  scale_y_continuous(limits = c(0,150)) +
+  labs(x=NULL, y=NULL) +
+  xlim(9,11) + 
+  theme(panel.border=element_blank(), panel.grid.minor=element_blank()) +
+  labs(x="Sample means", y=NULL)
+
+  cowplot::plot_grid(p2,p,p3, align="h",rel_widths = c(1,0.55, 1), ncol = 3)
+}
+mclapply(seq(1,300, 20), function(x) plots3(x), mc.cores = 8, mc.cleanup = TRUE)
+
+plots3.2 <- function(dd){
+sub <- dd+40  
+
+x <- round(rnorm(50, 9.7, 2.1))
+m <- mean(x)
+df <- data.frame(x = x, y = 23)
+dfs <- list(df)
+for(i in seq_len(nrow(df))) {
+  dftemp <- tail(dfs, 1)
+  dftemp[[1]]$y[i] <- sum(dftemp[[1]]$x[seq_len(i)] == dftemp[[1]]$x[i])
+  dfs <- append(dfs, dftemp)
+}
+dfs <- append(dfs, dfs[rep(length(dfs), 3)])
+dft <- tween_states(dfs, 10, 1, 'cubic-in', 50)
+dft$y <- dft$y - 0.5
+dft <- dft[dft$y != 23, ]
+
+df <- data.frame()
+  lb1 <- paste0("bar(x)", "[", sub, "]", " == ", round(m,1))
+  p <- ggplot(df) + geom_point() + xlim(0, 16) + ylim(3, 17)+theme_void()+annotate("text", x = 1, y=10, label=lb1, parse = TRUE, size=7,hjust = 0)+annotate("segment", x = 1, xend = 15, y = 8, yend = 8, colour = "black", size=1, arrow=arrow(type = "closed", length = unit(0.3,"cm")))
+
+  p2 <- ggplot(data=dft[dft$.frame==53,],aes(x=x, y=y))+geom_point(shape=16, color="green3", size=4)+ylim(0,16)+xlim(3,17)+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank())+geom_vline(xintercept = m, linetype=2)+labs(x="Giraffe Heights", y=NULL)
+  
+hh <- function(x){
+  d <- data.frame(Height=dh[1:x])
+  return(d)
+}
+
+dhh <- lapply(1:1000, function(x) hh(x))
+p3 <- ggplot(data = dhh[[dd+40]], aes(x = Height)) +
+  geom_histogram(binwidth = 0.1, color = "white", fill="green3") +
+  theme_light() +
+  scale_y_continuous(limits = c(0,150)) +
+  labs(x=NULL, y=NULL) +
+  xlim(9,11) + 
+  theme(panel.border=element_blank(), panel.grid.minor=element_blank()) +
+  labs(x="Sample means", y=NULL)
+
+  cowplot::plot_grid(p2,p,p3, align="h",rel_widths = c(1,0.55, 1), ncol = 3)
+}
+mclapply(seq(301,960, 20), function(x) plots3.2(x), mc.cores = 8, mc.cleanup = TRUE)
+
+x <- round(mvrnorm(50, 9.8, 2.1, empirical = T))
+m <- mean(x)
+df <- data.frame(x = x, y = 23)
+dfs <- list(df)
+for(i in seq_len(nrow(df))) {
+  dftemp <- tail(dfs, 1)
+  dftemp[[1]]$y[i] <- sum(dftemp[[1]]$x[seq_len(i)] == dftemp[[1]]$x[i])
+  dfs <- append(dfs, dftemp)
+}
+dfs <- append(dfs, dfs[rep(length(dfs), 3)])
+dft <- tween_states(dfs, 10, 1, 'cubic-in', 50)
+dft$y <- dft$y - 0.5
+dft <- dft[dft$y != 23, ]
+
+plots4 <- function(dd){
+  
+df <- data.frame()
+  lb1 <- paste0("bar(x)", "[", 1000, "]", " == ", 9.8)
+  p <- ggplot(df) + geom_point() + xlim(0, 16) + ylim(3, 17)+theme_void()+annotate("text", x = 1, y=10, label=lb1, parse = TRUE, size=7,hjust = 0)+annotate("segment", x = 1, xend = 15, y = 8, yend = 8, colour = "black", size=1, arrow=arrow(type = "closed", length = unit(0.3,"cm")))
+
+  p2 <- ggplot(data=dft[dft$.frame==53,],aes(x=x, y=y))+geom_point(shape=16, color="green3", size=4)+ylim(0,16)+xlim(3,17)+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank())+geom_vline(xintercept = 9.8, linetype=2)+labs(x="Giraffe Heights", y=NULL)
+  
+hh <- function(x){
+  d <- data.frame(Height=dh[1:x])
+  return(d)
+}
+
+dhh <- lapply(1:1000, function(x) hh(x))
+p3 <- ggplot(data = dhh[[dd+40]], aes(x = Height)) +
+  geom_histogram(binwidth = 0.1, color = "white", fill="green3") +
+  theme_light() +
+  scale_y_continuous(limits = c(0,150)) +
+  labs(x=NULL, y=NULL) +
+  xlim(9,11) + 
+  theme(panel.border=element_blank(), panel.grid.minor=element_blank()) +
+  labs(x="Sample means", y=NULL)
+
+  cowplot::plot_grid(p2,p,p3, align="h",rel_widths = c(1,0.55, 1), ncol = 3)
+}
+
+mclapply(rep(960, 20), function(x) plots4(x), mc.cores = 8, mc.cleanup = TRUE)
+```
+</center>
 Looking at the spread of ${\bar{x}}$ values that this groundhog experience generated, we can get a sense of the range of all possible estimates of ${\mu}$ that a sample of 50 giraffes can produce. 
 
 <center>
