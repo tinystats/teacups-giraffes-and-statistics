@@ -92,10 +92,10 @@ ppl2 <- function(frame){
   cowplot::plot_grid(p,p2,p3, align="h", rel_widths = c(1,0.55,1), ncol = 3)
 }
 
-pf <- list(lapply(seq(1,53,2),function(x) ppl(x)), lapply(rep(53,3), function(x) ppl(x)), lapply(1:20, function(x) ppl2()))
+pf <- list(lapply(seq(1,53,2),function(x) ppl(x)), lapply(rep(53,3), function(x) ppl(x)), lapply(1:40, function(x) ppl2()))
 return(pf)
 }
-mclapply(1:2, function(x) ppplot(x), mc.cores = 8, mc.cleanup = TRUE)
+mclapply(1:3, function(x) ppplot(x), mc.cores = 8, mc.cleanup = TRUE)
 
 circleFun <- function(center=c(0,0), diameter=1, npoints=100, start=0, end=2, filled=TRUE){
   tt <- seq(start*pi, end*pi, length.out=npoints)
@@ -368,7 +368,7 @@ p3 <- ggplot(data = dhh[[dd+40]], aes(x = Height)) +
   cowplot::plot_grid(p2,p,p3, align="h",rel_widths = c(1,0.55, 1), ncol = 3)
 }
 
-mclapply(rep(960, 20), function(x) plots4(x), mc.cores = 8, mc.cleanup = TRUE)
+mclapply(rep(960, 40), function(x) plots4(x), mc.cores = 8, mc.cleanup = TRUE)
 ```
 </center>
 Looking at the spread of ${\bar{x}}$ values that this groundhog experience generated, we can get a sense of the range of all possible estimates of ${\mu}$ that a sample of 50 giraffes can produce. 
