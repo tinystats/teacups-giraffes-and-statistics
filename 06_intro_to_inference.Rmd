@@ -53,7 +53,7 @@ The animation below illustrates the process of creating this final histogram--ca
 On the left side, each histogram represents a sample (e.g. your first week's data collection) and correspondingly, each dot signifies an observation. After each histogram is completed, ${\bar{x}}$ is calculated. This ${\bar{x}}$ value is then subsequently added to the histogram of the sampling distibution. As you can see below, this process is repeated multiple times, allowing the sampling distribution to build up.
 
 <center>
-```{r fig.show="animate", animation.hook = 'gifski', fig.width=7, fig.height=3, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.08, loop=FALSE}
+```{r fig.show="animate", animation.hook = 'gifski', fig.width=7, fig.height=3, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.08, loop=FALSE, cache=TRUE}
 library(ggplot2)
 library(tweenr)
 library(parallel)
@@ -374,7 +374,7 @@ mclapply(rep(960, 20), function(x) plots4(x), mc.cores = 8, mc.cleanup = TRUE)
 Looking at the spread of ${\bar{x}}$ values that this groundhog experience generated, we can get a sense of the range of all possible estimates of ${\mu}$ that a sample of 50 giraffes can produce. 
 
 <center>
-```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, fig.height=3.5, fig.width=6}
+```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, fig.height=2.7, fig.width=4.5}
 library(ggplot2)
 
 samp <- function(n){
@@ -388,10 +388,10 @@ d2 <- as.data.frame(do.call(rbind, lapply(1:10000, function(x) samp(50))))
 colnames(d2) <- c("mean", "sd")
 
 ggplot(data = d2, aes(x = mean)) +
-  geom_histogram(binwidth = 0.06, color = "white", fill="green3") +
+  geom_histogram(binwidth = 0.1, color = "white", fill="green3") +
   theme_light() +
   scale_y_continuous(expand = c(0,0)) +
-  labs(x="Sample means", y="Frequency") +
+  labs(x="Sample means", y=NULL) +
   theme(panel.border=element_blank(), panel.grid.minor=element_blank()) 
 ```
 </center>
@@ -527,7 +527,7 @@ When you calculate the standard deviation of a sampling distribution of ${\bar{x
 # Standard Error in practice
 The equation used for calculating the standard error of the mean using theory (i.e. without going out and resampling MANY times) is a bit complicated, but if you're interested, you can learn more about it [here](https://stats.stackexchange.com/questions/89154/general-method-for-deriving-the-standard-error). But, we can capture the relationship of the terms in the equation with the plot below.
 <center>
-```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE}
+```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, out.height=2}
 library(plotly)
 
 d <- data.frame(N=seq(5,1000, 5), sd=2.1)
@@ -535,8 +535,8 @@ d$sterr <- d$sd/sqrt(d$N)
 
 d %>%
   plot_ly(
-    width=700, 
-    height=450,
+    width=600, 
+    height=350,
     type = 'scatter',
     mode='markers',
     x = ~N,
@@ -546,7 +546,7 @@ d %>%
     text=~paste("Standard Error:", round(sterr, 3), "\nN:", round(N, 1))
   )%>%
   config(displayModeBar = F) %>%
-layout(
+layout(autosize = F, width = 600, height = 350,
   xaxis = list(zeroline = F),
   yaxis = list(title="Standard Error",zeroline = F) 
   )
