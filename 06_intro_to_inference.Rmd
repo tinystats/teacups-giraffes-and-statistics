@@ -328,7 +328,7 @@ p3 <- ggplot(data = dhh[[dd+40]], aes(x = Height)) +
 }
 mclapply(seq(301,960, 20), function(x) plots3.2(x), mc.cores = 8, mc.cleanup = TRUE)
 
-x <- round(mvrnorm(50, 9.8, 2.1, empirical = T))
+x <- round(mvrnorm(50, 9.8, 2.1^2, empirical = T))
 m <- mean(x)
 df <- data.frame(x = x, y = 23)
 dfs <- list(df)
@@ -553,10 +553,11 @@ layout(autosize = F, width = 600, height = 350,
 
 ```
 </center>
-Look at the plot above, hover over the points, and see if you can deduce how standard error of the mean, standard deviation, and sample size are related. Here are some hints to help you come up with the equation:
+Look at the plot above, hover over the points, and see if you can gather how standard error of the mean, standard deviation, and sample size are related. Here are some hints to help you come up with the equation:
 
 * SEM will be on one side of the equation, standard devation, and N will be on the other.
 * The equation will involve division.
+* The standard deviation in the plot is `2.1`, which represents ${\sigma}$ for giraffe heights on Island 1. This population value is technically still unknown but can be deduced in theory by repeating the groundhog's day example for the standard deviation instead of for the mean.
 * There is one more missing piece of the puzzle: When you look at the shape of the plot above. What type of function does this remind you of? We haven't covered this explicitly, but take a look [here](https://www.mathsisfun.com/sets/functions-common.html) and see if you get any ideas.
 
 Use the window below as a calculator to see if you can figure out the equation.
@@ -564,11 +565,17 @@ Use the window below as a calculator to see if you can figure out the equation.
 ```{r ex="SEM2", type="pre-exercise-code"}
 set.seed(12)
 heights_island1 <- rnorm(50,10,2)
-
+#9.7, 2.1 USE THESE WHEN NOT ISLAND 1 HEIGHTS
 ```
 
 ```{r ex="SEM2", type="sample-code"}
 
+# Hover over a point and record the N and SEM values
+
+N =
+SEM =
+SD = 2.1
+  
 # Use the plot and the hints above to see if you can deduce the equation for the standard error of the mean
 
 ```
