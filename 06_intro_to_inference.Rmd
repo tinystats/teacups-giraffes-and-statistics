@@ -691,16 +691,21 @@ heights_island1_95CI
 95% CI is not a measure of [variability](https://www.graphpad.com/guides/prism/7/statistics/stat_more_about_confidence_interval.htm?toc=0&printWindow)
 
 
-* We've been a little fast and loose with our owrds. The formal def iof CIs if the following: 
+* We've been a little fast and loose with our words. The formal defintion of CIs is the following: 
 
 * "95% of CI in will fall within...."
 
+The animation below shows....
 [graphical display]
 
-* The precise interpretation of confidence intervals is quite a nuanced and rather hotly debated topic [see here]. 
-
-* philosophically "it's complicated"---so if these subtleties don't feel intuitive, don't feel bad. In fact, one recent paper reported that 97% of surveyed researchers endorsed at least one misconception (out of 6) about CI. 
+* Importantly, some examples of what the 95% CI does NOT mean are:
+  a) 
+  b) 
+  c) 
+  
+* The precise interpretation of confidence intervals is quite a nuanced and rather hotly debated topic [see here] and becomes somewhat philosophical --so if these subtleties don't feel intuitive, don't feel bad. In fact, one recent paper reported that 97% of surveyed researchers endorsed at least one misconception (out of 6) about CI. 
 
 This is tricky stuff!
 
-[NIcer looking version of the plot]
+
+
