@@ -9,23 +9,27 @@ output:
 <div class="alert alert-info">
   **Module learning objectives:**
   <ol>
-  <li> Determine how to quantify the accuracy and precision of an estimate </li>
+  <li> Determine how to quantify the uncertainty of an estimate </li>
   <li> Describe the concept of statistical inference </li>
-  <li> Understand the concept of sampling distributions </li>
-  <li> Describe the relationship between the spread of the sampling distribution and sample size </li>
+  <li> Understand the concept of sampling distributions and how it relates to sample size </li>
   <li> Define and calculate standard error </li>
-  <li> Calculate standard error using a single sample's standard deviation </li>
   <li> Use the standard error to construct 95% confidence intervals </li>
   </ol>
 </div>
 
 # How accurate is our estimate of the mean?
 
-Let's revisit the first few days during which we collected Island 1 heights. We were able to calculate the mean of our sample ${\bar{x}}$ and verify that the heights were normally distributed. However, we know that ${\bar{x}}$ is only an *estimate* of the true population mean, ${\mu}$, which would be the true value of interest. It is unlikely that we will ever know the value of ${\mu}$, since access to all possible observations is rare. Therefore we will have to rely on ${\bar{x}}$ estimates from random samples drawn from the population as the best approximation of ${\mu}$.
+Let's revisit the first few days during which we collected data stored in the vector `heights_island1`. We were able to verify that the heights were normally distributed and calculated the mean of our sample, ${\bar{x}}$. However, we know that ${\bar{x}}$ is only an *estimate* of the true population mean, ${\mu}$, which is the true value of interest. It is unlikely that we will ever know the value of ${\mu}$, since access to all possible observations is rare. Therefore we will have to rely on ${\bar{x}}$ estimates from random samples drawn from the population as the best approximation of ${\mu}$.
 
-Not all sample means are created equal. Some are better estimates than others. Recall the [animation](mean.html#mean_animation) showing the relationship between sample size and variability of the mean. As we learned from this animation, large samples are necessary to get an accurate estimate of ${\mu}$.
+Not all sample means are created equal. Some are better estimates than others. Recall the [animation](mean.html#mean_animation) showing the relationship between sample size and variability of the mean. As we learned from this animation, in the long-run large samples are necessary to get an accurate estimate of ${\mu}$.
 
-The reason we care about our sample estimate's accuracy is because we want to be able to test hypotheses about the population by making inferences. **Statistical inference** uses math to draw conclusions about the population taking sample uncertainty into account. One common use of statistical inference is related to hypotheses. For example, say that our hypothesis is that the population value of giraffe heights on Island 1 is less than 11 cm. We can make some inferences about whether or not our hypothesis is true based on what we learn from our sample of giraffe heights. We'll revisit this question a few times. 
+**
+A note about language: here, words like "accuracy", "precision", and "uncertainty" are used in a rather fast and loose way. We're using the laymen's application of these terms to refer to the long-run variability of estimates produced from repeated, independent trials. There are stricter, more formal statistical uses for these words, but for right now, we're going to ignore these nuances so we can move on with understanding these concepts in broad strokes.
+**
+
+One reason we care about our sample estimate's accuracy is because we want to be able to answer questions about the population by making inferences. **Statistical inference** uses math to draw conclusions about the population based on a subset of the full picture (i.e. a sample).Subsets of data are of course limited, so it's therefore important to acknowledge that the strength of the conclusions drawn about the population is dependent on the precision of the sample estimate.
+
+For example, say that we guess that the population mean value of giraffe heights on Island 1 is less than 11 cm. We can make some inferences about whether or not this is a good guess based on what we learn from our sample of giraffe heights. We'll revisit this question a few times below. 
 
 The mean of our sample of 50 giraffes from Island 1 was:
 
@@ -40,17 +44,17 @@ mean(heights_island1)
 
 # Creating a sampling distribution
 
-How can we quantify the accuracy and precision of this estimate, given its sample size? One way to illustrate this is to generate data not just from a single sample but from many samples of the same size (N) drawn from the same population. Imagine that after you complete the first collection of 50 observations from Island 1, you wake up one morning with no memory of collecting data at all---and so you go out and collect 50 giraffe heights again, and subsequently calculate the mean. Further imagine that this groundhog day (or more correctly, groundhog week) situation repeats itself many, many times.
+How can we quantify the accuracy of this estimate, given its sample size? One way to illustrate this is to generate data not just from a single sample but from many samples of the same size (N) drawn from the same population. Imagine that after you complete the first collection of 50 observations from Island 1, you wake up one morning with no memory of collecting data at all---and so you go out and collect 50 giraffe heights again, and subsequently calculate the mean. Further imagine that this groundhog day (or more correctly, groundhog *week*) situation repeats itself many, many times.
 
 When you finally return to your sanity, you find stacks of notebooks filled with mean values from each of your individual data collections. 
 
 <center>![](Notebooks.jpg){width=600px}</center>
 
-Instead of viewing this as a massive waste of time, you make the best out of the situation and create a histogram of all the means, in other words you create a plot showing the distribution of the sample means. 
+Instead of viewing this as a massive waste of time, you make the best out of the situation and create a histogram of all the means. In other words you create a plot showing the distribution of the sample means, also known as a **sampling distribution**. 
 
-The animation below illustrates the process of creating this final histogram--called the **sampling distribution**. 
+The animation below illustrates the process of creating this final histogram.
 
-On the left side, each histogram represents a sample (e.g. your first week's data collection) and correspondingly, each dot signifies an observation. After each histogram is completed, ${\bar{x}}$ is calculated. This ${\bar{x}}$ value is then subsequently added to the histogram of the sampling distibution. As you can see below, this process is repeated multiple times, allowing the sampling distribution to build up.
+On the left side, each histogram represents a sample (e.g. `heights_island1` would be one sample, and we're showing 1,000 of them in total). Correspondingly, each dot signifies an observation. After each sample histogram is completed, ${\bar{x}}$ is calculated. This ${\bar{x}}$ value is then subsequently added to the histogram of the sampling distibution on the right. As you can see below, this process is repeated, allowing the sampling distribution to build up.
 
 <center>
 ```{r fig.show="animate", animation.hook = 'gifski', fig.width=7, fig.height=3, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.08, loop=FALSE, cache=TRUE}
@@ -371,7 +375,10 @@ p3 <- ggplot(data = dhh[[dd+40]], aes(x = Height)) +
 mclapply(rep(960, 40), function(x) plots4(x), mc.cores = 8, mc.cleanup = TRUE)
 ```
 </center>
-Looking at the spread of ${\bar{x}}$ values that this groundhog experience generated, we can get a sense of the range of all possible estimates of ${\mu}$ that a sample of 50 giraffes can produce. 
+
+A histogram of the sampling distribution is shown below.
+
+Looking at the spread of ${\bar{x}}$ values that this groundhog experience generated (), we can get a sense of the range of many possible estimates of ${\mu}$ that a sample of 50 giraffes can produce. 
 
 <center>
 ```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, fig.height=2.7, fig.width=4.5}
@@ -384,7 +391,7 @@ samp <- function(n){
   return(c(m,s))
 }
 
-d2 <- as.data.frame(do.call(rbind, lapply(1:10000, function(x) samp(50))))
+d2 <- as.data.frame(do.call(rbind, lapply(1:1000, function(x) samp(50))))
 colnames(d2) <- c("mean", "sd")
 
 ggplot(data = d2, aes(x = mean)) +
@@ -682,5 +689,18 @@ heights_island1_95CI
 
 # Things to think about
 95% CI is not a measure of [variability](https://www.graphpad.com/guides/prism/7/statistics/stat_more_about_confidence_interval.htm?toc=0&printWindow)
+
+
+* We've been a little fast and loose with our owrds. The formal def iof CIs if the following: 
+
+* "95% of CI in will fall within...."
+
+[graphical display]
+
+* The precise interpretation of confidence intervals is quite a nuanced and rather hotly debated topic [see here]. 
+
+* philosophically "it's complicated"---so if these subtleties don't feel intuitive, don't feel bad. In fact, one recent paper reported that 97% of surveyed researchers endorsed at least one misconception (out of 6) about CI. 
+
+This is tricky stuff!
 
 [NIcer looking version of the plot]
