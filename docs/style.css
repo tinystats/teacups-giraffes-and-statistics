@@ -21,7 +21,7 @@ h1.title.toc-ignore {
 
 
 p {
-  margin: 0 0 1em 0 !important;
+  margin: 1em 0 1em 0 !important;
 }
 
 ul {
@@ -36,6 +36,27 @@ ul {
   padding: 1.5em;
   background-color: #a0d1ef !important;
 }
+
+.alert-note {
+  color: #777777;
+  background-color: #f6f3f3;
+  width: 90%;
+  margin: 0 auto;
+}
+
+
+blockquote {
+  margin: 0 0 0 0 !important;
+  padding: 0.5px 21px;  /* I changed from default of 10.5px 21px*/
+}
+
+.blockquote-note {
+  color: #777777;
+  background-color: #f6f3f3;
+  width: 90%;
+  margin: 0 auto;
+}
+
 
  .container-fluid {                  /* margin: 0 Left-aligns container; margin: auto to "center" (Default)*/
     margin-right: auto !important; 

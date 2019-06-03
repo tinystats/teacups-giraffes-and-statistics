@@ -21,15 +21,24 @@ output:
 
 Let's revisit the first few days during which we collected data stored in the vector `heights_island1`. We were able to verify that the heights were normally distributed and calculated the mean of our sample, ${\bar{x}}$. However, we know that ${\bar{x}}$ is only an *estimate* of the true population mean, ${\mu}$, which is the true value of interest. It is unlikely that we will ever know the value of ${\mu}$, since access to all possible observations is rare. Therefore we will have to rely on ${\bar{x}}$ estimates from random samples drawn from the population as the best approximation of ${\mu}$.
 
-Not all sample means are created equal. Some are better estimates than others. Recall the [animation](mean.html#mean_animation) showing the relationship between sample size and variability of the mean. As we learned from this animation, in the long-run large samples are necessary to get an accurate estimate of ${\mu}$.
+Not all sample means are created equal. Some are better estimates than others. Recall the [animation showing the relationship between sample size and variability of the mean](mean.html#mean_animation). As we learned from this animation, in the long-run large samples are necessary to get an accurate estimate of ${\mu}$.
 
-**
-A note about language: here, words like "accuracy", "precision", and "uncertainty" are used in a rather fast and loose way. We're using the laymen's application of these terms to refer to the long-run variability of estimates produced from repeated, independent trials. There are stricter, more formal statistical uses for these words, but for right now, we're going to ignore these nuances so we can move on with understanding these concepts in broad strokes.
-**
 
-One reason we care about our sample estimate's accuracy is because we want to be able to answer questions about the population by making inferences. **Statistical inference** uses math to draw conclusions about the population based on a subset of the full picture (i.e. a sample).Subsets of data are of course limited, so it's therefore important to acknowledge that the strength of the conclusions drawn about the population is dependent on the precision of the sample estimate.
+<div class= "alert alert-note">
+> **A note about language:** here, words like "accuracy", "precision", and "uncertainty" are used in a rather fast and loose way. We're using the laymen's application of these terms to refer to the long-run variability of estimates produced from repeated, independent trials. There are stricter, more formal statistical uses for these words, but for right now, we're going to ignore these nuances so that we can move on with understanding these concepts in broad strokes.
+
+</div>
+
+<!-- <div class= "blockquote-note"> -->
+<!-- > **A note about language:** here, words like "accuracy", "precision", and "uncertainty" are used in a rather fast and loose way. We're using the laymen's application of these terms to refer to the long-run variability of estimates produced from repeated, independent trials. There are stricter, more formal statistical uses for these words, but for right now, we're going to ignore these nuances so that we can move on with understanding these concepts in broad strokes. -->
+
+<!-- </div> -->
+
+One reason we care about our sample estimate's accuracy is because we want to be able to answer questions about the population by making inferences. **Statistical inference** uses math to draw conclusions about the population based on a subset of the full picture (i.e. a sample). Subsets of data are of course limited, so it's therefore important to acknowledge that the strength of the conclusions drawn about the population is dependent on the precision of the sample estimate.
 
 For example, say that we guess that the population mean value of giraffe heights on Island 1 is less than 11 cm. We can make some inferences about whether or not this is a good guess based on what we learn from our sample of giraffe heights. We'll revisit this question a few times below. 
+
+# Creating a sampling distribution
 
 The mean of our sample of 50 giraffes from Island 1 was:
 
@@ -42,9 +51,11 @@ heights_island1 <- rnorm(50,10,2)
 mean(heights_island1)
 ``` 
 
-# Creating a sampling distribution
+How can we quantify the accuracy of this estimate, given its sample size?
 
-How can we quantify the accuracy of this estimate, given its sample size? One way to illustrate this is to generate data not just from a single sample but from many samples of the same size (N) drawn from the same population. Imagine that after you complete the first collection of 50 observations from Island 1, you wake up one morning with no memory of collecting data at all---and so you go out and collect 50 giraffe heights again, and subsequently calculate the mean. Further imagine that this groundhog day (or more correctly, groundhog *week*) situation repeats itself many, many times.
+In theory, one way to illustrate this is to generate data not just from a single sample but from many samples of the same size (N) drawn from the same population. 
+
+Imagine that after you complete the first collection of 50 observations from Island 1, you wake up one morning with no memory of collecting data at all---and so you go out and collect 50 giraffe heights again, and subsequently calculate the mean. Further imagine that this groundhog day (or more correctly, groundhog *week*) situation repeats itself many, many times.
 
 When you finally return to your sanity, you find stacks of notebooks filled with mean values from each of your individual data collections. 
 
@@ -52,9 +63,9 @@ When you finally return to your sanity, you find stacks of notebooks filled with
 
 Instead of viewing this as a massive waste of time, you make the best out of the situation and create a histogram of all the means. In other words you create a plot showing the distribution of the sample means, also known as a **sampling distribution**. 
 
-The animation below illustrates the process of creating this final histogram.
+The animation below illustrates the process of creating the sampling distribution for 1,000 sample means.
 
-On the left side, each histogram represents a sample (e.g. `heights_island1` would be one sample, and we're showing 1,000 of them in total). Correspondingly, each dot signifies an observation. After each sample histogram is completed, ${\bar{x}}$ is calculated. This ${\bar{x}}$ value is then subsequently added to the histogram of the sampling distibution on the right. As you can see below, this process is repeated, allowing the sampling distribution to build up.
+On the left side, each histogram represents a sample (e.g. `heights_island1` would be one sample, and we're flashing through 1,000 of them in total). Correspondingly, each dot signifies an observation. After each sample histogram is completed, ${\bar{x}}$ is calculated. This ${\bar{x}}$ value is then subsequently added to the histogram of the sampling distibution on the right. As you can see below, this process is repeated, allowing the sampling distribution to build up.
 
 <center>
 ```{r fig.show="animate", animation.hook = 'gifski', fig.width=7, fig.height=3, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.08, loop=FALSE, cache=TRUE}
