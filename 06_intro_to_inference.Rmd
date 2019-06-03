@@ -11,7 +11,7 @@ output:
   <ol>
   <li> Determine how to quantify the uncertainty of an estimate </li>
   <li> Describe the concept of statistical inference </li>
-  <li> Understand the concept of sampling distributions and how it relates to sample size </li>
+  <li> Interpret sampling distributions and explain how they are influenced by sample size </li>
   <li> Define and calculate standard error </li>
   <li> Use the standard error to construct 95% confidence intervals </li>
   </ol>
@@ -55,7 +55,7 @@ How can we quantify the accuracy of this estimate, given its sample size?
 
 In theory, one way to illustrate this is to generate data not just from a single sample but from many samples of the same size (N) drawn from the same population. 
 
-Imagine that after you complete the first collection of 50 observations from Island 1, you wake up one morning with no memory of collecting data at all---and so you go out and collect 50 giraffe heights again, and subsequently calculate the mean. Further imagine that this groundhog day (or more correctly, groundhog *week*) situation repeats itself many, many times.
+Imagine that after you collected all 50 measurements for `heights_island1`, you wake up one morning with no memory of collecting data at all---and so you go out and collect 50 giraffe heights again and subsequently calculate the mean. Further imagine that this groundhog day (or more correctly, groundhog *week*) situation repeats itself many, many times.
 
 When you finally return to your sanity, you find stacks of notebooks filled with mean values from each of your individual data collections. 
 
@@ -387,9 +387,13 @@ mclapply(rep(960, 40), function(x) plots4(x), mc.cores = 8, mc.cleanup = TRUE)
 ```
 </center>
 
-A histogram of the sampling distribution is shown below.
+<br>
+<br>
 
-Looking at the spread of ${\bar{x}}$ values that this groundhog experience generated (), we can get a sense of the range of many possible estimates of ${\mu}$ that a sample of 50 giraffes can produce. 
+A histogram of the sampling distribution is shown below. It is a histogram made up of many means.
+
+<br>
+<br>
 
 <center>
 ```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, fig.height=2.7, fig.width=4.5}
@@ -414,14 +418,16 @@ ggplot(data = d2, aes(x = mean)) +
 ```
 </center>
 
-This is the first hint of the precision of our estimate, which we'll quantify in more detail later on, but for now it's enough to notice that the range of possible ${\bar{x}}$ values are between `r round(min(d2$mean),1)` and `r round(max(d2$mean), 1)`. This means that ${\bar{x}}$ values outside of this range are essentially improbable.
+Looking at the spread of ${\bar{x}}$ values that this groundhog experience generated, we can get a sense of the range of many possible estimates of ${\mu}$ that a sample of 50 giraffes can produce. 
 
-Let's return to our hypothesis that the true mean of giraffe heights on Island 1 is less than 11 cm. Our sampling distribution suggests that ${\mu}$ is less than 11 cm since values greater than that are not within the range of this sampling distribution. 
+**The sampling distribution provides us with the first hint of the precision of our original `heights_island1` estimate**, which we'll quantify in more detail later on, but for now it's enough to notice that the range of possible ${\bar{x}}$ values are between `r round(min(d2$mean),1)` and `r round(max(d2$mean), 1)`. This means that ${\bar{x}}$ values outside of this range are essentially improbable.
+
+Let's return to our question about whether the true mean of giraffe heights on Island 1 is less than 11 cm. Our sampling distribution suggests that ${\mu}$ *is* less than 11 cm since values greater than that are not within the range of this sampling distribution. 
 
 
 # Sample size and sampling distribution
 
-Back to the idea that larger samples are "better", we can explore what happens if we repeat the groundhog scenario, this time sampling 500 individuals each time, instead of 50. For completeness, let's imagine the same marathon data collection using samples that are smaller---of 5 giraffes each. We compare the histograms from all three scenarios below.
+Back to the idea that larger samples are "better", we can explore what happens if we redo the groundhog scenario, this time sampling 500 individuals (instead of 50) before taking the mean each time, repeating this until thousands of ${\bar{x}}$ have been recorded. For completeness, let's imagine the same marathon data collection using samples that are smaller---of 5 giraffes each. We compare the resulting sampling distributions from all three scenarios below.
 
 <center>
 ```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, fig.height=6, fig.width=6}
@@ -473,11 +479,15 @@ What do we notice?
 2) All distributions have approximately the same mean.
 3) Distributions generated from larger samples are less dispersed.
 
-The mean of the sampling distribution is a mean of means. It can be interpreted as the mean that results from a large sample made up of all the individual observations from each of the samples whose ${\bar{x}}$ values are included in the sampling distribution. 
+We can take the mean of the sampling distribution itself-- **the mean of the sampling distribution is a mean of means.** It can be interpreted as the mean that results from a large sample made up of all the individual observations from each of the samples whose ${\bar{x}}$ values are included in the sampling distribution. 
 
-[Desiree illustration: something to help keep track of all the "means" and the "samples"]
+*[Alternate: We can take the mean of the sampling distribution itself-- **the mean of the sampling distribution is a mean of means.** This mean can be interpreted to be the same as a mean that would have resulted from a single large sample, made up of all the individual observations from each of the samples whose ${\bar{x}}$ values are included in the sampling distribution.]*
 
-Use the window below to modify the number of observations that make up each sample by specifying different values for `N`. What does the resulting sampling distribution looks like? See if you can confirm for yourself that the above points are true.
+[Desiree illustration: something to help keep track of all the "means" and the "samples". ]
+
+[For following paragraph: *I think we somehow need to include a way to describe what the function is going to do, to give the user more context for what they're manipulating*].
+
+In the folowing window, you will test the relationship between sampling distribution and sample size. The function below will plot a sampling distribution made up of 1,000 samples, with each sample containing `N` number of observations. Try setting `N` to a few different values. What does the resulting sampling distribution looks like? See if you can confirm for yourself that the above points are true.
 
 
 ```{r, include=FALSE}
@@ -504,46 +514,62 @@ plot_hist <- function(N){
 
 ```{r ex="histogram5", type="sample-code"}
 
-plot_hist(N=)
+# Set N equal to different sample sizes and test its effect on the sampling distribution
+plot_hist(N= )
 
 ```
 
 
 # Standard Error of the Mean
-As we've done before, we want to quantify this spread of mean estimates with a single value. We've already learned how to quantify a measure of spread--the standard deviation. If we take the standard deviations of each of the three different sampling scenarios above, then we accept that *distributions based on smaller samples should have larger standard deviations*. 
+As we've done before, we want to summarize this spread of mean estimates with a single value. We've already learned how to quantify a measure of spread--the standard deviation. If we take the standard deviations of each of the three different sampling scenarios above, then we accept that *distributions based on smaller samples should have larger standard deviations*. 
 
-Using our three sampling distributions from above, calculate the standard deviation of each one. Confirm that the italicized point above is true in the window below. (If you're working in R locally, use your "homemade" standard deviation function from the [Variance](Variance.html) module.)
+In the window below, calculate the standard deviation of each of the three sampling distributions (i.e. for N=500, N=50, and N=5), and confirm that the italicized point above is true. (If you're working in R locally, use your "homemade" standard deviation function from the [Variance](Variance.html) module.)
+
+To complete this exercise, you will need to use the objects `sampling_distibution_N500`, `sampling_distibution_N50`, `sampling_distibution_N5`, which are vectors storing the thousands of ${\bar{x}}$ values from the corresponding "groundhog" sampling distributions.
 
 ```{r, include=FALSE}
 tutorial::go_interactive(height = 160)
 ```
 
 ```{r ex="SEM1", type="pre-exercise-code"}
-set.seed(12)
-heights_island1 <- rnorm(50,10,2)
+
+samp <- function(n){
+  x <- rnorm(n, 9.7, 2.1)
+  m <- mean(x)
+  s <- sd(x)
+  return(c(m,s))
+}
+
+sampling_distibution_N5 <- as.data.frame(do.call(rbind, lapply(1:10000, function(x) samp(5))))
+sampling_distibution_N50 <- as.data.frame(do.call(rbind, lapply(1:10000, function(x) samp(50))))
+sampling_distibution_N500<- as.data.frame(do.call(rbind, lapply(1:10000, function(x) samp(500))))
 
 ```
 
 ```{r ex="SEM1", type="sample-code"}
-
-# Calculate the standard deviation of each of the three sampling distributions
+# Calculate the standard deviation of each of the three sampling distributions, using the object names above
 
 ```
 
 ```{r ex="SEM1", type="solution"}
 # Calculate the standard deviation of each of the three sampling distributions
-
+sd(sampling_distibution_N5)
+sd(sampling_distibution_N50)
+sd(sampling_distibution_N500)
 
 ```
 
 
-When you calculate the standard deviation of a sampling distribution of ${\bar{x}}$ values, you are calculating the **standard error of the mean (SEM)**, or just "standard error". This is the value that we use to capture the level of precision of our sample estimate. But, we need a better and more efficient way to arrive at this value without relying on a groundhog day situation. Keep reading to learn more.
+When you calculate the standard deviation of a sampling distribution of ${\bar{x}}$ values, you are calculating the **standard error of the mean (SEM)**, or just "standard error". The SEM is the value that we use to capture the level of precision of our sample estimate. But, we need a better and more efficient way to arrive at this value without relying on a groundhog day situation. Keep reading to learn more.
+
+[*say something about standard error most commonly being for the mean...but doesn't have to be?*]
 
 # Time for a tea break!
 <center>![](Slingshot.jpg){width=700px}</center>
 
 # Standard Error in practice
-The equation used for calculating the standard error of the mean using theory (i.e. without going out and resampling MANY times) is a bit complicated, but if you're interested, you can learn more about it [here](https://stats.stackexchange.com/questions/89154/general-method-for-deriving-the-standard-error). But, we can capture the relationship of the terms in the equation with the plot below.
+Using theory to derive the equation used for calculating the standard error of the mean (i.e. without going out and resampling MANY times) is a bit complicated, but if you're interested, you can learn more about it [here](https://stats.stackexchange.com/questions/89154/general-method-for-deriving-the-standard-error). Instead, we can capture the relationship of the terms in the equation for standard error with the plot below.
+
 <center>
 ```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, out.height=2}
 library(plotly)
@@ -571,14 +597,19 @@ layout(autosize = F, width = 600, height = 350,
 
 ```
 </center>
-Look at the plot above, hover over the points, and see if you can gather how standard error of the mean, standard deviation, and sample size are related. Here are some hints to help you come up with the equation:
+
+[ *Need to say something about this being the plot for when the sd is 2.1, which corresponds to the population of heights of island1....but that the plot would have the same "shape" regardless of what scenario or sd we were using.*
+
+*Also, we need to consider amount of text separating plot from DataCAmp window, for ease of referring to plot when completing the exercise*]
+
+**Can you figure out what the equation is for the SEM?** Look at the plot above, hover over the points, and see if you can gather how standard error of the mean, standard deviation, and sample size are related. Here are some hints:
 
 * SEM will be on one side of the equation, standard devation, and N will be on the other.
 * The equation will involve division.
 * The standard deviation in the plot is `2.1`, which represents ${\sigma}$ for giraffe heights on Island 1. This population value is technically still unknown but can be deduced in theory by repeating the groundhog's day example for the standard deviation instead of for the mean.
 * There is one more missing piece of the puzzle: When you look at the shape of the plot above. What type of function does this remind you of? We haven't covered this explicitly, but take a look [here](https://www.mathsisfun.com/sets/functions-common.html) and see if you get any ideas.
 
-Use the window below as a calculator to see if you can figure out the equation.
+Use the window below as a calculator to see if you can figure out the equation for the SEM.
 
 ```{r ex="SEM2", type="pre-exercise-code"}
 set.seed(12)
@@ -589,41 +620,59 @@ heights_island1 <- rnorm(50,10,2)
 ```{r ex="SEM2", type="sample-code"}
 
 # Hover over a point and record the N and SEM values
-
+SEM = 
 N =
-SEM =
 SD = 2.1
   
 # Use the plot and the hints above to see if you can deduce the equation for the standard error of the mean
 
+
+
+
 ```
 
 ```{r ex="SEM2", type="solution"}
+# Hover over a point and record the N and SEM values
+SEM = 0.542 # These can be any corresponding pair of SEM and N values from the plot
+N = 15
+SD = 2.1
+  
 # Use the plot and the hints above to see if you can deduce the equation for the standard error of the mean
 
+SD/sqrt(N) # This is the same as the SEM (allow for rounding error)
 
+SEM 
 ```
 
   
 In case you weren't able to figure it out, check out this [link](https://en.wikipedia.org/wiki/Standard_error) for the equation for calculating the SEM. Remember that we're working with the sample (and not population) standard deviation ($s$), so make sure you find the correct equation.
 
 # Confirming that the SEM equation works
-Let's test out this equation against what we concluded from the sampling distributions example with the N=50 case. Does the SEM seem like a good approximiation of the sampling distribution?
+Let's test out the SEM equation on our original sample of `heights_island1` and compare it to what we would have gotten by taking the standard deviation of the sampling distribution example with the N= 50 case. Does the SEM seem like a good approximiation of the standard deviation of the sampling distribution?
 
-The object `heights_island1` contains our sample of N=50. And the object `sampling_distibution_N50` contains the data from the corresponding "groundhog" sampling distribution.
+Below, you will use the object `heights_island1`, which contains our single sample of N=50, and the object `sampling_distibution_N50`, which contains the data from the corresponding "groundhog" sampling distribution.
 
-[DataCamp window exercise, set.seed for the regular Island 1 sample. set.seed for N=50 sampling distribution]
+[Is there any way to get sampling_distribution_N50 to be the same as in the previous datacamp window?]
 
 ```{r ex="SEM3", type="pre-exercise-code"}
+
+samp <- function(n){
+  x <- rnorm(n, 9.7, 2.1)
+  m <- mean(x)
+  s <- sd(x)
+  return(c(m,s))
+}
+sampling_distibution_N50 <- as.data.frame(do.call(rbind, lapply(1:10000, function(x) samp(50))))
+
+
 set.seed(12)
 heights_island1 <- rnorm(50,10,2)
-sampling_distibution_N50 <- 
   
 ```
 
 ```{r ex="SEM3", type="sample-code"}
 
-# Use the equation for the SEM and compare the result to the standard deviation of the sampling distribution
+# Apply the SEM equation to `heights_island1` and compare the result to the standard deviation of the sampling distribution
 
 heights_island1
 
@@ -632,11 +681,9 @@ sampling_distribution_N50
 ```
 
 ```{r ex="SEM2", type="solution"}
-# Use the equation for the SEM and compare the result fo the standard deviation of the sampling distribution
+# Apply the SEM equation to `heights_island1` and compare the result to the standard deviation of the sampling distribution
 
-N=50
-
-sem <- sd(heights_island1)/sqrt(N)
+SEM_heights_island1 <- sd(heights_island1)/sqrt(50)
 
 sd(sampling_distribution_N50)
 
@@ -652,7 +699,7 @@ To formally make inferences, we need to revisit the principles of the [empirical
 
 It just so happens that ± 2 SEM from a point estimate will capture ~95% of the sampling distribution (remember, that the SEM is just the standard deviation of the sampling distribution, so the empirical rule applies just the same here). Actually, we were a little bit sloppy earlier when we said 2 standard deviations captures 95% of a normal distribution; this will actually give you 95.45% of the data. The true value is 1.96 standard deviations--and this is what we use to construct a 95% confidence interval (CI).
 
-A 95% CI is the range of values that we are 95% certain contains the true mean of the population. We want to know whether our guess of 11 cm falls above of this range of certainty. If it does -- we can be sure enough that the true average of giraffe heights on Island 1 is less than 11cm.
+A 95% CI is the range of values that we are 95% certain contains the true mean of the population. We want to know whether our guess of 11 cm falls above of this range of certainty. If it does -- we can be sure enough that the true average of giraffe heights on Island 1 is less than 11 cm.
 
 Use the window below to find out and make your first inference!
 ```{r ex="SEM4", type="pre-exercise-code"}
@@ -664,7 +711,7 @@ heights_island1 <- rnorm(50,10,2)
 ```{r ex="SEM4", type="sample-code"}
 
 # Calculate the SEM for heights_island1
-sem_heights_island1 <- 
+SEM_heights_island1 <- 
 
 # Calculate the sample mean
 heights_island1_mean <- 
