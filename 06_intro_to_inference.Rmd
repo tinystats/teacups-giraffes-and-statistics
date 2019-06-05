@@ -58,7 +58,7 @@ Instead of viewing this as a massive waste of time, you make the best out of the
 
 The animation below illustrates the process of creating the sampling distribution for 1,000 sample means.
 
-On the left side, each histogram represents a sample (e.g. `heights_island1` would be one sample, and we're flashing through 1,000 of them in total). Correspondingly, each dot signifies an observation. After each sample histogram is completed, ${\bar{x}}$ is calculated. This ${\bar{x}}$ value is then subsequently added to the histogram of the sampling distibution on the right. As you can see below, this process is repeated, allowing the sampling distribution to build up.
+On the left side, each histogram represents a sample (e.g. `heights_island1` would be one sample, and we're flashing through 1,000 of them in total). Correspondingly, each dot signifies an observation. After each sample histogram is completed, ${\bar{x}}$ is calculated. This ${\bar{x}}$ value is then subsequently added to the histogram of the sampling distribution on the right. As you can see below, this process is repeated, allowing the sampling distribution to build up.
 
 <center>
 ```{r fig.show="animate", animation.hook = 'gifski', fig.width=7, fig.height=3, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.08, loop=FALSE, cache=TRUE}
@@ -560,7 +560,7 @@ When you calculate the standard deviation of a sampling distribution of ${\bar{x
 </div>
 
 # Time for a tea break!
-<center>![](Slingshot.jpg){width=700px}</center>
+<center>![](Slingshot.jpg){width=800px}</center>
 
 # Standard error in practice
 Deriving the equation used for calculating the standard error of the mean using theory (i.e. without going out and resampling MANY times) is a bit complicated, but if you're interested, you can learn more about it [here](https://stats.stackexchange.com/questions/89154/general-method-for-deriving-the-standard-error). Instead, we can capture the relationship between **standard deviation**, **sample size**, and **standard error** with the plot below.
@@ -640,7 +640,7 @@ SEM
 In case you weren't able to figure it out, remember to check the `Solutions` tab in the DataCamp window or take a look at this [link](https://en.wikipedia.org/wiki/Standard_error) for the equation for calculating the SEM. Recall that we're working with the sample (and not population) standard deviation ($s$), so make sure you find the correct equation.
 
 # Confirming that the SEM equation works
-Let's test out the SEM equation on our original sample of `heights_island1` and compare it to what we would have gotten by taking the standard deviation of the sampling distribution example with the N= 50 case. **Does the SEM seem like a good approximiation of the standard deviation of the sampling distribution?**
+Let's test out the SEM equation on our original sample of `heights_island1` and compare it to what we would have gotten by taking the standard deviation of the sampling distribution example with the N= 50 case. **Does the SEM seem like a good approximation of the standard deviation of the sampling distribution?**
 
 Below, you will use the object `heights_island1`, which contains our single sample of N=50, and the object `sampling_distribution_N50`, which contains the data from the corresponding groundhog sampling distribution.
 
@@ -744,7 +744,7 @@ The upper limit of our 95% CI is less than 11 cm, so the population mean of heig
 
 # Things to think about
 
-We've been a little fast and loose with our words. The formal defintion of CIs is the following: 
+We've been a little fast and loose with our words. The formal definition of CIs is the following: 
 
 **If we were to sample over and over again, then 95% of the CIs would contain the true mean 95% of the time.**
 
@@ -752,6 +752,7 @@ The animation below shows this graphically.
 [graphical display from Hasse]
 
 Importantly, some examples of what the 95% CI does NOT mean are:
+
 * A 95% CI does **not** mean that it contains 95% of the sample data.
 * A CI is not a definitive range of likely values for the sample statistic, but you can think of it as estimate of likely values for the population parameter.
 * It does not mean that values outside of the 95% CI have a 5% chance of being the true mean.
