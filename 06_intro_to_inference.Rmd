@@ -77,7 +77,7 @@ ppl <- function(frame){
   p <- ggplot(data=dft[dft$.frame==frame,],aes(x=x, y=y))+geom_point(shape=16, color="green3", size=4)+ylim(0,16)+xlim(3,17)+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank())+labs(x="Giraffe Heights", y=NULL)
   df <- data.frame()
   p2 <- ggplot(df) + geom_point() + xlim(0, 16) + ylim(3, 17)+theme_void()
-  p3 <- ggplot(df) + geom_point() + xlim(9, 11) + ylim(0, 150)+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank())+labs(x="Sample means", y=NULL)
+  p3 <- ggplot(df) + geom_point() + xlim(8.7, 10.7) + ylim(0, 150)+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank())+labs(x="Sample means", y=NULL)
   cowplot::plot_grid(p,p2,p3, align="h",rel_widths = c(1,0.55, 1), ncol = 3)
   
 }
@@ -88,7 +88,7 @@ ppl2 <- function(frame){
   df <- data.frame()
   lb1 <- paste0("bar(x)", "[", sub, "]", " == ", round(m,2))
   p2 <- ggplot(df) + geom_point() + xlim(0, 16) + ylim(3, 17)+theme_void()+annotate("text", x = 8, y=10, label=lb1, parse = TRUE, size=7)+annotate("segment", x = 1, xend = 15, y = 8, yend = 8, colour = "black", size=1, arrow=arrow(type = "closed", length = unit(0.3,"cm")))
-  p3 <- ggplot(df) + geom_point() + xlim(9, 11) + ylim(0, 150)+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank())+annotate("segment", x = m, xend = m, y = 20, yend = 4, colour = "black", size=1, arrow=arrow(type = "closed", length = unit(0.3,"cm")))+labs(x="Sample means", y=NULL)
+  p3 <- ggplot(df) + geom_point() + xlim(8.7, 10.7) + ylim(0, 150)+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank())+annotate("segment", x = m, xend = m, y = 20, yend = 4, colour = "black", size=1, arrow=arrow(type = "closed", length = unit(0.3,"cm")))+labs(x="Sample means", y=NULL)
   cowplot::plot_grid(p,p2,p3, align="h", rel_widths = c(1,0.55,1), ncol = 3)
 }
 
@@ -164,14 +164,14 @@ p <- ggplot() +
   ddd <- ifelse(dd<20, 1, ifelse(dd<35, 2, ifelse(dd<45, 3, ifelse(dd<50, 4, ifelse(dd<53, 5, ifelse(dd<55, 6, ifelse(dd<57, 7, ifelse(dd<59, 8, base::sample(1:10,1)))))))))
   p2 <- ggplot(data=dft[dft$.frame==dd,],aes(x=x, y=y))+geom_point(shape=16, color="green3", size=4)+ylim(0,16)+xlim(3,17)+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank())+labs(x="Giraffe Heights", y=NULL)
   df <- data.frame()
-  p3 <- ggplot(df) + geom_point() + xlim(9, 11) + ylim(0, 150)+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank())+labs(x="Sample means", y=NULL)
+  p3 <- ggplot(df) + geom_point() + xlim(8.7, 10.7) + ylim(0, 150)+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank())+labs(x="Sample means", y=NULL)
   cowplot::plot_grid(p2,p,p3, align="h",rel_widths = c(1,0.55, 1), ncol=3)
 }
 
 lapply(seq(1,40,3), function(x) plots(x))
 
 hists <- function(x){
-  x <- round(rnorm(50, 10, 2))
+  x <- round(rnorm(50, 9.7, 2.1))
   m <- mean(x)
   return(m)
 }  
@@ -224,7 +224,7 @@ p3 <- ggplot(data = dhh[[dd-40]], aes(x = Height)) +
   theme_light() +
   scale_y_continuous(limits = c(0,150)) +
   labs(x=NULL, y=NULL) +
-  xlim(9,11) + 
+  xlim(8.7, 10.7) + 
   theme(panel.border=element_blank(), panel.grid.minor=element_blank()) +
   labs(x="Sample means", y=NULL)
   cowplot::plot_grid(p2,p,p3, align="h",rel_widths = c(1,0.55, 1), ncol=3)
@@ -278,7 +278,7 @@ p3 <- ggplot(data = dhh[[dd+40]], aes(x = Height)) +
   theme_light() +
   scale_y_continuous(limits = c(0,150)) +
   labs(x=NULL, y=NULL) +
-  xlim(9,11) + 
+  xlim(8.7, 10.7) + 
   theme(panel.border=element_blank(), panel.grid.minor=element_blank()) +
   labs(x="Sample means", y=NULL)
 
@@ -320,7 +320,7 @@ p3 <- ggplot(data = dhh[[dd+40]], aes(x = Height)) +
   theme_light() +
   scale_y_continuous(limits = c(0,150)) +
   labs(x=NULL, y=NULL) +
-  xlim(9,11) + 
+  xlim(8.7, 10.7) + 
   theme(panel.border=element_blank(), panel.grid.minor=element_blank()) +
   labs(x="Sample means", y=NULL)
 
@@ -355,13 +355,13 @@ hh <- function(x){
   return(d)
 }
 
-dhh <- lapply(1:1000, function(x) hh(x))
+dhh <<- lapply(1:1000, function(x) hh(x))
 p3 <- ggplot(data = dhh[[dd+40]], aes(x = Height)) +
   geom_histogram(binwidth = 0.1, color = "white", fill="green3") +
   theme_light() +
   scale_y_continuous(limits = c(0,150)) +
   labs(x=NULL, y=NULL) +
-  xlim(9,11) + 
+  xlim(8.7, 10.7) + 
   theme(panel.border=element_blank(), panel.grid.minor=element_blank()) +
   labs(x="Sample means", y=NULL)
 
@@ -387,7 +387,7 @@ samp <- function(n){
 d2 <- as.data.frame(do.call(rbind, lapply(1:10000, function(x) samp(50))))
 colnames(d2) <- c("mean", "sd")
 
-ggplot(data = d2, aes(x = mean)) +
+ggplot(data = dhh[[1000]], aes(x = Height)) +
   geom_histogram(binwidth = 0.1, color = "white", fill="green3") +
   theme_light() +
   scale_y_continuous(expand = c(0,0)) +
@@ -416,9 +416,9 @@ samp <- function(n){
   return(c(m,s))
 }
 
-d <- as.data.frame(do.call(rbind, lapply(1:10000, function(x) samp(5))))
-d2 <- as.data.frame(do.call(rbind, lapply(1:10000, function(x) samp(50))))
-d3<- as.data.frame(do.call(rbind, lapply(1:10000, function(x) samp(500))))
+d <- as.data.frame(do.call(rbind, lapply(1:1000, function(x) samp(5))))
+#d2 <- as.data.frame(do.call(rbind, lapply(1:1000, function(x) samp(50))))
+d3<- as.data.frame(do.call(rbind, lapply(1:1000, function(x) samp(500))))
 colnames(d) <- colnames(d2) <- colnames(d3) <- c("mean", "sd")
 
 p <- ggplot(data = d, aes(x = mean)) +
@@ -429,7 +429,7 @@ p <- ggplot(data = d, aes(x = mean)) +
   theme(panel.border=element_blank(), panel.grid.minor=element_blank(), legend.position = , legend.background = ) +
   xlim(6.7,12.7) 
 
-p2 <- ggplot(data = d2, aes(x = mean)) +
+p2 <- ggplot(data = dhh[[1000]], aes(x = Height)) +
   geom_histogram(binwidth = 0.06, color = "white", fill="green3") +
   theme_light() +
   scale_y_continuous(expand = c(0,0)) +
