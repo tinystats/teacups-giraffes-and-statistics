@@ -1,0 +1,94 @@
+---
+title: "t-test"
+output:
+  bookdown::html_document2:
+    includes:
+      in_header: mean_image.html
+      after_body: foot.html
+---
+
+<div class="alert alert-info">
+  **Module learning objectives:**
+  <ol> 
+  <li> Describe 3 measures of centrality   </li>
+  <li> Explain the mathematical notation used for calculating the mean</li>
+  <li> Write a function which calculates the mean for any vector </li>
+  <li> Write a function which calculates the median for any vector
+  <li> Describe how the reliability of a sample mean will scale with increasing sample size </li>
+  </ol>
+</div>
+
+# The Two Islands
+
+You'd like to make an [inference](06_intro_to_inference.html) to formally investigate whether you have any reason to believe that the mean of heights on Island 1 differs from the mean of the heights on Island 2. 
+
+The means of the heights of both islands are shown below:
+
+```{r, echo= FALSE} 
+
+set.seed(12)
+heights_island1 <- rnorm(50, 10, 2)
+heights_island2 <- rnorm(50, 18, 1.2)
+
+```
+
+
+```{r}
+mean(heights_island1)
+mean(heights_island2)
+
+```
+
+It's obvious that the mean of the two **samples** we took are different, but the main question is if the **population** means are different?
+
+This question is of interest because if the two population means are different, it may indicate that a cool evolutionary story is at play. For example, based on your experience it seems clear that the two groups of giraffes have been isolated. Their tiny stature would make it near impossible to move back and forth between the two islands, hence impeding mixing between the two groups. Over time, selection pressures could then have made the two groups distinct regarding height.
+
+How do we test this?
+
+# Testing for group difference
+When testing for group mean differenes, [it is much more common for a researcher to be interested in the **difference** between means than in the specific values of the means themselves. ] stolen
+
+When we focus on the **mean difference**, represented by $\Delta_{\bar{x}}$ (read "delta x-bar"), we can ask: is the $\Delta_{\bar{x}}$ meaningfully different from 0?
+
+The sample mean difference is below:
+```{r}
+mean(heights_island2) - mean(heights_island1)
+
+```
+
+This is just another estimate at the sample level whose precision we need to quantify to be able to make inferences.
+
+Formally, statistical inference is about testing hypotheses (which we intentionally did not introduce in the previous module). In research, a **hypothesis** is a statement of a suggested outcome for a study [THIS SENTENCE IS TOO VAGUE]. The goal of statistcal inference is to reject the **null hypotheses** ($H_0$, read "H-nought"), the default suggested outcome, which assumes that there is no association or difference between two or more groups. If we cannot reject $H_0$, then it means we must accept the alternative, $H_A$, that there *is* a meaningful difference or association.
+
+Our null hypothesis is the following: the mean difference between the two populations is 0. The corresponding equations are shown below for the null and alternative hypotheses. Here, we use $\Delta_{\mu}$, because we are referring to the population values.
+
+$H_0$ :  $\Delta_{\mu}$ = 0
+<br> 
+$H_A$ :  $\Delta_{\mu}$ $\neq$ 0
+[MAKE EQUATION??]
+
+One way to reject the null hypothesis would be to construct 95% CIs around the estimate for $\Delta_{\bar{x}}$.
+
+# Pooled standard deviation
+As we learned previously, a prerequisite to calculating 95% CIs is to calculate the standard error (which we know will require the sample standard deviation). However, we started with two samples, so which sample's standard deviation do we use? Can we use both?
+
+In this particular case, the standard error of the mean difference can be calculated based on a *combined*, or **pooled standard deviation** ($s_{pooled}$) from two samples. 
+
+
+<div style="margin-bottom:50px"></div>
+\begin{equation}
+ (\#eq:equation1)
+ \Large s_{pooled} = \sqrt{\frac{s^2(n_1-1) + s^2(n_2-1)}{(n_1-1) + (n_2-1)}}
+ \end{equation}
+<div style="margin-bottom:50px"></div>
+
+
+One thing to point out is that standard deviations from samples cannot be added together--but variances can be, which is why in (1) we use $s^2$ in the numerator only to take then the square root of the entire term. [BAD SENTENCE]
+
+
+Why are the variances being multiplied by a term containing the sample size ($n$)? In the case that each of our samples were differently sized, we would want to more heavily weight the variance of the sample that was larger. In our case now, both of our samples have the same $n$, but we introduce the equation for more general cases.
+
+
+
+
+
