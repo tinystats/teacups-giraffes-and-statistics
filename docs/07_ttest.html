@@ -494,26 +494,44 @@ Describe how the reliability of a sample mean will scale with increasing sample 
 <p>This is just another estimate at the sample level whose precision we need to quantify to be able to make inferences.</p>
 <p>Formally, statistical inference is about testing hypotheses (which we intentionally did not introduce in the previous module). In research, a <strong>hypothesis</strong> is a statement of a suggested outcome for a study [THIS SENTENCE IS TOO VAGUE]. The goal of statistcal inference is to reject the <strong>null hypotheses</strong> (<span class="math inline">\(H_0\)</span>, read “H-nought”), the default suggested outcome, which assumes that there is no association or difference between two or more groups. If we cannot reject <span class="math inline">\(H_0\)</span>, then it means we must accept the alternative, <span class="math inline">\(H_A\)</span>, that there <em>is</em> a meaningful difference or association.</p>
 <p>Our null hypothesis is the following: the mean difference between the two populations is 0. The corresponding equations are shown below for the null and alternative hypotheses. Here, we use <span class="math inline">\(\Delta_{\mu}\)</span>, because we are referring to the population values.</p>
-<p><span class="math inline">\(H_0\)</span> : <span class="math inline">\(\Delta_{\mu}\)</span> = 0 <br> <span class="math inline">\(H_A\)</span> : <span class="math inline">\(\Delta_{\mu}\)</span> <span class="math inline">\(\neq\)</span> 0 [MAKE EQUATION??]</p>
+<p><span class="math inline">\(H_0\)</span> : <span class="math inline">\(\Delta_{\mu}\)</span> = 0
+<br>
+<span class="math inline">\(H_A\)</span> : <span class="math inline">\(\Delta_{\mu}\)</span> <span class="math inline">\(\neq\)</span> 0
+[MAKE EQUATION??]</p>
 <p>One way to reject the null hypothesis would be to construct 95% CIs around the estimate for <span class="math inline">\(\Delta_{\bar{x}}\)</span>.</p>
 </div>
 <div id="pooled-standard-deviation" class="section level1">
 <h1>Pooled standard deviation</h1>
-<p>As we learned previously, a prerequisite to calculating 95% CIs is to calculate the standard error (which we know will require the sample standard deviation). However, we started with two samples, so which sample’s standard deviation do we use? Can we use both?</p>
-<p>In this particular case, the standard error of the mean difference can be calculated based on a <em>combined</em>, or <strong>pooled standard deviation</strong> (<span class="math inline">\(s_{pooled}\)</span>) from two samples.</p>
+<p>As we learned previously, a prerequisite to calculating 95% CIs is to calculate the standard error (which we know will require the sample standard deviation). However, we’re now working with two samples, so which sample’s standard deviation do we use? Can we use both? Yes, kind of…</p>
+<p>In this particular case, the standard error of the mean difference can be calculated based on a <em>combined</em>, or <strong>pooled standard deviation</strong> (<span class="math inline">\(s_{p}\)</span>) from two samples. We use the standard deviation of each sample, weighted by sample size.</p>
 <div style="margin-bottom:50px">
 
 </div>
 <span class="math display" id="eq:equation1">\[\begin{equation}
  \tag{1}
- \Large s_pooled = \sqrt{\frac{s^2(n_1-1) + s^2(n_2-1)}{(n_1-1) + (n_2-1)}}
+ \Large s_{p} = \sqrt{\frac{s^2(n_1-1) + s^2(n_2-1)}{(n_1-1) + (n_2-1)}}
  \end{equation}\]</span>
 <div style="margin-bottom:50px">
 
 </div>
 <p>One thing to point out is that standard deviations from samples cannot be added together–but variances can be, which is why in (1) we use <span class="math inline">\(s^2\)</span> in the numerator only to take then the square root of the entire term. [BAD SENTENCE]</p>
-<p>Why are the variances being multiplied by a term containing the sample size (<span class="math inline">\(n\)</span>)? In the case that each of our samples were differently sized, we would want to more heavily weight the variance of the sample that was larger. In our case now, both of our samples have the same <span class="math inline">\(n\)</span>, but we introduce the equation for more general cases.</p>
-<p>[make the equation look more obviously weighted— perhaps (n_1-1) + (n_2-1) in denom.]</p>
+<p>We see that the variances are being multiplied by a term containing the sample size (<span class="math inline">\(n\)</span>). In the case that each of our samples were differently sized, we would want to more heavily weight the variance of the sample that was larger. In our case now, both of our samples have the same <span class="math inline">\(n\)</span>, but we introduce the equation for more general cases.</p>
+<p>If you’re wondering why <span class="math inline">\(n-1\)</span> is necessary for the weighting, and not just <span class="math inline">\(n\)</span>, hold that thought and we’ll return to it later. But for now, we’ll just point out that it is <em>not</em> to adjust for the inherent bias when calculating sample variance (i.e. not the same reason that we used N-1 in the variance module [link]).</p>
+</div>
+<div id="standard-error-se-of-the-mean-difference" class="section level1">
+<h1>Standard Error (SE) of the mean difference</h1>
+<p>After calculating the pooled standard deviation, the next step is to determine the standard error of the mean difference. We will follow the same logic as we did when calculated the standard error based on a single sample–except now we will use the pooled standard deviation. Again, we will be adding the terms from the two samples together, so to be able to sum these we need to use the pooled variance.</p>
+<p>[think langauge needs to be made more novice friendly, annotated?]</p>
+<div style="margin-bottom:50px">
+
+</div>
+<span class="math display" id="eq:equation2">\[\begin{equation}
+ \tag{2}
+ \Large SE_{({\bar{x_1}-\bar{x_2})}} = \sqrt{\frac{s_p^2}{n_1} + {\frac{s_p^2}{n_2}}}
+ \end{equation}\]</span>
+<div style="margin-bottom:50px">
+
+</div>
 </div>
 
 <!DOCTYPE html>

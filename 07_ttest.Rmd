@@ -70,24 +70,133 @@ $H_A$ :  $\Delta_{\mu}$ $\neq$ 0
 One way to reject the null hypothesis would be to construct 95% CIs around the estimate for $\Delta_{\bar{x}}$.
 
 # Pooled standard deviation
-As we learned previously, a prerequisite to calculating 95% CIs is to calculate the standard error (which we know will require the sample standard deviation). However, we started with two samples, so which sample's standard deviation do we use? Can we use both?
+As we learned previously, a prerequisite to calculating 95% CIs is to calculate the standard error (which we know will require the sample standard deviation). However, we're now working with two samples, so which sample's standard deviation do we use? Can we use both? Yes, kind of...
 
-In this particular case, the standard error of the mean difference can be calculated based on a *combined*, or **pooled standard deviation** ($s_{pooled}$) from two samples. 
+In this particular case, the standard error of the mean difference can be calculated based on a *combined*, or **pooled standard deviation** ($s_{p}$) from two samples. We use the standard deviation of each sample, weighted by sample size.
 
 
 <div style="margin-bottom:50px"></div>
 \begin{equation}
  (\#eq:equation1)
- \Large s_{pooled} = \sqrt{\frac{s^2(n_1-1) + s^2(n_2-1)}{(n_1-1) + (n_2-1)}}
+ \Large s_{p} = \sqrt{\frac{s^2(n_1-1) + s^2(n_2-1)}{(n_1-1) + (n_2-1)}}
  \end{equation}
 <div style="margin-bottom:50px"></div>
 
 
 One thing to point out is that standard deviations from samples cannot be added together--but variances can be, which is why in (1) we use $s^2$ in the numerator only to take then the square root of the entire term. [BAD SENTENCE]
 
+We see that the variances are being multiplied by a term containing the sample size ($n$). In the case that each of our samples were differently sized, we would want to more heavily weight the variance of the sample that was larger. In our case now, both of our samples have the same $n$, but we introduce the equation for more general cases.
 
-Why are the variances being multiplied by a term containing the sample size ($n$)? In the case that each of our samples were differently sized, we would want to more heavily weight the variance of the sample that was larger. In our case now, both of our samples have the same $n$, but we introduce the equation for more general cases.
+If you're wondering why $n-1$ is necessary for the weighting, and not just $n$, hold that thought and we'll return to it later. But for now, we'll just point out that it is *not* to adjust for the inherent bias when calculating sample variance (i.e. not the same reason that we used N-1 in the variance module [link]).
 
+[DATA CAMP WINDOW WHERE THEY WILL CALCULATE THE S_P OF THE DATA]
+
+
+
+# Standard Error (SE) of the mean difference
+
+After calculating the pooled standard deviation, the next step is to determine the standard error of the mean difference. We will follow the same logic as we did when calculated the standard error based on a single sample--except now we will use the pooled standard deviation. Again, we will be adding the terms from the two samples together, so to be able to sum these we need to use the pooled variance. 
+
+[think langauge needs to be made more novice friendly, annotated?]
+
+<div style="margin-bottom:50px"></div>
+\begin{equation}
+ (\#eq:equation2)
+ \Large SE_{({\bar{x_1}-\bar{x_2})}} = \sqrt{\frac{s_p^2}{n_1} + {\frac{s_p^2}{n_2}}}
+ \end{equation}
+<div style="margin-bottom:50px"></div>
+
+
+[DATA CAMP WINDOW WHERE THEY WILL CALCULATE THE SE OF THE MEAN DIFF]
+
+Now that you know the standard error, you are ready to construct the 95% CI around the mean difference. As before, this will be the mean difference plus/minus 1.96 * $SE_{({\bar{x_1}-\bar{x_2})}}$. 
+
+Now we can see whether or not our null hypothesis can be rejected. If the 95% CI for values of ${({\bar{x_1}-\bar{x_2})}$ includes 0, then we do not have reason to believe that the population means are different. 
+
+[Construct interval for yourself below, DATA CAMP]
+
+Our 95% CI does not include 0 by a lot! So we can conclude that the population means from Island 1 and Island 2 are mostly likely distinct. 
+
+
+```{r ex="ttest2", type="pre-exercise-code"}
+set.seed(12)
+
+heights_island1 <- rnorm(50,10,2)
+heights_island2 <- rnorm(50, 18, 1.2)
+
+```
+
+```{r ex="ttest2", type="sample-code"}
+
+# Calculate the Sp for heights_island1 and heights_island2
+Sp <- 
+
+# Calculate the sample mean
+heights_island1_mean <- 
+
+# Add ± 1.96 SEM to the sample mean to construct the upper and lower bounds of the 95% CI
+
+upperCI <- 
+lowerCI <- 
+  
+heights_island1_95CI <- c(lowerCI, upperCI)
+heights_island1_95CI
+
+```
+
+```{r ex="ttest2", type="solution"}
+
+# Calculate the Sp for heights_island1 and heights_island2
+N1=50
+N2=50
+
+Sp <- sqrt(((sd(heights_island1)^2)*(N1-1) + (sd(heights_island2)^2)*(N2-1))/((N1-1)+(N2-1)))
+
+Sp <- sqrt((var(heights_island1)*(49) + var(heights_island2)*(49))/(N1+N2-2))
+
+# Calculate the SE_meandiff
+
+SE_meandiff <- sqrt(Sp^2/N1 + Sp^2/N2)
+
+# Add ± 1.96 SEM to the sample mean to construct the upper and lower bounds of the 95% CI
+
+upperCI <- 
+lowerCI <- 
+  
+heights_island1_95CI <- c(lowerCI, upperCI)
+heights_island1_95CI
+
+```
+
+Compare this value to the t.test() output....it's not EXACTLY THE SAME.
+
+# Degrees of Freedom
+
+- You know the final answer of a single estimate. You can pick whatever you want, until you're down to the last choice....then you don't have the "freedom". --> explains why we use Total -1 = DF.
+- Explain Whyyyyyyyyy we need it. 
+
+# P-values
+Then we open up to the concept of p-values.
+
+WHAT ABOUT PVALUES
+(1) What is a pvalue?
+(2) Introduce the concept of a test-statistic; The DISTRIBUTION of test statistic.
+(3) Degrees of freedom; Hasse has some ideas.
+(4) A formal definition of hypothesis including null hypothesis. 
+
+Implement, and then formally answer the question.
+
+Write your own t-test function.
+
+
+Intermediate step here between CI and p-values.
+T-test statistic greater than 1.96 will result in a significant p-value. 
+
+
+
+Start with same N, but then “to make it a more useful model, you need to be able to handle when the sample sizes are not the same.”
+
+**Unequal variance: more fodder for things to think about**
 
 
 
