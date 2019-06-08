@@ -474,8 +474,6 @@ What do we notice?
 
 We can take the mean of the sampling distribution itself-- **the mean of the sampling distribution is a mean of means.** This mean can be interpreted to be the same as a mean that would have resulted from a single large sample, made up of all the individual observations from each of the samples whose ${\bar{x}}$ values are included in the sampling distribution.
 
-[giraffe icon less than 11cm]
-
 Note that if we had only generated a sampling distribution made up of samples of 5 giraffes, we would not have been able to exclude 11 cm as a possible value for ${\mu}$. In fact, if we were to draw a vertical line in the middle of each of the sampling distributions (the mean), we can tell that the population mean is likely even less than 10 cm.
 
 [Desiree illustration: "There are a lot of 'means', 'samples', etc. to keep track of here. So below is a visual guide to help orient yourself to what "level" you're on.] 
@@ -644,7 +642,6 @@ Let's test out the SEM equation on our original sample of `heights_island1` and 
 
 Below, you will use the object `heights_island1`, which contains our single sample of N=50, and the object `sampling_distribution_N50`, which contains the data from the corresponding groundhog sampling distribution.
 
-[Is there any way to get sampling_distribution_N50 to be the same as in the previous datacamp window?]
 
 ```{r ex="SEM3", type="pre-exercise-code"}
 
@@ -748,8 +745,6 @@ We've been a little fast and loose with our words. The formal definition of CIs 
 
 **If we were to sample over and over again, then 95% of the CIs would contain the true mean 95% of the time.**
 
-The animation below shows this graphically.
-[graphical display from Hasse]
 
 Importantly, some examples of what the 95% CI does NOT mean are:
 
