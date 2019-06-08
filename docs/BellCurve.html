@@ -98,9 +98,7 @@ h6 {
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -218,8 +216,6 @@ $(document).ready(function () {
   menuAnchor.closest('li.dropdown').addClass('active');
 });
 </script>
-
-<div class="container-fluid main-container">
 
 <!-- tabsets -->
 
@@ -367,8 +363,6 @@ div.tocify {
 
 .tocify-subheader .tocify-item {
   font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
 }
 
 .tocify .list-group-item {
@@ -378,10 +372,20 @@ div.tocify {
 
 </style>
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify" style="position: static;">
+<div id="TOC" class="tocify">
 </div>
 </div>
 
@@ -427,6 +431,9 @@ div.tocify {
     <li>
       <a href="covariance_and_correlation.html">Covariance and Correlation</a>
     </li>
+    <li>
+      <a href="06_intro_to_inference.html">Standard Error</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -444,7 +451,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore"></h1>
+<h1 class="title toc-ignore">The Normal Distribution</h1>
 
 </div>
 
@@ -530,9 +537,11 @@ Explain why distributions of sample data that come from populations with normal 
 <h1>Distributions</h1>
 <p>The histogram above shows the <strong>distribution</strong>, or shape, of your data. The distribution of a variable in a data set gives you information about:</p>
 <ul>
-<li>All the values the variable takes on in your data set, when the data are split into reasonably sized groups</li>
+<li>All the values the variable takes on in your data set, when the data are split into reasonably sized groups
+<ul>
 <li>How often each value occurs</li>
 <li>The shape, center, and amount of variability in the data</li>
+</ul></li>
 </ul>
 <p>Checking the distribution of the data is always one of the first steps of data anlaysis. By knowing the shape of the data, you gain insights into some of the data’s statistical properties (which become useful down the line, for example, when you need to decide whether a particular statistical test would be appropriate).</p>
 </div>
@@ -541,14 +550,13 @@ Explain why distributions of sample data that come from populations with normal 
 <p>Although the data can be distributed in many shapes, there are some general shapes that occur so frequently in nature that these distributions are given their own names. The most well-known distribution has a shape similar to a bell and is called the <em>normal distribution</em> (or sometimes “the bell curve” or just “normal curve”).</p>
 <p>There are a few characteristics of the normal distribution:</p>
 <ul>
-<li>There is a single peak</li>
+<li>There is a single peak
+<ul>
 <li>The mass of the distribution is at its center</li>
 <li>There is symmetry about the center line</li>
+</ul></li>
 </ul>
-<div class="figure">
-<img src="normal_hist.png" />
-
-</div>
+<p><img src="normal_hist.png" /></p>
 <p>Taking a look at the stones in the sand, you see two bell-shaped distributions. One for each island. It looks like giraffe heights on each island follow a normal distribution— and that’s a good thing because you remember your stats textbook always talking about how normally distributed data behaves well! Phew!</p>
 Happy with your progress thus far, you are excited to send your histogram results to your PhD mentor back in the homeland. Instead of taking a picture of your stone histogram, you turn to R to create the perfect figure.
 <div style="margin-bottom:50px">
@@ -579,8 +587,10 @@ Happy with your progress thus far, you are excited to send your histogram result
 <p>We will use the <em>ggplot2</em> package for all our graphing. Check out <a href="https://ggplot2.tidyverse.org/reference">this page</a> as a reference.</p>
 <p>We need some basic components as a bare minimum to get started. We can customize components later to make the graph more to our liking. The steps we will go through are:</p>
 <ul>
-<li><p>First we need to tell R that we want to create a ggplot. This is done by <strong>using the <code>ggplot( )</code> function</strong>. Within the parentheses, we can specify the data frame that contains what we want to plot, using the option <code>data = d</code>. We also have to tell ggplot <em>what</em> columns of the data frame to actually plot– we do this with the argument that stands for aesthetics: <code>aes( )</code>. In our case, only the x-axis variable <code>Height</code> needs to be specified.</p></li>
-<li><p>Next, <strong>add a <code>geom</code> layer</strong>, which will determine the type of visual representation that will be used for the data. Different ggplot layers and options are added using a plus sign <code>+</code>. In our case, we will write <code>+</code> and then <code>geom_histogram( )</code>. To make your plot look similar to your sand drawing, you want to add an optional argument within the parentheses of <code>geom_histogram</code>, which will set the bin width to 1cm: <code>geom_histogram( binwidth = 1 )</code>.</p></li>
+<li><p>First we need to tell R that we want to create a ggplot. This is done by <strong>using the <code>ggplot( )</code> function</strong>. Within the parentheses, we can specify the data frame that contains what we want to plot, using the option <code>data = d</code>. We also have to tell ggplot <em>what</em> columns of the data frame to actually plot– we do this with the argument that stands for aesthetics: <code>aes( )</code>. In our case, only the x-axis variable <code>Height</code> needs to be specified.</p>
+<ul>
+<li>Next, <strong>add a <code>geom</code> layer</strong>, which will determine the type of visual representation that will be used for the data. Different ggplot layers and options are added using a plus sign <code>+</code>. In our case, we will write <code>+</code> and then <code>geom_histogram( )</code>. To make your plot look similar to your sand drawing, you want to add an optional argument within the parentheses of <code>geom_histogram</code>, which will set the bin width to 1cm: <code>geom_histogram( binwidth = 1 )</code>.</li>
+</ul></li>
 </ul>
 <p>Here we are using <code>geom_histogram</code>, but there are many other <code>geom_</code> layers that you could use instead for different plot types. Check some of them out <a href="https://ggplot2.tidyverse.org/reference/#section-layer-geoms">here</a>.</p>
 <p>A note about the <code>+</code>: You can keep adding new specifications on one long continuous line of code, separating each one with a <code>+</code>. However, if you’d like to make the code easier to read by adding each specification to a new line, make sure the <code>+</code> is added to the end of the first line and not the new one.</p>
