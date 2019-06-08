@@ -6,7 +6,6 @@ output:
       in_header: covariance_and_correlation_image.html
       after_body: foot.html
 ---
-
 <div class="alert alert-info">
   **Module learning objectives:**
   <ol> 
@@ -222,7 +221,7 @@ The equation is shown below for the *sample* crossproduct of the deviation score
 
 The animation below shows the "construction" of the crossproducts from the 5 observations we have been following:
  
-```{r fig.show="animate", animation.hook = 'gifski', fig.width=7.2, fig.height=4.8, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.01666667, fig.align='center'}
+```{r fig.show="animate", animation.hook = 'gifski', fig.width=7.2, fig.height=4.8, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.01666667, fig.align='center', cache=TRUE}
 library(ggplot2)
 set.seed(12)
 x1 <- rnorm(50, 10, 2)
