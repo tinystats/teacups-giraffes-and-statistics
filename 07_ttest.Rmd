@@ -3,7 +3,7 @@ title: "t-test"
 output:
   bookdown::html_document2:
     includes:
-      in_header: mean_image.html
+      in_header: 07_ttest_bigimage.html
       after_body: foot.html
 ---
 
@@ -113,12 +113,12 @@ Now that you know the standard error, you are ready to construct the 95% CI arou
 
 Now we can see whether or not our null hypothesis can be rejected. If the 95% CI for values of ${({\bar{x_1}-\bar{x_2})}$ includes 0, then we do not have reason to believe that the population means are different. 
 
-[Construct interval for yourself below, DATA CAMP]
-
-Our 95% CI does not include 0 by a lot! So we can conclude that the population means from Island 1 and Island 2 are mostly likely distinct. 
+[Construct interval for yourself below, DATA CAMP, INSTRUCTIONS]
 
 
 ```{r ex="ttest2", type="pre-exercise-code"}
+tutorial::go_interactive(height = 160)
+
 set.seed(12)
 
 heights_island1 <- rnorm(50,10,2)
@@ -168,31 +168,41 @@ heights_island1_95CI
 
 ```
 
-Compare this value to the t.test() output....it's not EXACTLY THE SAME.
+Our 95% CI does not include 0 by a lot! So we can conclude that the population means from Island 1 and Island 2 are mostly likely distinct. In other words, we can reject $H_0$, the null hypothesis. In doing so, we say that the mean difference is *statistically significant*. 
 
-# Degrees of Freedom
-
-- You know the final answer of a single estimate. You can pick whatever you want, until you're down to the last choice....then you don't have the "freedom". --> explains why we use Total -1 = DF.
-- Explain Whyyyyyyyyy we need it. 
+[Compare this value to the t.test() output....it's not EXACTLY THE SAME.]
 
 # P-values
 Then we open up to the concept of p-values.
 
-WHAT ABOUT PVALUES
-(1) What is a pvalue?
-(2) Introduce the concept of a test-statistic; The DISTRIBUTION of test statistic.
+Even though CIs are great tools for inference, you are probably most familiar with seeing p-values in scientific literature. The **p-value** that is output from your statistical test gives you a metric that tells you whether or not your results are statistically significant. Typically, p-values < 0.05 meet this criterion. 
+
+The "p" in p-value stands for "probability". Probability of what? The **p-value** is the probability that you would have gotten your results or something more extreme if in fact the null hypothesis were true. "More extreme", in this case, would be a mean difference even greater than what we see in the present data. The lower the p-value, the less likely you'd be getting your results due to chance alone.
+
+Now let's derive the p-value for the mean difference of the two island heights, and make sure that we can draw the same conclusion that we did when we used the 95% CI for inference. In order to do this, we will use a statistical test for comparing two groups: the **t-test**.
+
+# The t-test
+- The t-test is all about the t-statistic. 
+- The t-statistic is essentially combining whatever our sample estimate is (e.g. mean difference, sample mean, etc.) and its uncertainty (i.e. standard error) into one value.
+- we convert the t-statistic into a p-value via the a specific kind of distribution called the t-distribution. [plot, here's an example of one]
+- the further out in the tails of the t-distribution that the t-statistic falls. The lower the pvalue will be. 
+
+
 (3) Degrees of freedom; Hasse has some ideas.
 (4) A formal definition of hypothesis including null hypothesis. 
 
 Implement, and then formally answer the question.
 
-Write your own t-test function.
+# Degrees of Freedom
 
+- You know the final answer of a single estimate. You can pick whatever you want, until you're down to the last choice....then you don't have the "freedom". --> explains why we use Total -1 = DF.
+- Explain Whyyyyyyyyy we need it. 
+- The t-distribution will look different depending on the degrees of freedom
 
 Intermediate step here between CI and p-values.
-T-test statistic greater than 1.96 will result in a significant p-value. 
+T-test statistic greater than 1.96 will result in a significant p-value.
 
-
+Write your own t-test function.
 
 Start with same N, but then “to make it a more useful model, you need to be able to handle when the sample sizes are not the same.”
 
