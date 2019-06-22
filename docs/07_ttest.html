@@ -456,6 +456,7 @@ div.tocify {
 </div>
 
 
+<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <div class="alert alert-info">
 <strong>Module learning objectives:</strong>
 <ol>
@@ -541,44 +542,9 @@ Describe how the reliability of a sample mean will scale with increasing sample 
 <p>Now we can see whether or not our null hypothesis can be rejected. If the 95% CI for values of <span class="math inline">\({({\bar{x_1}-\bar{x_2})}\)</span> includes 0, then we do not have reason to believe that the population means are different.</p>
 <p>[Construct interval for yourself below, DATA CAMP]</p>
 <p>Our 95% CI does not include 0 by a lot! So we can conclude that the population means from Island 1 and Island 2 are mostly likely distinct.</p>
-<pre class="r"><code>set.seed(12)
-
-heights_island1 &lt;- rnorm(50,10,2)
-heights_island2 &lt;- rnorm(50, 18, 1.2)</code></pre>
-<pre class="r"><code># Calculate the Sp for heights_island1 and heights_island2
-Sp &lt;- 
-
-# Calculate the sample mean
-heights_island1_mean &lt;- 
-
-# Add ± 1.96 SEM to the sample mean to construct the upper and lower bounds of the 95% CI
-
-upperCI &lt;- 
-lowerCI &lt;- 
-  
-heights_island1_95CI &lt;- c(lowerCI, upperCI)
-heights_island1_95CI</code></pre>
-<pre><code>## [1]  9.233833 10.194448</code></pre>
-<pre class="r"><code># Calculate the Sp for heights_island1 and heights_island2
-N1=50
-N2=50
-
-Sp &lt;- sqrt(((sd(heights_island1)^2)*(N1-1) + (sd(heights_island2)^2)*(N2-1))/((N1-1)+(N2-1)))
-
-Sp &lt;- sqrt((var(heights_island1)*(49) + var(heights_island2)*(49))/(N1+N2-2))
-
-# Calculate the SE_meandiff
-
-SE_meandiff &lt;- sqrt(Sp^2/N1 + Sp^2/N2)
-
-# Add ± 1.96 SEM to the sample mean to construct the upper and lower bounds of the 95% CI
-
-upperCI &lt;- 
-lowerCI &lt;- 
-  
-heights_island1_95CI &lt;- c(lowerCI, upperCI)
-heights_island1_95CI</code></pre>
-<pre><code>## [1]  9.233833 10.194448  9.233833 10.194448</code></pre>
+<div data-datacamp-exercise="" data-height="160" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuXG5oZWlnaHRzX2lzbGFuZDEgPC0gcm5vcm0oNTAsMTAsMilcbmhlaWdodHNfaXNsYW5kMiA8LSBybm9ybSg1MCwgMTgsIDEuMikiLCJzYW1wbGUiOiIjIENhbGN1bGF0ZSB0aGUgU3AgZm9yIGhlaWdodHNfaXNsYW5kMSBhbmQgaGVpZ2h0c19pc2xhbmQyXG5TcCA8LSBcblxuIyBDYWxjdWxhdGUgdGhlIHNhbXBsZSBtZWFuXG5oZWlnaHRzX2lzbGFuZDFfbWVhbiA8LSBcblxuIyBBZGQgXHUwMGIxIDEuOTYgU0VNIHRvIHRoZSBzYW1wbGUgbWVhbiB0byBjb25zdHJ1Y3QgdGhlIHVwcGVyIGFuZCBsb3dlciBib3VuZHMgb2YgdGhlIDk1JSBDSVxuXG51cHBlckNJIDwtIFxubG93ZXJDSSA8LSBcbiAgXG5oZWlnaHRzX2lzbGFuZDFfOTVDSSA8LSBjKGxvd2VyQ0ksIHVwcGVyQ0kpXG5oZWlnaHRzX2lzbGFuZDFfOTVDSSIsInNvbHV0aW9uIjoiIyBDYWxjdWxhdGUgdGhlIFNwIGZvciBoZWlnaHRzX2lzbGFuZDEgYW5kIGhlaWdodHNfaXNsYW5kMlxuTjE9NTBcbk4yPTUwXG5cblNwIDwtIHNxcnQoKChzZChoZWlnaHRzX2lzbGFuZDEpXjIpKihOMS0xKSArIChzZChoZWlnaHRzX2lzbGFuZDIpXjIpKihOMi0xKSkvKChOMS0xKSsoTjItMSkpKVxuXG5TcCA8LSBzcXJ0KCh2YXIoaGVpZ2h0c19pc2xhbmQxKSooNDkpICsgdmFyKGhlaWdodHNfaXNsYW5kMikqKDQ5KSkvKE4xK04yLTIpKVxuXG4jIENhbGN1bGF0ZSB0aGUgU0VfbWVhbmRpZmZcblxuU0VfbWVhbmRpZmYgPC0gc3FydChTcF4yL04xICsgU3BeMi9OMilcblxuIyBBZGQgXHUwMGIxIDEuOTYgU0VNIHRvIHRoZSBzYW1wbGUgbWVhbiB0byBjb25zdHJ1Y3QgdGhlIHVwcGVyIGFuZCBsb3dlciBib3VuZHMgb2YgdGhlIDk1JSBDSVxuXG51cHBlckNJIDwtIFxubG93ZXJDSSA8LSBcbiAgXG5oZWlnaHRzX2lzbGFuZDFfOTVDSSA8LSBjKGxvd2VyQ0ksIHVwcGVyQ0kpXG5oZWlnaHRzX2lzbGFuZDFfOTVDSSJ9
+</div>
 <p>Compare this value to the t.test() output….it’s not EXACTLY THE SAME.</p>
 </div>
 <div id="degrees-of-freedom" class="section level1">
