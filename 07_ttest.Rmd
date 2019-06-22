@@ -89,6 +89,10 @@ We see that the variances are being multiplied by a term containing the sample s
 
 If you're wondering why $n-1$ is necessary for the weighting, and not just $n$, hold that thought and we'll return to it later. But for now, we'll just point out that it is *not* to adjust for the inherent bias when calculating sample variance (i.e. not the same reason that we used N-1 in the variance module [link]).
 
+```{r, include=FALSE}
+tutorial::go_interactive(height = 160)
+```
+
 [DATA CAMP WINDOW WHERE THEY WILL CALCULATE THE S_P OF THE DATA]
 
 
@@ -117,7 +121,6 @@ Now we can see whether or not our null hypothesis can be rejected. If the 95% CI
 
 
 ```{r ex="ttest2", type="pre-exercise-code"}
-tutorial::go_interactive(height = 160)
 
 set.seed(12)
 
@@ -128,23 +131,29 @@ heights_island2 <- rnorm(50, 18, 1.2)
 
 ```{r ex="ttest2", type="sample-code"}
 
+# Calculate the mean diff
+
+mean_diff <-  
+
 # Calculate the Sp for heights_island1 and heights_island2
 Sp <- 
 
-# Calculate the sample mean
-heights_island1_mean <- 
+# Calculate the SE_meandiff
+SE_meandiff <- 
 
 # Add ± 1.96 SEM to the sample mean to construct the upper and lower bounds of the 95% CI
 
 upperCI <- 
 lowerCI <- 
   
-heights_island1_95CI <- c(lowerCI, upperCI)
-heights_island1_95CI
-
+meandiff_95CI <- c(lowerCI, upperCI)
+meandiff_95CI
 ```
 
 ```{r ex="ttest2", type="solution"}
+
+# Calculate the mean difference
+mean_diff <-  mean(heights_island2) - mean(heights_island1)
 
 # Calculate the Sp for heights_island1 and heights_island2
 N1=50
@@ -160,11 +169,11 @@ SE_meandiff <- sqrt(Sp^2/N1 + Sp^2/N2)
 
 # Add ± 1.96 SEM to the sample mean to construct the upper and lower bounds of the 95% CI
 
-upperCI <- 
-lowerCI <- 
+upperCI <- mean_diff + 1.96*SE_meandiff
+lowerCI <-  mean_diff - 1.96*SE_meandiff
   
-heights_island1_95CI <- c(lowerCI, upperCI)
-heights_island1_95CI
+meandiff_95CI <- c(lowerCI, upperCI)
+meandiff_95CI
 
 ```
 
