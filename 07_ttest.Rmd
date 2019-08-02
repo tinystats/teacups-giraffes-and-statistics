@@ -179,10 +179,9 @@ meandiff_95CI
 
 Our 95% CI does not include 0 by a lot! So we can conclude that the population means from Island 1 and Island 2 are mostly likely distinct. In other words, we can reject $H_0$, the null hypothesis. In doing so, we say that the mean difference is *statistically significant*. 
 
-[Compare this value to the t.test() output....it's not EXACTLY THE SAME.]
+[T test function will calculate the 95CI using the t distribution @ 97.5%m, which doesn't always give 1.96]
 
 # P-values
-Then we open up to the concept of p-values.
 
 Even though CIs are great tools for inference, you are probably most familiar with seeing p-values in scientific literature. The **p-value** that is output from your statistical test gives you a metric that tells you whether or not your results are statistically significant. Typically, p-values < 0.05 meet this criterion. 
 
@@ -191,7 +190,12 @@ The "p" in p-value stands for "probability". Probability of what? The **p-value*
 Now let's derive the p-value for the mean difference of the two island heights, and make sure that we can draw the same conclusion that we did when we used the 95% CI for inference. In order to do this, we will use a statistical test for comparing two groups: the **t-test**.
 
 # The t-test
-- The t-test is all about the t-statistic. 
+
+The t-test is all about the **t-statistic**, which is produced when the mean difference is divided by the standard error. When we divide by the standard error, we turn our mean difference estimate into a unitless metric that is not dependent on the scale that means were recorded with (i.e. centimeters). Furthermore, dividing by the standard error also will also account for the uncertainty in the estimate. 
+
+
+
+
 - The t-statistic is essentially combining whatever our sample estimate is (e.g. mean difference, sample mean, etc.) and its uncertainty (i.e. standard error) into one value.
 - we convert the t-statistic into a p-value via the a specific kind of distribution called the t-distribution. [plot, here's an example of one]
 - the further out in the tails of the t-distribution that the t-statistic falls. The lower the pvalue will be. 

@@ -542,19 +542,18 @@ Describe how the reliability of a sample mean will scale with increasing sample 
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuXG5oZWlnaHRzX2lzbGFuZDEgPC0gcm5vcm0oNTAsMTAsMilcbmhlaWdodHNfaXNsYW5kMiA8LSBybm9ybSg1MCwgMTgsIDEuMikiLCJzYW1wbGUiOiIjIENhbGN1bGF0ZSB0aGUgbWVhbiBkaWZmXG5cbm1lYW5fZGlmZiA8LSAgXG5cbiMgQ2FsY3VsYXRlIHRoZSBTcCBmb3IgaGVpZ2h0c19pc2xhbmQxIGFuZCBoZWlnaHRzX2lzbGFuZDJcblNwIDwtIFxuXG4jIENhbGN1bGF0ZSB0aGUgU0VfbWVhbmRpZmZcblNFX21lYW5kaWZmIDwtIFxuXG4jIEFkZCBcdTAwYjEgMS45NiBTRU0gdG8gdGhlIHNhbXBsZSBtZWFuIHRvIGNvbnN0cnVjdCB0aGUgdXBwZXIgYW5kIGxvd2VyIGJvdW5kcyBvZiB0aGUgOTUlIENJXG5cbnVwcGVyQ0kgPC0gXG5sb3dlckNJIDwtIFxuICBcbm1lYW5kaWZmXzk1Q0kgPC0gYyhsb3dlckNJLCB1cHBlckNJKVxubWVhbmRpZmZfOTVDSSIsInNvbHV0aW9uIjoiIyBDYWxjdWxhdGUgdGhlIG1lYW4gZGlmZmVyZW5jZVxubWVhbl9kaWZmIDwtICBtZWFuKGhlaWdodHNfaXNsYW5kMikgLSBtZWFuKGhlaWdodHNfaXNsYW5kMSlcblxuIyBDYWxjdWxhdGUgdGhlIFNwIGZvciBoZWlnaHRzX2lzbGFuZDEgYW5kIGhlaWdodHNfaXNsYW5kMlxuTjE9NTBcbk4yPTUwXG5cblNwIDwtIHNxcnQoKChzZChoZWlnaHRzX2lzbGFuZDEpXjIpKihOMS0xKSArIChzZChoZWlnaHRzX2lzbGFuZDIpXjIpKihOMi0xKSkvKChOMS0xKSsoTjItMSkpKVxuXG5TcCA8LSBzcXJ0KCh2YXIoaGVpZ2h0c19pc2xhbmQxKSooNDkpICsgdmFyKGhlaWdodHNfaXNsYW5kMikqKDQ5KSkvKE4xK04yLTIpKVxuXG4jIENhbGN1bGF0ZSB0aGUgU0VfbWVhbmRpZmZcblxuU0VfbWVhbmRpZmYgPC0gc3FydChTcF4yL04xICsgU3BeMi9OMilcblxuIyBBZGQgXHUwMGIxIDEuOTYgU0VNIHRvIHRoZSBzYW1wbGUgbWVhbiB0byBjb25zdHJ1Y3QgdGhlIHVwcGVyIGFuZCBsb3dlciBib3VuZHMgb2YgdGhlIDk1JSBDSVxuXG51cHBlckNJIDwtIG1lYW5fZGlmZiArIDEuOTYqU0VfbWVhbmRpZmZcbmxvd2VyQ0kgPC0gIG1lYW5fZGlmZiAtIDEuOTYqU0VfbWVhbmRpZmZcbiAgXG5tZWFuZGlmZl85NUNJIDwtIGMobG93ZXJDSSwgdXBwZXJDSSlcbm1lYW5kaWZmXzk1Q0kifQ==
 </div>
 <p>Our 95% CI does not include 0 by a lot! So we can conclude that the population means from Island 1 and Island 2 are mostly likely distinct. In other words, we can reject <span class="math inline">\(H_0\)</span>, the null hypothesis. In doing so, we say that the mean difference is <em>statistically significant</em>.</p>
-<p>[Compare this value to the t.test() output….it’s not EXACTLY THE SAME.]</p>
+<p>[T test function will calculate the 95CI using the t distribution @ 97.5%m, which doesn’t always give 1.96]</p>
 </div>
 <div id="p-values" class="section level1">
 <h1>P-values</h1>
-<p>Then we open up to the concept of p-values.</p>
 <p>Even though CIs are great tools for inference, you are probably most familiar with seeing p-values in scientific literature. The <strong>p-value</strong> that is output from your statistical test gives you a metric that tells you whether or not your results are statistically significant. Typically, p-values &lt; 0.05 meet this criterion.</p>
 <p>The “p” in p-value stands for “probability”. Probability of what? The <strong>p-value</strong> is the probability that you would have gotten your results or something more extreme if in fact the null hypothesis were true. “More extreme”, in this case, would be a mean difference even greater than what we see in the present data. The lower the p-value, the less likely you’d be getting your results due to chance alone.</p>
 <p>Now let’s derive the p-value for the mean difference of the two island heights, and make sure that we can draw the same conclusion that we did when we used the 95% CI for inference. In order to do this, we will use a statistical test for comparing two groups: the <strong>t-test</strong>.</p>
 </div>
 <div id="the-t-test" class="section level1">
 <h1>The t-test</h1>
+<p>The t-test is all about the <strong>t-statistic</strong>, which is produced when the mean difference is divided by the standard error. When we divide by the standard error, we turn our mean difference estimate into a unitless metric that is not dependent on the scale that means were recorded with (i.e. centimeters). Furthermore, dividing by the standard error also will also account for the uncertainty in the estimate.</p>
 <ul>
-<li>The t-test is all about the t-statistic.</li>
 <li>The t-statistic is essentially combining whatever our sample estimate is (e.g. mean difference, sample mean, etc.) and its uncertainty (i.e. standard error) into one value.</li>
 <li>we convert the t-statistic into a p-value via the a specific kind of distribution called the t-distribution. [plot, here’s an example of one]</li>
 <li>the further out in the tails of the t-distribution that the t-statistic falls. The lower the pvalue will be.</li>
