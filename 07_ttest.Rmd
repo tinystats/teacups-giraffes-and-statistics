@@ -119,6 +119,9 @@ Now we can see whether or not our null hypothesis can be rejected. If the 95% CI
 
 [Construct interval for yourself below, DATA CAMP, INSTRUCTIONS]
 
+```{r, include=FALSE}
+tutorial::go_interactive(height = 160)
+```
 
 ```{r ex="ttest2", type="pre-exercise-code"}
 

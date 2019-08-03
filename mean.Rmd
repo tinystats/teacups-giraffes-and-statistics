@@ -122,12 +122,12 @@ This might look intimidating, but equation \@ref(eq:equation2) is really showing
 
 # Notation for sample vs population
 
-Recall our discussion about a sample verus a population [](BellCurve.html). Different symbols are used to represent the mean for each of these. We've already discussed ${bar_x}$ for the sample mean. The analogous symbol for the population mean is ${\mu}$ (read "mu"). Additionally, when referring to the size of the population, we will use a capital ${N}$ instead of a lowercase one. 
+Recall our discussion about a sample verus a population [](BellCurve.html). Different symbols are used to represent the mean for each of these. We've already discussed $\bar{x}$ for the sample mean. The analogous symbol for the population mean is ${\mu}$ (read "mu"). Additionally, when referring to the size of the population, we will use a capital ${N}$ instead of a lowercase one. 
 
 <div style="margin-bottom:50px">
 </div>
 
-#Code it up
+# Code it up
 
 Using \@ref(eq:equation2), it's easy to translate this equation into code in R. The heights recorded from island 1 have been stored in a vector called `heights_island1`. Below we show the first few observations from this vector, using the `head()` function.
 <div style="margin-bottom:15px">

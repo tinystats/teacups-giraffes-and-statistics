@@ -21,7 +21,7 @@ output:
 
 Let's revisit the first few days during which we collected data stored in the vector `heights_island1`. We were able to verify that the heights were normally distributed and calculated our sample mean, ${\bar{x}}$. However, we know that ${\bar{x}}$ is only an *estimate* of the true population mean, ${\mu}$, which is the true value of interest. It is unlikely that we will ever know the value of ${\mu}$, since access to all possible observations is rare. Therefore we will have to rely on ${\bar{x}}$ estimates from random samples drawn from the population as the best approximation of ${\mu}$.
 
-Not all sample means are created equal. Some are better estimates than others. Recall the [animation showing the relationship between sample size and variability of the mean](mean.html#mean_animation). As we learned from this animation, in the long-run, large samples are necessary to get an accurate estimate of ${\mu}$.
+Not all sample means are created equal. Some are better estimates than others. Recall the [animation](mean.html#mean_animation) showing the relationship between sample size and variability of the mean. As we learned from this animation, in the long-run, large samples are necessary to get an accurate estimate of ${\mu}$.
 
 
 <div class= "alert alert-note">
@@ -474,12 +474,7 @@ What do we notice?
 
 We can take the mean of the sampling distribution itself-- **the mean of the sampling distribution is a mean of means.** This mean can be interpreted to be the same as a mean that would have resulted from a single large sample, made up of all the individual observations from each of the samples whose ${\bar{x}}$ values are included in the sampling distribution.
 
-[giraffe icon less than 11cm]
-
 Note that if we had only generated a sampling distribution made up of samples of 5 giraffes, we would not have been able to exclude 11 cm as a possible value for ${\mu}$. In fact, if we were to draw a vertical line in the middle of each of the sampling distributions (the mean), we can tell that the population mean is likely even less than 10 cm.
-
-[Desiree illustration: "There are a lot of 'means', 'samples', etc. to keep track of here. So below is a visual guide to help orient yourself to what "level" you're on.] 
-
 
 In the folowing window, you will test the relationship between sampling distribution and sample size. The function below (behind-the-scenes code not shown) will plot a sampling distribution made up of 1000 samples, with each sample containing `N` number of observations. Try setting `N` to a few different values. What does the resulting sampling distribution looks like? See if you can confirm for yourself that the above points are true.
 
@@ -644,7 +639,6 @@ Let's test out the SEM equation on our original sample of `heights_island1` and 
 
 Below, you will use the object `heights_island1`, which contains our single sample of N=50, and the object `sampling_distribution_N50`, which contains the data from the corresponding groundhog sampling distribution.
 
-[Is there any way to get sampling_distribution_N50 to be the same as in the previous datacamp window?]
 
 ```{r ex="SEM3", type="pre-exercise-code"}
 
@@ -746,10 +740,8 @@ The upper limit of our 95% CI is less than 11 cm, so the population mean of heig
 
 We've been a little fast and loose with our words. The formal definition of CIs is the following: 
 
-**If we were to sample over and over again, then 95% of the CIs would contain the true mean 95% of the time.**
+**If we were to sample over and over again, then 95% of the time the CIs would contain the true mean.**
 
-The animation below shows this graphically.
-[graphical display from Hasse]
 
 Importantly, some examples of what the 95% CI does NOT mean are:
 
@@ -758,4 +750,4 @@ Importantly, some examples of what the 95% CI does NOT mean are:
 * It does not mean that values outside of the 95% CI have a 5% chance of being the true mean.
 
 
-The precise interpretation of CIs is quite a nuanced and rather hotly debated topic [see here](https://featuredcontent.psychonomic.org/confidence-intervals-more-like-confusion-intervals/) and becomes somewhat philosophical --so if these definition subtleties seem confusing, don't feel bad. As mentioned in the blog post linked above, one recent paper reported that 97% of surveyed researchers endorsed at least one misconception (out of 6) about CIs. 
+The precise interpretation of CIs is quite a nuanced and rather hotly debated topic [see here](https://featuredcontent.psychonomic.org/confidence-intervals-more-like-confusion-intervals/) and becomes somewhat philosophical-- so if these definition subtleties seem confusing, don't feel bad. As mentioned in the blog post linked above, one recent paper reported that 97% of surveyed researchers endorsed at least one misconception (out of 6) about CIs. 

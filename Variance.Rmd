@@ -65,7 +65,7 @@ What's the easiest thing to do when you want to retain how far away a point is f
 Though the absolute value of the deviation would be a valid measure of distance from the mean, it turns out that it has some mathematical properties that don't make it the best choice, especially for more complex statistial analyses involving the variance later down the line. 
 
 # Why we square the deviations
-There is an alternative with simpler, "better behaved" mathematical properties: ** squaring the deviations**. Squaring will always give us positive values, so the values can never cancel each other out. It's worth pointing out, however, that a consequence of squaring deviations will tend to amplify the influence of values at extreme distances from the mean. You can read [this thread] (https://stats.stackexchange.com/questions/118/why-square-the-difference-instead-of-taking-the-absolute-value-in-standard-devia) for a more detailed discussion about absolute values versus squared deviations. 
+There is an alternative with simpler, "better behaved" mathematical properties: **squaring the deviations**. Squaring will always give us positive values, so the values can never cancel each other out. It's worth pointing out, however, that a consequence of squaring deviations will tend to amplify the influence of values at extreme distances from the mean. You can read [this thread](https://stats.stackexchange.com/questions/118/why-square-the-difference-instead-of-taking-the-absolute-value-in-standard-devia) for a more detailed discussion about absolute values versus squared deviations. 
 
 # Sum of squares
 Now we have positive, squared deviation values that can be summed to a single total. We call this total **the sum of squares**, and the equation is shown below. 
