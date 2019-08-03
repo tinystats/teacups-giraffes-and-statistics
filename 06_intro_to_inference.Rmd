@@ -389,7 +389,7 @@ A histogram of the sampling distribution is shown below. It is a histogram made 
 <br>
 
 <center>
-```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, fig.height=2.7, fig.width=4.5}
+```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, fig.height=2.7, fig.width=4.5, cache= TRUE}
 library(ggplot2)
 
 samp <- function(n){
@@ -423,7 +423,7 @@ Let's return to our question about whether the true mean of giraffe heights on I
 Back to the idea that larger samples are "better", we can explore what happens if we redo the groundhog scenario, this time sampling 500 individuals (instead of 50) before taking the mean each time, repeating this until thousands of ${\bar{x}}$ values have been recorded. For completeness, let's imagine the same marathon data collection using samples that are smaller---of 5 giraffes each. We compare the resulting sampling distributions from all three scenarios below. The middle sampling distribution corresponds to the sampling distribution we already generated above.
 
 <center>
-```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, fig.height=6, fig.width=6}
+```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, fig.height=6, fig.width=6, cache = TRUE}
 library(ggplot2)
 
 samp <- function(n){
@@ -483,7 +483,7 @@ In the folowing window, you will test the relationship between sampling distribu
 tutorial::go_interactive(height = 160)
 ```
 
-```{r ex="histogram5", type="pre-exercise-code"}
+```{r ex="histogram5", type="pre-exercise-code", cache = TRUE}
 library(ggplot2)
 
 plot_hist <- function(N){
@@ -561,7 +561,7 @@ When you calculate the standard deviation of a sampling distribution of ${\bar{x
 Deriving the equation used for calculating the standard error of the mean using theory (i.e. without going out and resampling MANY times) is a bit complicated, but if you're interested, you can learn more about it [here](https://stats.stackexchange.com/questions/89154/general-method-for-deriving-the-standard-error). Instead, we can capture the relationship between **standard deviation**, **sample size**, and **standard error** with the plot below.
 
 <center>
-```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, out.height=2}
+```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, out.height=2, cache = TRUE}
 library(plotly)
 
 d <- data.frame(N=seq(5,1000, 5), sd=2.1)
