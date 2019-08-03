@@ -117,6 +117,9 @@ Now we can see whether or not our null hypothesis can be rejected. If the 95% CI
 
 Our 95% CI does not include 0 by a lot! So we can conclude that the population means from Island 1 and Island 2 are mostly likely distinct. 
 
+```{r, include=FALSE}
+tutorial::go_interactive(height = 160)
+```
 
 ```{r ex="ttest2", type="pre-exercise-code"}
 set.seed(12)

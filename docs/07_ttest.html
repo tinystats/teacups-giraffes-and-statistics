@@ -431,6 +431,9 @@ div.tocify {
     <li>
       <a href="covariance_and_correlation.html">Covariance and Correlation</a>
     </li>
+    <li>
+      <a href="06_intro_to_inference.html">Standard Error</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -453,6 +456,7 @@ div.tocify {
 </div>
 
 
+<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <div class="alert alert-info">
 <strong>Module learning objectives:</strong>
 <ol>
@@ -517,6 +521,7 @@ Describe how the reliability of a sample mean will scale with increasing sample 
 <p>One thing to point out is that standard deviations from samples cannot be added together–but variances can be, which is why in (1) we use <span class="math inline">\(s^2\)</span> in the numerator only to take then the square root of the entire term. [BAD SENTENCE]</p>
 <p>We see that the variances are being multiplied by a term containing the sample size (<span class="math inline">\(n\)</span>). In the case that each of our samples were differently sized, we would want to more heavily weight the variance of the sample that was larger. In our case now, both of our samples have the same <span class="math inline">\(n\)</span>, but we introduce the equation for more general cases.</p>
 <p>If you’re wondering why <span class="math inline">\(n-1\)</span> is necessary for the weighting, and not just <span class="math inline">\(n\)</span>, hold that thought and we’ll return to it later. But for now, we’ll just point out that it is <em>not</em> to adjust for the inherent bias when calculating sample variance (i.e. not the same reason that we used N-1 in the variance module [link]).</p>
+<p>[DATA CAMP WINDOW WHERE THEY WILL CALCULATE THE S_P OF THE DATA]</p>
 </div>
 <div id="standard-error-se-of-the-mean-difference" class="section level1">
 <h1>Standard Error (SE) of the mean difference</h1>
@@ -532,6 +537,37 @@ Describe how the reliability of a sample mean will scale with increasing sample 
 <div style="margin-bottom:50px">
 
 </div>
+<p>[DATA CAMP WINDOW WHERE THEY WILL CALCULATE THE SE OF THE MEAN DIFF]</p>
+<p>Now that you know the standard error, you are ready to construct the 95% CI around the mean difference. As before, this will be the mean difference plus/minus 1.96 * <span class="math inline">\(SE_{({\bar{x_1}-\bar{x_2})}}\)</span>.</p>
+<p>Now we can see whether or not our null hypothesis can be rejected. If the 95% CI for values of <span class="math inline">\({({\bar{x_1}-\bar{x_2})}\)</span> includes 0, then we do not have reason to believe that the population means are different.</p>
+<p>[Construct interval for yourself below, DATA CAMP]</p>
+<p>Our 95% CI does not include 0 by a lot! So we can conclude that the population means from Island 1 and Island 2 are mostly likely distinct.</p>
+<div data-datacamp-exercise="" data-height="160" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuXG5oZWlnaHRzX2lzbGFuZDEgPC0gcm5vcm0oNTAsMTAsMilcbmhlaWdodHNfaXNsYW5kMiA8LSBybm9ybSg1MCwgMTgsIDEuMikiLCJzYW1wbGUiOiIjIENhbGN1bGF0ZSB0aGUgU3AgZm9yIGhlaWdodHNfaXNsYW5kMSBhbmQgaGVpZ2h0c19pc2xhbmQyXG5TcCA8LSBcblxuIyBDYWxjdWxhdGUgdGhlIHNhbXBsZSBtZWFuXG5oZWlnaHRzX2lzbGFuZDFfbWVhbiA8LSBcblxuIyBBZGQgXHUwMGIxIDEuOTYgU0VNIHRvIHRoZSBzYW1wbGUgbWVhbiB0byBjb25zdHJ1Y3QgdGhlIHVwcGVyIGFuZCBsb3dlciBib3VuZHMgb2YgdGhlIDk1JSBDSVxuXG51cHBlckNJIDwtIFxubG93ZXJDSSA8LSBcbiAgXG5oZWlnaHRzX2lzbGFuZDFfOTVDSSA8LSBjKGxvd2VyQ0ksIHVwcGVyQ0kpXG5oZWlnaHRzX2lzbGFuZDFfOTVDSSIsInNvbHV0aW9uIjoiIyBDYWxjdWxhdGUgdGhlIFNwIGZvciBoZWlnaHRzX2lzbGFuZDEgYW5kIGhlaWdodHNfaXNsYW5kMlxuTjE9NTBcbk4yPTUwXG5cblNwIDwtIHNxcnQoKChzZChoZWlnaHRzX2lzbGFuZDEpXjIpKihOMS0xKSArIChzZChoZWlnaHRzX2lzbGFuZDIpXjIpKihOMi0xKSkvKChOMS0xKSsoTjItMSkpKVxuXG5TcCA8LSBzcXJ0KCh2YXIoaGVpZ2h0c19pc2xhbmQxKSooNDkpICsgdmFyKGhlaWdodHNfaXNsYW5kMikqKDQ5KSkvKE4xK04yLTIpKVxuXG4jIENhbGN1bGF0ZSB0aGUgU0VfbWVhbmRpZmZcblxuU0VfbWVhbmRpZmYgPC0gc3FydChTcF4yL04xICsgU3BeMi9OMilcblxuIyBBZGQgXHUwMGIxIDEuOTYgU0VNIHRvIHRoZSBzYW1wbGUgbWVhbiB0byBjb25zdHJ1Y3QgdGhlIHVwcGVyIGFuZCBsb3dlciBib3VuZHMgb2YgdGhlIDk1JSBDSVxuXG51cHBlckNJIDwtIFxubG93ZXJDSSA8LSBcbiAgXG5oZWlnaHRzX2lzbGFuZDFfOTVDSSA8LSBjKGxvd2VyQ0ksIHVwcGVyQ0kpXG5oZWlnaHRzX2lzbGFuZDFfOTVDSSJ9
+</div>
+<p>Compare this value to the t.test() output….it’s not EXACTLY THE SAME.</p>
+</div>
+<div id="degrees-of-freedom" class="section level1">
+<h1>Degrees of Freedom</h1>
+<ul>
+<li>You know the final answer of a single estimate. You can pick whatever you want, until you’re down to the last choice….then you don’t have the “freedom”. –&gt; explains why we use Total -1 = DF.</li>
+<li>Explain Whyyyyyyyyy we need it.</li>
+</ul>
+</div>
+<div id="p-values" class="section level1">
+<h1>P-values</h1>
+<p>Then we open up to the concept of p-values.</p>
+<p>WHAT ABOUT PVALUES
+(1) What is a pvalue?
+(2) Introduce the concept of a test-statistic; The DISTRIBUTION of test statistic.
+(3) Degrees of freedom; Hasse has some ideas.
+(4) A formal definition of hypothesis including null hypothesis.</p>
+<p>Implement, and then formally answer the question.</p>
+<p>Write your own t-test function.</p>
+<p>Intermediate step here between CI and p-values.
+T-test statistic greater than 1.96 will result in a significant p-value.</p>
+<p>Start with same N, but then “to make it a more useful model, you need to be able to handle when the sample sizes are not the same.”</p>
+<p><strong>Unequal variance: more fodder for things to think about</strong></p>
 </div>
 
 <!DOCTYPE html>
