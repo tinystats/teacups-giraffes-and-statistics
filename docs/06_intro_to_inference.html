@@ -434,6 +434,9 @@ div.tocify {
     <li>
       <a href="covariance_and_correlation.html">Covariance and Correlation</a>
     </li>
+    <li>
+      <a href="06_intro_to_inference.html">Standard Error</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -507,9 +510,11 @@ Use the standard error to construct 95% confidence intervals
 <center>
 <img src="06_intro_to_inference_files/figure-html/unnamed-chunk-3-.gif" width="672" />
 </center>
-<p><br> <br></p>
+<p><br>
+<br></p>
 <p>A histogram of the sampling distribution is shown below. It is a histogram made up of many means.</p>
-<p><br> <br></p>
+<p><br>
+<br></p>
 <center>
 <img src="06_intro_to_inference_files/figure-html/unnamed-chunk-4-1.png" width="432" />
 </center>
@@ -530,7 +535,6 @@ Use the standard error to construct 95% confidence intervals
 <li>Distributions generated from larger samples are less dispersed.</li>
 </ol>
 <p>We can take the mean of the sampling distribution itself– <strong>the mean of the sampling distribution is a mean of means.</strong> This mean can be interpreted to be the same as a mean that would have resulted from a single large sample, made up of all the individual observations from each of the samples whose <span class="math inline">\({\bar{x}}\)</span> values are included in the sampling distribution.</p>
-<p>[giraffe icon less than 11cm]</p>
 <p>Note that if we had only generated a sampling distribution made up of samples of 5 giraffes, we would not have been able to exclude 11 cm as a possible value for <span class="math inline">\({\mu}\)</span>. In fact, if we were to draw a vertical line in the middle of each of the sampling distributions (the mean), we can tell that the population mean is likely even less than 10 cm.</p>
 <p>[Desiree illustration: “There are a lot of ‘means’, ‘samples’, etc. to keep track of here. So below is a visual guide to help orient yourself to what”level&quot; you’re on.]</p>
 <p>In the folowing window, you will test the relationship between sampling distribution and sample size. The function below (behind-the-scenes code not shown) will plot a sampling distribution made up of 1000 samples, with each sample containing <code>N</code> number of observations. Try setting <code>N</code> to a few different values. What does the resulting sampling distribution looks like? See if you can confirm for yourself that the above points are true.</p>
@@ -583,7 +587,6 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiMgc2V0LnNlZWQoMTIpXG4jIGhlaWdo
 <h1>Confirming that the SEM equation works</h1>
 <p>Let’s test out the SEM equation on our original sample of <code>heights_island1</code> and compare it to what we would have gotten by taking the standard deviation of the sampling distribution example with the N= 50 case. <strong>Does the SEM seem like a good approximation of the standard deviation of the sampling distribution?</strong></p>
 <p>Below, you will use the object <code>heights_island1</code>, which contains our single sample of N=50, and the object <code>sampling_distribution_N50</code>, which contains the data from the corresponding groundhog sampling distribution.</p>
-<p>[Is there any way to get sampling_distribution_N50 to be the same as in the previous datacamp window?]</p>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNhbXAgPC0gZnVuY3Rpb24obil7XG4gIHggPC0gcm5vcm0obiwgOS43LCAyLjEpXG4gIG0gPC0gbWVhbih4KVxuICByZXR1cm4obSlcbn1cbnNhbXBsaW5nX2Rpc3RyaWJ1dGlvbl9ONTAgPC0gYXMudmVjdG9yKGRvLmNhbGwocmJpbmQsIGxhcHBseSgxOjEwMDAwLCBmdW5jdGlvbih4KSBzYW1wKDUwKSkpKVxuXG5cbnNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBBcHBseSB0aGUgU0VNIGVxdWF0aW9uIHRvIGBoZWlnaHRzX2lzbGFuZDFgIGFuZCBjb21wYXJlIHRoZSByZXN1bHQgdG8gdGhlIHN0YW5kYXJkIGRldmlhdGlvbiBvZiB0aGUgc2FtcGxpbmcgZGlzdHJpYnV0aW9uXG5cbmhlaWdodHNfaXNsYW5kMVxuXG5zYW1wbGluZ19kaXN0cmlidXRpb25fTjUwIiwic29sdXRpb24iOiIjIEFwcGx5IHRoZSBTRU0gZXF1YXRpb24gdG8gYGhlaWdodHNfaXNsYW5kMWAgYW5kIGNvbXBhcmUgdGhlIHJlc3VsdCB0byB0aGUgc3RhbmRhcmQgZGV2aWF0aW9uIG9mIHRoZSBzYW1wbGluZyBkaXN0cmlidXRpb25cblxuU0VNX2hlaWdodHNfaXNsYW5kMSA8LSBzZChoZWlnaHRzX2lzbGFuZDEpL3NxcnQoNTApXG5TRU1faGVpZ2h0c19pc2xhbmQxXG5cbnNkKHNhbXBsaW5nX2Rpc3RyaWJ1dGlvbl9ONTApIn0=
 </div>
@@ -595,7 +598,9 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNhbXAgPC0gZnVuY3Rpb24obil7XG4g
 <p>To formally make inferences, we need to revisit the principles of the <a href="Variance.html#empirical">empirical rule</a> to construct confidence intervals. (Confidence intervals are just one way to make inferences– we’ll discuss other ways later.)</p>
 <p>Remember, that the SEM is just the standard deviation of the sampling distribution, so we can apply the empirical rule. As a result, ± 2 SEM from a point estimate will capture ~95% of the sampling distribution. Actually, we were a little bit sloppy earlier when we said 2 standard deviations captures 95% of a normal distribution; this will actually give you 95.45% of the data. The true value is 1.96 standard deviations–and this is what we use to construct a 95% confidence interval (CI).</p>
 <p>Loosely speaking, a 95% CI is the range of values that we are 95% confident contains the true mean of the population. We want to know whether our guess of 11 cm falls outside of this range of certainty. If it does – we can be sure enough that the true <span class="math inline">\({\mu}\)</span> of giraffe heights on Island 1 is less than 11 cm.</p>
-Use the window below to find out and make your first inference by constructing the 95% CI for the <code>heights_island1</code> mean estimate! <br> <br>
+Use the window below to find out and make your first inference by constructing the 95% CI for the <code>heights_island1</code> mean estimate!
+<br>
+<br>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBDYWxjdWxhdGUgdGhlIFNFTSBmb3IgaGVpZ2h0c19pc2xhbmQxXG5TRU1faGVpZ2h0c19pc2xhbmQxIDwtIFxuXG4jIENhbGN1bGF0ZSB0aGUgc2FtcGxlIG1lYW5cbmhlaWdodHNfaXNsYW5kMV9tZWFuIDwtIFxuXG4jIEFkZCBcdTAwYjEgMS45NiBTRU0gdG8gdGhlIHNhbXBsZSBtZWFuIHRvIGNvbnN0cnVjdCB0aGUgdXBwZXIgYW5kIGxvd2VyIGJvdW5kcyBvZiB0aGUgOTUlIENJXG5cbnVwcGVyQ0kgPC0gXG5sb3dlckNJIDwtIFxuICBcbmhlaWdodHNfaXNsYW5kMV85NUNJIDwtIGMobG93ZXJDSSwgdXBwZXJDSSlcbmhlaWdodHNfaXNsYW5kMV85NUNJIiwic29sdXRpb24iOiIjIENhbGN1bGF0ZSB0aGUgU0VNIGZvciBoZWlnaHRzX2lzbGFuZDFcbnNlbV9oZWlnaHRzX2lzbGFuZDEgPC0gc2QoaGVpZ2h0c19pc2xhbmQxKS9zcXJ0KDUwKVxuXG4jIENhbGN1bGF0ZSB0aGUgc2FtcGxlIG1lYW5cbmhlaWdodHNfaXNsYW5kMV9tZWFuIDwtIG1lYW4oaGVpZ2h0c19pc2xhbmQxKVxuXG4jIEFkZCBcdTAwYjEgIDEuOTYgU0VNIHRvIHRoZSBzYW1wbGUgbWVhbiB0byBjb25zdHJ1Y3QgdGhlIHVwcGVyIGFuZCBsb3dlciBib3VuZHMgb2YgdGhlIDk1JSBDSVxuXG51cHBlckNJIDwtIGhlaWdodHNfaXNsYW5kMV9tZWFuICsgMS45NipzZW1faGVpZ2h0c19pc2xhbmQxXG5sb3dlckNJIDwtIGhlaWdodHNfaXNsYW5kMV9tZWFuIC0gMS45NipzZW1faGVpZ2h0c19pc2xhbmQxXG4gXG5oZWlnaHRzX2lzbGFuZDFfOTVDSSA8LSBjKGxvd2VyQ0ksIHVwcGVyQ0kpXG5oZWlnaHRzX2lzbGFuZDFfOTVDSSJ9
 </div>
@@ -608,7 +613,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 <h1>Things to think about</h1>
 <p>We’ve been a little fast and loose with our words. The formal definition of CIs is the following:</p>
 <p><strong>If we were to sample over and over again, then 95% of the CIs would contain the true mean 95% of the time.</strong></p>
-<p>The animation below shows this graphically. [graphical display from Hasse]</p>
+
 <p>Importantly, some examples of what the 95% CI does NOT mean are:</p>
 <ul>
 <li>A 95% CI does <strong>not</strong> mean that it contains 95% of the sample data.</li>

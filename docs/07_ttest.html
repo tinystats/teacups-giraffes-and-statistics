@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>t-test</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<head>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135221736-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-135221736-1');
+	</script>
+</head>
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+
+  <div class="image-descript"> 
+		<img class="big_image" src="07_ttest_bigimage.jpg">
+		<div class="image-text">
+			<div class="lil-image-text">The difference between two groups:</div>
+			<div class="big-image-text"><strong>T-TEST</strong></div>
+		</div>
+  </div>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"> </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Modules
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="introToR.html">Intro to R</a>
+    </li>
+    <li>
+      <a href="BellCurve.html">Intro to the Normal Distribution</a>
+    </li>
+    <li>
+      <a href="mean.html">Mean, Median, Mode</a>
+    </li>
+    <li>
+      <a href="Variance.html">Spread of the Data</a>
+    </li>
+    <li>
+      <a href="covariance_and_correlation.html">Covariance and Correlation</a>
+    </li>
+    <li>
+      <a href="06_intro_to_inference.html">Standard Error</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="aboutTheAuthors.html">About the Authors</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">t-test</h1>
+
+</div>
+
+
+<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
+<div class="alert alert-info">
+<strong>Module learning objectives:</strong>
+<ol>
+<li>
+Describe 3 measures of centrality
+</li>
+<li>
+Explain the mathematical notation used for calculating the mean
+</li>
+<li>
+Write a function which calculates the mean for any vector
+</li>
+<li>
+Write a function which calculates the median for any vector
+<li>
+Describe how the reliability of a sample mean will scale with increasing sample size
+</li>
+</ol>
+</div>
+<div id="the-two-islands" class="section level1">
+<h1>The Two Islands</h1>
+<p>You’d like to make an <a href="06_intro_to_inference.html">inference</a> to formally investigate whether you have any reason to believe that the mean of heights on Island 1 differs from the mean of the heights on Island 2.</p>
+<p>The means of the heights of both islands are shown below:</p>
+<pre class="r"><code>mean(heights_island1)</code></pre>
+<pre><code>## [1] 9.714141</code></pre>
+<pre class="r"><code>mean(heights_island2)</code></pre>
+<pre><code>## [1] 18.09671</code></pre>
+<p>It’s obvious that the mean of the two <strong>samples</strong> we took are different, but the main question is if the <strong>population</strong> means are different?</p>
+<p>This question is of interest because if the two population means are different, it may indicate that a cool evolutionary story is at play. For example, based on your experience it seems clear that the two groups of giraffes have been isolated. Their tiny stature would make it near impossible to move back and forth between the two islands, hence impeding mixing between the two groups. Over time, selection pressures could then have made the two groups distinct regarding height.</p>
+<p>How do we test this?</p>
+</div>
+<div id="testing-for-group-difference" class="section level1">
+<h1>Testing for group difference</h1>
+<p>When testing for group mean differenes, [it is much more common for a researcher to be interested in the <strong>difference</strong> between means than in the specific values of the means themselves. ] stolen</p>
+<p>When we focus on the <strong>mean difference</strong>, represented by <span class="math inline">\(\Delta_{\bar{x}}\)</span> (read “delta x-bar”), we can ask: is the <span class="math inline">\(\Delta_{\bar{x}}\)</span> meaningfully different from 0?</p>
+<p>The sample mean difference is below:</p>
+<pre class="r"><code>mean(heights_island2) - mean(heights_island1)</code></pre>
+<pre><code>## [1] 8.38257</code></pre>
+<p>This is just another estimate at the sample level whose precision we need to quantify to be able to make inferences.</p>
+<p>Formally, statistical inference is about testing hypotheses (which we intentionally did not introduce in the previous module). In research, a <strong>hypothesis</strong> is a statement of a suggested outcome for a study [THIS SENTENCE IS TOO VAGUE]. The goal of statistcal inference is to reject the <strong>null hypotheses</strong> (<span class="math inline">\(H_0\)</span>, read “H-nought”), the default suggested outcome, which assumes that there is no association or difference between two or more groups. If we cannot reject <span class="math inline">\(H_0\)</span>, then it means we must accept the alternative, <span class="math inline">\(H_A\)</span>, that there <em>is</em> a meaningful difference or association.</p>
+<p>Our null hypothesis is the following: the mean difference between the two populations is 0. The corresponding equations are shown below for the null and alternative hypotheses. Here, we use <span class="math inline">\(\Delta_{\mu}\)</span>, because we are referring to the population values.</p>
+<p><span class="math inline">\(H_0\)</span> : <span class="math inline">\(\Delta_{\mu}\)</span> = 0
+<br>
+<span class="math inline">\(H_A\)</span> : <span class="math inline">\(\Delta_{\mu}\)</span> <span class="math inline">\(\neq\)</span> 0
+[MAKE EQUATION??]</p>
+<p>One way to reject the null hypothesis would be to construct 95% CIs around the estimate for <span class="math inline">\(\Delta_{\bar{x}}\)</span>.</p>
+</div>
+<div id="pooled-standard-deviation" class="section level1">
+<h1>Pooled standard deviation</h1>
+<p>As we learned previously, a prerequisite to calculating 95% CIs is to calculate the standard error (which we know will require the sample standard deviation). However, we’re now working with two samples, so which sample’s standard deviation do we use? Can we use both? Yes, kind of…</p>
+<p>In this particular case, the standard error of the mean difference can be calculated based on a <em>combined</em>, or <strong>pooled standard deviation</strong> (<span class="math inline">\(s_{p}\)</span>) from two samples. We use the standard deviation of each sample, weighted by sample size.</p>
+<div style="margin-bottom:50px">
+
+</div>
+<span class="math display" id="eq:equation1">\[\begin{equation}
+ \tag{1}
+ \Large s_{p} = \sqrt{\frac{s^2(n_1-1) + s^2(n_2-1)}{(n_1-1) + (n_2-1)}}
+ \end{equation}\]</span>
+<div style="margin-bottom:50px">
+
+</div>
+<p>One thing to point out is that standard deviations from samples cannot be added together–but variances can be, which is why in (1) we use <span class="math inline">\(s^2\)</span> in the numerator only to take then the square root of the entire term. [BAD SENTENCE]</p>
+<p>We see that the variances are being multiplied by a term containing the sample size (<span class="math inline">\(n\)</span>). In the case that each of our samples were differently sized, we would want to more heavily weight the variance of the sample that was larger. In our case now, both of our samples have the same <span class="math inline">\(n\)</span>, but we introduce the equation for more general cases.</p>
+<p>If you’re wondering why <span class="math inline">\(n-1\)</span> is necessary for the weighting, and not just <span class="math inline">\(n\)</span>, hold that thought and we’ll return to it later. But for now, we’ll just point out that it is <em>not</em> to adjust for the inherent bias when calculating sample variance (i.e. not the same reason that we used N-1 in the variance module [link]).</p>
+<p>[DATA CAMP WINDOW WHERE THEY WILL CALCULATE THE S_P OF THE DATA]</p>
+</div>
+<div id="standard-error-se-of-the-mean-difference" class="section level1">
+<h1>Standard Error (SE) of the mean difference</h1>
+<p>After calculating the pooled standard deviation, the next step is to determine the standard error of the mean difference. We will follow the same logic as we did when calculated the standard error based on a single sample–except now we will use the pooled standard deviation. Again, we will be adding the terms from the two samples together, so to be able to sum these we need to use the pooled variance.</p>
+<p>[think langauge needs to be made more novice friendly, annotated?]</p>
+<div style="margin-bottom:50px">
+
+</div>
+<span class="math display" id="eq:equation2">\[\begin{equation}
+ \tag{2}
+ \Large SE_{({\bar{x_1}-\bar{x_2})}} = \sqrt{\frac{s_p^2}{n_1} + {\frac{s_p^2}{n_2}}}
+ \end{equation}\]</span>
+<div style="margin-bottom:50px">
+
+</div>
+<p>[DATA CAMP WINDOW WHERE THEY WILL CALCULATE THE SE OF THE MEAN DIFF]</p>
+<p>Now that you know the standard error, you are ready to construct the 95% CI around the mean difference. As before, this will be the mean difference plus/minus 1.96 * <span class="math inline">\(SE_{({\bar{x_1}-\bar{x_2})}}\)</span>.</p>
+<p>Now we can see whether or not our null hypothesis can be rejected. If the 95% CI for values of <span class="math inline">\({({\bar{x_1}-\bar{x_2})}\)</span> includes 0, then we do not have reason to believe that the population means are different.</p>
+<p>[Construct interval for yourself below, DATA CAMP, INSTRUCTIONS]</p>
+<div data-datacamp-exercise="" data-height="160" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuXG5oZWlnaHRzX2lzbGFuZDEgPC0gcm5vcm0oNTAsMTAsMilcbmhlaWdodHNfaXNsYW5kMiA8LSBybm9ybSg1MCwgMTgsIDEuMikiLCJzYW1wbGUiOiIjIENhbGN1bGF0ZSB0aGUgbWVhbiBkaWZmXG5cbm1lYW5fZGlmZiA8LSAgXG5cbiMgQ2FsY3VsYXRlIHRoZSBTcCBmb3IgaGVpZ2h0c19pc2xhbmQxIGFuZCBoZWlnaHRzX2lzbGFuZDJcblNwIDwtIFxuXG4jIENhbGN1bGF0ZSB0aGUgU0VfbWVhbmRpZmZcblNFX21lYW5kaWZmIDwtIFxuXG4jIEFkZCBcdTAwYjEgMS45NiBTRU0gdG8gdGhlIHNhbXBsZSBtZWFuIHRvIGNvbnN0cnVjdCB0aGUgdXBwZXIgYW5kIGxvd2VyIGJvdW5kcyBvZiB0aGUgOTUlIENJXG5cbnVwcGVyQ0kgPC0gXG5sb3dlckNJIDwtIFxuICBcbm1lYW5kaWZmXzk1Q0kgPC0gYyhsb3dlckNJLCB1cHBlckNJKVxubWVhbmRpZmZfOTVDSSIsInNvbHV0aW9uIjoiIyBDYWxjdWxhdGUgdGhlIG1lYW4gZGlmZmVyZW5jZVxubWVhbl9kaWZmIDwtICBtZWFuKGhlaWdodHNfaXNsYW5kMikgLSBtZWFuKGhlaWdodHNfaXNsYW5kMSlcblxuIyBDYWxjdWxhdGUgdGhlIFNwIGZvciBoZWlnaHRzX2lzbGFuZDEgYW5kIGhlaWdodHNfaXNsYW5kMlxuTjE9NTBcbk4yPTUwXG5cblNwIDwtIHNxcnQoKChzZChoZWlnaHRzX2lzbGFuZDEpXjIpKihOMS0xKSArIChzZChoZWlnaHRzX2lzbGFuZDIpXjIpKihOMi0xKSkvKChOMS0xKSsoTjItMSkpKVxuXG5TcCA8LSBzcXJ0KCh2YXIoaGVpZ2h0c19pc2xhbmQxKSooNDkpICsgdmFyKGhlaWdodHNfaXNsYW5kMikqKDQ5KSkvKE4xK04yLTIpKVxuXG4jIENhbGN1bGF0ZSB0aGUgU0VfbWVhbmRpZmZcblxuU0VfbWVhbmRpZmYgPC0gc3FydChTcF4yL04xICsgU3BeMi9OMilcblxuIyBBZGQgXHUwMGIxIDEuOTYgU0VNIHRvIHRoZSBzYW1wbGUgbWVhbiB0byBjb25zdHJ1Y3QgdGhlIHVwcGVyIGFuZCBsb3dlciBib3VuZHMgb2YgdGhlIDk1JSBDSVxuXG51cHBlckNJIDwtIG1lYW5fZGlmZiArIDEuOTYqU0VfbWVhbmRpZmZcbmxvd2VyQ0kgPC0gIG1lYW5fZGlmZiAtIDEuOTYqU0VfbWVhbmRpZmZcbiAgXG5tZWFuZGlmZl85NUNJIDwtIGMobG93ZXJDSSwgdXBwZXJDSSlcbm1lYW5kaWZmXzk1Q0kifQ==
+</div>
+<p>Our 95% CI does not include 0 by a lot! So we can conclude that the population means from Island 1 and Island 2 are mostly likely distinct. In other words, we can reject <span class="math inline">\(H_0\)</span>, the null hypothesis. In doing so, we say that the mean difference is <em>statistically significant</em>.</p>
+<p>[T test function will calculate the 95CI using the t distribution @ 97.5%m, which doesn’t always give 1.96]</p>
+</div>
+<div id="p-values" class="section level1">
+<h1>P-values</h1>
+<p>Even though CIs are great tools for inference, you are probably most familiar with seeing p-values in scientific literature. The <strong>p-value</strong> that is output from your statistical test gives you a metric that tells you whether or not your results are statistically significant. Typically, p-values &lt; 0.05 meet this criterion.</p>
+<p>The “p” in p-value stands for “probability”. Probability of what? The <strong>p-value</strong> is the probability that you would have gotten your results or something more extreme if in fact the null hypothesis were true. “More extreme”, in this case, would be a mean difference even greater than what we see in the present data. The lower the p-value, the less likely you’d be getting your results due to chance alone.</p>
+<p>Now let’s derive the p-value for the mean difference of the two island heights, and make sure that we can draw the same conclusion that we did when we used the 95% CI for inference. In order to do this, we will use a statistical test for comparing two groups: the <strong>t-test</strong>.</p>
+</div>
+<div id="the-t-test" class="section level1">
+<h1>The t-test</h1>
+<p>The t-test is all about the <strong>t-statistic</strong>, which is produced when the mean difference is divided by the standard error. When we divide by the standard error, we turn our mean difference estimate into a unitless metric that is not dependent on the scale that means were recorded with (i.e. centimeters). Furthermore, dividing by the standard error also will also account for the uncertainty in the estimate.</p>
+<ul>
+<li>The t-statistic is essentially combining whatever our sample estimate is (e.g. mean difference, sample mean, etc.) and its uncertainty (i.e. standard error) into one value.</li>
+<li>we convert the t-statistic into a p-value via the a specific kind of distribution called the t-distribution. [plot, here’s an example of one]</li>
+<li>the further out in the tails of the t-distribution that the t-statistic falls. The lower the pvalue will be.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Degrees of freedom; Hasse has some ideas.</li>
+<li>A formal definition of hypothesis including null hypothesis.</li>
+</ol>
+<p>Implement, and then formally answer the question.</p>
+
+</div>
+<div id="degrees-of-freedom" class="section level1">
+<h1>Degrees of Freedom</h1>
+<ul>
+<li>You know the final answer of a single estimate. You can pick whatever you want, until you’re down to the last choice….then you don’t have the “freedom”. –&gt; explains why we use Total -1 = DF.</li>
+<li>Explain Whyyyyyyyyy we need it.</li>
+
+<li>The t-distribution will look different depending on the degrees of freedom</li>
+</ul>
+<p>Intermediate step here between CI and p-values.
+T-test statistic greater than 1.96 will result in a significant p-value.</p>
+<p>Write your own t-test function.</p>
+
+<p>Start with same N, but then “to make it a more useful model, you need to be able to handle when the sample sizes are not the same.”</p>
+<p><strong>Unequal variance: more fodder for things to think about</strong></p>
+</div>
+
+<!DOCTYPE html>
+
+<div class="foot">
+	<hr> 
+	<p style="text-align: center;"> <span style="color: #808080; display: inline-block; width: 33%;"> 	This project was created entirely in RStudio using R Markdown with features making use of DataCamp Light windows and published on GitHub pages. 
+ </span></p>
+	<p style="text-align: center;">
+	</p>
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

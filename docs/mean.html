@@ -98,9 +98,7 @@ h6 {
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -218,8 +216,6 @@ $(document).ready(function () {
   menuAnchor.closest('li.dropdown').addClass('active');
 });
 </script>
-
-<div class="container-fluid main-container">
 
 <!-- tabsets -->
 
@@ -367,8 +363,6 @@ div.tocify {
 
 .tocify-subheader .tocify-item {
   font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
 }
 
 .tocify .list-group-item {
@@ -378,10 +372,20 @@ div.tocify {
 
 </style>
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify" style="position: static;">
+<div id="TOC" class="tocify">
 </div>
 </div>
 
@@ -427,6 +431,9 @@ div.tocify {
     <li>
       <a href="covariance_and_correlation.html">Covariance and Correlation</a>
     </li>
+    <li>
+      <a href="06_intro_to_inference.html">Standard Error</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -444,7 +451,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore"></h1>
+<h1 class="title toc-ignore">Mean, Median, and Mode</h1>
 
 </div>
 
@@ -477,10 +484,7 @@ Describe how the reliability of a sample mean will scale with increasing sample 
 </div>
 <p style=>
 <center>
-<div class="figure">
-<img src="mean_hist.png" width="500" />
-
-</div>
+<p><img src="mean_hist.png" width="500" /></p>
 </center>
 <div style="margin-bottom:25px">
 
@@ -551,9 +555,7 @@ Describe how the reliability of a sample mean will scale with increasing sample 
 <div style="margin-bottom:50px">
 
 </div>
-</div>
-<div id="code-it-up" class="section level1">
-<h1>Code it up</h1>
+<p>#Code it up</p>
 Using <a href="#eq:equation2">(2)</a>, it’s easy to translate this equation into code in R. The heights recorded from island 1 have been stored in a vector called <code>heights_island1</code>. Below we show the first few observations from this vector, using the <code>head()</code> function.
 <div style="margin-bottom:15px">
 
@@ -664,7 +666,8 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 <div id="things-to-think-about" class="section level1">
 <h1>Things to think about</h1>
 <p>Remember that the sample mean is an estimate of the entire population’s mean (which would often be impossibly large to measure). How reliably does the mean of a sample represent the population mean? <em>Warning</em>: if a small sample has been used, the sample mean may not be a reliable at all! Estimates from small samples are subject to the whims of randomness. On the other hand, the larger the sample, the closer the sample size appraches the population size, and the more reliable the sample estimate becomes.</p>
-<p>Pressing ‘Play’ on the plot below will illustrate this concept. <a name="mean_animation"></p>
+<p>Pressing ‘Play’ on the plot below will illustrate this concept.
+<a name="mean_animation"></p>
 </a>
 <center>
 <iframe style="margin: 0px;" src="Law_of_large_numbers.html" width="570" height="400" scrolling="yes" seamless="seamless" frameBorder="0">
