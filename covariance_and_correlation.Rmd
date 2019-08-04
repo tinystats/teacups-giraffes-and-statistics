@@ -3,7 +3,7 @@ title: "Covariance and Correlation"
 output:
   bookdown::html_document2:
     includes:
-      in_header: assets/covariance_and_correlation_image.html
+      in_header: assets/05_correlation_image.html
       after_body: assets/foot.html
 ---
 <div class="alert alert-info">
@@ -186,7 +186,7 @@ The covariance elegantly combines the deviations of observations from two differ
 
 We observe this below with a subset of 5 points from our scatter plot. Positive deviations are shown in red, negative deviations in blue. 
 
-<center>![](points.png){width=650px}</center>
+<center>![points](images/05_correlation/points.png){width=650px}</center>
 
 Why do we use the deviations? Because we want to know whether the x-values and y-values move together with respect to their means or not. For example, when an observation's deviation on x is above $\bar{x}$, will its deviation on y also be above $\bar{y}$? Using this line of thought, we can begin to systematically characterize how "together" the x and y values will change as we go through all observations. 
 
@@ -217,7 +217,7 @@ The equation is shown below for the *sample* crossproduct of the deviation score
   
   * Second, the **magnitude of the crossproduct** will scale with the absolute value of the deviation scores. In other words, the further away both deviation scores are from their means, the larger the area of their shapes will be.
   
-<center>![](points1.png){width=60%}</center>
+<center>![](images/05_correlation/points1.png){width=60%}</center>
 
 The animation below shows the "construction" of the crossproducts from the 5 observations we have been following:
  
@@ -298,7 +298,7 @@ lapply(1:15, function(x) pp3())
 (3) **Sum the crossproducts.** The sum of the crossproduct gives us a single number.
 <div style="margin-bottom:50px">
 </div>
-<center>![](Shapes 2.png){width=90%}</center>
+<center>![](images/05_correlation/Shapes 2.png){width=90%}</center>
 <div style="margin-bottom:50px">
 </div>
 
@@ -316,7 +316,7 @@ As we add the crossproducts, some of the "negative" and "positive" values of the
 # Covariance
 (4) We then **divide the sum of the crossproduct by $n-1$ (or $N$ in the population equation)** so that we have taken into account how many observations contributed to this quantity. (Why $n-1$? See [here](04_variance.html).) This final number is called the **covariance**, and its value tells us how much our two variables fluctuate together. The higher the absolute value, the stronger the relationship.
 
-The equation for the covariance (abbreviated cov) of the variables x and y is shown below. As a preference of style, we multiply by $\frac{1}{n-1}$ instead of dividing the entire term by $n-1$. 
+The equation for the covariance (abbreviated "cov") of the variables x and y is shown below. As a preference of style, we multiply by $\frac{1}{n-1}$ instead of dividing the entire term by $n-1$. 
 
 <div style="margin-bottom:50px">
 </div>
@@ -367,7 +367,7 @@ We can interpret the correlation as a measure of **the strength and direction** 
   * The correlation will always be between -1 and 1. At these extreme the values, the two variables have the strongest relationship possible, in which each data point will fall exactly on a line. When the absolute value of the correlation coefficient approaches 0, the observations will be more "scattered". 
   * The sign of the correlation coefficient indicates the direction of the linear relationship.  When $r$= 0 there is no relationship between the variables. Look at the figure below to see what observations of different $r$ values look like. 
 
-<center>![](diff_corr.png){width=90%}</center>
+<center>![](images/05_correlation/diff_corr.png){width=90%}</center>
 
 # Code it up
 
@@ -479,7 +479,7 @@ my_correlation <- function(x,y){
 
 Wow, you can see that there is a negative relaionship between giraffe heights and how much celery teacup giraffes eat. Could this be due to celery being a negative calorie vegetable? Are these giraffes onto something?
 
-<center>![](Celery.png){width=50%}</center>
+<center>![](images/05_correlation/Celery.png){width=50%}</center>
 
 # The Standardizer
 You can take a look at the animation below to see a conceptual summary of how correlation will standarize the covariance, translating it into an easily interpretable metric that will always be bound by -1 and 1. 
@@ -508,7 +508,7 @@ You can take a look at the animation below to see a conceptual summary of how co
 <!-- #  -->
 <!-- # ``` -->
 
-![](/Users/desiree/Documents/New R Projects/Cars/factory.gif)
+![](images/05_correlation/factory.gif)
 
 # Why divide by $\sigma_x\sigma_y$? 
 Well it's complicated, (see [here](https://www.quora.com/What-is-an-intuitive-explanation-for-why-the-sample-correlation-coefficient-is-equal-to-the-sample-covariance-divided-by-the-standard-deviations-of-x-and-y-multiplied-by-one-another) and [here](https://math.stackexchange.com/questions/158449/proving-that-the-magnitude-of-the-sample-correlation-coefficient-is-at-most-1)) but it builds on the mathematical principle that the covariance of x and y will never exceed the product of the standard deviations of x and y. This means that the maximum correlation value will occur when the absolute value of the covariance and the product of the standard deviations are equal. 
@@ -516,7 +516,7 @@ Well it's complicated, (see [here](https://www.quora.com/What-is-an-intuitive-ex
 
 If you don't take our word for it, press play below to see what the relationship between ${s}_x{s}_y$ and ${cov(x,y)}$ looks like. 
 
-```{r, tut=FALSE, echo=FALSE, message= FALSE}
+```{r, tut=FALSE, echo=FALSE, message= FALSE, cache=TRUE}
 library(MASS)
 library(plotly)
 
@@ -599,7 +599,7 @@ As you look at the plot above, you may have the following questions:
 
 **Correlation does not capture relationships that are not linear**: If the relationship is not linear, then correlation will not be meaningful. Check out the plot below. There is a clear U-shaped relationship between the two variables, but the correlation coefficient for these data is very close to 0. To meausure non-linear relationships a different metric must be used.
 
-<center>![](corr_curve.png){width=40%}</center>
+<center>![](images/05_correlation/corr_curve.png){width=40%}</center>
   
 
 
