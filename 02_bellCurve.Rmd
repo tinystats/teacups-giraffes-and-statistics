@@ -213,8 +213,7 @@ It's a good idea to save any ggplot you make as an object. It's a helpful practi
 
 Run the code below to see what this basic histogram in ggplot looks like:
 
-<div style="margin-bottom:15px">
-</div>
+\
 
 ```{r, include=FALSE}
 tutorial::go_interactive(height = 160)
@@ -243,7 +242,8 @@ p
 
 
 ```
-<div style="margin-bottom:50px"></div></p>
+
+\
 
 # Customize your ggplot
 
@@ -266,7 +266,7 @@ In the window below, we have added some options that you can play around with. U
  * Specify the variable that `fill` should be set to, as well as the colors for the fill and outline.
  * Try out some color specifications on your own, and then check out the solution to see what we picked.
 
- <div style="margin-bottom:50px"></div>
+\
 
 ```{r ex="histogram1", type="pre-exercise-code"}
 library(ggplot2)
@@ -352,12 +352,12 @@ p <- ggplot(data = d, aes(x = Height, fill = Location)) +
 p
 
 ```
- <div style="margin-bottom:50px"></div>
 
-After trying different themes, you pick `theme_light()` and feel pretty good about your ggplot accomplishment. You send your plot to your PhD advisor, and within what feels like only minutes, you have a new attachment in your email inbox:
+\
 
- <div style="margin-bottom:50px"></div>
+After trying different themes, you pick `theme_light()` and feel pretty good about your ggplot accomplishment. You send your plot to your PhD advisor, and within what feels like only minutes, you have a new attachment in your email inbox:  
 
+\
 
 ```{r, echo=FALSE}
 # p <- ggplot(data = d, aes(x = Height, fill = Location)) +
@@ -384,7 +384,7 @@ The function `scale_y_continuous` can be used for other purposes. See some examp
  * Set axis breaks 
  * Transformations
  
-<div style="margin-bottom:25px"></div>
+\
 
 (2) **Change axes labels**: Add `labs( )` to the existing ggplot layers and specify each axis you'd like to label as arguments, e.g. `x = `, followed by the string for your label. If you'd like to learn more about manipulations you can do with `labs( )`, see [this reference](https://ggplot2.tidyverse.org/reference/labs.html). 
 
@@ -438,13 +438,15 @@ p <- ggplot(data = d, aes(x = Height, fill = Location)) +
 p
 
 ```
- <div style="margin-bottom:50px"></div>
+
+\
 
 (4) **Remove panel border** and 5.**Remove minor grid lines**: To make detailed changes to the layout, we can add a `theme( )` argument. Nested within `theme( )` we can use additional arguments, such as `panel.border= ` and `panel.grid.minor= `. Many `theme( )` arguments can be set to `element_blank( )` to remove the element in question. To read more about what can be modifed with `theme( )`, check out this [resource](https://ggplot2.tidyverse.org/reference/theme.html).
 
  * In the window below, use what you just learned to remove the panel border and the minor grid lines of the plot. 
 
-<div style="margin-bottom:50px"></div>
+\
+
 ```{r ex="histogram4", type="pre-exercise-code"}
 library(ggplot2)
 
@@ -489,13 +491,14 @@ p <- ggplot(data = d, aes(x = Height, fill = Location)) +
 p
 
 ```
- <div style="margin-bottom:50px"></div>
 
-(6) **Move the Legend**: We will add two more arguments to `theme( )` to move the legend and make its background transparent. To change its position, use `legend.position = ` followed by the `c( )` command, in which you will specify the x- and y- positions. These values must be between 0 and 1. Specifying `c(0,0)`, for example, would place the legend at the bottom left of the plot, while `c(1,1)` would place it at the top right.
+\
 
-To change the legend background to be transparent, we essentially remove it. Add the argument `legend.background =`. Take a look at previous steps to determine how you remove an element.
+(6) **Move the Legend**: We will add two more arguments to `theme( )` to move the legend and make its background transparent. To change its position, use `legend.position = ` followed by the `c( )` command, in which you will specify the x- and y- positions. These values must be between 0 and 1. Specifying `c(0,0)`, for example, would place the legend at the bottom left of the plot, while `c(1,1)` would place it at the top right.  
 
- <div style="margin-bottom:50px"></div>
+To change the legend background to be transparent, we essentially remove it. Add the argument `legend.background =`. Take a look at previous steps to determine how you remove an element.  
+
+\
 
 ```{r ex="histogram5", type="pre-exercise-code"}
 library(ggplot2)
@@ -541,11 +544,11 @@ p <- ggplot(data = d, aes(x = Height, fill = Location)) +
 p
 
 ```
- <div style="margin-bottom:50px"></div>
+\
 
 Hopefully your PhD advisor in the homeland will be satisfied with your new ggplot!
- <div style="margin-bottom:50px"></div>
 
+\
 
 # Things to think about {#bell-ttta}
 
@@ -568,7 +571,7 @@ The animation below illustrates how small samples can depart from the characteri
 
 You decided that you had the resources to collect data on 50 giraffes on each of the islands. Will a sample of 50 be good enough to get a sense for the true values of the giraffe populations?
 
- <div style="margin-bottom:50px"></div>
+\
 
 ```{r fig.show="animate", animation.hook = 'gifski', fig.width=10, fig.height=2, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', cache=TRUE}
 library(ggplot2)
@@ -588,5 +591,5 @@ p
 
 lapply(1:8, function(x) plot1())
 ```
- <div style="margin-bottom:50px"></div>
 
+\
