@@ -15,16 +15,16 @@ This repository holds the source materials for this project. To view the online 
 # The Modules
 
 
-1. [**Introduction to the Normal Distribution.**](https://tinystats.github.io/teacups-giraffes-and-statistics/BellCurve.html) This module introduces the basics to visualizing data using `ggplot` and evaluating the data for normality.
-2. [**Mean, Median, Mode.**](https://tinystats.github.io/teacups-giraffes-and-statistics/mean.html) Write your own functions for calculating the median and mean.
-3. [**Spread of the Data**](https://tinystats.github.io/teacups-giraffes-and-statistics/Variance.html). Write your own functions for calculating the variance and the standard deviation.
-4. [**Covariance and Correlation**](https://tinystats.github.io/teacups-giraffes-and-statistics/covariance_and_correlation.html) Write your own function to quantify the strength of the relationship between two variables.
+1. [**Introduction to the Normal Distribution.**](02_bellCurve.html) This module introduces the basics to visualizing data using `ggplot` and evaluating the data for normality.
+2. [**Mean, Median, Mode.**](03_mean.html) Write your own functions for calculating the median and mean.
+3. [**Spread of the Data**](04_variance.html). Write your own functions for calculating the variance and the standard deviation.
+4. [**Covariance and Correlation**](05_correlation.html) Write your own function to quantify the strength of the relationship between two variables.
+5. [**Standard Error, Introduction to Inference**](06_standardError.html)
 
 
 
 ## Planned Modules
 
-5. Standard Error, Introduction to Inference
 6. T-Test, Inference Part II
 7. ANOVA
 8. Linear Regression
