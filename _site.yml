@@ -12,7 +12,7 @@ navbar:
       - text: "Intro to the Normal Distribution"
         href: 02_bellCurve.html
       - text: "Mean, Median, Mode"
-        href: mean.html
+        href: 03_mean.html
       - text: "Spread of the Data"
         href: Variance.html
       - text: "Covariance and Correlation"

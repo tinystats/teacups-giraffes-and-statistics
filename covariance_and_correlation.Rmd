@@ -55,7 +55,7 @@ head(giraffe_data)
 # Make a scatter plot
 It's difficult to get an idea if there's any relationship by just looking at the data frame. We learn so much more from creating a plot. Let's revisit our newly acquired ggplot skills to make a scatter plot.
 
-A lot of the code used [previously](https://dcossyleon.github.io/cars/BellCurve.html) can be re-used for the scatter plot. Two main differences are the following:
+A lot of the code used [previously](02_bellCurve.html) can be re-used for the scatter plot. Two main differences are the following:
 
 (1) Because we now have an additional variable, we need to **assign a `y = ` for the `aes( )` command within `ggplot( )`**. Create the plot so that `Celery_Eaten` will be on the y-axis. 
 

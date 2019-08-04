@@ -21,7 +21,7 @@ output:
 
 Let's revisit the first few days during which we collected data stored in the vector `heights_island1`. We were able to verify that the heights were normally distributed and calculated our sample mean, ${\bar{x}}$. However, we know that ${\bar{x}}$ is only an *estimate* of the true population mean, ${\mu}$, which is the true value of interest. It is unlikely that we will ever know the value of ${\mu}$, since access to all possible observations is rare. Therefore we will have to rely on ${\bar{x}}$ estimates from random samples drawn from the population as the best approximation of ${\mu}$.
 
-Not all sample means are created equal. Some are better estimates than others. Recall the [animation](mean.html#mean_animation) showing the relationship between sample size and variability of the mean. As we learned from this animation, in the long-run, large samples are necessary to get an accurate estimate of ${\mu}$.
+Not all sample means are created equal. Some are better estimates than others. Recall the [animation](03_mean.html#mean_animation) showing the relationship between sample size and variability of the mean. As we learned from this animation, in the long-run, large samples are necessary to get an accurate estimate of ${\mu}$.
 
 
 <div class= "alert alert-note">
