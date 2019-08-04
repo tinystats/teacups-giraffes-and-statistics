@@ -7,7 +7,7 @@ output:
       after_body: assets/foot.html
 ---
 # Ready to begin? 
-You’re about to start an adventure to learn R and statistics. If this is your first time working with R, then you should begin on this page. If you’re comfortable with R basics and you’d like to start with the statistical content, please proceed onto the islands with this [link](BellCurve.html).
+You’re about to start an adventure to learn R and statistics. If this is your first time working with R, then you should begin on this page. If you’re comfortable with R basics and you’d like to start with the statistical content, please proceed onto the islands with this [link](02_bellCurve.html).
 
 # Using interactive windows
 Throughout this material we will use an interactive version of R provided by [DataCamp](https://www.datacamp.com/). Although this way of using R comes with some limitations regarding functionality, it will give us the benefit of being able to run R code without switching from a web browser to a standalone application such as [RStudio](https://www.rstudio.com/). 
@@ -129,4 +129,4 @@ d$x
 ```
 
 # You're ready to go! 
-This was a brief introduction into R, but now you know what you need to get started with the [first module](BellCurve.html)! 
+This was a brief introduction into R, but now you know what you need to get started with the [first module](02_bellCurve.html)! 
