@@ -3,8 +3,8 @@ title: "Intro to Inference"
 output:
   bookdown::html_document2:
     includes:
-      in_header: inference1_image.html
-      after_body: foot.html
+      in_header: assets/inference1_image.html
+      after_body: assets/foot.html
 ---
 <div class="alert alert-info">
   **Module learning objectives:**

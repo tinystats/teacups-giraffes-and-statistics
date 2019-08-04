@@ -8,7 +8,7 @@ navbar:
   - text: "Modules"
     menu:
       - text: "Intro to R"
-        href: introToR.html
+        href: 01_introToR.html
       - text: "Intro to the Normal Distribution"
         href: BellCurve.html
       - text: "Mean, Median, Mode"
@@ -24,7 +24,7 @@ navbar:
 output: 
   bookdown::html_document2:
     includes:
-    css: style.css
+    css: assets/style.css
     toc: true
     toc_float: true
     theme: cosmo

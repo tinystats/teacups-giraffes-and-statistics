@@ -3,14 +3,15 @@ title: "The Normal Distribution"
 output:
   bookdown::html_document2:
     includes:
-      in_header: BellCurve_image.html
-      after_body: foot.html
+      in_header: assets/02_bellCurve_image.html
+      after_body: assets/foot.html
 ---
 
 <!-- <link href="style.css" rel="stylesheet" /> -->
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.align="center")
+library(here)
 ```
 
 
@@ -33,23 +34,29 @@ The only information your advisor has given you is that they are small giraffe-l
 
 After a one hour hike, you reach a clearing where tall cypress trees encircle low growth vegetation. Suddenly, you experience your first encounter with a little giraffe, whose cool drink from a puddle you seem to have interrupted. Smaller than you had imagined--its slender body does not even clear the height of a dandelion. You toss a celery stick in its direction, and you're pleasantly surprised that it immediately trots over to you and starts vigorously munching, creating a celery confetti cloud. After observing this behavior for a while and taking some notes on how quickly it devours your celery supply, you bring out your measuring tape and record the giraffe's height.
 
-<p><div style="margin-top:50px"></div>
-<center>![](Cool-Drink.jpg){width=600px}</center>
-<div style="margin-bottom:50px"></div></p>
+\
+
+```{r, out.width="600px", echo= FALSE}
+knitr::include_graphics("images/01_bellCurve/Cool-Drink.jpg")
+```
+
+\
 
 A few minuters later, you leave the clearing and forge a path through thick ferns and palm leaves. You pause for a drink from your water bottle long enough to pinpoint a fast-paced crunching noise. In the shade of a fallen tree, there's another teacup giraffe annihilating a small patch of wild celery for its afternoon snack. You're surprised how much smaller this one is--about as tall as your Swiss army knife. Throughout the day you encounter several teacup giraffes, and you realize that although all petite, they are remarkably variable in stature.
 
 The next week is spent trekking and measuring every giraffe you can manage to get near enough. You take advantage of the fact that they come running everytime you pull out a celery stalk from your lunch bag, and you're relieved that it takes them long enough to finish snacking for you to measure their height. With the help of your guide, you manage to measure 50 giraffes in the first week.
 
-<p><div style="margin-top:50px"></div>
-<center>![](giraffe_lineup4.jpg){width=800px}</center>
-<div style="margin-bottom:50px"></div></p>
+
+```{r, out.width="800px", echo= FALSE}
+knitr::include_graphics("images/01_bellCurve/giraffe_lineup4.jpg")
+```
+
 
 There is a second island not too far away, where you guide has indicated there may be more giraffes. You wonder how the population of giraffes on the second island may be different, and so you make arrangements to go to Island #2 the following week. It is not too long until you have added another 50 measurements of these tiny giraffes from this second excursion.
 
-<p><div style="margin-top:50px"></div>
-<center>![](giraffe_islands2.jpg){width=800px}</center>
-<div style="margin-bottom:50px"></div></p>
+```{r, out.width="800px", echo= FALSE}
+knitr::include_graphics("images/01_bellCurve/giraffe_islands2.jpg")
+```
 
 
 # Visualize the data
@@ -154,7 +161,11 @@ Although the data can be distributed in many shapes, there are some general shap
   * The mass of the distribution is at its center
   * There is symmetry about the center line
   
-![](normal_hist.png)
+
+```{r, out.width="100%", echo= FALSE}
+knitr::include_graphics("images/01_bellCurve/normal_hist.png")
+```
+
  
 Taking a look at the stones in the sand, you see two bell-shaped distributions. One for each island. It looks like giraffe heights on each island follow a normal distribution--- and that's a good thing because you remember your stats textbook always talking about how normally distributed data behaves well! Phew!
 
@@ -163,7 +174,7 @@ Happy with your progress thus far, you are excited to send your histogram result
 
 # Our dataframe
 
-Time to apply your [Intro to R knowledge](Intro_to_R.html). The heights from your logbook have been stored in a data frame called `d`. Below we show the last few observations from this vector, using the `tail()` function, which all happen to be from Island #2.
+Time to apply your [Intro to R knowledge](01_introToR.html). The heights from your logbook have been stored in a data frame called `d`. Below we show the last few observations from this vector, using the `tail()` function, which all happen to be from Island #2.
 
 <div style="margin-bottom:15px">
 </div>
@@ -294,7 +305,11 @@ p
 
 ```
 
-<center>![](Painter.png){width=500px}</center>
+
+```{r, out.width="600px", echo= FALSE}
+knitr::include_graphics("images/01_bellCurve/Painter.png")
+```
+
 
 **Playing around with "complete themes": ** ggplot has a nice way of changing many non-data display parameters at once though what is referred to as "complete themes". Check this [page](https://ggplot2.tidyverse.org/reference/ggtheme.html) for the available options.
 
@@ -354,10 +369,11 @@ After trying different themes, you pick `theme_light()` and feel pretty good abo
 # ggsave(filename = "/Users/Desiree/Documents/New R Projects/Cars/advisor_email.png", width=5, height=3, p)
 
 ```
-<p style=><center>
-![](advisor_email.png){width=600px}
-</center>
-<div style="margin-bottom:25px"></div>
+
+
+```{r, out.width="600px", echo= FALSE}
+knitr::include_graphics("images/01_bellCurve/advisor_email.png")
+```
 
 
 You've got some more changes to make to your plot. Let's start with something easy:
@@ -556,7 +572,7 @@ You decided that you had the resources to collect data on 50 giraffes on each of
 
  <div style="margin-bottom:50px"></div>
 
-```{r fig.show="animate", animation.hook = 'gifski', fig.width=10, fig.height=2, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide'}
+```{r fig.show="animate", animation.hook = 'gifski', fig.width=10, fig.height=2, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', cache=TRUE}
 library(ggplot2)
 lims <- data.frame(min=c(0,0,0,0), max=c(4,16, 120, 1200))
 cols <- c("brown1", "darkturquoise", "royalblue1","darkorchid1")

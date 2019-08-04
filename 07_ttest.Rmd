@@ -3,8 +3,8 @@ title: "t-test"
 output:
   bookdown::html_document2:
     includes:
-      in_header: 07_ttest_bigimage.html
-      after_body: foot.html
+      in_header: assets/07_ttest_bigimage.html
+      after_body: assets/foot.html
 ---
 
 <div class="alert alert-info">

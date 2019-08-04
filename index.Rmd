@@ -3,5 +3,5 @@ title: "Index"
 output:
   bookdown::html_document2:
     includes:
-      in_header: Landing_page.html
+      in_header: assets/Landing_page.html
 ---

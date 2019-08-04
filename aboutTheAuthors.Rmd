@@ -3,5 +3,5 @@ title: "About the authors"
 output:
   bookdown::html_document2:
     includes:
-      in_header: aboutTheAuthors_image.html
+      in_header: assets/aboutTheAuthors_image.html
 ---
