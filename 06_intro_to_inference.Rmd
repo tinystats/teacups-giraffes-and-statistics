@@ -511,7 +511,7 @@ plot_hist(N= )
 # Standard Error of the Mean
 As we've done before, we want to summarize this spread of mean estimates with a single value. We've already learned how to quantify a measure of spread--the standard deviation. If we take the standard deviations of each of the three different sampling scenarios above, then we accept that *distributions based on smaller samples should have larger standard deviations*. 
 
-In the window below, calculate the standard deviation of each of the three sampling distributions (i.e. for N=500, N=50, and N=5), and confirm that the italicized point above is true. (If you're working in R locally, use your "homemade" standard deviation function from the [Variance](Variance.html) module.)
+In the window below, calculate the standard deviation of each of the three sampling distributions (i.e. for N=500, N=50, and N=5), and confirm that the italicized point above is true. (If you're working in R locally, use your "homemade" standard deviation function from the [Variance](04_variance.html) module.)
 
 To complete this exercise, you will need to use the objects `sampling_distribution_N500`, `sampling_distribution_N50`, `sampling_distribution_N5`, which are vectors storing the thousands of ${\bar{x}}$ values from the corresponding groundhog sampling distributions.
 
@@ -682,7 +682,7 @@ Close enough! We wouldn't expect these to be *exactly* the same because of sampl
 # How do we apply the SEM?
 Now that we have a better understanding of how to gauge the precision of our sample estimates, we can test our question about the ${\mu}$ being less than 11 cm once and for all.
 
-To formally make inferences, we need to revisit the principles of the [empirical rule](Variance.html#empirical) to construct confidence intervals. (Confidence intervals are just one way to make inferences-- we'll discuss other ways later.)
+To formally make inferences, we need to revisit the principles of the [empirical rule](04_variance.html#empirical) to construct confidence intervals. (Confidence intervals are just one way to make inferences-- we'll discuss other ways later.)
 
 Remember, that the SEM is just the standard deviation of the sampling distribution, so we can apply the empirical rule. As a result, ± 2 SEM from a point estimate will capture ~95% of the sampling distribution. Actually, we were a little bit sloppy earlier when we said 2 standard deviations captures 95% of a normal distribution; this will actually give you 95.45% of the data. The true value is 1.96 standard deviations--and this is what we use to construct a 95% confidence interval (CI).
 

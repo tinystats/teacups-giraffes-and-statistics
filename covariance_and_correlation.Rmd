@@ -191,7 +191,7 @@ We observe this below with a subset of 5 points from our scatter plot. Positive 
 Why do we use the deviations? Because we want to know whether the x-values and y-values move together with respect to their means or not. For example, when an observation's deviation on x is above $\bar{x}$, will its deviation on y also be above $\bar{y}$? Using this line of thought, we can begin to systematically characterize how "together" the x and y values will change as we go through all observations. 
 
 # Crossproduct
-After obtaining the deviation scores, we need to combine them into a single measure. We do not simply combine the deviation scores themselves by adding (please see the [page about the variance](Variance.html) for a discussion of why this is). Instead, we take both deviation scores from the same observation and multiply them together to create a two-dimensional "shape" (analagous to when we multiplied a single deviation score by itself to create a square in the variance calculation).
+After obtaining the deviation scores, we need to combine them into a single measure. We do not simply combine the deviation scores themselves by adding (please see the [page about the variance](04_variance.html) for a discussion of why this is). Instead, we take both deviation scores from the same observation and multiply them together to create a two-dimensional "shape" (analagous to when we multiplied a single deviation score by itself to create a square in the variance calculation).
 
 **NOTE:** The resulting value is now on the order of a "squared" term. This will become important later.
 
@@ -314,7 +314,7 @@ As we add the crossproducts, some of the "negative" and "positive" values of the
 </div>
 
 # Covariance
-(4) We then **divide the sum of the crossproduct by $n-1$ (or $N$ in the population equation)** so that we have taken into account how many observations contributed to this quantity. (Why $n-1$? See [here](Variance.html).) This final number is called the **covariance**, and its value tells us how much our two variables fluctuate together. The higher the absolute value, the stronger the relationship.
+(4) We then **divide the sum of the crossproduct by $n-1$ (or $N$ in the population equation)** so that we have taken into account how many observations contributed to this quantity. (Why $n-1$? See [here](04_variance.html).) This final number is called the **covariance**, and its value tells us how much our two variables fluctuate together. The higher the absolute value, the stronger the relationship.
 
 The equation for the covariance (abbreviated cov) of the variables x and y is shown below. As a preference of style, we multiply by $\frac{1}{n-1}$ instead of dividing the entire term by $n-1$. 
 
