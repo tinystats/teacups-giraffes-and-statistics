@@ -10,7 +10,7 @@ navbar:
       - text: "Intro to R"
         href: 01_introToR.html
       - text: "Intro to the Normal Distribution"
-        href: BellCurve.html
+        href: 02_bellCurve.html
       - text: "Mean, Median, Mode"
         href: mean.html
       - text: "Spread of the Data"
