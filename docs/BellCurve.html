@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -44,7 +45,7 @@
 <link href="style.css" rel="stylesheet">
 
 <div class="image-descript"> 
-	<img class="big_image" src="Hills.jpg"> 
+	<img class="big_image" src="images/big_image/Hills.jpg"> 
 	<div class="image-text">
 	  <div class="lil-image-text">Introduction to the</div>
 	  <div class="big-image-text"><strong>NORMAL DISTRIBUTION</strong></div>
@@ -96,7 +97,7 @@ h6 {
 }
 </style>
 
-<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="assets/style.css" type="text/css" />
 
 
 
@@ -273,48 +274,9 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
-
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <style type="text/css">
 
@@ -417,7 +379,7 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="introToR.html">Intro to R</a>
+      <a href="01_introToR.html">Intro to R</a>
     </li>
     <li>
       <a href="BellCurve.html">Intro to the Normal Distribution</a>
@@ -483,42 +445,16 @@ Explain why distributions of sample data that come from populations with normal 
 <p>Two weeks after starting grad school, you’re assigned to go to a small island east of Madagascar to study a mysterious mammalian species that has caught your advisor’s interest. After a long trip on various ships and smaller boats, you arrive on the island, excited to collect data on this new species.</p>
 <p>The only information your advisor has given you is that they are small giraffe-like creatures. He called them teacup giraffes. You waste no time to suit up in your field gear, and your guide leads you deep into the dense island brush. Filled with anticipation, you start searching for your first subject.</p>
 <p>After a one hour hike, you reach a clearing where tall cypress trees encircle low growth vegetation. Suddenly, you experience your first encounter with a little giraffe, whose cool drink from a puddle you seem to have interrupted. Smaller than you had imagined–its slender body does not even clear the height of a dandelion. You toss a celery stick in its direction, and you’re pleasantly surprised that it immediately trots over to you and starts vigorously munching, creating a celery confetti cloud. After observing this behavior for a while and taking some notes on how quickly it devours your celery supply, you bring out your measuring tape and record the giraffe’s height.</p>
-<p>
-<div style="margin-top:50px">
-
-</div>
-<center>
-<img src="Cool-Drink.jpg" width="600" />
-</center>
-<div style="margin-bottom:50px">
-
-</div>
+<p><br />
+</p>
+<p><img src="images/01_bellCurve/Cool-Drink.jpg" width="600px" style="display: block; margin: auto;" /></p>
+<p><br />
 </p>
 <p>A few minuters later, you leave the clearing and forge a path through thick ferns and palm leaves. You pause for a drink from your water bottle long enough to pinpoint a fast-paced crunching noise. In the shade of a fallen tree, there’s another teacup giraffe annihilating a small patch of wild celery for its afternoon snack. You’re surprised how much smaller this one is–about as tall as your Swiss army knife. Throughout the day you encounter several teacup giraffes, and you realize that although all petite, they are remarkably variable in stature.</p>
 <p>The next week is spent trekking and measuring every giraffe you can manage to get near enough. You take advantage of the fact that they come running everytime you pull out a celery stalk from your lunch bag, and you’re relieved that it takes them long enough to finish snacking for you to measure their height. With the help of your guide, you manage to measure 50 giraffes in the first week.</p>
-<p>
-<div style="margin-top:50px">
-
-</div>
-<center>
-<img src="giraffe_lineup4.jpg" width="800" />
-</center>
-<div style="margin-bottom:50px">
-
-</div>
-</p>
+<p><img src="images/01_bellCurve/giraffe_lineup4.jpg" width="800px" style="display: block; margin: auto;" /></p>
 <p>There is a second island not too far away, where you guide has indicated there may be more giraffes. You wonder how the population of giraffes on the second island may be different, and so you make arrangements to go to Island #2 the following week. It is not too long until you have added another 50 measurements of these tiny giraffes from this second excursion.</p>
-<p>
-<div style="margin-top:50px">
-
-</div>
-<center>
-<img src="giraffe_islands2.jpg" width="800" />
-</center>
-<div style="margin-bottom:50px">
-
-</div>
-</p>
+<p><img src="images/01_bellCurve/giraffe_islands2.jpg" width="800px" style="display: block; margin: auto;" /></p>
 </div>
 <div id="visualize-the-data" class="section level1">
 <h1>Visualize the data</h1>
@@ -556,7 +492,7 @@ Explain why distributions of sample data that come from populations with normal 
 <li>There is symmetry about the center line</li>
 </ul></li>
 </ul>
-<p><img src="normal_hist.png" /></p>
+<p><img src="images/01_bellCurve/normal_hist.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>Taking a look at the stones in the sand, you see two bell-shaped distributions. One for each island. It looks like giraffe heights on each island follow a normal distribution— and that’s a good thing because you remember your stats textbook always talking about how normally distributed data behaves well! Phew!</p>
 Happy with your progress thus far, you are excited to send your histogram results to your PhD mentor back in the homeland. Instead of taking a picture of your stone histogram, you turn to R to create the perfect figure.
 <div style="margin-bottom:50px">
@@ -566,7 +502,7 @@ Happy with your progress thus far, you are excited to send your histogram result
 </div>
 <div id="our-dataframe" class="section level1">
 <h1>Our dataframe</h1>
-<p>Time to apply your <a href="Intro_to_R.html">Intro to R knowledge</a>. The heights from your logbook have been stored in a data frame called <code>d</code>. Below we show the last few observations from this vector, using the <code>tail()</code> function, which all happen to be from Island #2.</p>
+<p>Time to apply your <a href="01_introToR.html">Intro to R knowledge</a>. The heights from your logbook have been stored in a data frame called <code>d</code>. Below we show the last few observations from this vector, using the <code>tail()</code> function, which all happen to be from Island #2.</p>
 <div style="margin-bottom:15px">
 
 </div>
@@ -626,9 +562,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiI0ZpbGwgaW4gdGhlIGluY29tcGxldGUgYXJndW1lbnRzIGJlbG93XG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9ICkpICtcbiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGggPSAxLCBjb2xvciA9ICkgK1xuICBzY2FsZV9maWxsX21hbnVhbCh2YWx1ZXMgPSBjKCApKVxuICBcbnAiLCJzb2x1dGlvbiI6InAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKVxuICBcbnAifQ==
 </div>
-<center>
-<img src="Painter.png" width="500" />
-</center>
+<p><img src="images/01_bellCurve/Painter.png" width="600px" style="display: block; margin: auto;" /></p>
 <p><strong>Playing around with “complete themes”: </strong> ggplot has a nice way of changing many non-data display parameters at once though what is referred to as “complete themes”. Check this <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">page</a> for the available options.</p>
 <ul>
 <li>Have fun testing out a few different complete themes by adding the argument with a <code>+</code> sign.</li>
@@ -647,13 +581,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0
 <div style="margin-bottom:50px">
 
 </div>
-<p style=>
-<center>
-<img src="advisor_email.png" width="600" />
-</center>
-<div style="margin-bottom:25px">
-
-</div>
+<p><img src="images/01_bellCurve/advisor_email.png" width="600px" style="display: block; margin: auto;" /></p>
 <p>You’ve got some more changes to make to your plot. Let’s start with something easy:</p>
 <ol style="list-style-type: decimal">
 <li><strong>Remove the space between the bars and the x-axis</strong>: Use the <code>scale_y_continuous()</code> argument, and inside the parentheses specify <code>expand =</code> followed by two numbers within the <code>c( )</code> command. These two numbers represent how much above or below the data’s range you would like to extend the y-axis by.</li>
@@ -738,7 +666,7 @@ Hopefully your PhD advisor in the homeland will be satisfied with your new ggplo
 <div style="margin-bottom:50px">
 
 </div>
-<img src="BellCurve_files/figure-html/unnamed-chunk-23-.gif" width="960" />
+<img src="BellCurve_files/figure-html/unnamed-chunk-29-.gif" width="960" style="display: block; margin: auto;" />
 <div style="margin-bottom:50px">
 
 </div>
@@ -771,6 +699,49 @@ $(document).ready(function () {
 });
 
 
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
 </script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
