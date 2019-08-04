@@ -3,7 +3,7 @@ title: "Intro to Inference"
 output:
   bookdown::html_document2:
     includes:
-      in_header: assets/inference1_image.html
+      in_header: assets/06_standardError_image.html
       after_body: assets/foot.html
 ---
 <div class="alert alert-info">
@@ -52,7 +52,7 @@ Imagine that after you collected all 50 measurements for `heights_island1`, you 
 
 When you finally return to your sanity, you find stacks of notebooks filled with mean values from each of your individual data collections. 
 
-<center>![](Notebooks.jpg){width=600px}</center>
+<center>![](images/06_standardError/Notebooks.jpg){width=600px}</center>
 
 Instead of viewing this as a massive waste of time, you make the best out of the situation and create a histogram of all the means. In other words you create a plot showing the distribution of the sample means, also known as a **sampling distribution**. 
 
@@ -555,13 +555,13 @@ When you calculate the standard deviation of a sampling distribution of ${\bar{x
 </div>
 
 # Time for a tea break!
-<center>![](Slingshot.jpg){width=800px}</center>
+<center>![](images/06_standardError/Slingshot.jpg){width=800px}</center>
 
 # Standard error in practice
 Deriving the equation used for calculating the standard error of the mean using theory (i.e. without going out and resampling MANY times) is a bit complicated, but if you're interested, you can learn more about it [here](https://stats.stackexchange.com/questions/89154/general-method-for-deriving-the-standard-error). Instead, we can capture the relationship between **standard deviation**, **sample size**, and **standard error** with the plot below.
 
-<center>
-```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, out.height=2, cache = TRUE}
+
+```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, out.height=2, cache = TRUE, fig.align="center"}
 library(plotly)
 
 d <- data.frame(N=seq(5,1000, 5), sd=2.1)
@@ -586,7 +586,7 @@ layout(autosize = F, width = 600, height = 350,
   )
 
 ```
-</center>
+
 
 The standard deviation in this plot is `2.1`, which represents ${\sigma}$ for giraffe heights on Island 1. This population value is technically still unknown but can be deduced in theory by repeating the groundhog day example for the standard deviation instead of for the mean. It's important to note that the plot would have the same *shape* regardless of what scenario or standard deviation we were using.
 
@@ -689,8 +689,9 @@ Remember, that the SEM is just the standard deviation of the sampling distributi
 Loosely speaking, a 95% CI is the range of values that we are 95% confident contains the true mean of the population. We want to know whether our guess of 11 cm falls outside of this range of certainty. If it does -- we can be sure enough that the true ${\mu}$ of giraffe heights on Island 1 is less than 11 cm.
 
 Use the window below to find out and make your first inference by constructing the 95% CI for the `heights_island1` mean estimate!
-<br>
-<br>
+
+\
+
 ```{r ex="SEM4", type="pre-exercise-code"}
 set.seed(12)
 heights_island1 <- rnorm(50,10,2)
@@ -733,7 +734,7 @@ heights_island1_95CI
 
 The upper limit of our 95% CI is less than 11 cm, so the population mean of heights on island 1 is likely less than 11 cm. In the scientific community, this is a bonafide way of drawing this conclusion.
 
-<center> ![](Babyinference.jpg){width=600px} </center>
+<center> ![](images/06_standardError/Babyinference.jpg){width=600px} </center>
 
 
 # Things to think about

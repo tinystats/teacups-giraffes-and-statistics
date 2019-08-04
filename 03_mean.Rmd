@@ -126,7 +126,7 @@ This might look intimidating, but equation \@ref(eq:equation2) is really showing
 <center>
 \begin{equation}
  (\#eq:equation3)
-\vcenter{\img[width=400px]{eq_annotated.png}}
+\vcenter{\img[width=400px]{images/03_mean/eq_annotated.png}}
  \end{equation}
 </center>
 
