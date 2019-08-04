@@ -3,9 +3,14 @@ title: "Mean, Median, and Mode"
 output:
   bookdown::html_document2:
     includes:
-      in_header: mean_image.html
-      after_body: foot.html
+      in_header: assets/mean_image.html
+      after_body: assets/foot.html
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align="center")
+```
+
 
 <div class="alert alert-info">
   **Module learning objectives:**
@@ -19,8 +24,9 @@ output:
 </div>
 
 # What are measures of centrality?
-<div style="margin-top:50px"></div>
-<p style=><center>
+
+\
+
 ```{r, echo=FALSE}
 library(ggplot2)
 set.seed(12)
@@ -36,10 +42,12 @@ d <- rbind(x,x2)
 #ggsave(filename = "/Users/Desiree/Documents/New R Projects/Cars/p.png", width=5, height=3, p)
 
 ```
-![](mean_hist.png){width=500px}
 
-</center>
-<div style="margin-bottom:25px"></div>
+```{r, out.width="500px", echo= FALSE}
+knitr::include_graphics("images/02_mean/mean_hist.png")
+```
+
+\
 
 You've just collected a lot data and graphed heights. Although informative, a graphical display of these data is difficult to summarize-- we need to describe these heights with a single number that will be meaningful and allow us to do statistics.
 
@@ -47,10 +55,11 @@ We can do this with a **measure of centrality**, the concept that one number in 
 
  * The **mean** is the average and the measure of centrality that you are probably most familiar with. This is a good measure to use when the data are normally distributed. We describe it in detail below. 
 
- * The **median** is the value in the middle of the data set. Half of the observations lie above the median and half below. When the data are normally distributed, the median and the mean will be very close to each other. When your data are not normally distributed (skewed to the left of right) the median is a more appropriate measure of centrality (see the animation below).
- <center>
- <div style="margin-bottom:20px"></div>
-```{r, fig.show='animate', animation.hook = 'gifski', fig.width=6, fig.height=2, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.5}
+ * The **median** is the value in the middle of the data set. Half of the observations lie above the median and half below. When the data are normally distributed, the median and the mean will be very close to each other. When your data are not normally distributed (skewed to the left of right) the median is a more appropriate measure of centrality (see the animation below).  
+ 
+\
+
+```{r, fig.show='animate', animation.hook = 'gifski', fig.width=6, fig.height=2, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.5, cache=TRUE}
 # library(fGarch)
 # library(ggplot2)
 # library(gifski)
@@ -76,13 +85,15 @@ We can do this with a **measure of centrality**, the concept that one number in 
 # utils::browseURL(gif_file)
 
 ```
-<center> ![](median.gif) </center>
-<div style="margin-bottom:20px"></div>
-</center>
+
+
+<center> ![](images/02_mean/median.gif) </center>
+
+\
 
 * The **mode** is the value (height, in our case) that occurs most frequently in the data set. It's not typically used in statistics, and we won't cover it further here.
 
-<div style="margin-bottom:50px"></div>
+\
 
 # Taking the mean
 The mean of a variable is the sum of its values, divided by the number of values. 
@@ -98,18 +109,18 @@ This concept can be represented with equation below. In our case, each "x" repre
 </div>
 To make this more efficient, instead of writing "${x_1 + x_2 + ... + x_n}$", we can use the uppercase sigma symbol $\sum{}$ to represent summation of all the observations. 
 
-<div style="margin-bottom:50px"></div>
+\
+
 \begin{equation}
  (\#eq:equation2)
  \Large{\bar{x}} = \frac{\sum_{i=1}^{n}{x_i}}{n}
  \end{equation}
-<div style="margin-bottom:50px">
-</div>
+ 
+\
 
 This might look intimidating, but equation \@ref(eq:equation2) is really showing the same thing as \@ref(eq:equation1). Let's go through the steps again, breaking the symbols apart a bit (see annotated equation \@ref(eq:equation3) below). The sigma means 'add up'. What are we adding up? All the heights "x". The "i&nbsp;=&nbsp;" part indicates which term to begin with. For our purposes, this will always be the first observation, hence i = 1. The character on top of the sigma is the last observation we include in our summation. In this case it's n --because we're adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: again, n.
 
-<div style="margin-bottom:50px">
-</div>
+\
 
 
 <center>
@@ -122,10 +133,9 @@ This might look intimidating, but equation \@ref(eq:equation2) is really showing
 
 # Notation for sample vs population
 
-Recall our discussion about a sample verus a population [](BellCurve.html). Different symbols are used to represent the mean for each of these. We've already discussed $\bar{x}$ for the sample mean. The analogous symbol for the population mean is ${\mu}$ (read "mu"). Additionally, when referring to the size of the population, we will use a capital ${N}$ instead of a lowercase one. 
+Recall our discussion about a [sample verus a population](BellCurve.html#bell-ttta). Different symbols are used to represent the mean for each of these. We've already discussed $\bar{x}$ for the sample mean. The analogous symbol for the population mean is ${\mu}$ (read "mu"). Additionally, when referring to the size of the population, we will use a capital ${N}$ instead of a lowercase one. 
 
-<div style="margin-bottom:50px">
-</div>
+\
 
 # Code it up
 
@@ -141,12 +151,12 @@ heights_island1 <- rnorm(50,10,2)
 head(heights_island1)
 ```
 
-<div style="margin-bottom:15px">
-</div>
+\
 
 Use the interactive window below to calculate the mean "by hand".
 
-<div style="margin-bottom:15px"></div>
+\
+
 ```{r, include=FALSE}
 tutorial::go_interactive(height = 160)
 ```
@@ -191,14 +201,14 @@ test_function("mean", incorrect_msg= "Did you run 'mean(heights_island1)'?")
 success_msg("Great!")
 ```
 
-<div style="margin-bottom:50px">
-</div>
+\
 
 
 # Create your own function
-Now it's your turn to write your own function. Call it "my_mean" and have it calculate the mean of any given vector. You're going to use the rules for writing a function in R that you've used previously. As a reminder, you'll use `function( )` and embed your code (that you completed in the window above) within curly brackets`{ }`. The advantage of making a "homemade" function is that you can string together all the steps from the previous exercise into a single command.
-<div style="margin-bottom:15px">
-</div>
+Now it's your turn to write your own function. Call it "my_mean" and have it calculate the mean of any given vector. You're going to use the rules for writing a function in R that you've used previously. As a reminder, you'll use `function( )` and embed your code (that you completed in the window above) within curly brackets`{ }`. The advantage of making a "homemade" function is that you can string together all the steps from the previous exercise into a single command.  
+
+\
+
 ```{r ex="mean_function", type="pre-exercise-code"}
 set.seed(12)
 heights_island1 <- rnorm(50,10,2)
@@ -237,16 +247,18 @@ mean(heights_island1)
 test_function_result(name= "my_mean", not_called_msg="Did you run my_mean()?", error_msg="There's an error in your function.", incorrect_msg="Your function runs, but it is calculating the wrong value.")
 success_msg("Great!")
 ```
-<div style="margin-bottom:15px">
-</div>
- You can also complete the exercise above in RStudio on your local computer. This way you will be able to save your `my_mean( )` function and script for future use.
- 
- <div style="margin-bottom:50px"></div>
 
+\
+
+ You can also complete the exercise above in RStudio on your local computer. This way you will be able to save your `my_mean( )` function and script for future use.  
+ 
+\
 
 # Take a tea break!
-<center> ![](Teacup.png){width=600px} </center>
 
+```{r, out.width="600px", echo= FALSE}
+knitr::include_graphics("images/02_mean/Teacup.png")
+```
 
 
 # Taking the median
@@ -271,11 +283,6 @@ The **modulus operation** gives the remainder after division of one number by an
     -webkit-columns: 2 200px; /* chrome, safari */
     -moz-columns: 2 200px;    /* firefox */
   }
-  .col3 {
-    columns: 3 100px;
-    -webkit-columns: 3 100px;
-    -moz-columns: 3 100px;
-  }
 </style>
 
 </div>
@@ -287,11 +294,13 @@ The **modulus operation** gives the remainder after division of one number by an
 11 %% 2 == 0
 ```
 </div>
-<div style="margin-bottom:15px">
-</div>
+
+\
+
 An `if...else` statement is useful when you want to specify distinct outcomes for objects dependent on whether they meet your set criteria. See below.
-<div style="margin-bottom:15px">
-</div>
+
+\
+
 ```{r ex="if_else", type="pre-exercise-code"}
 set.seed(12)
 heights_island1 <- rnorm(50,10,2)
@@ -313,13 +322,13 @@ if((length(heights_island1)-1) %% 2 == 0) {
     print("ODD!")
 }
 ```
-<div style="margin-bottom:15px">
-</div>
+
+\
 
 Now that you have a sense for how the `%%` operator can be used to test whether a number is EVEN or ODD, and how `if...else` statements work, use both of these concepts in the window below to write your own function that calculates the median of any vector. 
 
-<div style="margin-bottom:15px">
-</div>
+\
+
 ```{r, include=FALSE}
 tutorial::go_interactive(height = 210)
 ```
@@ -374,16 +383,15 @@ median(heights_island1)
 test_function_result(name= "my_median", not_called_msg="Did you run my_mean()?", error_msg="There's an error in your function.", incorrect_msg="Your function runs, but it is calculating the wrong value.")
 success_msg("Great!")
 ```
-<div style="margin-bottom:50px">
-</div>
 
+\
 
 # Things to think about
 Remember that the sample mean is an estimate of the entire population's mean (which would often be impossibly large to measure). How reliably does the mean of a sample represent the population mean? *Warning*: if a small sample has been used, the sample mean may not be a reliable at all! Estimates from small samples are subject to the whims of randomness. On the other hand, the larger the sample, the closer the sample size appraches the population size, and the more reliable the sample estimate becomes.
 
 Pressing 'Play' on the plot below will illustrate this concept. 
 <a name="mean_animation">
-```{r, tut=FALSE, echo=FALSE, message= FALSE}
+```{r, tut=FALSE, echo=FALSE, message= FALSE, cache=TRUE}
 library(emdbook)
 library(plotly)
 
