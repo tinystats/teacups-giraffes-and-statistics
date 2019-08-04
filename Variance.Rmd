@@ -3,8 +3,8 @@ title: "The Spread of the Data"
 output:
   bookdown::html_document2:
     includes:
-      in_header: Variance_image.html
-      after_body: foot.html
+      in_header: assets/04_variance_image.html
+      after_body: assets/foot.html
 ---
 
 <div class="alert alert-info">
@@ -17,30 +17,20 @@ output:
   </ol>
 </div>
 
-<!-- <link href="styles.css" rel="stylesheet">  -->
-<!--         <div class="image-descript"> -->
-<!-- 					<img class="main-image" src="giraffe_forest.png"> -->
-<!-- 					<div class="color-overlay"></div> -->
-<!-- 					<div class="image-text"> -->
-<!-- 						<div class="lil-image-text">Tiny Giraffes</div> -->
-<!-- 						<div class="big-image-text"><strong>Big Questions</strong></div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
 ```
 
 
 # Measures of spread
 After successfully computing the mean, you return to the memory of the first day you had collected data. There was one teacup giraffe that was your favorite-- it was relatively small with purple spots and perky tail! You begin to wonder how rare it would be to encounter a giraffe smaller than this one. To answer this question, you need to be able to calculate a **measure of spread**. 
 
-<center>![](holding.png){width=600px}</center>
+<center>![](images/04_variance/holding.png){width=600px}</center>
 
 You might start by quantifying the simplest measure of spread, the **range**. This at least tells us the boundaries within which all the sample heights fall, but the range ignores important contextual information. For example, two data sets can have very different spreads but still have the same range.
 
-<center>![](Range.png){width=600px}</center>
+<center>![](images/04_variance/Range.png){width=600px}</center>
 
 If we want to avoid undue influence of outliers for the measure of spread, the range is not good enough to provide us with a wholistic, robust measure.
 
@@ -51,7 +41,7 @@ You need a solid understanding of variance in order to grasp the mechanics of an
 
   * Recall the normal distribution: when we inspect the distributions below visually, we see that they all have the same mean, but some distributions are more spread out. Bell curves that are more "squished together" are composed of observations that are more similar to one another, while bell curves that are more "spread out" are composed of observations that have greater variability. Wider bell-curves mean greater variance! In plain language, the variance gives us an idea of how similar observations are to one another, and to the average value. 
   
-  ![](bells_edited-04.png)
+  ![](images/04_variance/bells_edited-04.png)
 
 # How to calculate variance
 Let's begin by going through the steps and equations for calculating the variance of a *population*. We'll explain how to modify this for calculating the *sample* variance later on.
@@ -81,7 +71,7 @@ Now we have positive, squared deviation values that can be summed to a single to
 
 The sum of squares is an important calculation that we will see again for other statistical operations. The animation below illustrates how these sums of squares are "constructed" starting with the sample observations and then squaring each one's distance away from the mean.  
 
-```{r fig.show="animate", animation.hook = 'gifski', fig.width=7.2, fig.height=4.8, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.01666667, fig.align='center'}
+```{r fig.show="animate", animation.hook = 'gifski', fig.width=7.2, fig.height=4.8, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.01666667, fig.align='center', cache = TRUE}
 library(ggplot2)
 s <- data.frame(x=c(113, 146.5, 132, 70.5, 121, 55), y=c(8.75,1.25,3.75,3.75,6.25,1.25))
 s <- s[order(s$x),]
@@ -146,7 +136,7 @@ lapply(1:15, function(x) pp3())
 
 Once the squares have been "constructed", we sum their squares, producing a single value.
 
-![](Squares1.png)
+![](images/04_variance/Squares1.png)
 
 # Variance, $\sigma^2$
 We need to take into account how many observations contributed to these sum of squares. So, we divide the sum of squares by N. This step essentially takes the average of the squared differences from the mean. This is the variance.
@@ -198,7 +188,7 @@ And for **sample standard deviation, $s$**:
 # Meaning of the standard deviation
 Since we're now focusing on samples, let's think about how we can apply the standard deviation in a useful way to normal distributions to predict how "rare" or "common" particular observations in a data set may be. For the normal distribution, almost all of the data will fall within ± 3 standard deviations from the mean. This rule of thumb, called the **empirical rule**, is illustrated below and you can [(read more about it here)](https://newonlinecourses.science.psu.edu/stat200/lesson/2/2.2/2.2.7).
 <a name="empirical">
-![](General_empirical.jpg)
+![](images/04_variance/General_empirical.jpg)
 </a>
 
   * The entire normal distribution includes 100% of the data. The empirical rule states that the interval created by **1 standard deviation above and below the mean includes 68% of all the data**. Observations within these bounds would be fairly common, but it would not be exceedingly rare to observe data that fall *outside* of these bounds. 
@@ -222,14 +212,14 @@ mean(h)
 
 We'll plot the mean $\bar{x}$ below with a gray line. 
 
-![](giraffe_variance1.png)
+![](images/04_variance/giraffe_variance1.jpg)
  (2) **Find the deviation** from the mean, the difference between each giraffe's height and $\bar{x}$.
  
 ```{r}
 deviation <- h - mean(h)
 deviation
 ```
- ![](giraffe_variance2.png)
+ ![](images/04_variance/giraffe_variance2.jpg)
  
  
  (3) **Calculate Variance**: Square the deviations, add them all up to get the sum of squares, and then take the average of the sum of squares (adjusted to "n-1" because we're using a sample).
@@ -246,7 +236,7 @@ sqrt(variance)
 
 Because the standard devation is a standardized score-- we can now focus on particular giraffes and see whether or not they lie within 1 standard deviation of the mean. 
 
-![](giraffe_variance3.png)
+![](images/04_variance/giraffe_variance3.jpg)
 
 We see the little blue spotted giraffe is more than 1 standard deviation below the mean-- and so we can conclude that a little guy of his height is rather short-- even smaller than your favorite! Similarly, the giraffe with bright pink spots is taller than 1 standard deviation above the mean-- quite tall!
 
@@ -257,7 +247,7 @@ Using the standard deviation and the empirical rule described earlier, we now fi
 
   * If we assume our sample comes from a normally distributed population, then **what percentage of giraffes will be shorter than the one with purple spots?**
   
-   ![](Empirical_example.png)
+   ![](images/04_variance/Empirical_example.png)
   
 We can apply the knowledge that the full percentage area under the curve is 100%, and what we know from the empirical rule, to conclude that there is approximately 16% of giraffes will be shorter than the one with purple spots. So, it would be common to find giraffes taller than our favorite but somewhat of a treat to find ones smaller--like the blue one!
 
@@ -339,21 +329,21 @@ sd(heights_island1)
 ```
 
 <div style="margin-top:50px"></div>
-<center>![](Marmalade.png){width=650px}</center>
+<center>![](images/04_variance/Marmalade.png){width=650px}</center>
   
 # Population vs Sample ($N$ vs $n-1$)
 We have to correct the calculated variance by dividing by $n-1$. Let's explain why:
 
   * Let's recall that when we calculate the sum of squares, we only have the sample mean $\bar{x}$ to go off of as our center point. 
   
-  <center>![](Static_ssq.png){width=500px}</center>
+  <center>![](images/04_variance/Static_ssq.png){width=500px}</center>
 
   * We must first acknowledge that while the population $\mu$ is unknowable, the chance that the sample $\bar{x}$ and the population $\mu$ are the same is unlikely.
     + It's also worth pointing out that the risk that $\bar{x}$ and $\mu$ are not even values close to each other is much increased when $\bar{x}$ has been calculated from a small sample. 
     
   * Recognizing that the true population mean value is probably some *other* value than $\bar{x}$, let's recalculate the sum of squares. This time we will use an imaginary true population $\mu$ as our center point, which in the animation below will be represented with a line at an arbitrary distance away from $\bar{x}$.
 
-```{r fig.show="animate", animation.hook = 'gifski', fig.width=5.04, fig.height=7, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.01666667, fig.align = 'center'}
+```{r fig.show="animate", animation.hook = 'gifski', fig.width=5.04, fig.height=7, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.01666667, fig.align = 'center', cache=TRUE}
 library(ggplot2)
 s <- data.frame(x=c(113, 146.5, 132, 70.5, 121, 55), y=c(9,1.5,4,4,6.5,1.5))
 s <- s[order(s$x),]
@@ -438,7 +428,7 @@ lapply(1:15, function(x) pp3())
  
   * When we compare the sum of squares in both of these scenarios: 1) using $\bar{x}$ or 2) using our imaginary $\mu$, we see that the sum of squares from $\mu$ will *always* be greater than the $\bar{x}$ sum of squares. This is true because by definition of being the sample mean, the line at $\bar{x}$ will always be the "center" of the values in our sample. Its location already minimizes the total distance of all the observations to the center. A line at any other location (i.e. $\mu$) would be a line that is not mimimizing the distance for observations in our sample.
   
-<center>![](Squares2.png){width=750px}</center>
+<center>![](images/04_variance/Squares2.png){width=750px}</center>
 
   * Therefore, when we calculate the sum of squraes (and consequently, the variance and the standard deviation) using the sample mean $\bar{x}$, we are most likely arriving at a value that is downwardly biased compared to what the true variance or standard deviation would be if we were able to know and use the population mean $\mu$. 
   
@@ -451,7 +441,7 @@ lapply(1:15, function(x) pp3())
   
   * Press Play on the animation below. The plot shows the relationship between bias in the variance, the sample size, and the distance between $\bar{x}$ and $\mu$. Each dot represents one out of a thousand random samples all from the same population. The vertical dotted line represents $\mu$, and the horizontal dotted line represents the true population variance (animation inspired by Khan Academy [video](https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/more-standard-deviation/v/simulation-showing-bias-in-sample-variance).)
 
-```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE}
+```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, cache=TRUE}
 library(ggplot2)
 library(plotly)
 set.seed(12)
@@ -537,10 +527,10 @@ p <- pd %>%
       yaxis = list(range=c(-2,38), zeroline=FALSE, title="Biased variance"), 
       shapes = list(hline(v),vline(mm)))%>%
   animation_slider(currentvalue = list(prefix = "Number of Samples: ", font = list(color="grey70", size=14)))
-  htmltools::save_html(p,"mega_dots.html")
+  htmltools::save_html(p,"images/04_variance/mega_dots.html")
 ```  
 
-<center><iframe style="margin: 0px;" src="mega_dots.html" width="720" height="500" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
+<center><iframe style="margin: 0px;" src="images/04_variance/mega_dots.html" width="720" height="500" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
 
   * When the samples whose means $\bar{x}$ are far off from the true population mean, they tend to have downwardly biased variance. 
   
@@ -549,7 +539,7 @@ p <- pd %>%
 # How the correction works 
 The plot below shows the percentage of the true population variance that an uncorrected sample variance achieves on average. These data were generated by sampling from the same population as the animation above. This time the data have been grouped into bars by how many observations each random sample had. (Animation inspired by Khan Academy [video](https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/more-standard-deviation/v/simulation-showing-bias-in-sample-variance))
   
-```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE}
+```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, cache=TRUE}
 library(ggplot2)
 library(plotly)
 data <- do.call(rbind, lapply(1:20000, function(x) gen_data()))
@@ -573,10 +563,10 @@ p2 <- mm %>%
     yaxis = list(range=c(0,90), zeroline=FALSE, title="Biased Sample variance / Pop. variance (%)"), 
     xaxis = list(title="Sample Size"))%>%
   hide_colorbar()
-  htmltools::save_html(p2,"static_bar.html")
+  htmltools::save_html(p2,"images/04_variance/static_bar.html")
 ```
 
-<center><iframe style="margin: 0px;" src="static_bar.html" width="670" height="400" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
+<center><iframe style="margin: 0px;" src="images/04_variance/static_bar.html" width="670" height="400" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
 
    * Notice that the variances from smaller samples do the worst job of approaching 100% of the true variance. In fact, without correction the sample variance is downwardly biased by a factor of $n/(n-1)$.
 
@@ -595,7 +585,7 @@ percent_of_true_variance
 ```
 As we can see, the correction works by adjusting the downwardly biased sample variance to close to 100% of the true variance. 
 
-Try hovering over a few other bars and see yourself that correction works indepdent of the sample size. You can you the window below as a calculator.  to change the N and the hover values and then run the code. 
+Try hovering over a few other bars and see yourself that correction works indepdent of the sample size. You can you the window below as a calculator to change the N and the hover values and then run the code. 
 
 ```{r}
 # Model your code off of the example for n = 3 

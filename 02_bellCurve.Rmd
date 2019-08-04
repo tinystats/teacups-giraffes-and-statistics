@@ -35,7 +35,7 @@ After a one hour hike, you reach a clearing where tall cypress trees encircle lo
 \
 
 ```{r, out.width="600px", echo= FALSE}
-knitr::include_graphics("images/01_bellCurve/Cool-Drink.jpg")
+knitr::include_graphics("images/02_bellCurve/Cool-Drink.jpg")
 ```
 
 \
@@ -46,14 +46,14 @@ The next week is spent trekking and measuring every giraffe you can manage to ge
 
 
 ```{r, out.width="800px", echo= FALSE}
-knitr::include_graphics("images/01_bellCurve/giraffe_lineup4.jpg")
+knitr::include_graphics("images/02_bellCurve/giraffe_lineup4.jpg")
 ```
 
 
 There is a second island not too far away, where you guide has indicated there may be more giraffes. You wonder how the population of giraffes on the second island may be different, and so you make arrangements to go to Island #2 the following week. It is not too long until you have added another 50 measurements of these tiny giraffes from this second excursion.
 
 ```{r, out.width="800px", echo= FALSE}
-knitr::include_graphics("images/01_bellCurve/giraffe_islands2.jpg")
+knitr::include_graphics("images/02_bellCurve/giraffe_islands2.jpg")
 ```
 
 
@@ -161,7 +161,7 @@ Although the data can be distributed in many shapes, there are some general shap
   
 
 ```{r, out.width="100%", echo= FALSE}
-knitr::include_graphics("images/01_bellCurve/normal_hist.png")
+knitr::include_graphics("images/02_bellCurve/normal_hist.png")
 ```
 
  
@@ -305,7 +305,7 @@ p
 
 
 ```{r, out.width="600px", echo= FALSE}
-knitr::include_graphics("images/01_bellCurve/Painter.png")
+knitr::include_graphics("images/02_bellCurve/Painter.png")
 ```
 
 
@@ -370,7 +370,7 @@ After trying different themes, you pick `theme_light()` and feel pretty good abo
 
 
 ```{r, out.width="600px", echo= FALSE}
-knitr::include_graphics("images/01_bellCurve/advisor_email.png")
+knitr::include_graphics("images/02_bellCurve/advisor_email.png")
 ```
 
 

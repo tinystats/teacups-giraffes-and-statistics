@@ -44,7 +44,7 @@ d <- rbind(x,x2)
 ```
 
 ```{r, out.width="500px", echo= FALSE}
-knitr::include_graphics("images/02_mean/mean_hist.png")
+knitr::include_graphics("images/03_mean/mean_hist.png")
 ```
 
 \
@@ -87,7 +87,7 @@ We can do this with a **measure of centrality**, the concept that one number in 
 ```
 
 
-<center> ![](images/02_mean/median.gif) </center>
+<center> ![](images/03_mean/median.gif) </center>
 
 \
 
@@ -257,7 +257,7 @@ success_msg("Great!")
 # Take a tea break!
 
 ```{r, out.width="600px", echo= FALSE}
-knitr::include_graphics("images/02_mean/Teacup.png")
+knitr::include_graphics("images/03_mean/Teacup.png")
 ```
 
 
