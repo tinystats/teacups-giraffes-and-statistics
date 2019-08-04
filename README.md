@@ -8,12 +8,12 @@ An open resource which uses R Markdown to create a series of modules for learnin
 This repository holds the source materials for this project. To view the online modules, please visit: https://tinystats.github.io/teacups-giraffes-and-statistics/. 
 
 # Getting Started
-___
+
 
 [**Intro to R:**](https://tinystats.github.io/teacups-giraffes-and-statistics/introToR.html) This module will introduce you to some basic tools and terminology that you will need to be familiar with to complete the modules. You can work through the exercises or use this page as a reference.
 
 # The Modules
-___
+
 
 1. [**Introduction to the Normal Distribution.**](https://tinystats.github.io/teacups-giraffes-and-statistics/BellCurve.html) This module introduces the basics to visualizing data using `ggplot` and evaluating the data for normality.
 2. [**Mean, Median, Mode.**](https://tinystats.github.io/teacups-giraffes-and-statistics/mean.html) Write your own functions for calculating the median and mean.

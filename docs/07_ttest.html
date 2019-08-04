@@ -45,7 +45,7 @@
 <link href="style.css" rel="stylesheet">
 
   <div class="image-descript"> 
-		<img class="big_image" src="07_ttest_bigimage.jpg">
+		<img class="big_image" src="images/big_image/07_tTest_image.jpg">
 		<div class="image-text">
 			<div class="lil-image-text">The difference between two groups:</div>
 			<div class="big-image-text"><strong>T-TEST</strong></div>
@@ -97,7 +97,7 @@ h6 {
 }
 </style>
 
-<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="assets/style.css" type="text/css" />
 
 
 
@@ -379,22 +379,22 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="introToR.html">Intro to R</a>
+      <a href="01_introToR.html">Intro to R</a>
     </li>
     <li>
-      <a href="BellCurve.html">Intro to the Normal Distribution</a>
+      <a href="02_bellCurve.html">Intro to the Normal Distribution</a>
     </li>
     <li>
-      <a href="mean.html">Mean, Median, Mode</a>
+      <a href="03_mean.html">Mean, Median, Mode</a>
     </li>
     <li>
-      <a href="Variance.html">Spread of the Data</a>
+      <a href="04_Variance.html">Spread of the Data</a>
     </li>
     <li>
-      <a href="covariance_and_correlation.html">Covariance and Correlation</a>
+      <a href="05_correlation.html">Covariance and Correlation</a>
     </li>
     <li>
-      <a href="06_intro_to_inference.html">Standard Error</a>
+      <a href="06_standardError.html">Standard Error</a>
     </li>
   </ul>
 </li>
@@ -440,7 +440,7 @@ Describe how the reliability of a sample mean will scale with increasing sample 
 </div>
 <div id="the-two-islands" class="section level1">
 <h1>The Two Islands</h1>
-<p>You’d like to make an <a href="06_intro_to_inference.html">inference</a> to formally investigate whether you have any reason to believe that the mean of heights on Island 1 differs from the mean of the heights on Island 2.</p>
+<p>You’d like to make an <a href="06_standardError.html">inference</a> to formally investigate whether you have any reason to believe that the mean of heights on Island 1 differs from the mean of the heights on Island 2.</p>
 <p>The means of the heights of both islands are shown below:</p>
 <pre class="r"><code>mean(heights_island1)</code></pre>
 <pre><code>## [1] 9.714141</code></pre>
@@ -528,20 +528,17 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuXG5oZWlnaHRz
 <li>A formal definition of hypothesis including null hypothesis.</li>
 </ol>
 <p>Implement, and then formally answer the question.</p>
-
 </div>
 <div id="degrees-of-freedom" class="section level1">
 <h1>Degrees of Freedom</h1>
 <ul>
 <li>You know the final answer of a single estimate. You can pick whatever you want, until you’re down to the last choice….then you don’t have the “freedom”. –&gt; explains why we use Total -1 = DF.</li>
 <li>Explain Whyyyyyyyyy we need it.</li>
-
 <li>The t-distribution will look different depending on the degrees of freedom</li>
 </ul>
 <p>Intermediate step here between CI and p-values.
 T-test statistic greater than 1.96 will result in a significant p-value.</p>
 <p>Write your own t-test function.</p>
-
 <p>Start with same N, but then “to make it a more useful model, you need to be able to handle when the sample sizes are not the same.”</p>
 <p><strong>Unequal variance: more fodder for things to think about</strong></p>
 </div>

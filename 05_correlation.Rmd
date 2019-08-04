@@ -519,6 +519,7 @@ If you don't take our word for it, press play below to see what the relationship
 ```{r, tut=FALSE, echo=FALSE, message= FALSE, cache=TRUE}
 library(MASS)
 library(plotly)
+library(here)
 
 cor_var <- function(x){
   r <- 0
@@ -578,7 +579,7 @@ p <- pd %>%
     )%>%
   animation_slider(currentvalue = list(prefix = "Number of Samples: ", font = list(color="grey70", size=14)))
 
-htmltools::save_html(p,"images/05_correlation/cov_vs_sxsy.html")
+htmltools::save_html(p,here("images/05_correlation/cov_vs_sxsy.html"))
 
 ```
 <center><iframe style="margin: 0;" src="images/05_correlation/cov_vs_sxsy.html" width="720" height="500" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>

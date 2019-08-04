@@ -26,6 +26,13 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.9.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
 <head>
 	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0">
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -382,19 +389,19 @@ div.tocify {
       <a href="01_introToR.html">Intro to R</a>
     </li>
     <li>
-      <a href="BellCurve.html">Intro to the Normal Distribution</a>
+      <a href="02_bellCurve.html">Intro to the Normal Distribution</a>
     </li>
     <li>
-      <a href="mean.html">Mean, Median, Mode</a>
+      <a href="03_mean.html">Mean, Median, Mode</a>
     </li>
     <li>
-      <a href="Variance.html">Spread of the Data</a>
+      <a href="04_Variance.html">Spread of the Data</a>
     </li>
     <li>
-      <a href="covariance_and_correlation.html">Covariance and Correlation</a>
+      <a href="05_correlation.html">Covariance and Correlation</a>
     </li>
     <li>
-      <a href="06_intro_to_inference.html">Standard Error</a>
+      <a href="06_standardError.html">Standard Error</a>
     </li>
   </ul>
 </li>
@@ -446,14 +453,14 @@ Explain why distributions of sample data that come from populations with normal 
 <p>After a one hour hike, you reach a clearing where tall cypress trees encircle low growth vegetation. Suddenly, you experience your first encounter with a little giraffe, whose cool drink from a puddle you seem to have interrupted. Smaller than you had imagined–its slender body does not even clear the height of a dandelion. You toss a celery stick in its direction, and you’re pleasantly surprised that it immediately trots over to you and starts vigorously munching, creating a celery confetti cloud. After observing this behavior for a while and taking some notes on how quickly it devours your celery supply, you bring out your measuring tape and record the giraffe’s height.</p>
 <p><br />
 </p>
-<p><img src="images/01_bellCurve/Cool-Drink.jpg" width="600px" style="display: block; margin: auto;" /></p>
+<p><img src="images/02_bellCurve/Cool-Drink.jpg" width="600px" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
 <p>A few minuters later, you leave the clearing and forge a path through thick ferns and palm leaves. You pause for a drink from your water bottle long enough to pinpoint a fast-paced crunching noise. In the shade of a fallen tree, there’s another teacup giraffe annihilating a small patch of wild celery for its afternoon snack. You’re surprised how much smaller this one is–about as tall as your Swiss army knife. Throughout the day you encounter several teacup giraffes, and you realize that although all petite, they are remarkably variable in stature.</p>
 <p>The next week is spent trekking and measuring every giraffe you can manage to get near enough. You take advantage of the fact that they come running everytime you pull out a celery stalk from your lunch bag, and you’re relieved that it takes them long enough to finish snacking for you to measure their height. With the help of your guide, you manage to measure 50 giraffes in the first week.</p>
-<p><img src="images/01_bellCurve/giraffe_lineup4.jpg" width="800px" style="display: block; margin: auto;" /></p>
+<p><img src="images/02_bellCurve/giraffe_lineup4.jpg" width="800px" style="display: block; margin: auto;" /></p>
 <p>There is a second island not too far away, where you guide has indicated there may be more giraffes. You wonder how the population of giraffes on the second island may be different, and so you make arrangements to go to Island #2 the following week. It is not too long until you have added another 50 measurements of these tiny giraffes from this second excursion.</p>
-<p><img src="images/01_bellCurve/giraffe_islands2.jpg" width="800px" style="display: block; margin: auto;" /></p>
+<p><img src="images/02_bellCurve/giraffe_islands2.jpg" width="800px" style="display: block; margin: auto;" /></p>
 </div>
 <div id="visualize-the-data" class="section level1">
 <h1>Visualize the data</h1>
@@ -463,7 +470,7 @@ Explain why distributions of sample data that come from populations with normal 
 
 </div>
 <center>
-<iframe style="margin:0px; padding:0px; display:block; border:0px" src="two_animated_hist.html" width="650" height="450" scrolling="yes" seamless="seamless" frameBorder="0">
+<iframe style="margin:0px; padding:0px; display:block; border:0px" src="images/02_bellCurve/two_animated_hist.html" width="650" height="450" scrolling="yes" seamless="seamless" frameBorder="0">
 </iframe>
 </center>
 <p>As you put the last stone in place, your local guide saunters by and glances at your markings, “What a nice histogram!”</p>
@@ -491,7 +498,7 @@ Explain why distributions of sample data that come from populations with normal 
 <li>There is symmetry about the center line</li>
 </ul></li>
 </ul>
-<p><img src="images/01_bellCurve/normal_hist.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="images/02_bellCurve/normal_hist.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>Taking a look at the stones in the sand, you see two bell-shaped distributions. One for each island. It looks like giraffe heights on each island follow a normal distribution— and that’s a good thing because you remember your stats textbook always talking about how normally distributed data behaves well! Phew!</p>
 Happy with your progress thus far, you are excited to send your histogram results to your PhD mentor back in the homeland. Instead of taking a picture of your stone histogram, you turn to R to create the perfect figure.
 <div style="margin-bottom:50px">
@@ -531,15 +538,12 @@ Happy with your progress thus far, you are excited to send your histogram result
 <p>A note about the <code>+</code>: You can keep adding new specifications on one long continuous line of code, separating each one with a <code>+</code>. However, if you’d like to make the code easier to read by adding each specification to a new line, make sure the <code>+</code> is added to the end of the first line and not the new one.</p>
 <p>It’s a good idea to save any ggplot you make as an object. It’s a helpful practice for when you’ll do more complicated graphing later (e.g. combining plots).</p>
 <p>Run the code below to see what this basic histogram in ggplot looks like:</p>
-<div style="margin-bottom:15px">
-
-</div>
+<p><br />
+</p>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoicCA8LSBnZ3Bsb3QoZGF0YSA9IGQsIGFlcyh4ID0gSGVpZ2h0KSkgKyBcbiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGg9MSlcblxucCJ9
 </div>
-<div style="margin-bottom:50px">
-
-</div>
+<p><br />
 </p>
 </div>
 <div id="customize-your-ggplot" class="section level1">
@@ -555,13 +559,12 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0
 <li>Specify the variable that <code>fill</code> should be set to, as well as the colors for the fill and outline.</li>
 <li>Try out some color specifications on your own, and then check out the solution to see what we picked.</li>
 </ul>
-<div style="margin-bottom:50px">
-
-</div>
+<p><br />
+</p>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiI0ZpbGwgaW4gdGhlIGluY29tcGxldGUgYXJndW1lbnRzIGJlbG93XG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9ICkpICtcbiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGggPSAxLCBjb2xvciA9ICkgK1xuICBzY2FsZV9maWxsX21hbnVhbCh2YWx1ZXMgPSBjKCApKVxuICBcbnAiLCJzb2x1dGlvbiI6InAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKVxuICBcbnAifQ==
 </div>
-<p><img src="images/01_bellCurve/Painter.png" width="600px" style="display: block; margin: auto;" /></p>
+<p><img src="images/02_bellCurve/Painter.png" width="600px" style="display: block; margin: auto;" /></p>
 <p><strong>Playing around with “complete themes”: </strong> ggplot has a nice way of changing many non-data display parameters at once though what is referred to as “complete themes”. Check this <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">page</a> for the available options.</p>
 <ul>
 <li>Have fun testing out a few different complete themes by adding the argument with a <code>+</code> sign.</li>
@@ -573,14 +576,12 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiIyBBZGQgYSBjb21wbGV0ZSB0aGVtZSB0byBleGlzdGluZyBjb2RlXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKVxuXG5wIiwic29sdXRpb24iOiIjIEFkZCBhIGNvbXBsZXRlIHRoZW1lIHRvIGV4aXN0aW5nIGNvZGVcblxucCA8LSBnZ3Bsb3QoZGF0YSA9IGQsIGFlcyh4ID0gSGVpZ2h0LCBmaWxsID0gTG9jYXRpb24pKSArXG4gIGdlb21faGlzdG9ncmFtKGJpbndpZHRoID0gMSwgY29sb3IgPSBcIndoaXRlXCIpICtcbiAgc2NhbGVfZmlsbF9tYW51YWwodmFsdWVzID0gYyhcImdyZWVuM1wiLCBcInR1cnF1b2lzZTNcIikpICsgdGhlbWVfbGlnaHQoKVxuXG5wIn0=
 </div>
-<div style="margin-bottom:50px">
-
-</div>
+<p><br />
+</p>
 <p>After trying different themes, you pick <code>theme_light()</code> and feel pretty good about your ggplot accomplishment. You send your plot to your PhD advisor, and within what feels like only minutes, you have a new attachment in your email inbox:</p>
-<div style="margin-bottom:50px">
-
-</div>
-<p><img src="images/01_bellCurve/advisor_email.png" width="600px" style="display: block; margin: auto;" /></p>
+<p><br />
+</p>
+<p><img src="images/02_bellCurve/advisor_email.png" width="600px" style="display: block; margin: auto;" /></p>
 <p>You’ve got some more changes to make to your plot. Let’s start with something easy:</p>
 <ol style="list-style-type: decimal">
 <li><strong>Remove the space between the bars and the x-axis</strong>: Use the <code>scale_y_continuous()</code> argument, and inside the parentheses specify <code>expand =</code> followed by two numbers within the <code>c( )</code> command. These two numbers represent how much above or below the data’s range you would like to extend the y-axis by.</li>
@@ -591,9 +592,8 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0
 <li>Set axis breaks</li>
 <li>Transformations</li>
 </ul>
-<div style="margin-bottom:25px">
-
-</div>
+<p><br />
+</p>
 <ol start="2" style="list-style-type: decimal">
 <li><p><strong>Change axes labels</strong>: Add <code>labs( )</code> to the existing ggplot layers and specify each axis you’d like to label as arguments, e.g. <code>x =</code>, followed by the string for your label. If you’d like to learn more about manipulations you can do with <code>labs( )</code>, see <a href="https://ggplot2.tidyverse.org/reference/labs.html">this reference</a>.</p></li>
 <li><p>In addition, <code>labs( )</code> can be used to <strong>remove labels</strong>. In this case, we can also include <code>fill = NULL</code> to remove the legend label (recall that the categories for our legend were determined by the <code>fill</code> argument in <code>aes()</code> previously).</p></li>
@@ -609,41 +609,35 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiIyBSZW1vdmUgc3BhY2UgYmV0d2VlbiBiYXJzIGFuZCB4LWF4aXMsIGFuZCBjaGFuZ2UgbGFiZWxzXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKSArIFxuICB0aGVtZV9saWdodCgpICtcbiAgc2NhbGVfeV9jb250aW51b3VzKGV4cGFuZCA9ICkgK1xuICBsYWJzKClcblxucCIsInNvbHV0aW9uIjoiIyBSZW1vdmUgc3BhY2UgYmV0d2VlbiBiYXJzIGFuZCB4LWF4aXMsIGFuZCBjaGFuZ2UgbGFiZWxzXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKSArIFxuICB0aGVtZV9saWdodCgpICtcbiAgc2NhbGVfeV9jb250aW51b3VzKGV4cGFuZCA9IGMoMCwwKSkgK1xuICBsYWJzKHg9IFwiVGVhY3VwIEdpcmFmZmUgaGVpZ2h0c1wiLCB5PSBcIkZyZXF1ZW5jeVwiLCBmaWxsPSBOVUxMKVxuICBcbnAifQ==
 </div>
-<div style="margin-bottom:50px">
-
-</div>
+<p><br />
+</p>
 <ol start="4" style="list-style-type: decimal">
 <li><strong>Remove panel border</strong> and 5.<strong>Remove minor grid lines</strong>: To make detailed changes to the layout, we can add a <code>theme( )</code> argument. Nested within <code>theme( )</code> we can use additional arguments, such as <code>panel.border=</code> and <code>panel.grid.minor=</code>. Many <code>theme( )</code> arguments can be set to <code>element_blank( )</code> to remove the element in question. To read more about what can be modifed with <code>theme( )</code>, check out this <a href="https://ggplot2.tidyverse.org/reference/theme.html">resource</a>.</li>
 </ol>
 <ul>
 <li>In the window below, use what you just learned to remove the panel border and the minor grid lines of the plot.</li>
 </ul>
-<div style="margin-bottom:50px">
-
-</div>
+<p><br />
+</p>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiIyBSZW1vdmUgcGFuZWwgYm9yZGVyIGFuZCBtaW5vciBncmlkIGxpbmVzXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKSArIFxuICB0aGVtZV9saWdodCgpICtcbiAgc2NhbGVfeV9jb250aW51b3VzKGV4cGFuZCA9IGMoMCwwKSkgK1xuICBsYWJzKHg9XCJUZWFjdXAgR2lyYWZmZSBoZWlnaHRzXCIsIHk9XCJGcmVxdWVuY3lcIiwgZmlsbD1OVUxMKSArXG4gIHRoZW1lKClcblxucCIsInNvbHV0aW9uIjoiIyBSZW1vdmUgcGFuZWwgYm9yZGVyIGFuZCBtaW5vciBncmlkIGxpbmVzXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKSArIFxuICB0aGVtZV9saWdodCgpICtcbiAgc2NhbGVfeV9jb250aW51b3VzKGV4cGFuZCA9IGMoMCwwKSkgK1xuICBsYWJzKHg9XCJUZWFjdXAgR2lyYWZmZSBoZWlnaHRzXCIsIHk9XCJGcmVxdWVuY3lcIiwgZmlsbD1OVUxMKSArXG4gIHRoZW1lKHBhbmVsLmJvcmRlcj1lbGVtZW50X2JsYW5rKCksIHBhbmVsLmdyaWQubWlub3I9ZWxlbWVudF9ibGFuaygpKVxuXG5wIn0=
 </div>
-<div style="margin-bottom:50px">
-
-</div>
+<p><br />
+</p>
 <ol start="6" style="list-style-type: decimal">
 <li><strong>Move the Legend</strong>: We will add two more arguments to <code>theme( )</code> to move the legend and make its background transparent. To change its position, use <code>legend.position =</code> followed by the <code>c( )</code> command, in which you will specify the x- and y- positions. These values must be between 0 and 1. Specifying <code>c(0,0)</code>, for example, would place the legend at the bottom left of the plot, while <code>c(1,1)</code> would place it at the top right.</li>
 </ol>
 <p>To change the legend background to be transparent, we essentially remove it. Add the argument <code>legend.background =</code>. Take a look at previous steps to determine how you remove an element.</p>
-<div style="margin-bottom:50px">
-
-</div>
+<p><br />
+</p>
 <div data-datacamp-exercise="" data-height="160" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiIyBNb3ZlIGxlZ2VuZFxuXG5wIDwtIGdncGxvdChkYXRhID0gZCwgYWVzKHggPSBIZWlnaHQsIGZpbGwgPSBMb2NhdGlvbikpICtcbiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGggPSAxLCBjb2xvciA9IFwid2hpdGVcIikgK1xuICBzY2FsZV9maWxsX21hbnVhbCh2YWx1ZXMgPSBjKFwiZ3JlZW4zXCIsIFwidHVycXVvaXNlM1wiKSkgKyBcbiAgdGhlbWVfbGlnaHQoKSArXG4gIHNjYWxlX3lfY29udGludW91cyhleHBhbmQgPSBjKDAsMCkpICtcbiAgbGFicyh4PVwiVGVhY3VwIEdpcmFmZmUgaGVpZ2h0c1wiLCB5PVwiRnJlcXVlbmN5XCIsIGZpbGw9TlVMTCkgK1xuICB0aGVtZShwYW5lbC5ib3JkZXI9ZWxlbWVudF9ibGFuaygpLCBwYW5lbC5ncmlkLm1pbm9yPWVsZW1lbnRfYmxhbmsoKSwgbGVnZW5kLnBvc2l0aW9uID0gLCBsZWdlbmQuYmFja2dyb3VuZCA9ICkgK1xuXG5wIiwic29sdXRpb24iOiIjIE1vdmUgbGVnZW5kXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKSArIFxuICB0aGVtZV9saWdodCgpICtcbiAgc2NhbGVfeV9jb250aW51b3VzKGV4cGFuZCA9IGMoMCwwKSkgK1xuICBsYWJzKHg9XCJUZWFjdXAgR2lyYWZmZSBoZWlnaHRzXCIsIHk9XCJGcmVxdWVuY3lcIiwgZmlsbD1OVUxMKSArXG4gIHRoZW1lKHBhbmVsLmJvcmRlcj1lbGVtZW50X2JsYW5rKCksIHBhbmVsLmdyaWQubWlub3I9ZWxlbWVudF9ibGFuaygpLCBsZWdlbmQucG9zaXRpb24gPSBjKDAuMTY1LDAuOTIpLCBsZWdlbmQuYmFja2dyb3VuZCA9IGVsZW1lbnRfYmxhbmsoKSlcblxucCJ9
 </div>
-<div style="margin-bottom:50px">
-
-</div>
-Hopefully your PhD advisor in the homeland will be satisfied with your new ggplot!
-<div style="margin-bottom:50px">
-
-</div>
+<p><br />
+</p>
+<p>Hopefully your PhD advisor in the homeland will be satisfied with your new ggplot!</p>
+<p><br />
+</p>
 </div>
 <div id="bell-ttta" class="section level1">
 <h1>Things to think about</h1>
@@ -662,13 +656,11 @@ Hopefully your PhD advisor in the homeland will be satisfied with your new ggplo
 </ul>
 <p><strong>Take heed that with inadequate sample sizes, your sample data may barely resemble the population you’re interested in!</strong></p>
 <p>You decided that you had the resources to collect data on 50 giraffes on each of the islands. Will a sample of 50 be good enough to get a sense for the true values of the giraffe populations?</p>
-<div style="margin-bottom:50px">
-
-</div>
-<img src="02_bellCurve_files/figure-html/unnamed-chunk-29-.gif" width="960" style="display: block; margin: auto;" />
-<div style="margin-bottom:50px">
-
-</div>
+<p><br />
+</p>
+<p><img src="02_bellCurve_files/figure-html/unnamed-chunk-29-.gif" width="960" style="display: block; margin: auto;" /></p>
+<p><br />
+</p>
 </div>
 
 <!DOCTYPE html>

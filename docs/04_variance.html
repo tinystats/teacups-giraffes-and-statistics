@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>The Spread of the Data</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<head>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135221736-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-135221736-1');
+	</script>
+</head>
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+
+  <div class="image-descript"> 
+		<img class="big_image" src="images/big_image/giraffe_beach.jpg">
+		<div class="image-text">
+			<div class="lil-image-text">The Spread of the Data:</div>
+			<div class="big-image-text"><strong>VARIANCE & STANDARD DEVIATION</strong></div>
+		</div>
+  </div>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="assets/style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"> </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Modules
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="01_introToR.html">Intro to R</a>
+    </li>
+    <li>
+      <a href="02_bellCurve.html">Intro to the Normal Distribution</a>
+    </li>
+    <li>
+      <a href="03_mean.html">Mean, Median, Mode</a>
+    </li>
+    <li>
+      <a href="04_Variance.html">Spread of the Data</a>
+    </li>
+    <li>
+      <a href="05_correlation.html">Covariance and Correlation</a>
+    </li>
+    <li>
+      <a href="06_standardError.html">Standard Error</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="aboutTheAuthors.html">About the Authors</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">The Spread of the Data</h1>
+
+</div>
+
+
+<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
+<div class="alert alert-info">
+<strong>Module learning objectives:</strong>
+<ol>
+<li>
+Describe the steps for constructing the sum of squares
+</li>
+<li>
+Describe how the standard deviations can allow us to determine which data values are common or rare
+</li>
+<li>
+Write a function for the variance and standard deviation
+</li>
+<li>
+Explain why the sample variance would be downwardly biased if we did not correct it by diving by (n-1)
+</li>
+</ol>
+</div>
+<div id="measures-of-spread" class="section level1">
+<h1>Measures of spread</h1>
+<p>After successfully computing the mean, you return to the memory of the first day you had collected data. There was one teacup giraffe that was your favorite– it was relatively small with purple spots and perky tail! You begin to wonder how rare it would be to encounter a giraffe smaller than this one. To answer this question, you need to be able to calculate a <strong>measure of spread</strong>.</p>
+<center>
+<img src="images/04_variance/holding.png" width="600" />
+</center>
+<p>You might start by quantifying the simplest measure of spread, the <strong>range</strong>. This at least tells us the boundaries within which all the sample heights fall, but the range ignores important contextual information. For example, two data sets can have very different spreads but still have the same range.</p>
+<center>
+<img src="images/04_variance/Range.png" width="600" />
+</center>
+<p>If we want to avoid undue influence of outliers for the measure of spread, the range is not good enough to provide us with a wholistic, robust measure.</p>
+<p>What is a more stable measurment? The answer is the <strong>variance</strong>.</p>
+</div>
+<div id="variance-in-plain-language" class="section level1">
+<h1>Variance in plain language</h1>
+<p>You need a solid understanding of variance in order to grasp the mechanics of any statistical test. But what does the concept variance really capture?</p>
+<ul>
+<li><p>Recall the normal distribution: when we inspect the distributions below visually, we see that they all have the same mean, but some distributions are more spread out. Bell curves that are more “squished together” are composed of observations that are more similar to one another, while bell curves that are more “spread out” are composed of observations that have greater variability. Wider bell-curves mean greater variance! In plain language, the variance gives us an idea of how similar observations are to one another, and to the average value.</p>
+<p><img src="images/04_variance/bells_edited-04.png" /></p></li>
+</ul>
+</div>
+<div id="how-to-calculate-variance" class="section level1">
+<h1>How to calculate variance</h1>
+<p>Let’s begin by going through the steps and equations for calculating the variance of a <em>population</em>. We’ll explain how to modify this for calculating the <em>sample</em> variance later on.</p>
+<p>First, the idea is to capture how far away individual observations lie from the mean. In other words, we could subtract the mean from each observation. This is called the <strong>deviation</strong> from the mean. And since we’re calculating a <em>population</em> variance, we will use <span class="math inline">\(\mu\)</span> for the mean instead of <span class="math inline">\({\bar{x}}\)</span>.</p>
+<p>Calculating the deviations is a great start, but we’re back to the problem of needing to summarize multiple values. Since these newly calculated values are both negative and positive, we quickly realize that adding them up (like the first step when calculating the mean) would not be a productive idea since the negatives cancel the positives.</p>
+<p>What’s the easiest thing to do when you want to retain how far away a point is from the mean irrespective of whether it’s above or below the mean? How about taking the absolute value?</p>
+<p>Though the absolute value of the deviation would be a valid measure of distance from the mean, it turns out that it has some mathematical properties that don’t make it the best choice, especially for more complex statistial analyses involving the variance later down the line.</p>
+</div>
+<div id="why-we-square-the-deviations" class="section level1">
+<h1>Why we square the deviations</h1>
+<p>There is an alternative with simpler, “better behaved” mathematical properties: <strong>squaring the deviations</strong>. Squaring will always give us positive values, so the values can never cancel each other out. It’s worth pointing out, however, that a consequence of squaring deviations will tend to amplify the influence of values at extreme distances from the mean. You can read <a href="https://stats.stackexchange.com/questions/118/why-square-the-difference-instead-of-taking-the-absolute-value-in-standard-devia">this thread</a> for a more detailed discussion about absolute values versus squared deviations.</p>
+</div>
+<div id="sum-of-squares" class="section level1">
+<h1>Sum of squares</h1>
+<p>Now we have positive, squared deviation values that can be summed to a single total. We call this total <strong>the sum of squares</strong>, and the equation is shown below.</p>
+<div style="margin-bottom:50px">
+
+</div>
+<span class="math display" id="eq:equation1">\[\begin{equation}
+ \tag{1}
+ \Large {\sum_{i=1}^N (x_i - \mu)^2}
+ \end{equation}\]</span>
+<div style="margin-bottom:50px">
+
+</div>
+<p>The sum of squares is an important calculation that we will see again for other statistical operations. The animation below illustrates how these sums of squares are “constructed” starting with the sample observations and then squaring each one’s distance away from the mean.</p>
+<p><img src="04_variance_files/figure-html/unnamed-chunk-1-.gif" width="691.2" style="display: block; margin: auto;" /></p>
+<p>Once the squares have been “constructed”, we sum their squares, producing a single value.</p>
+<p><img src="images/04_variance/Squares1.png" /></p>
+</div>
+<div id="variance-sigma2" class="section level1">
+<h1>Variance, <span class="math inline">\(\sigma^2\)</span></h1>
+<p>We need to take into account how many observations contributed to these sum of squares. So, we divide the sum of squares by N. This step essentially takes the average of the squared differences from the mean. This is the variance.</p>
+<div style="margin-bottom:50px">
+
+</div>
+<span class="math display" id="eq:equation2">\[\begin{equation}
+ \tag{2}
+ \Large \sigma^2 = \frac{\sum_{i=1}^N (x_i - \mu)^2}{N}
+ \end{equation}\]</span>
+<div style="margin-bottom:50px">
+
+</div>
+</div>
+<div id="standard-deviation-sigma" class="section level1">
+<h1>Standard Deviation, <span class="math inline">\(\sigma\)</span></h1>
+<p>The problem with variance is that its value is not easily interpretable, the units will be squared and therefore not on the same scale as the mean. It would not be very intuitive to interpret giraffe heights written in <em>millimeters squared</em>! The <strong>standard deviation</strong> fixes that. We “un-square” the variance, and now we return to the data’s original units (millimeters). The standard deviation equation is below:</p>
+<div style="margin-bottom:50px">
+
+</div>
+<span class="math display" id="eq:equation3">\[\begin{equation}
+ \tag{3}
+ \Large \sigma = \sqrt{\frac{\sum_{i=1}^N (x_i - \mu)^2}{N}}
+ \end{equation}\]</span>
+<div style="margin-bottom:50px">
+
+</div>
+</div>
+<div id="population-vs-sample-equations" class="section level1">
+<h1>Population vs sample equations</h1>
+<p>One more thing: the equations above are for calculating the variance and standard deviation of a population. In real life applications, the population equations will almost never be used during data analysis. To calculate the variance and standard deviation for a sample instead, we will need to divide by n-1 instead of N, which we explain at the end of this module. Note that the we also change to the corresponding symbols for the sample mean (<span class="math inline">\(\bar{x}\)</span>), sample size (lowercase <span class="math inline">\(n\)</span>), and use a lowercase <span class="math inline">\(s\)</span> in place of <span class="math inline">\(\sigma\)</span>.</p>
+<p>When we apply this change, our equation for the <strong>sample variance, <span class="math inline">\(s^2\)</span> </strong> is:</p>
+<div style="margin-bottom:50px">
+
+</div>
+<span class="math display" id="eq:equation4">\[\begin{equation}
+ \tag{4}
+ \Large s^2 = \frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n-1}
+ \end{equation}\]</span>
+<div style="margin-bottom:50px">
+
+</div>
+<p>And for <strong>sample standard deviation, <span class="math inline">\(s\)</span></strong>:</p>
+<div style="margin-bottom:50px">
+
+</div>
+<span class="math display" id="eq:equation5">\[\begin{equation}
+ \tag{5}
+ \Large s = \sqrt{\frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n-1}}
+ \end{equation}\]</span>
+<div style="margin-bottom:50px">
+
+</div>
+</div>
+<div id="meaning-of-the-standard-deviation" class="section level1">
+<h1>Meaning of the standard deviation</h1>
+<p>Since we’re now focusing on samples, let’s think about how we can apply the standard deviation in a useful way to normal distributions to predict how “rare” or “common” particular observations in a data set may be. For the normal distribution, almost all of the data will fall within ± 3 standard deviations from the mean. This rule of thumb, called the <strong>empirical rule</strong>, is illustrated below and you can <a href="https://newonlinecourses.science.psu.edu/stat200/lesson/2/2.2/2.2.7">(read more about it here)</a>.
+<a name="empirical">
+<img src="images/04_variance/General_empirical.jpg" />
+</a></p>
+<ul>
+<li><p>The entire normal distribution includes 100% of the data. The empirical rule states that the interval created by <strong>1 standard deviation above and below the mean includes 68% of all the data</strong>. Observations within these bounds would be fairly common, but it would not be exceedingly rare to observe data that fall <em>outside</em> of these bounds.</p>
+<ul>
+<li><p><strong>2 standard deviations above and below the mean</strong> encompasses approximately <strong>95%</strong> of the data. Observations that fall within these bounds include the common and also infrequent observations. Observations that fall <em>outside</em> of 2 standard deviations would be uncommon.</p></li>
+<li><p><strong>3 standard deviations above and below the mean</strong> encompass <strong>99.7%</strong> of the data, capturing almost all possible observations in the set. Observations that fall oustide of these bounds into the extremes of distribution’s tails would be exceedingly rare to observe (but still possible if you sample large enough groups to detect these rare events!).</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="example" class="section level1">
+<h1>Example</h1>
+<p>Let’s calculate the variance and standard deviation using 6 observations of giraffe heights from a subset of our data, including your favorite small one with the purple spots.</p>
+<ol style="list-style-type: decimal">
+<li><strong>Calculate the sample mean</strong>, <span class="math inline">\(\bar{x}\)</span>:</li>
+</ol>
+<pre class="r"><code>h &lt;- c(113, 146.5, 132, 70.5, 121, 55) 
+mean(h)</code></pre>
+<pre><code>## [1] 106.3333</code></pre>
+<p>We’ll plot the mean <span class="math inline">\(\bar{x}\)</span> below with a gray line.</p>
+<p><img src="images/04_variance/giraffe_variance1.jpg" />
+(2) <strong>Find the deviation</strong> from the mean, the difference between each giraffe’s height and <span class="math inline">\(\bar{x}\)</span>.</p>
+<pre class="r"><code>deviation &lt;- h - mean(h)
+deviation</code></pre>
+<pre><code>## [1]   6.666667  40.166667  25.666667 -35.833333  14.666667 -51.333333</code></pre>
+<p><img src="images/04_variance/giraffe_variance2.jpg" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Calculate Variance</strong>: Square the deviations, add them all up to get the sum of squares, and then take the average of the sum of squares (adjusted to “n-1” because we’re using a sample).</li>
+</ol>
+<pre class="r"><code>SS &lt;- sum(deviation^2)
+variance &lt;-  SS/(length(h)-1) # Divides by N-1
+variance</code></pre>
+<pre><code>## [1] 1290.167</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Standard Deviation</strong>: Take the square root of the variance.</li>
+</ol>
+<pre class="r"><code>sqrt(variance)</code></pre>
+<pre><code>## [1] 35.91889</code></pre>
+<p>Because the standard devation is a standardized score– we can now focus on particular giraffes and see whether or not they lie within 1 standard deviation of the mean.</p>
+<p><img src="images/04_variance/giraffe_variance3.jpg" /></p>
+<p>We see the little blue spotted giraffe is more than 1 standard deviation below the mean– and so we can conclude that a little guy of his height is rather short– even smaller than your favorite! Similarly, the giraffe with bright pink spots is taller than 1 standard deviation above the mean– quite tall!</p>
+</div>
+<div id="standard-deviation-application-example" class="section level1">
+<h1>Standard deviation application example</h1>
+<p>Using the standard deviation and the empirical rule described earlier, we now finally have the tools to answer our original question from the start of the module: how probable it is to find a giraffe smaller than our favorite purple-spotted one?</p>
+<ul>
+<li><p>Our giraffe of interest happens to be almost exactly 1 standard deviation below the mean, so this makes it easy to assess the probability of encountering a giraffe shorter than him.</p>
+<ul>
+<li>If we assume our sample comes from a normally distributed population, then <strong>what percentage of giraffes will be shorter than the one with purple spots?</strong></li>
+</ul>
+<p><img src="images/04_variance/Empirical_example.png" /></p></li>
+</ul>
+<p>We can apply the knowledge that the full percentage area under the curve is 100%, and what we know from the empirical rule, to conclude that there is approximately 16% of giraffes will be shorter than the one with purple spots. So, it would be common to find giraffes taller than our favorite but somewhat of a treat to find ones smaller–like the blue one!</p>
+<p>Maybe this explains why the little blue spotted giraffe is so cute— it is not so common to find ones so small!</p>
+</div>
+<div id="code-it-up" class="section level1">
+<h1>Code it up</h1>
+<p>Using <a href="#eq:equation4">(4)</a> and <a href="#eq:equation5">(5)</a>, it’s easy to translate the equations for the variance and standard deviation into code in R.</p>
+<ul>
+<li><p>In the window below, you will write two separate functions, one to calculate the sample variance and another to calculate the sample standard deviation. Name your functions <code>my_variance</code> and <code>my_sd</code>.</p>
+<ul>
+<li>Test your functions on the vector <code>heights_island1</code> and compare the output of your “handwritten” functions with the base R function of <code>var( )</code> and <code>sd( )</code>.</li>
+</ul></li>
+</ul>
+<div data-datacamp-exercise="" data-height="400" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoibXlfdmFyaWFuY2UgPC0gZnVuY3Rpb24oeCl7XG4gXG4gIFxuICBcbiAgXG5cbn1cblxubXlfdmFyaWFuY2UoaGVpZ2h0c19pc2xhbmQxKSAjIFVzZSB5b3VyIGZ1bmN0aW9uIG9uIHRoZSBoZWlnaHRzX2lzbGFuZDEgdmVjdG9yXG52YXIoICkgIyBDb21wYXJlIHRoZSBvdXRwdXQgd2l0aCB0aGUgYmFzZSBSIGZ1bmN0aW9uXG5cblxubXlfc2QgPC0gZnVuY3Rpb24oeCl7XG4gXG4gIFxuICBcbiAgXG4gIFxuICBcbn1cblxubXlfc2QoaGVpZ2h0c19pc2xhbmQxKSAjIFVzZSB5b3VyIGZ1bmN0aW9uIG9uIHRoZSBoZWlnaHRzX2lzbGFuZDEgdmVjdG9yXG5zZCggKSAjIENvbXBhcmUgdGhlIG91dHB1dCB3aXRoIHRoZSBiYXNlIFIgZnVuY3Rpb24iLCJzb2x1dGlvbiI6Im15X3ZhcmlhbmNlIDwtIGZ1bmN0aW9uKHgpe1xuICBtIDwtIG1lYW4oeClcbiAgZGV2aWF0aW9uIDwtIHggLSBtXG4gIHN1bV9vZl9zcXVhcmVzIDwtIHN1bShkZXZpYXRpb25eMilcbiAgdmFyaWFuY2UgPC0gIHN1bV9vZl9zcXVhcmVzIC8gKGxlbmd0aCh4KS0xKSAjIERpdmlkZXMgYnkgTi0xXG4gIHJldHVybih2YXJpYW5jZSlcbn1cblxubXlfdmFyaWFuY2UoaGVpZ2h0c19pc2xhbmQxKVxudmFyKGhlaWdodHNfaXNsYW5kMSlcblxuXG5teV9zZCA8LSBmdW5jdGlvbih4KXtcbiAgIG0gPC0gbWVhbih4KVxuICBkZXZpYXRpb24gPC0geCAtIG1cbiAgc3VtX29mX3NxdWFyZXMgPC0gc3VtKGRldmlhdGlvbl4yKVxuICB2YXJpYW5jZSA8LSAgc3VtX29mX3NxdWFyZXMgLyAobGVuZ3RoKHgpLTEpICMgRGl2aWRlcyBieSBOLTFcbiAgc3RhbmRhcmRfZGV2aWF0aW9uIDwtIHNxcnQodmFyaWFuY2UpXG4gIHJldHVybihzdGFuZGFyZF9kZXZpYXRpb24pXG59XG5cbm15X3NkKGhlaWdodHNfaXNsYW5kMSlcbnNkKGhlaWdodHNfaXNsYW5kMSkifQ==
+</div>
+<div style="margin-top:50px">
+
+</div>
+<center>
+<img src="images/04_variance/Marmalade.png" width="650" />
+</center>
+</div>
+<div id="population-vs-sample-n-vs-n-1" class="section level1">
+<h1>Population vs Sample (<span class="math inline">\(N\)</span> vs <span class="math inline">\(n-1\)</span>)</h1>
+<p>We have to correct the calculated variance by dividing by <span class="math inline">\(n-1\)</span>. Let’s explain why:</p>
+<ul>
+<li><p>Let’s recall that when we calculate the sum of squares, we only have the sample mean <span class="math inline">\(\bar{x}\)</span> to go off of as our center point.</p>
+<center>
+<img src="images/04_variance/Static_ssq.png" width="500" />
+</center>
+<ul>
+<li>We must first acknowledge that while the population <span class="math inline">\(\mu\)</span> is unknowable, the chance that the sample <span class="math inline">\(\bar{x}\)</span> and the population <span class="math inline">\(\mu\)</span> are the same is unlikely.
+<ul>
+<li>It’s also worth pointing out that the risk that <span class="math inline">\(\bar{x}\)</span> and <span class="math inline">\(\mu\)</span> are not even values close to each other is much increased when <span class="math inline">\(\bar{x}\)</span> has been calculated from a small sample.</li>
+</ul></li>
+<li>Recognizing that the true population mean value is probably some <em>other</em> value than <span class="math inline">\(\bar{x}\)</span>, let’s recalculate the sum of squares. This time we will use an imaginary true population <span class="math inline">\(\mu\)</span> as our center point, which in the animation below will be represented with a line at an arbitrary distance away from <span class="math inline">\(\bar{x}\)</span>.</li>
+</ul></li>
+</ul>
+<p><img src="04_variance_files/figure-html/unnamed-chunk-11-.gif" width="483.84" style="display: block; margin: auto;" /></p>
+<ul>
+<li>When we compare the sum of squares in both of these scenarios: 1) using <span class="math inline">\(\bar{x}\)</span> or 2) using our imaginary <span class="math inline">\(\mu\)</span>, we see that the sum of squares from <span class="math inline">\(\mu\)</span> will <em>always</em> be greater than the <span class="math inline">\(\bar{x}\)</span> sum of squares. This is true because by definition of being the sample mean, the line at <span class="math inline">\(\bar{x}\)</span> will always be the “center” of the values in our sample. Its location already minimizes the total distance of all the observations to the center. A line at any other location (i.e. <span class="math inline">\(\mu\)</span>) would be a line that is not mimimizing the distance for observations in our sample.</li>
+</ul>
+<center>
+<img src="images/04_variance/Squares2.png" width="750" />
+</center>
+<ul>
+<li><p>Therefore, when we calculate the sum of squraes (and consequently, the variance and the standard deviation) using the sample mean <span class="math inline">\(\bar{x}\)</span>, we are most likely arriving at a value that is downwardly biased compared to what the true variance or standard deviation would be if we were able to know and use the population mean <span class="math inline">\(\mu\)</span>.</p>
+<ul>
+<li>This is why we need to adjust our sample variance by diving by <span class="math inline">\(n-1\)</span> instead of just <span class="math inline">\(N\)</span>. By diving by a smaller value (i.e. <span class="math inline">\(n-1\)</span> instead of N), we ensure that the overall value of the variance and standard deviation will be a little larger, correcting for the downward bias we just described.</li>
+</ul></li>
+</ul>
+</div>
+<div id="things-to-think-about" class="section level1">
+<h1>Things to think about</h1>
+<p><strong>How badly might the sample variance be downwardly biased?</strong>: Well, it depends on how far away <span class="math inline">\(\bar{x}\)</span> is from the true <span class="math inline">\(\mu\)</span>. The further away it is, the worse the downward bias will be!</p>
+<ul>
+<li><p>Of course, we want to avoid having a very downwardly biased variance. What controls how far away <span class="math inline">\(\bar{x}\)</span> is from <span class="math inline">\(\mu\)</span>? The sample size! As pointed out previously, the larger the sample, the greater the likelihood that your sample mean will resemble the population mean.</p>
+<ul>
+<li>Press Play on the animation below. The plot shows the relationship between bias in the variance, the sample size, and the distance between <span class="math inline">\(\bar{x}\)</span> and <span class="math inline">\(\mu\)</span>. Each dot represents one out of a thousand random samples all from the same population. The vertical dotted line represents <span class="math inline">\(\mu\)</span>, and the horizontal dotted line represents the true population variance (animation inspired by Khan Academy <a href="https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/more-standard-deviation/v/simulation-showing-bias-in-sample-variance">video</a>.)</li>
+</ul></li>
+</ul>
+<center>
+<iframe style="margin: 0px;" src="images/04_variance/mega_dots.html" width="720" height="500" scrolling="yes" seamless="seamless" frameBorder="0">
+</iframe>
+</center>
+<ul>
+<li><p>When the samples whose means <span class="math inline">\(\bar{x}\)</span> are far off from the true population mean, they tend to have downwardly biased variance.</p>
+<ul>
+<li>Take a look at the points that are furthest away from the true population mean– the samples represented by these points primarily came from small sample sizes (dark blue dots).</li>
+</ul></li>
+</ul>
+</div>
+<div id="how-the-correction-works" class="section level1">
+<h1>How the correction works</h1>
+<p>The plot below shows the percentage of the true population variance that an uncorrected sample variance achieves on average. These data were generated by sampling from the same population as the animation above. This time the data have been grouped into bars by how many observations each random sample had. (Animation inspired by Khan Academy <a href="https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/more-standard-deviation/v/simulation-showing-bias-in-sample-variance">video</a>)</p>
+<center>
+<iframe style="margin: 0px;" src="images/04_variance/static_bar.html" width="670" height="400" scrolling="yes" seamless="seamless" frameBorder="0">
+</iframe>
+</center>
+<ul>
+<li><p>Notice that the variances from smaller samples do the worst job of approaching 100% of the true variance. In fact, without correction the sample variance is downwardly biased by a factor of <span class="math inline">\(n/(n-1)\)</span>.</p>
+<ul>
+<li>You can hover over the bars above to see what the average percentage of the true variance actually is for the different samples sizes. If we multiply this percentage by the correction, we fix the discrepancy between sample and population variance. We demonstrate this below for samples of size n = 3.</li>
+</ul></li>
+</ul>
+<pre class="r"><code>n = 3
+correction = n/(n-1)
+
+hover_value = 67.22902 # % value when hovering over bar for n = 3
+
+# Apply correction
+percent_of_true_variance &lt;- hover_value * correction
+
+percent_of_true_variance </code></pre>
+<pre><code>## [1] 100.8435</code></pre>
+<p>As we can see, the correction works by adjusting the downwardly biased sample variance to close to 100% of the true variance.</p>
+<p>Try hovering over a few other bars and see yourself that correction works indepdent of the sample size. You can you the window below as a calculator to change the N and the hover values and then run the code.</p>
+<div data-datacamp-exercise="" data-height="400" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIE1vZGVsIHlvdXIgY29kZSBvZmYgb2YgdGhlIGV4YW1wbGUgZm9yIG4gPSAzICJ9
+</div>
+</div>
+
+<!DOCTYPE html>
+
+<div class="foot">
+	<hr> 
+	<p style="text-align: center;"> <span style="color: #808080; display: inline-block; width: 33%;"> 	This project was created entirely in RStudio using R Markdown with features making use of DataCamp Light windows and published on GitHub pages. 
+ </span></p>
+	<p style="text-align: center;">
+	</p>
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

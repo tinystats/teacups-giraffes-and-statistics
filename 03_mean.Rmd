@@ -3,7 +3,7 @@ title: "Mean, Median, and Mode"
 output:
   bookdown::html_document2:
     includes:
-      in_header: assets/mean_image.html
+      in_header: assets/03_mean_image.html
       after_body: assets/foot.html
 ---
 
@@ -394,6 +394,7 @@ Pressing 'Play' on the plot below will illustrate this concept.
 ```{r, tut=FALSE, echo=FALSE, message= FALSE, cache=TRUE}
 library(emdbook)
 library(plotly)
+library(here)
 
 m <- list(
   l = 50,
@@ -443,11 +444,11 @@ config(displayModeBar = F) %>%
     x = 1, xanchor = "right", y = 0, yanchor = "bottom"
   )
 
-htmltools::save_html(p,"Law_of_large_numbers.html")
+htmltools::save_html(p, here("images/03_mean/Law_of_large_numbers.html"))
 
 ```
 </a>
-<center><iframe style="margin: 0px;" src="Law_of_large_numbers.html" width="570" height="400" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
+<center><iframe style="margin: 0px;" src="images/03_mean/Law_of_large_numbers.html" width="570" height="400" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
 
  <script type="text/x-mathjax-config">
     MathJax.Ajax.config.path["img"] = "https://cdn.rawgit.com/pkra/mathjax-img/1.0.0/";

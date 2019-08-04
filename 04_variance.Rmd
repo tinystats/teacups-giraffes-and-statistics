@@ -444,6 +444,8 @@ lapply(1:15, function(x) pp3())
 ```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, cache=TRUE}
 library(ggplot2)
 library(plotly)
+library(here)
+
 set.seed(12)
 d <- rnorm(50, 10, 2)
 d1 <- rnorm(50, 18, 1.2)
@@ -527,7 +529,7 @@ p <- pd %>%
       yaxis = list(range=c(-2,38), zeroline=FALSE, title="Biased variance"), 
       shapes = list(hline(v),vline(mm)))%>%
   animation_slider(currentvalue = list(prefix = "Number of Samples: ", font = list(color="grey70", size=14)))
-  htmltools::save_html(p,"images/04_variance/mega_dots.html")
+  htmltools::save_html(p,here("images/04_variance/mega_dots.html"))
 ```  
 
 <center><iframe style="margin: 0px;" src="images/04_variance/mega_dots.html" width="720" height="500" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>
@@ -542,6 +544,8 @@ The plot below shows the percentage of the true population variance that an unco
 ```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, cache=TRUE}
 library(ggplot2)
 library(plotly)
+library(here)
+
 data <- do.call(rbind, lapply(1:20000, function(x) gen_data()))
 mm <- aggregate(b_var~N, data=data, function(y) (mean(y)/var(d))*100)
 
@@ -563,7 +567,7 @@ p2 <- mm %>%
     yaxis = list(range=c(0,90), zeroline=FALSE, title="Biased Sample variance / Pop. variance (%)"), 
     xaxis = list(title="Sample Size"))%>%
   hide_colorbar()
-  htmltools::save_html(p2,"images/04_variance/static_bar.html")
+  htmltools::save_html(p2, here("images/04_variance/static_bar.html"))
 ```
 
 <center><iframe style="margin: 0px;" src="images/04_variance/static_bar.html" width="670" height="400" scrolling="yes" seamless="seamless" frameBorder="0"> </iframe></center>

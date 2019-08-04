@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Mean, Median, and Mode</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<head>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135221736-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-135221736-1');
+	</script>
+</head>
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+
+  <div class="image-descript"> 
+		<img class="big_image" src="images/big_image/cave.jpg">
+		<div class="image-text">
+			<div class="lil-image-text">Measures of centrality:</div>
+			<div class="big-image-text"><strong>MEAN, MEDIAN, & MODE</strong></div>
+		</div>
+  </div>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="assets/style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"> </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Modules
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="01_introToR.html">Intro to R</a>
+    </li>
+    <li>
+      <a href="02_bellCurve.html">Intro to the Normal Distribution</a>
+    </li>
+    <li>
+      <a href="03_mean.html">Mean, Median, Mode</a>
+    </li>
+    <li>
+      <a href="04_Variance.html">Spread of the Data</a>
+    </li>
+    <li>
+      <a href="05_correlation.html">Covariance and Correlation</a>
+    </li>
+    <li>
+      <a href="06_standardError.html">Standard Error</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="aboutTheAuthors.html">About the Authors</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Mean, Median, and Mode</h1>
+
+</div>
+
+
+<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
+<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
+<div class="alert alert-info">
+<strong>Module learning objectives:</strong>
+<ol>
+<li>
+Describe 3 measures of centrality
+</li>
+<li>
+Explain the mathematical notation used for calculating the mean
+</li>
+<li>
+Write a function which calculates the mean for any vector
+</li>
+<li>
+Write a function which calculates the median for any vector
+<li>
+Describe how the reliability of a sample mean will scale with increasing sample size
+</li>
+</ol>
+</div>
+<div id="what-are-measures-of-centrality" class="section level1">
+<h1>What are measures of centrality?</h1>
+<p><br />
+</p>
+<p><img src="images/03_mean/mean_hist.png" width="500px" style="display: block; margin: auto;" /></p>
+<p><br />
+</p>
+<p>You’ve just collected a lot data and graphed heights. Although informative, a graphical display of these data is difficult to summarize– we need to describe these heights with a single number that will be meaningful and allow us to do statistics.</p>
+<p>We can do this with a <strong>measure of centrality</strong>, the concept that one number in the “center” of the data set is a good summary of all the values. Below are examples of different measures of centrality.</p>
+<ul>
+<li><p>The <strong>mean</strong> is the average and the measure of centrality that you are probably most familiar with. This is a good measure to use when the data are normally distributed. We describe it in detail below.</p></li>
+<li><p>The <strong>median</strong> is the value in the middle of the data set. Half of the observations lie above the median and half below. When the data are normally distributed, the median and the mean will be very close to each other. When your data are not normally distributed (skewed to the left of right) the median is a more appropriate measure of centrality (see the animation below).</p></li>
+</ul>
+<p><br />
+</p>
+<center>
+<img src="images/03_mean/median.gif" />
+</center>
+<p><br />
+</p>
+<ul>
+<li>The <strong>mode</strong> is the value (height, in our case) that occurs most frequently in the data set. It’s not typically used in statistics, and we won’t cover it further here.</li>
+</ul>
+<p><br />
+</p>
+</div>
+<div id="taking-the-mean" class="section level1">
+<h1>Taking the mean</h1>
+<p>The mean of a variable is the sum of its values, divided by the number of values.</p>
+<p>This concept can be represented with equation below. In our case, each “x” represents a giraffe height (i.e. a single observation), and the numerical subscript indicates its order in the sample. We’ll use <span class="math inline">\({\bar{x}}\)</span> (read “x-bar”) to represent the mean of the height variable.</p>
+<div style="margin-bottom:50px">
+
+</div>
+<span class="math display" id="eq:equation1">\[\begin{equation}
+ \tag{1}
+ \Large{\bar{x}} = \frac{x_1 + x_2 + ... + x_n}{n}
+ \end{equation}\]</span>
+<div style="margin-bottom:50px">
+
+</div>
+<p>To make this more efficient, instead of writing “<span class="math inline">\({x_1 + x_2 + ... + x_n}\)</span>”, we can use the uppercase sigma symbol <span class="math inline">\(\sum{}\)</span> to represent summation of all the observations.</p>
+<p><br />
+</p>
+<p><span class="math display" id="eq:equation2">\[\begin{equation}
+ \tag{2}
+ \Large{\bar{x}} = \frac{\sum_{i=1}^{n}{x_i}}{n}
+ \end{equation}\]</span></p>
+<p><br />
+</p>
+<p>This might look intimidating, but equation <a href="#eq:equation2">(2)</a> is really showing the same thing as <a href="#eq:equation1">(1)</a>. Let’s go through the steps again, breaking the symbols apart a bit (see annotated equation <a href="#eq:equation3">(3)</a> below). The sigma means ‘add up’. What are we adding up? All the heights “x”. The “i = ” part indicates which term to begin with. For our purposes, this will always be the first observation, hence i = 1. The character on top of the sigma is the last observation we include in our summation. In this case it’s n –because we’re adding all n = 50 observations in each group of giraffes. In both equations, we still divide by the total number of observations in each group we have: again, n.</p>
+<p><br />
+</p>
+<center>
+<span class="math display" id="eq:equation3">\[\begin{equation}
+ \tag{3}
+\vcenter{\img[width=400px]{images/03_mean/eq_annotated.png}}
+ \end{equation}\]</span>
+</center>
+</div>
+<div id="notation-for-sample-vs-population" class="section level1">
+<h1>Notation for sample vs population</h1>
+<p>Recall our discussion about a <a href="02_bellCurve.html#bell-ttta">sample verus a population</a>. Different symbols are used to represent the mean for each of these. We’ve already discussed <span class="math inline">\(\bar{x}\)</span> for the sample mean. The analogous symbol for the population mean is <span class="math inline">\({\mu}\)</span> (read “mu”). Additionally, when referring to the size of the population, we will use a capital <span class="math inline">\({N}\)</span> instead of a lowercase one.</p>
+<p><br />
+</p>
+</div>
+<div id="code-it-up" class="section level1">
+<h1>Code it up</h1>
+Using <a href="#eq:equation2">(2)</a>, it’s easy to translate this equation into code in R. The heights recorded from island 1 have been stored in a vector called <code>heights_island1</code>. Below we show the first few observations from this vector, using the <code>head()</code> function.
+<div style="margin-bottom:15px">
+
+</div>
+<pre class="r"><code>head(heights_island1)</code></pre>
+<pre><code>## [1]  7.038865 13.154339  8.086511  8.159990  6.004716  9.455408</code></pre>
+<p><br />
+</p>
+<p>Use the interactive window below to calculate the mean “by hand”.</p>
+<p><br />
+</p>
+<div data-datacamp-exercise="" data-height="160" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBTdW0gdXAgYWxsIG9ic2VydmF0aW9ucyBzdG9yZWQgaW4gaGVpZ2h0cywgdXNpbmcgdGhlIHN1bSggKSBmdW5jdGlvbiwgYW5kIHNhdmUgaXQgYXMgYSBuZXcgb2JqZWN0IGNhbGxlZCBcImhlaWdodHNfaXNsYW5kMV9zdW1cIlxuXG5cbiMgRGl2aWRlIGhlaWdodHNfaXNsYW5kMV9zdW0gYnkgdGhlIG51bWJlciBvZiBvYnNlcnZhdGlvbnMuIFVzZSB0aGUgbGVuZ3RoKCApIGZ1bmN0aW9uIGZvciBuLiBTdG9yZSB5b3VyIGFuc3dlciBhcyBcImhlaWdodHNfaXNsYW5kMV9tZWFuXCJcblxuXG4jIFByaW50IG91dCBcImhlaWdodHNfaXNsYW5kMV9tZWFuXCIgYW5kIGNvbXBhcmUgeW91ciBhbnN3ZXIgdG8gdGhlIFIgZnVuY3Rpb24gXCJtZWFuKGhlaWdodHNfaXNsYW5kMSlcIiIsInNvbHV0aW9uIjoiIyBTdW0gdXAgYWxsIG9ic2VydmF0aW9ucyBzdG9yZWQgaW4gXCJoZWlnaHRzX2lzbGFuZDFcIiwgdXNpbmcgdGhlIHN1bSgpIGZ1bmN0aW9uLCBhbmQgc2F2ZSBpdCBhcyBhIG5ldyBvYmplY3QgY2FsbGVkIFwiaGVpZ2h0c19pc2xhbmQxX3N1bVwiXG5oZWlnaHRzX2lzbGFuZDFfc3VtIDwtIHN1bShoZWlnaHRzX2lzbGFuZDEpXG5cbiMgRGl2aWRlIGhlaWdodHNfaXNsYW5kMV9zdW0gYnkgdGhlIG51bWJlciBvZiBvYnNlcnZhdGlvbnMuIFVzZSB0aGUgbGVuZ3RoKCkgZnVuY3Rpb24gZm9yIG4uIFN0b3JlIHlvdXIgYW5zd2VyIGFzIFwiaGVpZ2h0czFfbWVhblwiXG5oZWlnaHRzX2lzbGFuZDFfbWVhbiA8LSBoZWlnaHRzX2lzbGFuZDFfc3VtL2xlbmd0aChoZWlnaHRzX2lzbGFuZDEpXG5cbiMgUHJpbnQgb3V0IFwiaGVpZ2h0c19pc2xhbmQxX21lYW5cIiBhbmQgY29tcGFyZSB5b3VyIGFuc3dlciB0byB0aGUgUiBmdW5jdGlvbiBcIm1lYW4oaGVpZ2h0c19pc2xhbmQxKVwiXG5oZWlnaHRzX2lzbGFuZDFfbWVhblxubWVhbihoZWlnaHRzX2lzbGFuZDEpIiwic2N0IjoidGVzdF9vYmplY3QoXCJoZWlnaHRzX2lzbGFuZDFfc3VtXCIpXG50ZXN0X29iamVjdChcImhlaWdodHNfaXNsYW5kMV9tZWFuXCIpXG5cbnRlc3Rfb3V0cHV0X2NvbnRhaW5zKFwiaGVpZ2h0c19pc2xhbmQxX21lYW5cIiwgaW5jb3JyZWN0X21zZyA9IFwiRGlkIHlvdSBwcmludCAnaGVpZ2h0c19pc2xhbmQxX21lYW4nP1wiKVxudGVzdF9mdW5jdGlvbihcIm1lYW5cIiwgaW5jb3JyZWN0X21zZz0gXCJEaWQgeW91IHJ1biAnbWVhbihoZWlnaHRzX2lzbGFuZDEpJz9cIilcbnN1Y2Nlc3NfbXNnKFwiR3JlYXQhXCIpIn0=
+</div>
+<p><br />
+</p>
+</div>
+<div id="create-your-own-function" class="section level1">
+<h1>Create your own function</h1>
+<p>Now it’s your turn to write your own function. Call it “my_mean” and have it calculate the mean of any given vector. You’re going to use the rules for writing a function in R that you’ve used previously. As a reminder, you’ll use <code>function( )</code> and embed your code (that you completed in the window above) within curly brackets<code>{ }</code>. The advantage of making a “homemade” function is that you can string together all the steps from the previous exercise into a single command.</p>
+<p><br />
+</p>
+<div data-datacamp-exercise="" data-height="160" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBDb21wbGV0ZSB0aGUgY29kZSBiZWxvdyB0byBjcmVhdGUgeW91ciBvd24gZnVuY3Rpb24gdGhhdCB3aWxsIGNhbGN1bGF0ZSB0aGUgbWVhbiBvZiBhbnkgdmVjdG9yXG5cbm15X21lYW4gPC0gZnVuY3Rpb24odmVjdG9yKXtcbiBcbiAgXG59XG5cbiMgVmVyaWZ5IHRoYXQgeW91ciBmdW5jdGlvbiBjb3JyZWN0bHkgY2FsY3VsYXRlcyB0aGUgbWVhblxubXlfbWVhbihoZWlnaHRzX2lzbGFuZDEpXG5tZWFuKGhlaWdodHNfaXNsYW5kMSkgIiwic29sdXRpb24iOiIjIENvbXBsZXRlIHRoZSBjb2RlIGJlbG93IHRvIGNyZWF0ZSB5b3VyIG93biBmdW5jdGlvbiB0aGF0IHdpbGwgY2FsY3VsYXRlIHRoZSBtZWFuIG9mIGFueSB2ZWN0b3JcblxubXlfbWVhbiA8LSBmdW5jdGlvbih2ZWN0b3Ipe1xuICBhIDwtIHN1bSh2ZWN0b3IpXG4gIGIgPC0gYS9sZW5ndGgodmVjdG9yKVxuICByZXR1cm4oYilcbn1cblxuIyBWZXJpZnkgdGhhdCB5b3VyIGZ1bmN0aW9uIGNvcnJlY3RseSBjYWxjdWxhdGVzIHRoZSBtZWFuLlxubXlfbWVhbihoZWlnaHRzX2lzbGFuZDEpXG5tZWFuKGhlaWdodHNfaXNsYW5kMSkgIiwic2N0IjoidGVzdF9mdW5jdGlvbl9yZXN1bHQobmFtZT0gXCJteV9tZWFuXCIsIG5vdF9jYWxsZWRfbXNnPVwiRGlkIHlvdSBydW4gbXlfbWVhbigpP1wiLCBlcnJvcl9tc2c9XCJUaGVyZSdzIGFuIGVycm9yIGluIHlvdXIgZnVuY3Rpb24uXCIsIGluY29ycmVjdF9tc2c9XCJZb3VyIGZ1bmN0aW9uIHJ1bnMsIGJ1dCBpdCBpcyBjYWxjdWxhdGluZyB0aGUgd3JvbmcgdmFsdWUuXCIpXG5zdWNjZXNzX21zZyhcIkdyZWF0IVwiKSJ9
+</div>
+<p><br />
+</p>
+<p>You can also complete the exercise above in RStudio on your local computer. This way you will be able to save your <code>my_mean( )</code> function and script for future use.</p>
+<p><br />
+</p>
+</div>
+<div id="take-a-tea-break" class="section level1">
+<h1>Take a tea break!</h1>
+<p><img src="images/03_mean/Teacup.png" width="600px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="taking-the-median" class="section level1">
+<h1>Taking the median</h1>
+<p>To calculate the median go through the following steps:</p>
+<ul>
+<li>Assess whether there is an odd or even number of observations</li>
+<li>Order all observations from smallest to largest</li>
+<li>If an odd number, then the median is the middle value at position: (n + 1) / 2</li>
+<li>If an even number, then:
+<ul>
+<li>Find the value at the position: n / 2</li>
+<li>Find the value at the position: (n / 2) + 1</li>
+<li>The median will be the mean of the values at these two positions.</li>
+</ul></li>
+</ul>
+<p>Before you write your own median function, two concepts need to be introduced: 1) the modulus operator <code>%%</code> and 2) <code>if...else</code> statements.</p>
+The <strong>modulus operation</strong> gives the remainder after division of one number by another. For example, in R <code>11 %% 5</code> returns the <code>1</code>, which is the remainer of <code>11</code> divided by <code>5</code>. If the modulus operation returns <code>0</code>, then there is no remainder. It is useful to apply the modulus operation <code>x %% 2</code> to determine whether a number <code>x</code> is even or odd by testing if the result is exactly equal to 0. See example code below.
+<div style="margin-bottom:15px">
+<style>
+  .col2 {
+    columns: 2 200px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 200px; /* chrome, safari */
+    -moz-columns: 2 200px;    /* firefox */
+  }
+</style>
+</div>
+<div class="col2">
+<pre class="r"><code>&gt; 10 %% 2</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>&gt; 10 %% 2 == 0</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>&gt; 11 %% 2</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>&gt; 11 %% 2 == 0</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+</div>
+<p><br />
+</p>
+<p>An <code>if...else</code> statement is useful when you want to specify distinct outcomes for objects dependent on whether they meet your set criteria. See below.</p>
+<p><br />
+</p>
+<div data-datacamp-exercise="" data-height="160" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBQcmludCBhIGRpZmZlcmVudCByZXN1bHQgZGVwZW5kZW50IG9uIHdoZXRoZXIgYSBudW1iZXIgaXMgZXZlbiBvciBvZGRcblxuaWYobGVuZ3RoKGhlaWdodHNfaXNsYW5kMSkgJSUgMiA9PSAwKSB7XG4gIHByaW50KFwiRVZFTiFcIilcbn0gZWxzZSB7XG4gICAgcHJpbnQoXCJPREQhXCIpXG59XG5cblxuaWYoKGxlbmd0aChoZWlnaHRzX2lzbGFuZDEpLTEpICUlIDIgPT0gMCkge1xuICBwcmludChcIkVWRU4hXCIpXG59IGVsc2Uge1xuICAgIHByaW50KFwiT0REIVwiKVxufSJ9
+</div>
+<p><br />
+</p>
+<p>Now that you have a sense for how the <code>%%</code> operator can be used to test whether a number is EVEN or ODD, and how <code>if...else</code> statements work, use both of these concepts in the window below to write your own function that calculates the median of any vector.</p>
+<p><br />
+</p>
+<div data-datacamp-exercise="" data-height="210" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBDb21wbGV0ZSB0aGUgY29kZSBiZWxvdyB0byBjcmVhdGUgeW91ciBvd24gZnVuY3Rpb24gdGhhdCB3aWxsIGNhbGN1bGF0ZSB0aGUgbWVkaWFuIG9mIGFueSB2ZWN0b3JcblxubXlfbWVkaWFuIDwtIGZ1bmN0aW9uKHZlY3Rvcil7XG4gIGlmKCApe1xuICAgXG4gIH1lbHNleyBcbiAgIFxuICB9XG59XG5cbiMgVmVyaWZ5IHRoYXQgeW91ciBmdW5jdGlvbiBjb3JyZWN0bHkgY2FsY3VsYXRlcyB0aGUgbWVkaWFuLlxubXlfbWVkaWFuKGhlaWdodHNfaXNsYW5kMSlcbm1lZGlhbihoZWlnaHRzX2lzbGFuZDEpICIsInNvbHV0aW9uIjoiIyBDb21wbGV0ZSB0aGUgY29kZSBiZWxvdyB0byBjcmVhdGUgeW91ciBvd24gZnVuY3Rpb24gdGhhdCB3aWxsIGNhbGN1bGF0ZSB0aGUgbWVkaWFuIG9mIGFueSB2ZWN0b3JcblxubXlfbWVkaWFuIDwtIGZ1bmN0aW9uKHZlY3Rvcil7XG4gIG9yZGVyZWRfaGVpZ2h0cyA8LSBzb3J0KHZlY3RvciwgZGVjcmVhc2luZyA9IEZBTFNFKVxuICBpZihsZW5ndGgob3JkZXJlZF9oZWlnaHRzKSAlJSAyID09IDApe1xuICAgcG9zaXRpb24xIDwtIGxlbmd0aChvcmRlcmVkX2hlaWdodHMpIC8gMlxuICAgcG9zaXRpb24yIDwtIHBvc2l0aW9uMSArIDFcbiAgIHRlbXBfdmFsdWVzIDwtIG9yZGVyZWRfaGVpZ2h0c1tjKHBvc2l0aW9uMSwgcG9zaXRpb24yKV1cbiAgIG1lZGlhbiA8LSBtZWFuKHRlbXBfdmFsdWVzKVxuICB9ZWxzZXsgXG4gICBwb3NpdGlvbiA8LSAobGVuZ3RoKG9yZGVyZWRfaGVpZ2h0cykgKyAxKSAvIDJcbiAgIG1lZGlhbiA8LSBvcmRlcmVkX2hlaWdodHNbcG9zaXRpb25dXG4gIH1cbiAgcmV0dXJuKG1lZGlhbilcbn1cblxuIyBWZXJpZnkgdGhhdCB5b3VyIGZ1bmN0aW9uIGNvcnJlY3RseSBjYWxjdWxhdGVzIHRoZSBtZWRpYW4uXG5teV9tZWRpYW4oaGVpZ2h0c19pc2xhbmQxKVxubWVkaWFuKGhlaWdodHNfaXNsYW5kMSkgIiwic2N0IjoidGVzdF9mdW5jdGlvbl9yZXN1bHQobmFtZT0gXCJteV9tZWRpYW5cIiwgbm90X2NhbGxlZF9tc2c9XCJEaWQgeW91IHJ1biBteV9tZWFuKCk/XCIsIGVycm9yX21zZz1cIlRoZXJlJ3MgYW4gZXJyb3IgaW4geW91ciBmdW5jdGlvbi5cIiwgaW5jb3JyZWN0X21zZz1cIllvdXIgZnVuY3Rpb24gcnVucywgYnV0IGl0IGlzIGNhbGN1bGF0aW5nIHRoZSB3cm9uZyB2YWx1ZS5cIilcbnN1Y2Nlc3NfbXNnKFwiR3JlYXQhXCIpIn0=
+</div>
+<p><br />
+</p>
+</div>
+<div id="things-to-think-about" class="section level1">
+<h1>Things to think about</h1>
+<p>Remember that the sample mean is an estimate of the entire population’s mean (which would often be impossibly large to measure). How reliably does the mean of a sample represent the population mean? <em>Warning</em>: if a small sample has been used, the sample mean may not be a reliable at all! Estimates from small samples are subject to the whims of randomness. On the other hand, the larger the sample, the closer the sample size appraches the population size, and the more reliable the sample estimate becomes.</p>
+<p>Pressing ‘Play’ on the plot below will illustrate this concept.
+<a name="mean_animation"></p>
+</a>
+<center>
+<iframe style="margin: 0px;" src="images/03_mean/Law_of_large_numbers.html" width="570" height="400" scrolling="yes" seamless="seamless" frameBorder="0">
+</iframe>
+</center>
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path["img"] = "https://cdn.rawgit.com/pkra/mathjax-img/1.0.0/";
+    MathJax.Hub.Config({
+    extensions: ["tex2jax.js","[img]/img.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]},
+    });
+ </script>
+<ul>
+<li>The animation above shows the values of means calculated from increasingly larger samples: small samples on the left and larger samples to the right (on the x-axis).</li>
+<li>Each point on the zig-zag line is the mean calculated from a random sample. The true mean of the population is 0.</li>
+<li>The y-axis shows what the mean is for a sample of that particular size. Though the y-values vary here, remember that if the sample were a good estimate of the population, the y-values should be very close to 0.<br />
+</li>
+<li>You can see that when the samples are small the sample mean isn’t necessarily a good representation of the population that it was sampled from–and that is not a good thing.</li>
+</ul>
+<p>For further reading see the <a href="https://en.wikipedia.org/wiki/Law_of_large_numbers">Law of Large Numbers</a>.</p>
+</div>
+
+<!DOCTYPE html>
+
+<div class="foot">
+	<hr> 
+	<p style="text-align: center;"> <span style="color: #808080; display: inline-block; width: 33%;"> 	This project was created entirely in RStudio using R Markdown with features making use of DataCamp Light windows and published on GitHub pages. 
+ </span></p>
+	<p style="text-align: center;">
+	</p>
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

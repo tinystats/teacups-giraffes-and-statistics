@@ -18,7 +18,7 @@ navbar:
       - text: "Covariance and Correlation"
         href: 05_correlation.html
       - text: "Standard Error"
-        href: 06_intro_to_inference.html
+        href: 06_standardError.html
   - text: "About the Authors"
     href: aboutTheAuthors.html
 output: 
