@@ -3,14 +3,14 @@ title: "t-test"
 output:
   bookdown::html_document2:
     includes:
-      in_header: assets/07_ttest_bigimage.html
+      in_header: assets/07_tTest_image.html
       after_body: assets/foot.html
 ---
 
 <div class="alert alert-info">
   **Module learning objectives:**
   <ol> 
-  <li> Describe 3 measures of centrality   </li>
+  <li> Describe 3 measures of centrality </li>
   <li> Explain the mathematical notation used for calculating the mean</li>
   <li> Write a function which calculates the mean for any vector </li>
   <li> Write a function which calculates the median for any vector
@@ -20,7 +20,7 @@ output:
 
 # The Two Islands
 
-You'd like to make an [inference](06_intro_to_inference.html) to formally investigate whether you have any reason to believe that the mean of heights on Island 1 differs from the mean of the heights on Island 2. 
+You'd like to make an [inference](06_standardError.html) to formally investigate whether you have any reason to believe that the mean of heights on Island 1 differs from the mean of the heights on Island 2. 
 
 The means of the heights of both islands are shown below:
 
