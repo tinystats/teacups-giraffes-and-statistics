@@ -7,8 +7,6 @@ output:
       after_body: assets/foot.html
 ---
 
-<!-- <link href="style.css" rel="stylesheet" /> -->
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, fig.align="center")
 library(here)
@@ -549,7 +547,7 @@ Hopefully your PhD advisor in the homeland will be satisfied with your new ggplo
  <div style="margin-bottom:50px"></div>
 
 
-# Things to think about
+# Things to think about {#bell-ttta}
 
 Since we could not take the height of every giraffe on each of the two islands, and it is unclear how many giraffes live on the islands, we had to rely on taking the heights of randomly selected groups of giraffes. 
 
