@@ -1,6 +1,8 @@
 # Teacups, Giraffes, & Statistics
 
-An open resource which uses R Markdown to create a series of modules for learning R basics and statistics. Created by:
+An open resource which uses R Markdown to create a series of modules for learning R basics and statistics. Built with R Markdown in RStudio. This project is ongoing, and more modules are in development.
+
+Created by:
 
 * [Hasse Walum](https://github.com/haswal), Emory University, USA
 * [Desirée De Leon](https://github.com/dcossyleon), Emory University, USA
