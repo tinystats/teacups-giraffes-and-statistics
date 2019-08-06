@@ -14,7 +14,7 @@ navbar:
       - text: "Mean, Median, Mode"
         href: 03_mean.html
       - text: "Spread of the Data"
-        href: 04_Variance.html
+        href: 04_variance.html
       - text: "Covariance and Correlation"
         href: 05_correlation.html
       - text: "Standard Error"
