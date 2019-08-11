@@ -71,109 +71,21 @@ Also, we will add lines to our plot, representing the mean of each variable. Her
 
 Construct a scatter plot of the data using the window below: 
 
-```{r, include=FALSE}
-tutorial::go_interactive(height = 400)
-```
+<!---LEARNR EX 1-->
 
-```{r ex= "scatter", type="pre-exercise-code"}
-set.seed(12)
-library(ggplot2)
+<iframe class="interactive" id="myIframe1" src="https://tinystats.shinyapps.io/05-correlation-ex1/" scrolling="no" frameborder="no"></iframe>
 
-x1 <- rnorm(50, 10, 2)
-
-x2 <- scale(matrix(rnorm(50), ncol=1))
-x12 <- cbind(scale(x1),x2)
-
-c1 <- var(x12)
-chol1 <- solve(chol(c1))
-newx <-  x12 %*% chol1
-
-newc <- matrix(c(1,-0.52, -0.52, 1), ncol=2)
-chol2 <- chol(newc)
-finalx <- newx %*% chol2 * sd(x1) + mean(x1)
-
-finalx[,2] <- (2*finalx[,2]-5)
-
-giraffe_data <- finalx
-colnames(giraffe_data) <- c("Heights", "Celery_Eaten")
-
-giraffe_data <- as.data.frame(giraffe_data)
-
-```
-
-```{r ex="scatter", type="sample-code"}
-
-# Create a scatterplot using the instructions above
-
-
-```
-
-```{r ex="scatter", type="solution"}
-
-p <-  ggplot(data= giraffe_data, aes(x= Heights, y=Celery_Eaten)) +
-  geom_point() + 
-  geom_vline(xintercept = mean(giraffe_data$Heights)) + 
-  geom_hline(yintercept = mean(giraffe_data$Celery_Eaten))
-
-p
-
-```
-
-```{r ex="scatter", type="sct"}
-
-```
-
+<!------------->
 
 Great, now you have a scatter plot! But recalling the email from your advisor the last time you plotted data, you decide you'd like to customize the look of the plot the same way you did when you created the ggplot histogram. 
 
 Play around with some aesthetics in the window below, and then run the solution to see what we chose. 
 
-```{r, include=FALSE}
-tutorial::go_interactive(height = 400)
-```
+<!---LEARNR EX 2-->
+<iframe class = "interactive" id="myIframe2" src="https://tinystats.shinyapps.io/05-correlation-ex2/
+" scrolling="no" frameborder="no"></iframe>
+<!------------->
 
-```{r ex= "customize", type="pre-exercise-code"}
-library(ggplot2)
-set.seed(12)
-x1 <- rnorm(50, 10, 2)
-
-x2 <- scale(matrix(rnorm(50), ncol=1))
-x12 <- cbind(scale(x1),x2)
-
-c1 <- var(x12)
-chol1 <- solve(chol(c1))
-newx <-  x12 %*% chol1
-
-newc <- matrix(c(1,-0.52, -0.52, 1), ncol=2)
-chol2 <- chol(newc)
-finalx <- newx %*% chol2 * sd(x1) + mean(x1)
-
-finalx[,2] <- (2*finalx[,2]-5)
-
-giraffe_data <- finalx
-colnames(giraffe_data) <- c("Heights", "Celery_Eaten")
-
-giraffe_data <- as.data.frame(giraffe_data)
-
-
-```
-
-```{r ex="customize", type="sample-code"}
-# Customize your ggplot
- 
-```
-
-```{r ex="customize", type="solution"}
-p <-  ggplot(data= giraffe_data, aes(x= Heights, y=Celery_Eaten)) +
-  geom_point(size = 3) + geom_vline(xintercept = mean(giraffe_data$Heights), col="grey50", linetype="dashed", size = 2) + geom_hline(yintercept = mean(giraffe_data$Celery_Eaten), col= "grey81", linetype="dashed", size= 2)
-
-p <- p + theme_light() + theme(panel.border = element_blank(), panel.grid.minor=element_blank())
-
-p
-```
-```{r ex="customize", type="sct"}
-
-```
 
 Looking at the scatter plot, there seems to be a relationship between height and celery eaten, but you will need to quantify this more formally to be sure.
 
@@ -292,8 +204,8 @@ p3
 }
 lapply(1:15, function(x) pp3())
 ```
-<div style="margin-bottom:50px">
-</div>
+
+\
  
 (3) **Sum the crossproducts.** The sum of the crossproduct gives us a single number.
 <div style="margin-bottom:50px">
@@ -329,7 +241,7 @@ The equation for the covariance (abbreviated "cov") of the variables x and y is 
 
 
 # Problem of interpretation
-However, the covariance is not an intuitive value. Remember that we have been working with terms that are on the "squared"" scale, which is not only difficult to interpret (just like the variance is) but it is also the product of two variables on possibly different scales. How could we interpret a covariance with units of millimeters*grams mean?
+However, the covariance is not an intuitive value. Remember that we have been working with terms that are on the "squared" scale, which is not only difficult to interpret (just like the variance is) but it is also the product of two variables on possibly different scales. How could we interpret a covariance with units of millimeters*grams mean?
 
 Another point to make is that value of the covariance will be vastly different if we had decided to change the units (millimeters vs centimeters, or grams vs kilograms). 
 
@@ -353,7 +265,7 @@ Here is the equation for the **population correlation**:
 
 <div style="margin-bottom:50px">
 </div>
-This equation is used for the **Sample correlation**:
+This equation is used for the **sample correlation**:
 \begin{equation}
  (\#eq:equation5)
  \Large r(x,y) = \frac{ \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{s_x s_y}
@@ -367,7 +279,15 @@ We can interpret the correlation as a measure of **the strength and direction** 
   * The correlation will always be between -1 and 1. At these extreme the values, the two variables have the strongest relationship possible, in which each data point will fall exactly on a line. When the absolute value of the correlation coefficient approaches 0, the observations will be more "scattered". 
   * The sign of the correlation coefficient indicates the direction of the linear relationship.  When $r$= 0 there is no relationship between the variables. Look at the figure below to see what observations of different $r$ values look like. 
 
-<center>![](images/05_correlation/diff_corr.png){width=90%}</center>
+<center>![](images/05_correlation/diff_corr.png){width=90%}</center>  
+
+**Your turn**
+
+Imagine you're given a plot like the one below. What would you say it's correlation value is? Try out your guess for a few plots, and if you need a hint to help you visualize, click *Show trend line*.  
+
+
+<!--------SHINY1------>
+<iframe class="interactive" src="https://haswal.shinyapps.io/Guess_corr/?showcase=0" scrolling="no" frameborder="no"></iframe>
 
 # Code it up
 
@@ -378,108 +298,17 @@ We can interpret the correlation as a measure of **the strength and direction** 
 
 Remember, you will need to write both functions so that they will take two parameters, one for each variable. The parameters for `my_covariance( )` have been setup for you.
 
-```{r, include=FALSE}
+<!--LEARNR EX 3--->
 
-tutorial::go_interactive(height = 400)
-```
+<iframe class = "interactive" id="myIframe3" src="https://tinystats.shinyapps.io/05-correlation-ex3/" scrolling="no" frameborder="no"></iframe>
 
-```{r ex= "correlation", type="pre-exercise-code"}
-set.seed(12)
-x1 <- rnorm(50, 10, 2)
+<!----------->
 
-x2 <- scale(matrix(rnorm(50), ncol=1))
-x12 <- cbind(scale(x1),x2)
+\
 
-c1 <- var(x12)
-chol1 <- solve(chol(c1))
-newx <-  x12 %*% chol1
+Wow, you can see that there is a negative relationship between giraffe heights and how much celery teacup giraffes eat. Could this be due to celery being a negative calorie vegetable? Are these giraffes onto something?
 
-newc <- matrix(c(1,-0.52, -0.52, 1), ncol=2)
-chol2 <- chol(newc)
-finalx <- newx %*% chol2 * sd(x1) + mean(x1)
-
-finalx[,2] <- (2*finalx[,2]-5)
-
-giraffe_data <- finalx
-colnames(giraffe_data) <- c("Heights", "Celery_Eaten")
-
-giraffe_data <- as.data.frame(giraffe_data)
-points <- giraffe_data[c(12, 50, 14, 43, 32),]
-```
-
-```{r ex="correlation", type="sample-code"}
-
-my_covariance <- function(x,y){
-
-  return( )
-}
-
-my_correlation <- function(x,y){
-
- return( )
-}
-
-
-# Use your function my_covariance( ) to compute the covariance between Heights and Celery_Eaten
-
-
-# Compare the output with the base R function cov( )
-
-
-# Use your function my_correlation( ) to compute the correlation between Heights and Celery_Eaten
-
-
-# Compare the output with the base R function cor( )
-
-
-```
-
-```{r ex="correlation", type="solution"}
-my_covariance <- function(x,y){
-  m_x <- mean(x)
-  m_y <- mean(y)
-
-  deviation_x <- x - m_x
-  deviation_y <- y - m_y
-  
-  crossproduct <- deviation_x * deviation_y
-
-  covariance <-  sum(crossproduct) / (length(x)-1) # Divides by N-1
-  return(covariance)
-}
-
-my_correlation <- function(x,y){
- correlation <- my_covariance(x,y) / (sd(x)*sd(y))
- return(correlation)
-}
-
-
-# Use your function my_covariance( ) to compute the covariance between Heights and Celery_Eaten
- my_covariance(giraffe_data$Heights, giraffe_data$Celery_Eaten)
-
-# Compare the output
- cov(giraffe_data$Heights, giraffe_data$Celery_Eaten)
-
-
-# Use your function my_correlation( ) to compute the correlation between Heights and Celery_Eaten
- my_correlation(giraffe_data$Heights, giraffe_data$Celery_Eaten)
-
-# Compare the output
- cor(giraffe_data$Heights, giraffe_data$Celery_Eaten)
-
-
-
-
-```
-
-
-
-<div style="margin-bottom:50px">
-</div>
-
-Wow, you can see that there is a negative relaionship between giraffe heights and how much celery teacup giraffes eat. Could this be due to celery being a negative calorie vegetable? Are these giraffes onto something?
-
-<center>![](images/05_correlation/Celery.png){width=50%}</center>
+<center>![](images/05_correlation/Celery.png){width=30%}</center>
 
 # The Standardizer
 You can take a look at the animation below to see a conceptual summary of how correlation will standarize the covariance, translating it into an easily interpretable metric that will always be bound by -1 and 1. 
@@ -603,8 +432,8 @@ As you look at the plot above, you may have the following questions:
 <center>![](images/05_correlation/corr_curve.png){width=40%}</center>
   
 
+**Correlation is not causation**: Just because there is a linear relationship between two variables does not mean we have evidence that one variable causes the other. Even if there really was a cause-and-effect relationship, with correlation we cannot say which variable is the cause and which is the effect. It's also possible that there exists some other unmeasured variable affecting the linear relationship we observe. And of course, any apparent relationship may be due to nothing more than random chance.  
 
-**Correlation is not causation**: Just because there is a linear relationship between two variables does not mean we have evidence that one variable causes the other. Even if there really was a cause-and-effect relationship, with correlation we cannot say which variable is the cause and which is the effect. It's also possible that there exists some other unmeasured variable affecting the linear relationship we observe. And of course, any apparent relationship may be due to nothing more than random chance.
-
-
-
+<script>
+  iFrameResize({}, ".interactive");
+</script>

@@ -39,20 +39,30 @@
 
 	  gtag('config', 'UA-135221736-1');
 	</script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.16/iframeResizer.min.js"></script>
 </head>
 
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i,800,800i" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
-<link href="style.css" rel="stylesheet">
 
-  <div class="image-descript"> 
+  <!---div class="image-descript"> 
 		<img class="big_image" src="images/big_image/Log.jpg">
 		<div class="image-text">
 			<div class="lil-image-text">A Tale of Two Variables:</div>
 			<div class="big-image-text"><strong>COVARIANCE & CORRELATION</strong></div>
 		</div>
+  </div-->
+  
+  
+<div class= "hero-container"> 
+   <div class="hero-image"> 
+		<div class="hero-image-text">
+		  <div class="hero-image-text-little">A tale of two variables:</div>
+			<div class="hero-image-text-big">Covariance & correlation</div>
+		</div>
   </div>
+</div>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -425,9 +435,6 @@ div.tocify {
 </div>
 
 
-<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
-<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
-<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <div class="alert alert-info">
 <strong>Module learning objectives:</strong>
 <ol>
@@ -478,14 +485,17 @@ Describe the purpose of dividing by the product of the standard deviations when 
 <li><strong>Add a vertical line</strong> by following the same structure as above but using <code>geom_vline( )</code> and <code>xintercept =</code> instead. This vertical line will represent the mean (<span class="math inline">\({\bar{x}}\)</span>) of the heights.</li>
 </ol>
 <p>Construct a scatter plot of the data using the window below:</p>
-<div data-datacamp-exercise="" data-height="400" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxubGlicmFyeShnZ3Bsb3QyKVxuXG54MSA8LSBybm9ybSg1MCwgMTAsIDIpXG5cbngyIDwtIHNjYWxlKG1hdHJpeChybm9ybSg1MCksIG5jb2w9MSkpXG54MTIgPC0gY2JpbmQoc2NhbGUoeDEpLHgyKVxuXG5jMSA8LSB2YXIoeDEyKVxuY2hvbDEgPC0gc29sdmUoY2hvbChjMSkpXG5uZXd4IDwtICB4MTIgJSolIGNob2wxXG5cbm5ld2MgPC0gbWF0cml4KGMoMSwtMC41MiwgLTAuNTIsIDEpLCBuY29sPTIpXG5jaG9sMiA8LSBjaG9sKG5ld2MpXG5maW5hbHggPC0gbmV3eCAlKiUgY2hvbDIgKiBzZCh4MSkgKyBtZWFuKHgxKVxuXG5maW5hbHhbLDJdIDwtICgyKmZpbmFseFssMl0tNSlcblxuZ2lyYWZmZV9kYXRhIDwtIGZpbmFseFxuY29sbmFtZXMoZ2lyYWZmZV9kYXRhKSA8LSBjKFwiSGVpZ2h0c1wiLCBcIkNlbGVyeV9FYXRlblwiKVxuXG5naXJhZmZlX2RhdGEgPC0gYXMuZGF0YS5mcmFtZShnaXJhZmZlX2RhdGEpIiwic2FtcGxlIjoiIyBDcmVhdGUgYSBzY2F0dGVycGxvdCB1c2luZyB0aGUgaW5zdHJ1Y3Rpb25zIGFib3ZlIiwic29sdXRpb24iOiJwIDwtICBnZ3Bsb3QoZGF0YT0gZ2lyYWZmZV9kYXRhLCBhZXMoeD0gSGVpZ2h0cywgeT1DZWxlcnlfRWF0ZW4pKSArXG4gIGdlb21fcG9pbnQoKSArIFxuICBnZW9tX3ZsaW5lKHhpbnRlcmNlcHQgPSBtZWFuKGdpcmFmZmVfZGF0YSRIZWlnaHRzKSkgKyBcbiAgZ2VvbV9obGluZSh5aW50ZXJjZXB0ID0gbWVhbihnaXJhZmZlX2RhdGEkQ2VsZXJ5X0VhdGVuKSlcblxucCJ9
-</div>
+<!---LEARNR EX 1-->
+<iframe class="interactive" id="myIframe1" src="https://tinystats.shinyapps.io/05-correlation-ex1/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 <p>Great, now you have a scatter plot! But recalling the email from your advisor the last time you plotted data, you decide you’d like to customize the look of the plot the same way you did when you created the ggplot histogram.</p>
 <p>Play around with some aesthetics in the window below, and then run the solution to see what we chose.</p>
-<div data-datacamp-exercise="" data-height="400" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90MilcbnNldC5zZWVkKDEyKVxueDEgPC0gcm5vcm0oNTAsIDEwLCAyKVxuXG54MiA8LSBzY2FsZShtYXRyaXgocm5vcm0oNTApLCBuY29sPTEpKVxueDEyIDwtIGNiaW5kKHNjYWxlKHgxKSx4MilcblxuYzEgPC0gdmFyKHgxMilcbmNob2wxIDwtIHNvbHZlKGNob2woYzEpKVxubmV3eCA8LSAgeDEyICUqJSBjaG9sMVxuXG5uZXdjIDwtIG1hdHJpeChjKDEsLTAuNTIsIC0wLjUyLCAxKSwgbmNvbD0yKVxuY2hvbDIgPC0gY2hvbChuZXdjKVxuZmluYWx4IDwtIG5ld3ggJSolIGNob2wyICogc2QoeDEpICsgbWVhbih4MSlcblxuZmluYWx4WywyXSA8LSAoMipmaW5hbHhbLDJdLTUpXG5cbmdpcmFmZmVfZGF0YSA8LSBmaW5hbHhcbmNvbG5hbWVzKGdpcmFmZmVfZGF0YSkgPC0gYyhcIkhlaWdodHNcIiwgXCJDZWxlcnlfRWF0ZW5cIilcblxuZ2lyYWZmZV9kYXRhIDwtIGFzLmRhdGEuZnJhbWUoZ2lyYWZmZV9kYXRhKSIsInNhbXBsZSI6IiMgQ3VzdG9taXplIHlvdXIgZ2dwbG90Iiwic29sdXRpb24iOiJwIDwtICBnZ3Bsb3QoZGF0YT0gZ2lyYWZmZV9kYXRhLCBhZXMoeD0gSGVpZ2h0cywgeT1DZWxlcnlfRWF0ZW4pKSArXG4gIGdlb21fcG9pbnQoc2l6ZSA9IDMpICsgZ2VvbV92bGluZSh4aW50ZXJjZXB0ID0gbWVhbihnaXJhZmZlX2RhdGEkSGVpZ2h0cyksIGNvbD1cImdyZXk1MFwiLCBsaW5ldHlwZT1cImRhc2hlZFwiLCBzaXplID0gMikgKyBnZW9tX2hsaW5lKHlpbnRlcmNlcHQgPSBtZWFuKGdpcmFmZmVfZGF0YSRDZWxlcnlfRWF0ZW4pLCBjb2w9IFwiZ3JleTgxXCIsIGxpbmV0eXBlPVwiZGFzaGVkXCIsIHNpemU9IDIpXG5cbnAgPC0gcCArIHRoZW1lX2xpZ2h0KCkgKyB0aGVtZShwYW5lbC5ib3JkZXIgPSBlbGVtZW50X2JsYW5rKCksIHBhbmVsLmdyaWQubWlub3I9ZWxlbWVudF9ibGFuaygpKVxuXG5wIn0=
-</div>
+<!---LEARNR EX 2-->
+<iframe class="interactive" id="myIframe2" src="https://tinystats.shinyapps.io/05-correlation-ex2/
+" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 <p>Looking at the scatter plot, there seems to be a relationship between height and celery eaten, but you will need to quantify this more formally to be sure.</p>
 </div>
 <div id="relationship-between-two-variables" class="section level1">
@@ -531,10 +541,9 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90MilcbnNldC5z
 <img src="images/05_correlation/points1.png" style="width:60.0%" />
 </center>
 <p>The animation below shows the “construction” of the crossproducts from the 5 observations we have been following:</p>
-<img src="05_correlation_files/figure-html/unnamed-chunk-13-.gif" width="691.2" style="display: block; margin: auto;" />
-<div style="margin-bottom:50px">
-
-</div>
+<p><img src="05_correlation_files/figure-html/unnamed-chunk-3-.gif" width="691.2" style="display: block; margin: auto;" /></p>
+<p><br />
+</p>
 <ol start="3" style="list-style-type: decimal">
 <li><strong>Sum the crossproducts.</strong> The sum of the crossproduct gives us a single number.
 <div style="margin-bottom:50px">
@@ -578,7 +587,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90MilcbnNldC5z
 </div>
 <div id="problem-of-interpretation" class="section level1">
 <h1>Problem of interpretation</h1>
-<p>However, the covariance is not an intuitive value. Remember that we have been working with terms that are on the “squared”&quot; scale, which is not only difficult to interpret (just like the variance is) but it is also the product of two variables on possibly different scales. How could we interpret a covariance with units of millimeters*grams mean?</p>
+<p>However, the covariance is not an intuitive value. Remember that we have been working with terms that are on the “squared” scale, which is not only difficult to interpret (just like the variance is) but it is also the product of two variables on possibly different scales. How could we interpret a covariance with units of millimeters*grams mean?</p>
 <p>Another point to make is that value of the covariance will be vastly different if we had decided to change the units (millimeters vs centimeters, or grams vs kilograms).</p>
 <p>As a result, the covariance is not an easy metric to work with or to compare with other covariances. So we need to standardize it!</p>
 </div>
@@ -599,7 +608,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90MilcbnNldC5z
 <div style="margin-bottom:50px">
 
 </div>
-This equation is used for the <strong>Sample correlation</strong>:
+This equation is used for the <strong>sample correlation</strong>:
 <span class="math display" id="eq:equation5">\[\begin{equation}
  \tag{5}
  \Large r(x,y) = \frac{ \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{s_x s_y}
@@ -618,6 +627,11 @@ This equation is used for the <strong>Sample correlation</strong>:
 <center>
 <img src="images/05_correlation/diff_corr.png" style="width:90.0%" />
 </center>
+<p><strong>Your turn</strong></p>
+<p>Imagine you’re given a plot like the one below. What would you say it’s correlation value is? Try out your guess for a few plots, and if you need a hint to help you visualize, click <em>Show trend line</em>.</p>
+<!--------SHINY1------>
+<iframe class="interactive" src="https://haswal.shinyapps.io/Guess_corr/?showcase=0" scrolling="no" frameborder="no">
+</iframe>
 </div>
 <div id="code-it-up" class="section level1">
 <h1>Code it up</h1>
@@ -628,15 +642,15 @@ This equation is used for the <strong>Sample correlation</strong>:
 <li>Finally, compare your functions’ outputs with the base R functions for covariance, <code>cov( )</code> and <code>cor( )</code>.</li>
 </ul>
 <p>Remember, you will need to write both functions so that they will take two parameters, one for each variable. The parameters for <code>my_covariance( )</code> have been setup for you.</p>
-<div data-datacamp-exercise="" data-height="400" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxueDEgPC0gcm5vcm0oNTAsIDEwLCAyKVxuXG54MiA8LSBzY2FsZShtYXRyaXgocm5vcm0oNTApLCBuY29sPTEpKVxueDEyIDwtIGNiaW5kKHNjYWxlKHgxKSx4MilcblxuYzEgPC0gdmFyKHgxMilcbmNob2wxIDwtIHNvbHZlKGNob2woYzEpKVxubmV3eCA8LSAgeDEyICUqJSBjaG9sMVxuXG5uZXdjIDwtIG1hdHJpeChjKDEsLTAuNTIsIC0wLjUyLCAxKSwgbmNvbD0yKVxuY2hvbDIgPC0gY2hvbChuZXdjKVxuZmluYWx4IDwtIG5ld3ggJSolIGNob2wyICogc2QoeDEpICsgbWVhbih4MSlcblxuZmluYWx4WywyXSA8LSAoMipmaW5hbHhbLDJdLTUpXG5cbmdpcmFmZmVfZGF0YSA8LSBmaW5hbHhcbmNvbG5hbWVzKGdpcmFmZmVfZGF0YSkgPC0gYyhcIkhlaWdodHNcIiwgXCJDZWxlcnlfRWF0ZW5cIilcblxuZ2lyYWZmZV9kYXRhIDwtIGFzLmRhdGEuZnJhbWUoZ2lyYWZmZV9kYXRhKVxucG9pbnRzIDwtIGdpcmFmZmVfZGF0YVtjKDEyLCA1MCwgMTQsIDQzLCAzMiksXSIsInNhbXBsZSI6Im15X2NvdmFyaWFuY2UgPC0gZnVuY3Rpb24oeCx5KXtcblxuICByZXR1cm4oIClcbn1cblxubXlfY29ycmVsYXRpb24gPC0gZnVuY3Rpb24oeCx5KXtcblxuIHJldHVybiggKVxufVxuXG5cbiMgVXNlIHlvdXIgZnVuY3Rpb24gbXlfY292YXJpYW5jZSggKSB0byBjb21wdXRlIHRoZSBjb3ZhcmlhbmNlIGJldHdlZW4gSGVpZ2h0cyBhbmQgQ2VsZXJ5X0VhdGVuXG5cblxuIyBDb21wYXJlIHRoZSBvdXRwdXQgd2l0aCB0aGUgYmFzZSBSIGZ1bmN0aW9uIGNvdiggKVxuXG5cbiMgVXNlIHlvdXIgZnVuY3Rpb24gbXlfY29ycmVsYXRpb24oICkgdG8gY29tcHV0ZSB0aGUgY29ycmVsYXRpb24gYmV0d2VlbiBIZWlnaHRzIGFuZCBDZWxlcnlfRWF0ZW5cblxuXG4jIENvbXBhcmUgdGhlIG91dHB1dCB3aXRoIHRoZSBiYXNlIFIgZnVuY3Rpb24gY29yKCApIiwic29sdXRpb24iOiJteV9jb3ZhcmlhbmNlIDwtIGZ1bmN0aW9uKHgseSl7XG4gIG1feCA8LSBtZWFuKHgpXG4gIG1feSA8LSBtZWFuKHkpXG5cbiAgZGV2aWF0aW9uX3ggPC0geCAtIG1feFxuICBkZXZpYXRpb25feSA8LSB5IC0gbV95XG4gIFxuICBjcm9zc3Byb2R1Y3QgPC0gZGV2aWF0aW9uX3ggKiBkZXZpYXRpb25feVxuXG4gIGNvdmFyaWFuY2UgPC0gIHN1bShjcm9zc3Byb2R1Y3QpIC8gKGxlbmd0aCh4KS0xKSAjIERpdmlkZXMgYnkgTi0xXG4gIHJldHVybihjb3ZhcmlhbmNlKVxufVxuXG5teV9jb3JyZWxhdGlvbiA8LSBmdW5jdGlvbih4LHkpe1xuIGNvcnJlbGF0aW9uIDwtIG15X2NvdmFyaWFuY2UoeCx5KSAvIChzZCh4KSpzZCh5KSlcbiByZXR1cm4oY29ycmVsYXRpb24pXG59XG5cblxuIyBVc2UgeW91ciBmdW5jdGlvbiBteV9jb3ZhcmlhbmNlKCApIHRvIGNvbXB1dGUgdGhlIGNvdmFyaWFuY2UgYmV0d2VlbiBIZWlnaHRzIGFuZCBDZWxlcnlfRWF0ZW5cbiBteV9jb3ZhcmlhbmNlKGdpcmFmZmVfZGF0YSRIZWlnaHRzLCBnaXJhZmZlX2RhdGEkQ2VsZXJ5X0VhdGVuKVxuXG4jIENvbXBhcmUgdGhlIG91dHB1dFxuIGNvdihnaXJhZmZlX2RhdGEkSGVpZ2h0cywgZ2lyYWZmZV9kYXRhJENlbGVyeV9FYXRlbilcblxuXG4jIFVzZSB5b3VyIGZ1bmN0aW9uIG15X2NvcnJlbGF0aW9uKCApIHRvIGNvbXB1dGUgdGhlIGNvcnJlbGF0aW9uIGJldHdlZW4gSGVpZ2h0cyBhbmQgQ2VsZXJ5X0VhdGVuXG4gbXlfY29ycmVsYXRpb24oZ2lyYWZmZV9kYXRhJEhlaWdodHMsIGdpcmFmZmVfZGF0YSRDZWxlcnlfRWF0ZW4pXG5cbiMgQ29tcGFyZSB0aGUgb3V0cHV0XG4gY29yKGdpcmFmZmVfZGF0YSRIZWlnaHRzLCBnaXJhZmZlX2RhdGEkQ2VsZXJ5X0VhdGVuKSJ9
-</div>
-<div style="margin-bottom:50px">
-
-</div>
-<p>Wow, you can see that there is a negative relaionship between giraffe heights and how much celery teacup giraffes eat. Could this be due to celery being a negative calorie vegetable? Are these giraffes onto something?</p>
+<!--LEARNR EX 3--->
+<iframe class="interactive" id="myIframe3" src="https://tinystats.shinyapps.io/05-correlation-ex3/" scrolling="no" frameborder="no">
+</iframe>
+<!----------->
+<p><br />
+</p>
+<p>Wow, you can see that there is a negative relationship between giraffe heights and how much celery teacup giraffes eat. Could this be due to celery being a negative calorie vegetable? Are these giraffes onto something?</p>
 <center>
-<img src="images/05_correlation/Celery.png" style="width:50.0%" />
+<img src="images/05_correlation/Celery.png" style="width:30.0%" />
 </center>
 </div>
 <div id="the-standardizer" class="section level1">
@@ -695,6 +709,9 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxueDEgPC0gcm5v
 <img src="images/05_correlation/corr_curve.png" style="width:40.0%" />
 </center>
 <p><strong>Correlation is not causation</strong>: Just because there is a linear relationship between two variables does not mean we have evidence that one variable causes the other. Even if there really was a cause-and-effect relationship, with correlation we cannot say which variable is the cause and which is the effect. It’s also possible that there exists some other unmeasured variable affecting the linear relationship we observe. And of course, any apparent relationship may be due to nothing more than random chance.</p>
+<script>
+  iFrameResize({}, ".interactive");
+</script>
 </div>
 
 <!DOCTYPE html>
