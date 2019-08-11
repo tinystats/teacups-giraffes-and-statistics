@@ -36,3 +36,4 @@ This repository holds the source materials for this project. To view the online 
 12. Simulation & Power
 13. Winner's Curse
 14. Multiple Comparisons & Questionable Research Practices
+# apps
