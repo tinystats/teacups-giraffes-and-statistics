@@ -249,6 +249,7 @@ body, html {
     right:0;
     bottom:0;
   }
+  
 .lil-image-text { 
     color: white;
     margin-top: 0px;
@@ -273,6 +274,7 @@ body, html {
  .image-descript {
   display: none;
  }*/
+
 
 .big-image-text { 
   letter-spacing: 0.065em;
@@ -537,3 +539,66 @@ body, html {
     display: none !important;
   }
 }
+
+
+/* New hero images */
+
+.hero-container {
+  height: 550px;
+  background-color: #1b3a42;
+  margin-bottom: 2em;
+}
+
+.hero-image {
+    max-width: 2400px;
+    margin-top: -50px !important;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    margin-bottom: 2em;
+    background-image: linear-gradient( rgba(0,0,0,.2), rgba(0,0,0,.2) ),
+    url(../images/big_image/Log.jpg); /* liner gradient tints the image darker for readability*/
+    height: 550px;
+    background-size: cover;
+    background-color: #1b3a42;
+    background-position: center bottom;
+    display: flex; /* Change to `display: none` for no hero image */
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.hero-image-text-little {
+  position: relative;
+  font-family: 'Lora', serif;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.5em;
+      letter-spacing: 1px;
+      font-style: italic;
+      font-weight: normal;
+      color: #fff;
+      text-align: center;
+}
+
+
+.hero-image-text-big {
+  position: relative;
+  letter-spacing: 0.065em;
+  line-height: 1em;
+  font-size: 68px;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  color: #fff;
+  margin-bottom: 2.5rem;
+  font-weight: bold;
+}
+
+/*----iframe----*/
+
+iframe.interactive {
+    min-width: 100%;
+    margin: 0 auto;
+  }
