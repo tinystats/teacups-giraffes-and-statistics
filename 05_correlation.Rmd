@@ -18,10 +18,6 @@ output:
 </div>
 
 
-:::note
-**Note**: Here is an example note that we can use. It normally only works in bookdown sites, but since we're using `bookdown::html_document2`, we can use it here anytime we type `:::note` followed by our text on a new line, and then closed with another set of `:::` on a new line.  
-:::
-
 # Gathering data on another variable
 Over the course of your time on the islands, you notice that the teacup giraffes seem to have an affinity for celery, which you have already used to entice so they come close enough for a height measurement. Suprisingly, one of the small ones had eaten so much of it! You decide to quantify how much celery each of the giraffes consumed to see if there is any relationship to height.
 
