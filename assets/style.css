@@ -74,7 +74,21 @@ blockquote {
   position: relative;
 }
 
-/*TOCIFY code*/
+/*-----------TABLE OF CONTENTS-------------*/
+
+/* GIRAFFE LOGO */
+
+
+#TOC::before {
+  content: "";
+  display: block;
+  height: 200px;
+  margin: 20px 20px 40px 20px;
+  background-image: url("../images/toc-giraffe.jpg");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
 
 
 div.tocify {
@@ -139,7 +153,7 @@ div.tocify {
   border: none;
 }
 
-
+/*---------FOOTER-----------*/
 .foot_image {
   width: 50px;
   filter: grayscale(0%);
@@ -608,3 +622,5 @@ iframe.interactive {
 video {
   width: 100%;
 }
+
+
