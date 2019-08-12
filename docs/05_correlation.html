@@ -507,7 +507,7 @@ Describe the purpose of dividing by the product of the standard deviations when 
 </ol>
 <p>We observe this below with a subset of 5 points from our scatter plot. Positive deviations are shown in red, negative deviations in blue.</p>
 <center>
-<img src="images/05_correlation/points.png" alt="points" width="650" />
+<img src="images/05_correlation/points.jpg" alt="points" width="650" />
 </center>
 <p>Why do we use the deviations? Because we want to know whether the x-values and y-values move together with respect to their means or not. For example, when an observation’s deviation on x is above <span class="math inline">\(\bar{x}\)</span>, will its deviation on y also be above <span class="math inline">\(\bar{y}\)</span>? Using this line of thought, we can begin to systematically characterize how “together” the x and y values will change as we go through all observations.</p>
 </div>
@@ -538,7 +538,7 @@ Describe the purpose of dividing by the product of the standard deviations when 
 <li><p>Second, the <strong>magnitude of the crossproduct</strong> will scale with the absolute value of the deviation scores. In other words, the further away both deviation scores are from their means, the larger the area of their shapes will be.</p></li>
 </ul>
 <center>
-<img src="images/05_correlation/points1.png" style="width:60.0%" />
+<img src="images/05_correlation/points1.jpg" style="width:60.0%" />
 </center>
 <p>The animation below shows the “construction” of the crossproducts from the 5 observations we have been following:</p>
 <p><img src="05_correlation_files/figure-html/unnamed-chunk-3-.gif" width="691.2" style="display: block; margin: auto;" /></p>
@@ -679,7 +679,11 @@ This equation is used for the <strong>sample correlation</strong>:
 <!-- # # utils::browseURL(gif_file) -->
 <!-- #  -->
 <!-- # ``` -->
-<p><img src="images/05_correlation/factory.gif" /></p>
+<!--![](images/05_correlation/factory.gif)-->
+<video controls disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" loop muted playsinline poster="images/05_correlation/factory.png">
+<source src="images/05_correlation/factory.webm" type="video/webm">
+<source src="images/05_correlation/factory.mp4" type="video/mp4">
+</video>
 </div>
 <div id="why-divide-by-sigma_xsigma_y" class="section level1">
 <h1>Why divide by <span class="math inline">\(\sigma_x\sigma_y\)</span>?</h1>

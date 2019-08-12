@@ -602,3 +602,9 @@ iframe.interactive {
     min-width: 100%;
     margin: 0 auto;
   }
+  
+/* video for gif */
+
+video {
+  width: 100%;
+}

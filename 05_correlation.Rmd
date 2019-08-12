@@ -98,7 +98,7 @@ The covariance elegantly combines the deviations of observations from two differ
 
 We observe this below with a subset of 5 points from our scatter plot. Positive deviations are shown in red, negative deviations in blue. 
 
-<center>![points](images/05_correlation/points.png){width=650px}</center>
+<center>![points](images/05_correlation/points.jpg){width=650px}</center>
 
 Why do we use the deviations? Because we want to know whether the x-values and y-values move together with respect to their means or not. For example, when an observation's deviation on x is above $\bar{x}$, will its deviation on y also be above $\bar{y}$? Using this line of thought, we can begin to systematically characterize how "together" the x and y values will change as we go through all observations. 
 
@@ -129,7 +129,7 @@ The equation is shown below for the *sample* crossproduct of the deviation score
   
   * Second, the **magnitude of the crossproduct** will scale with the absolute value of the deviation scores. In other words, the further away both deviation scores are from their means, the larger the area of their shapes will be.
   
-<center>![](images/05_correlation/points1.png){width=60%}</center>
+<center>![](images/05_correlation/points1.jpg){width=650px}</center>
 
 The animation below shows the "construction" of the crossproducts from the 5 observations we have been following:
  
@@ -336,8 +336,12 @@ You can take a look at the animation below to see a conceptual summary of how co
 <!-- # # utils::browseURL(gif_file) -->
 <!-- #  -->
 <!-- # ``` -->
+<!--![](images/05_correlation/factory.gif)-->
 
-![](images/05_correlation/factory.gif)
+<video controls disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" loop muted playsinline poster="images/05_correlation/factory.png">
+  <source src="images/05_correlation/factory.webm" type="video/webm">
+  <source src="images/05_correlation/factory.mp4" type="video/mp4">
+</video>
 
 # Why divide by $\sigma_x\sigma_y$? 
 Well it's complicated, (see [here](https://www.quora.com/What-is-an-intuitive-explanation-for-why-the-sample-correlation-coefficient-is-equal-to-the-sample-covariance-divided-by-the-standard-deviations-of-x-and-y-multiplied-by-one-another) and [here](https://math.stackexchange.com/questions/158449/proving-that-the-magnitude-of-the-sample-correlation-coefficient-is-at-most-1)) but it builds on the mathematical principle that the covariance of x and y will never exceed the product of the standard deviations of x and y. This means that the maximum correlation value will occur when the absolute value of the covariance and the product of the standard deviations are equal. 
