@@ -1,23 +1,26 @@
-/* Whole document: */
+@import url('https://fonts.googleapis.com/css?family=Lora:400,400i&display=swap');
 
+/*------------NAVBAR-------------*/
 .navbar-default {
     background-color: #22222270;
     border: none;
 }
 
+
+/* Whole document: */
+
 body {
 	font-size: 19px;
+}
+
+.title{
+  display: none;
 }
 
 h1 {
   padding-top: 2em !important;
   margin-top: -1em !important;
 }
-
-h1.title.toc-ignore {
-  display: none;
-}
-
 
 
 p {
@@ -564,7 +567,7 @@ body, html {
 }
 
 .hero-image {
-    max-width: 2400px;
+    max-width: 1800px;
     margin-top: -50px !important;
     margin-left: auto;
     margin-right: auto;
@@ -582,7 +585,6 @@ body, html {
 }
 
 
-
 .hero-image-text-little {
   position: relative;
   font-family: 'Lora', serif;
@@ -595,7 +597,6 @@ body, html {
       color: #fff;
       text-align: center;
 }
-
 
 .hero-image-text-big {
   position: relative;
@@ -610,17 +611,60 @@ body, html {
   font-weight: bold;
 }
 
-/*----iframe----*/
+
+@media only screen and (max-width: 770px) {
+  .hero-image-text-big{
+    font-size: 3rem;
+    padding: 2rem 0rem 0rem 0rem;
+  }
+
+  .hero-image-text-little{
+    font-size: 19px;
+  }
+  
+  .hero-image {
+    max-width: 770px;
+    height: 300px;
+  }
+  
+    .hero-container {
+    height: 300px;
+    background-color: #1b3a42;
+    margin-bottom: 1em;
+  }
+
+}
+
+/*------------iframe-----------------*/
 
 iframe.interactive {
     min-width: 100%;
     margin: 0 auto;
   }
   
-/* video for gif */
+/*----------- video for gif----------- */
 
 video {
   width: 100%;
 }
 
 
+/*----------DIV TIPS------------*/
+
+div.note, div.tip, div.gotcha, div.design, div.hat{
+  border: 4px #a0D1Ef63;
+  border-style: dashed;
+  padding: 1em;
+  margin: 1em 0;
+  padding-left: 100px;
+  background-size: 70px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  min-height: 120px;
+  color: #59a9da;
+  background-color: #fcfcfc;
+}
+
+div.note {
+  background-image: url("../images/toc-giraffe.jpg");
+}
