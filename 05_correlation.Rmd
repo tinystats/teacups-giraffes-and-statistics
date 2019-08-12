@@ -358,6 +358,7 @@ library(here)
 cor_var <- function(x){
   r <- 0
   d <- mvrnorm(n = 6, mu = c(0,0), Sigma = matrix(c(1, r, r, 2), nrow = 2))
+  d <- round(d, 1)
   return(d)
 }
 
@@ -372,10 +373,11 @@ ff <- function(x){
   return(d)
 }
 
-pd <- do.call(rbind, lapply(seq(49, 5000, 50), function(x) ff(x)))
+pd <- do.call(rbind, lapply(seq(99, 3000, 100), function(x) ff(x)))
 
 p <- data.frame(var_x=Inf, var_y=Inf, cov_xy=Inf, cor=0, p_sd=Inf, frame=0)
 pd <- rbind(pd, p)
+pd <- round(pd, 2)
 
 m <- list(
   l = 100,
@@ -402,7 +404,7 @@ p <- pd %>%
                 round(p_sd, 2))
   )%>% 
   animation_opts(
-    frame = 1,
+    frame = 100,
     transition = 0,
     redraw = FALSE
   )%>%
