@@ -657,6 +657,8 @@ video {
 
 .small_vid {
   width:600px;
+  display: block;
+  margin: 0 auto;
 }
 
 /*----------DIV TIPS------------*/
