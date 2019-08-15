@@ -206,7 +206,7 @@ p3
 lapply(1:15, function(x) pp3())
 ```
 
-<video class="small_vid" controls disablePictureInPicture  controlslist="nodownload nofullscreen noremoteplayback" loop muted playsinline>
+<video class="small_vid"  autoplay loop muted playsinline>
   <source src="images/05_correlation/lines.webm" type="video/webm">
   <source src="images/05_correlation/lines.mp4" type="video/mp4">
 </video>
