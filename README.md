@@ -9,6 +9,8 @@ Created by:
 
 This repository holds the source materials for this project. To view the online modules, please visit: https://tinystats.github.io/teacups-giraffes-and-statistics/. 
 
+This project is licensed under the terms of the [cc-by-nc-nd](https://creativecommons.org/licenses/by-nc-nd/2.0/) license.
+
 # Getting Started
 
 
