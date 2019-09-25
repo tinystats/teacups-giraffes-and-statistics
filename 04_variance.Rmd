@@ -430,7 +430,7 @@ lapply(1:15, function(x) pp3())
   
 <center>![](images/04_variance/Squares2.png){width=750px}</center>
 
-  * Therefore, when we calculate the sum of squraes (and consequently, the variance and the standard deviation) using the sample mean $\bar{x}$, we are most likely arriving at a value that is downwardly biased compared to what the true variance or standard deviation would be if we were able to know and use the population mean $\mu$. 
+  * Therefore, when we calculate the sum of squares (and consequently, the variance and the standard deviation) using the sample mean $\bar{x}$, we are most likely arriving at a value that is downwardly biased compared to what the true variance or standard deviation would be if we were able to know and use the population mean $\mu$. 
   
   * This is why we need to adjust our sample variance by diving by $n-1$ instead of just $N$. By diving by a smaller value (i.e. $n-1$ instead of N), we ensure that the overall value of the variance and standard deviation will be a little larger, correcting for the downward bias we just described. 
   
