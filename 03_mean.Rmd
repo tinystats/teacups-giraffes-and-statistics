@@ -55,7 +55,7 @@ We can do this with a **measure of centrality**, the concept that one number in 
 
  * The **mean** is the average and the measure of centrality that you are probably most familiar with. This is a good measure to use when the data are normally distributed. We describe it in detail below. 
 
- * The **median** is the value in the middle of the data set. Half of the observations lie above the median and half below. When the data are normally distributed, the median and the mean will be very close to each other. When your data are not normally distributed (skewed to the left of right) the median is a more appropriate measure of centrality (see the animation below).  
+ * The **median** is the value in the middle of the data set. Half of the observations lie above the median and half below. When the data are normally distributed, the median and the mean will be very close to each other. When your data are not normally distributed (skewed to the left or right) the median is a more appropriate measure of centrality (see the animation below).  
  
 \
 
