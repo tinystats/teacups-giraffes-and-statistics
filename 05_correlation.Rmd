@@ -329,7 +329,7 @@ The equation for the covariance (abbreviated "cov") of the variables x and y is 
 
 
 # Problem of interpretation
-However, the covariance is not an intuitive value. Remember that we have been working with terms that are on the "squared"" scale, which is not only difficult to interpret (just like the variance is) but it is also the product of two variables on possibly different scales. How could we interpret a covariance with units of millimeters*grams mean?
+However, the covariance is not an intuitive value. Remember that we have been working with terms that are on the "squared" scale, which is not only difficult to interpret (just like the variance is) but it is also the product of two variables on possibly different scales. How could we interpret a covariance with units of millimeters*grams mean?
 
 Another point to make is that value of the covariance will be vastly different if we had decided to change the units (millimeters vs centimeters, or grams vs kilograms). 
 
