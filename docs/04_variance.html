@@ -649,7 +649,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 <img src="images/04_variance/Squares2.png" width="750" />
 </center>
 <ul>
-<li><p>Therefore, when we calculate the sum of squraes (and consequently, the variance and the standard deviation) using the sample mean <span class="math inline">\(\bar{x}\)</span>, we are most likely arriving at a value that is downwardly biased compared to what the true variance or standard deviation would be if we were able to know and use the population mean <span class="math inline">\(\mu\)</span>.</p>
+<li><p>Therefore, when we calculate the sum of squares (and consequently, the variance and the standard deviation) using the sample mean <span class="math inline">\(\bar{x}\)</span>, we are most likely arriving at a value that is downwardly biased compared to what the true variance or standard deviation would be if we were able to know and use the population mean <span class="math inline">\(\mu\)</span>.</p>
 <ul>
 <li>This is why we need to adjust our sample variance by diving by <span class="math inline">\(n-1\)</span> instead of just <span class="math inline">\(N\)</span>. By diving by a smaller value (i.e. <span class="math inline">\(n-1\)</span> instead of N), we ensure that the overall value of the variance and standard deviation will be a little larger, correcting for the downward bias we just described.</li>
 </ul></li>
@@ -699,7 +699,7 @@ percent_of_true_variance &lt;- hover_value * correction
 percent_of_true_variance </code></pre>
 <pre><code>## [1] 100.8435</code></pre>
 <p>As we can see, the correction works by adjusting the downwardly biased sample variance to close to 100% of the true variance.</p>
-<p>Try hovering over a few other bars and see yourself that correction works indepdent of the sample size. You can you the window below as a calculator to change the N and the hover values and then run the code.</p>
+<p>Try hovering over a few other bars and see yourself that correction works indepdent of the sample size. You can use the window below as a calculator to change the N and the hover values and then run the code.</p>
 <div data-datacamp-exercise="" data-height="400" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIE1vZGVsIHlvdXIgY29kZSBvZmYgb2YgdGhlIGV4YW1wbGUgZm9yIG4gPSAzICJ9
 </div>
