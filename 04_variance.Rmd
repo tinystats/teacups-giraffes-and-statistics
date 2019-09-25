@@ -589,7 +589,7 @@ percent_of_true_variance
 ```
 As we can see, the correction works by adjusting the downwardly biased sample variance to close to 100% of the true variance. 
 
-Try hovering over a few other bars and see yourself that correction works indepdent of the sample size. You can you the window below as a calculator to change the N and the hover values and then run the code. 
+Try hovering over a few other bars and see yourself that correction works indepdent of the sample size. You can use the window below as a calculator to change the N and the hover values and then run the code. 
 
 ```{r}
 # Model your code off of the example for n = 3 
