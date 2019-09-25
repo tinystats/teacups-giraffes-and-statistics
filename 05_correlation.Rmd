@@ -178,7 +178,7 @@ p
 Looking at the scatter plot, there seems to be a relationship between height and celery eaten, but you will need to quantify this more formally to be sure.
 
 # Relationship between two variables
-How can the relationship (and its strength) between two variables can be quantified? This can be done by assessing how the two variables change together-- one such measure is the **covariance**. 
+How can the relationship between two variables (and its strength) be quantified? This can be done by assessing how the two variables change together -- one such measure is the **covariance**. 
 
 The covariance elegantly combines the deviations of observations from two different variables into a single value. This is how it's done:
 
@@ -329,7 +329,7 @@ The equation for the covariance (abbreviated "cov") of the variables x and y is 
 
 
 # Problem of interpretation
-However, the covariance is not an intuitive value. Remember that we have been working with terms that are on the "squared"" scale, which is not only difficult to interpret (just like the variance is) but it is also the product of two variables on possibly different scales. How could we interpret a covariance with units of millimeters*grams mean?
+However, the covariance is not an intuitive value. Remember that we have been working with terms that are on the "squared" scale, which is not only difficult to interpret (just like the variance is) but it is also the product of two variables on possibly different scales. How could we interpret a covariance with units of millimeters*grams mean?
 
 Another point to make is that value of the covariance will be vastly different if we had decided to change the units (millimeters vs centimeters, or grams vs kilograms). 
 
@@ -364,7 +364,7 @@ This equation is used for the **Sample correlation**:
 # What the does correlation mean?
 We can interpret the correlation as a measure of **the strength and direction** of the relationship between two variables. It is a "standardized" version of the covariance. 
 
-  * The correlation will always be between -1 and 1. At these extreme the values, the two variables have the strongest relationship possible, in which each data point will fall exactly on a line. When the absolute value of the correlation coefficient approaches 0, the observations will be more "scattered". 
+  * The correlation will always be between -1 and 1. At these extreme values, the two variables have the strongest relationship possible, in which each data point will fall exactly on a line. When the absolute value of the correlation coefficient approaches 0, the observations will be more "scattered". 
   * The sign of the correlation coefficient indicates the direction of the linear relationship.  When $r$= 0 there is no relationship between the variables. Look at the figure below to see what observations of different $r$ values look like. 
 
 <center>![](images/05_correlation/diff_corr.png){width=90%}</center>
