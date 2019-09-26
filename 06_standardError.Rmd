@@ -736,15 +736,15 @@ heights_island1_95CI
 
 ```{r ex="SEM4", type="solution"}
 # Calculate the SEM for heights_island1
-sem_heights_island1 <- sd(heights_island1)/sqrt(50)
+SEM_heights_island1 <- sd(heights_island1)/sqrt(50)
 
 # Calculate the sample mean
 heights_island1_mean <- mean(heights_island1)
 
 # Add ±  1.96 SEM to the sample mean to construct the upper and lower bounds of the 95% CI
 
-upperCI <- heights_island1_mean + 1.96*sem_heights_island1
-lowerCI <- heights_island1_mean - 1.96*sem_heights_island1
+upperCI <- heights_island1_mean + 1.96 * SEM_heights_island1
+lowerCI <- heights_island1_mean - 1.96 * SEM_heights_island1
  
 heights_island1_95CI <- c(lowerCI, upperCI)
 heights_island1_95CI
