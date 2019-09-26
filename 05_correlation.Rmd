@@ -91,7 +91,7 @@ Play around with some aesthetics in the window below, and then run the solution 
 Looking at the scatter plot, there seems to be a relationship between height and celery eaten, but you will need to quantify this more formally to be sure.
 
 # Relationship between two variables
-How can the relationship (and its strength) between two variables can be quantified? This can be done by assessing how the two variables change together-- one such measure is the **covariance**. 
+How can the relationship between two variables (and its strength) be quantified? This can be done by assessing how the two variables change together -- one such measure is the **covariance**. 
 
 The covariance elegantly combines the deviations of observations from two different variables into a single value. This is how it's done:
 
@@ -282,7 +282,7 @@ This equation is used for the **sample correlation**:
 # What the does correlation mean?
 We can interpret the correlation as a measure of **the strength and direction** of the relationship between two variables. It is a "standardized" version of the covariance. 
 
-  * The correlation will always be between -1 and 1. At these extreme the values, the two variables have the strongest relationship possible, in which each data point will fall exactly on a line. When the absolute value of the correlation coefficient approaches 0, the observations will be more "scattered". 
+  * The correlation will always be between -1 and 1. At these extreme values, the two variables have the strongest relationship possible, in which each data point will fall exactly on a line. When the absolute value of the correlation coefficient approaches 0, the observations will be more "scattered". 
   * The sign of the correlation coefficient indicates the direction of the linear relationship.  When $r$= 0 there is no relationship between the variables. Look at the figure below to see what observations of different $r$ values look like. 
 
 <center>![](images/05_correlation/diff_corr.png){width=90%}</center>  

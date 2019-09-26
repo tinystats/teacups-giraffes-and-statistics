@@ -9,10 +9,12 @@ Created by:
 
 This repository holds the source materials for this project. To view the online modules, please visit: https://tinystats.github.io/teacups-giraffes-and-statistics/. 
 
+This project is licensed under the terms of the [cc-by-nc-nd](https://creativecommons.org/licenses/by-nc-nd/2.0/) license.
+
 # Getting Started
 
 
-[**Intro to R:**](https://tinystats.github.io/teacups-giraffes-and-statistics/introToR.html) This module will introduce you to some basic tools and terminology that you will need to be familiar with to complete the modules. You can work through the exercises or use this page as a reference.
+[**Intro to R:**](https://tinystats.github.io/teacups-giraffes-and-statistics/01_introToR.html) This module will introduce you to some basic tools and terminology that you will need to be familiar with to complete the modules. You can work through the exercises or use this page as a reference.
 
 # The Modules
 
