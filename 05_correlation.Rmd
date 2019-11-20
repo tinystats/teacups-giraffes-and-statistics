@@ -53,7 +53,10 @@ points <- giraffe_data[c(12, 50, 14, 43, 32),]
 head(giraffe_data)
 ```
 
+
+
 # Make a scatter plot
+
 It's difficult to get an idea if there's any relationship by just looking at the data frame. We learn so much more from creating a plot. Let's revisit our newly acquired ggplot skills to make a scatter plot.
 
 A lot of the code used [previously](02_bellCurve.html) can be re-used for the scatter plot. Two main differences are the following:
@@ -293,7 +296,7 @@ Imagine you're given a plot like the one below. What would you say it's correlat
 
 
 <!--------SHINY1------>
-<iframe class="interactive" src="https://haswal.shinyapps.io/Guess_corr/?showcase=0" scrolling="no" frameborder="no"></iframe>
+<iframe class="interactive" src="https://tinystats.shinyapps.io/Guess_corr/?showcase=0" scrolling="no" frameborder="no"></iframe>
 
 # Code it up
 

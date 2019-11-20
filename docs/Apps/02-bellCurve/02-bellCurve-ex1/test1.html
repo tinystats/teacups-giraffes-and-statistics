@@ -1,0 +1,21 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.16/iframeResizer.contentWindow.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+//Once page is loaded, override and disable popover "scroll into view""
+  $(document).ready(function() {
+    window.tutorial.scrollIntoView = function() {}
+  })
+  
+// Add padding to learnr body when popover shown
+  $(document).on("shown.bs.popover", function() {
+  	var popoverHeight = document.querySelector(".popover").offsetHeight
+  	document.body.style.paddingTop = popoverHeight + 10 + "px"
+  })
+
+// Set padding to 0 when popover hidden
+  $(document).on("hide.bs.popover", function() {
+  	var popoverHeight = document.querySelector(".popover").offsetHeight
+  	document.body.style.paddingTop = "0px"
+  })
+</script>

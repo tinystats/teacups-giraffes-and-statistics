@@ -46,6 +46,7 @@
 
 	  gtag('config', 'UA-135221736-1');
 	</script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.16/iframeResizer.min.js"></script>
 </head>
 
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
@@ -544,17 +545,17 @@ Happy with your progress thus far, you are excited to send your histogram result
 <p>A note about the <code>+</code>: You can keep adding new specifications on one long continuous line of code, separating each one with a <code>+</code>. However, if you’d like to make the code easier to read by adding each specification to a new line, make sure the <code>+</code> is added to the end of the first line and not the new one.</p>
 <p>It’s a good idea to save any ggplot you make as an object. It’s a helpful practice for when you’ll do more complicated graphing later (e.g. combining plots).</p>
 <p>Run the code below to see what this basic histogram in ggplot looks like:</p>
-<p><br />
-</p>
-<div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoicCA8LSBnZ3Bsb3QoZGF0YSA9IGQsIGFlcyh4ID0gSGVpZ2h0KSkgKyBcbiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGg9MSlcblxucCJ9
-</div>
-<p><br />
-</p>
+<!---LEARNR EX 1-->
+<iframe class="interactive" id="myIframe21" src="https://tinystats.shinyapps.io/02-bellCurve-ex1/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 </div>
 <div id="customize-your-ggplot" class="section level1">
 <h1>Customize your ggplot</h1>
 <p>Let’s go over some quick ways we can customize any ggplot. First, we can tell ggplot that we want the data from the two islands to be different colors. And second, we can to specify the colors we want to use.</p>
+<div data-datacamp-exercise="" data-height="160" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoicCA8LSBnZ3Bsb3QoZGF0YSA9IGQsIGFlcyh4ID0gSGVpZ2h0KSkgKyBcbiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGg9MSlcblxucCJ9
+</div>
 <p><strong>Different color for each group:</strong> Within <code>aes( )</code>, we add a <code>fill =</code> argument. Here is where you put the name of the variable that contains the categories that you want to distinguish with different colors.</p>
 <p>You might be wondering why we don’t use the <code>color=</code> here instead (which is a valid argument for <code>aes( )</code>), and this is because we want to change the color of the <em>fill</em> of the bars, while <code>color =</code> would change only the bar outline color (see below).</p>
 <p>To choose colors ggplot should use, we need to add a new option <code>+ scale_fill_manual( )</code> and then specify the colors with the argument <code>values =</code>. To read more about how to create your own color scale, see this <a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">page</a>. If you have more than one color you need to specify, make sure you combine them within the <code>c( )</code> function.</p>
@@ -665,8 +666,9 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0
 <p><br />
 </p>
 <p><img src="02_bellCurve_files/figure-html/unnamed-chunk-29-.gif" width="960" style="display: block; margin: auto;" /></p>
-<p><br />
-</p>
+<script>
+  iFrameResize({}, ".interactive");
+</script>
 </div>
 
 <!DOCTYPE html>

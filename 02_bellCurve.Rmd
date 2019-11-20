@@ -214,42 +214,20 @@ It's a good idea to save any ggplot you make as an object. It's a helpful practi
 
 Run the code below to see what this basic histogram in ggplot looks like:
 
-\
-
-```{r, include=FALSE}
-tutorial::go_interactive(height = 160)
-```
-
-```{r ex="histogram", type="pre-exercise-code"}
-library(ggplot2)
-
-set.seed(12)
-
-x <- rnorm(50, 10, 2)
-x2 <- rnorm(50, 18, 1.2)
-x <- data.frame(x=x, type="Island #1")
-x2 <- data.frame(x=x2, type="Island #2")
-
-d <- rbind(x,x2)
-colnames(d) <- c("Height", "Location")
-```
-
-```{r ex="histogram", type="sample-code"}
-
-p <- ggplot(data = d, aes(x = Height)) + 
-  geom_histogram(binwidth=1)
-
-p
 
 
-```
 
-\
+<!---LEARNR EX 1-->
+
+<iframe class="interactive" id="myIframe21" src="https://tinystats.shinyapps.io/02-bellCurve-ex1/" scrolling="no" frameborder="no"></iframe>
+
+<!------------->
+
+
 
 # Customize your ggplot
 
 Let's go over some quick ways we can customize any ggplot. First, we can tell ggplot that we want the data from the two islands to be different colors. And second, we can to specify the colors we want to use. 
-
 
 **Different color for each group:** Within `aes( )`, we add a `fill = ` argument. Here is where you put the name of the variable that contains the categories that you want to distinguish with different colors. 
 
@@ -268,6 +246,12 @@ In the window below, we have added some options that you can play around with. U
  * Try out some color specifications on your own, and then check out the solution to see what we picked.
 
 \
+
+<!---LEARNR EX 2-->
+
+<iframe class="interactive" id="myIframe21" src="https://tinystats.shinyapps.io/02-bellCurve-ex2/" scrolling="no" frameborder="no"></iframe>
+
+<!------------->
 
 ```{r ex="histogram1", type="pre-exercise-code"}
 library(ggplot2)
@@ -593,4 +577,8 @@ p
 lapply(1:8, function(x) plot1())
 ```
 
-\
+
+
+<script>
+  iFrameResize({}, ".interactive");
+</script>

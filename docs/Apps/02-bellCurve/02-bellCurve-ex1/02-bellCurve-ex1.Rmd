@@ -1,0 +1,38 @@
+---
+output: 
+  html_document:
+    includes:
+      in_header: test1.html
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(ggplot2)
+knitr::opts_chunk$set(echo = FALSE)
+
+set.seed(12)
+
+x <- rnorm(50, 10, 2)
+x2 <- rnorm(50, 18, 1.2)
+x <- data.frame(x=x, type="Island #1")
+x2 <- data.frame(x=x2, type="Island #2")
+
+d <- rbind(x,x2)
+colnames(d) <- c("Height", "Location")
+
+```
+
+
+```{r 02-ggplot, exercise=TRUE}
+# Create a scatterplot using the instructions above
+
+p <- ggplot(data = d, aes(x = Height)) + 
+  geom_histogram(binwidth=1)
+
+p
+```
+
+
+
+<div data-iframe-height></div>
