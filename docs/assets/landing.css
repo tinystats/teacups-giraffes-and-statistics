@@ -10,13 +10,56 @@
 
 .narrative-illo {
   text-align: center;
-  margin: 5em auto;
+  margin: 4em auto;
 }
 
 .narrative-text {
   font-family: Source Sans Pro;
 }
 
+
+/*---Slider----*/
+
+
+.bx-wrapper {
+  -moz-box-shadow: 0 0 0px #ccc !important; /*remove box shadow */
+  -webkit-box-shadow: 0 0 0px #ccc !important; /*remove box shadow */
+  box-shadow: 0 0 0px #ccc !important; /*remove box shadow */
+  border: 5px solid #fff;
+  background: #fff;
+}
+
+/* DIRECTION CONTROLS (NEXT / PREV) */
+.bx-wrapper .bx-prev {
+  left: -70px !important;
+}
+
+.bx-wrapper .bx-next {
+  right: -70px !important;
+}
+
+.end-icon {
+  display: none;
+  margin: 50px auto;
+  width: 50px;
+}
+
+.end-text{
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  margin-left: 0px;
+  margin-right: 0px;
+  font-size: 3em;
+}
+
+.map-island{
+  height: 300px;
+  background-image: url("../images/02_bellCurve/giraffe_islands2.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+}
 
 
 /*------------NAVBAR-------------*/
@@ -538,7 +581,7 @@ body, html {
 }
 
 
-/* ABOUT THE AUTHORS CSS */
+/* -------ABOUT THE AUTHORS CSS------- */
 
 .image-text-about-the-authors {
   top:44%;
