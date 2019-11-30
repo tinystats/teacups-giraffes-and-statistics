@@ -271,6 +271,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -299,6 +300,12 @@ $(document).ready(function () {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -432,7 +439,6 @@ div.tocify {
 </div>
 
 
-<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <div class="alert alert-info">
 <strong>Module learning objectives:</strong>
 <ol>
@@ -553,9 +559,6 @@ Happy with your progress thus far, you are excited to send your histogram result
 <div id="customize-your-ggplot" class="section level1">
 <h1>Customize your ggplot</h1>
 <p>Let’s go over some quick ways we can customize any ggplot. First, we can tell ggplot that we want the data from the two islands to be different colors. And second, we can to specify the colors we want to use.</p>
-<div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoicCA8LSBnZ3Bsb3QoZGF0YSA9IGQsIGFlcyh4ID0gSGVpZ2h0KSkgKyBcbiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGg9MSlcblxucCJ9
-</div>
 <p><strong>Different color for each group:</strong> Within <code>aes( )</code>, we add a <code>fill =</code> argument. Here is where you put the name of the variable that contains the categories that you want to distinguish with different colors.</p>
 <p>You might be wondering why we don’t use the <code>color=</code> here instead (which is a valid argument for <code>aes( )</code>), and this is because we want to change the color of the <em>fill</em> of the bars, while <code>color =</code> would change only the bar outline color (see below).</p>
 <p>To choose colors ggplot should use, we need to add a new option <code>+ scale_fill_manual( )</code> and then specify the colors with the argument <code>values =</code>. To read more about how to create your own color scale, see this <a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">page</a>. If you have more than one color you need to specify, make sure you combine them within the <code>c( )</code> function.</p>
@@ -568,9 +571,10 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0
 </ul>
 <p><br />
 </p>
-<div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiI0ZpbGwgaW4gdGhlIGluY29tcGxldGUgYXJndW1lbnRzIGJlbG93XG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9ICkpICtcbiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGggPSAxLCBjb2xvciA9ICkgK1xuICBzY2FsZV9maWxsX21hbnVhbCh2YWx1ZXMgPSBjKCApKVxuICBcbnAiLCJzb2x1dGlvbiI6InAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKVxuICBcbnAifQ==
-</div>
+<!---LEARNR EX 2-->
+<iframe class="interactive" id="myIframe21" src="https://tinystats.shinyapps.io/02-bellCurve-ex2/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 <p><img src="images/02_bellCurve/Painter.png" width="600px" style="display: block; margin: auto;" /></p>
 <p><strong>Playing around with “complete themes”: </strong> ggplot has a nice way of changing many non-data display parameters at once though what is referred to as “complete themes”. Check this <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">page</a> for the available options.</p>
 <ul>
@@ -580,9 +584,10 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0
 <div style="margin-bottom:50px">
 
 </div>
-<div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiIyBBZGQgYSBjb21wbGV0ZSB0aGVtZSB0byBleGlzdGluZyBjb2RlXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKVxuXG5wIiwic29sdXRpb24iOiIjIEFkZCBhIGNvbXBsZXRlIHRoZW1lIHRvIGV4aXN0aW5nIGNvZGVcblxucCA8LSBnZ3Bsb3QoZGF0YSA9IGQsIGFlcyh4ID0gSGVpZ2h0LCBmaWxsID0gTG9jYXRpb24pKSArXG4gIGdlb21faGlzdG9ncmFtKGJpbndpZHRoID0gMSwgY29sb3IgPSBcIndoaXRlXCIpICtcbiAgc2NhbGVfZmlsbF9tYW51YWwodmFsdWVzID0gYyhcImdyZWVuM1wiLCBcInR1cnF1b2lzZTNcIikpICsgdGhlbWVfbGlnaHQoKVxuXG5wIn0=
-</div>
+<!---LEARNR EX 3-->
+<iframe class="interactive" id="myIframe3" src="https://tinystats.shinyapps.io/02-bellCurve-ex3/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 <p><br />
 </p>
 <p>After trying different themes, you pick <code>theme_light()</code> and feel pretty good about your ggplot accomplishment. You send your plot to your PhD advisor, and within what feels like only minutes, you have a new attachment in your email inbox:</p>
@@ -613,9 +618,39 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0
 <div style="margin-bottom:50px">
 
 </div>
-<div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiIyBSZW1vdmUgc3BhY2UgYmV0d2VlbiBiYXJzIGFuZCB4LWF4aXMsIGFuZCBjaGFuZ2UgbGFiZWxzXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKSArIFxuICB0aGVtZV9saWdodCgpICtcbiAgc2NhbGVfeV9jb250aW51b3VzKGV4cGFuZCA9ICkgK1xuICBsYWJzKClcblxucCIsInNvbHV0aW9uIjoiIyBSZW1vdmUgc3BhY2UgYmV0d2VlbiBiYXJzIGFuZCB4LWF4aXMsIGFuZCBjaGFuZ2UgbGFiZWxzXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKSArIFxuICB0aGVtZV9saWdodCgpICtcbiAgc2NhbGVfeV9jb250aW51b3VzKGV4cGFuZCA9IGMoMCwwKSkgK1xuICBsYWJzKHg9IFwiVGVhY3VwIEdpcmFmZmUgaGVpZ2h0c1wiLCB5PSBcIkZyZXF1ZW5jeVwiLCBmaWxsPSBOVUxMKVxuICBcbnAifQ==
-</div>
+<pre class="r"><code>library(ggplot2)
+
+set.seed(12)
+
+x &lt;- rnorm(50, 10, 2)
+x2 &lt;- rnorm(50, 18, 1.2)
+x &lt;- data.frame(x=x, type=&quot;Island #1&quot;)
+x2 &lt;- data.frame(x=x2, type=&quot;Island #2&quot;)
+
+d &lt;- rbind(x,x2)
+colnames(d) &lt;- c(&quot;Height&quot;, &quot;Location&quot;)</code></pre>
+<pre class="r"><code># Remove space between bars and x-axis, and change labels
+
+p &lt;- ggplot(data = d, aes(x = Height, fill = Location)) +
+  geom_histogram(binwidth = 1, color = &quot;white&quot;) +
+  scale_fill_manual(values = c(&quot;green3&quot;, &quot;turquoise3&quot;)) + 
+  theme_light() +
+  scale_y_continuous(expand = ) +
+  labs()
+
+p</code></pre>
+<p><img src="02_bellCurve_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code># Remove space between bars and x-axis, and change labels
+
+p &lt;- ggplot(data = d, aes(x = Height, fill = Location)) +
+  geom_histogram(binwidth = 1, color = &quot;white&quot;) +
+  scale_fill_manual(values = c(&quot;green3&quot;, &quot;turquoise3&quot;)) + 
+  theme_light() +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(x= &quot;Teacup Giraffe heights&quot;, y= &quot;Frequency&quot;, fill= NULL)
+  
+p</code></pre>
+<p><img src="02_bellCurve_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
 <ol start="4" style="list-style-type: decimal">
@@ -626,9 +661,41 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0
 </ul>
 <p><br />
 </p>
-<div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiIyBSZW1vdmUgcGFuZWwgYm9yZGVyIGFuZCBtaW5vciBncmlkIGxpbmVzXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKSArIFxuICB0aGVtZV9saWdodCgpICtcbiAgc2NhbGVfeV9jb250aW51b3VzKGV4cGFuZCA9IGMoMCwwKSkgK1xuICBsYWJzKHg9XCJUZWFjdXAgR2lyYWZmZSBoZWlnaHRzXCIsIHk9XCJGcmVxdWVuY3lcIiwgZmlsbD1OVUxMKSArXG4gIHRoZW1lKClcblxucCIsInNvbHV0aW9uIjoiIyBSZW1vdmUgcGFuZWwgYm9yZGVyIGFuZCBtaW5vciBncmlkIGxpbmVzXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKSArIFxuICB0aGVtZV9saWdodCgpICtcbiAgc2NhbGVfeV9jb250aW51b3VzKGV4cGFuZCA9IGMoMCwwKSkgK1xuICBsYWJzKHg9XCJUZWFjdXAgR2lyYWZmZSBoZWlnaHRzXCIsIHk9XCJGcmVxdWVuY3lcIiwgZmlsbD1OVUxMKSArXG4gIHRoZW1lKHBhbmVsLmJvcmRlcj1lbGVtZW50X2JsYW5rKCksIHBhbmVsLmdyaWQubWlub3I9ZWxlbWVudF9ibGFuaygpKVxuXG5wIn0=
-</div>
+<pre class="r"><code>library(ggplot2)
+
+set.seed(12)
+
+x &lt;- rnorm(50, 10, 2)
+x2 &lt;- rnorm(50, 18, 1.2)
+x &lt;- data.frame(x=x, type=&quot;Island #1&quot;)
+x2 &lt;- data.frame(x=x2, type=&quot;Island #2&quot;)
+
+d &lt;- rbind(x,x2)
+colnames(d) &lt;- c(&quot;Height&quot;, &quot;Location&quot;)</code></pre>
+<pre class="r"><code># Remove panel border and minor grid lines
+
+p &lt;- ggplot(data = d, aes(x = Height, fill = Location)) +
+  geom_histogram(binwidth = 1, color = &quot;white&quot;) +
+  scale_fill_manual(values = c(&quot;green3&quot;, &quot;turquoise3&quot;)) + 
+  theme_light() +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(x=&quot;Teacup Giraffe heights&quot;, y=&quot;Frequency&quot;, fill=NULL) +
+  theme()
+
+p</code></pre>
+<p><img src="02_bellCurve_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code># Remove panel border and minor grid lines
+
+p &lt;- ggplot(data = d, aes(x = Height, fill = Location)) +
+  geom_histogram(binwidth = 1, color = &quot;white&quot;) +
+  scale_fill_manual(values = c(&quot;green3&quot;, &quot;turquoise3&quot;)) + 
+  theme_light() +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(x=&quot;Teacup Giraffe heights&quot;, y=&quot;Frequency&quot;, fill=NULL) +
+  theme(panel.border=element_blank(), panel.grid.minor=element_blank())
+
+p</code></pre>
+<p><img src="02_bellCurve_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br />
 </p>
 <ol start="6" style="list-style-type: decimal">
@@ -637,10 +704,41 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0
 <p>To change the legend background to be transparent, we essentially remove it. Add the argument <code>legend.background =</code>. Take a look at previous steps to determine how you remove an element.</p>
 <p><br />
 </p>
-<div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0LnNlZWQoMTIpXG5cbnggPC0gcm5vcm0oNTAsIDEwLCAyKVxueDIgPC0gcm5vcm0oNTAsIDE4LCAxLjIpXG54IDwtIGRhdGEuZnJhbWUoeD14LCB0eXBlPVwiSXNsYW5kICMxXCIpXG54MiA8LSBkYXRhLmZyYW1lKHg9eDIsIHR5cGU9XCJJc2xhbmQgIzJcIilcblxuZCA8LSByYmluZCh4LHgyKVxuY29sbmFtZXMoZCkgPC0gYyhcIkhlaWdodFwiLCBcIkxvY2F0aW9uXCIpIiwic2FtcGxlIjoiIyBNb3ZlIGxlZ2VuZFxuXG5wIDwtIGdncGxvdChkYXRhID0gZCwgYWVzKHggPSBIZWlnaHQsIGZpbGwgPSBMb2NhdGlvbikpICtcbiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGggPSAxLCBjb2xvciA9IFwid2hpdGVcIikgK1xuICBzY2FsZV9maWxsX21hbnVhbCh2YWx1ZXMgPSBjKFwiZ3JlZW4zXCIsIFwidHVycXVvaXNlM1wiKSkgKyBcbiAgdGhlbWVfbGlnaHQoKSArXG4gIHNjYWxlX3lfY29udGludW91cyhleHBhbmQgPSBjKDAsMCkpICtcbiAgbGFicyh4PVwiVGVhY3VwIEdpcmFmZmUgaGVpZ2h0c1wiLCB5PVwiRnJlcXVlbmN5XCIsIGZpbGw9TlVMTCkgK1xuICB0aGVtZShwYW5lbC5ib3JkZXI9ZWxlbWVudF9ibGFuaygpLCBwYW5lbC5ncmlkLm1pbm9yPWVsZW1lbnRfYmxhbmsoKSwgbGVnZW5kLnBvc2l0aW9uID0gLCBsZWdlbmQuYmFja2dyb3VuZCA9ICkgK1xuXG5wIiwic29sdXRpb24iOiIjIE1vdmUgbGVnZW5kXG5cbnAgPC0gZ2dwbG90KGRhdGEgPSBkLCBhZXMoeCA9IEhlaWdodCwgZmlsbCA9IExvY2F0aW9uKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEsIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJncmVlbjNcIiwgXCJ0dXJxdW9pc2UzXCIpKSArIFxuICB0aGVtZV9saWdodCgpICtcbiAgc2NhbGVfeV9jb250aW51b3VzKGV4cGFuZCA9IGMoMCwwKSkgK1xuICBsYWJzKHg9XCJUZWFjdXAgR2lyYWZmZSBoZWlnaHRzXCIsIHk9XCJGcmVxdWVuY3lcIiwgZmlsbD1OVUxMKSArXG4gIHRoZW1lKHBhbmVsLmJvcmRlcj1lbGVtZW50X2JsYW5rKCksIHBhbmVsLmdyaWQubWlub3I9ZWxlbWVudF9ibGFuaygpLCBsZWdlbmQucG9zaXRpb24gPSBjKDAuMTY1LDAuOTIpLCBsZWdlbmQuYmFja2dyb3VuZCA9IGVsZW1lbnRfYmxhbmsoKSlcblxucCJ9
-</div>
-<p><br />
+<pre class="r"><code>library(ggplot2)
+
+set.seed(12)
+
+x &lt;- rnorm(50, 10, 2)
+x2 &lt;- rnorm(50, 18, 1.2)
+x &lt;- data.frame(x=x, type=&quot;Island #1&quot;)
+x2 &lt;- data.frame(x=x2, type=&quot;Island #2&quot;)
+
+d &lt;- rbind(x,x2)
+colnames(d) &lt;- c(&quot;Height&quot;, &quot;Location&quot;)</code></pre>
+<pre class="r"><code># Move legend
+
+p &lt;- ggplot(data = d, aes(x = Height, fill = Location)) +
+  geom_histogram(binwidth = 1, color = &quot;white&quot;) +
+  scale_fill_manual(values = c(&quot;green3&quot;, &quot;turquoise3&quot;)) + 
+  theme_light() +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(x=&quot;Teacup Giraffe heights&quot;, y=&quot;Frequency&quot;, fill=NULL) +
+  theme(panel.border=element_blank(), panel.grid.minor=element_blank(), legend.position = , legend.background = )
+
+p</code></pre>
+<p><img src="02_bellCurve_files/figure-html/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code># Move legend
+
+p &lt;- ggplot(data = d, aes(x = Height, fill = Location)) +
+  geom_histogram(binwidth = 1, color = &quot;white&quot;) +
+  scale_fill_manual(values = c(&quot;green3&quot;, &quot;turquoise3&quot;)) + 
+  theme_light() +
+  scale_y_continuous(expand = c(0,0)) +
+  labs(x=&quot;Teacup Giraffe heights&quot;, y=&quot;Frequency&quot;, fill=NULL) +
+  theme(panel.border=element_blank(), panel.grid.minor=element_blank(), legend.position = c(0.165,0.92), legend.background = element_blank())
+
+p</code></pre>
+<p><img src="02_bellCurve_files/figure-html/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /><br />
 </p>
 <p>Hopefully your PhD advisor in the homeland will be satisfied with your new ggplot!</p>
 <p><br />
@@ -665,7 +763,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90Milcblxuc2V0
 <p>You decided that you had the resources to collect data on 50 giraffes on each of the islands. Will a sample of 50 be good enough to get a sense for the true values of the giraffe populations?</p>
 <p><br />
 </p>
-<p><img src="02_bellCurve_files/figure-html/unnamed-chunk-29-.gif" width="960" style="display: block; margin: auto;" /></p>
+<p><img src="02_bellCurve_files/figure-html/unnamed-chunk-20-.gif" width="960" style="display: block; margin: auto;" /></p>
 <script>
   iFrameResize({}, ".interactive");
 </script>

@@ -215,14 +215,11 @@ It's a good idea to save any ggplot you make as an object. It's a helpful practi
 Run the code below to see what this basic histogram in ggplot looks like:
 
 
-
-
 <!---LEARNR EX 1-->
 
 <iframe class="interactive" id="myIframe21" src="https://tinystats.shinyapps.io/02-bellCurve-ex1/" scrolling="no" frameborder="no"></iframe>
 
 <!------------->
-
 
 
 # Customize your ggplot
@@ -253,40 +250,6 @@ In the window below, we have added some options that you can play around with. U
 
 <!------------->
 
-```{r ex="histogram1", type="pre-exercise-code"}
-library(ggplot2)
-
-set.seed(12)
-
-x <- rnorm(50, 10, 2)
-x2 <- rnorm(50, 18, 1.2)
-x <- data.frame(x=x, type="Island #1")
-x2 <- data.frame(x=x2, type="Island #2")
-
-d <- rbind(x,x2)
-colnames(d) <- c("Height", "Location")
-```
-
-```{r ex="histogram1", type="sample-code"}
-#Fill in the incomplete arguments below
-
-p <- ggplot(data = d, aes(x = Height, fill = )) +
-  geom_histogram(binwidth = 1, color = ) +
-  scale_fill_manual(values = c( ))
-  
-p
-
-```
-
-```{r ex="histogram1", type="solution"}
-
-p <- ggplot(data = d, aes(x = Height, fill = Location)) +
-  geom_histogram(binwidth = 1, color = "white") +
-  scale_fill_manual(values = c("green3", "turquoise3"))
-  
-p
-
-```
 
 
 ```{r, out.width="600px", echo= FALSE}
@@ -301,42 +264,11 @@ knitr::include_graphics("images/02_bellCurve/Painter.png")
 
  <div style="margin-bottom:50px"></div>
 
-```{r ex="histogram2", type="pre-exercise-code"}
-library(ggplot2)
+<!---LEARNR EX 3-->
 
-set.seed(12)
+<iframe class="interactive" id="myIframe3" src="https://tinystats.shinyapps.io/02-bellCurve-ex3/" scrolling="no" frameborder="no"></iframe>
 
-x <- rnorm(50, 10, 2)
-x2 <- rnorm(50, 18, 1.2)
-x <- data.frame(x=x, type="Island #1")
-x2 <- data.frame(x=x2, type="Island #2")
-
-d <- rbind(x,x2)
-colnames(d) <- c("Height", "Location")
-
-```
-
-```{r ex="histogram2", type="sample-code"}
-# Add a complete theme to existing code
-
-p <- ggplot(data = d, aes(x = Height, fill = Location)) +
-  geom_histogram(binwidth = 1, color = "white") +
-  scale_fill_manual(values = c("green3", "turquoise3"))
-
-p
-
-```
-
-```{r ex="histogram2", type="solution"}
-# Add a complete theme to existing code
-
-p <- ggplot(data = d, aes(x = Height, fill = Location)) +
-  geom_histogram(binwidth = 1, color = "white") +
-  scale_fill_manual(values = c("green3", "turquoise3")) + theme_light()
-
-p
-
-```
+<!------------->
 
 \
 
@@ -509,7 +441,7 @@ p <- ggplot(data = d, aes(x = Height, fill = Location)) +
   theme_light() +
   scale_y_continuous(expand = c(0,0)) +
   labs(x="Teacup Giraffe heights", y="Frequency", fill=NULL) +
-  theme(panel.border=element_blank(), panel.grid.minor=element_blank(), legend.position = , legend.background = ) +
+  theme(panel.border=element_blank(), panel.grid.minor=element_blank(), legend.position = , legend.background = )
 
 p
 
