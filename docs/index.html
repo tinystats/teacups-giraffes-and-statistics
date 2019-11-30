@@ -39,10 +39,10 @@
 
 	  gtag('config', 'UA-135221736-1');
 	</script>
+	
+	<link href="assets/landing.css" rel="stylesheet">
+
 </head>
-
-<link href="assets/style.css" rel="stylesheet">
-
 
 <section class="image-descript"> 
 	<img class="main-image" src="images/big_image/Forest72dpi.jpg"> 
@@ -135,7 +135,6 @@ h6 {
 }
 </style>
 
-<link rel="stylesheet" href="assets/style.css" type="text/css" />
 
 
 
@@ -299,6 +298,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -327,6 +327,12 @@ $(document).ready(function () {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;

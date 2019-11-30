@@ -26,8 +26,6 @@ navbar:
     href: https://github.com/tinystats/teacups-giraffes-and-statistics
 output: 
   bookdown::html_document2:
-    includes:
-    css: assets/style.css
     toc: true
     toc_float: true
     theme: cosmo

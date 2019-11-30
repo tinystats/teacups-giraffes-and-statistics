@@ -82,7 +82,7 @@ blockquote {
 /* GIRAFFE LOGO */
 #TOC::before {
   content: "";
-  display: block; /*change from block to none for landing page */
+  display: none; /*change from block to none for landing page */
   height: 150px;
   margin: 10px 10px 40px 10px;
   background-image: url("../images/toc-giraffe-logo.jpg");
@@ -90,6 +90,7 @@ blockquote {
   background-position: center center;
   background-repeat: no-repeat;
 }
+
 
 div.tocify {
     width: 100% !important;
