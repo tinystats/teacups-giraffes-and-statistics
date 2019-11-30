@@ -1,9 +1,32 @@
 @import url('https://fonts.googleapis.com/css?family=Lora:400,400i&display=swap');
 
+/*------------NARRATIVE-----------*/
+
+.narrative-container {
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.narrative-illo {
+  text-align: center;
+  margin: 5em auto;
+}
+
+.narrative-text {
+  font-family: Source Sans Pro;
+}
+
+
+
 /*------------NAVBAR-------------*/
 .navbar-default {
-    background-color: #22222270;
+    background-color: #ffffff;
     border: none;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: black;
 }
 
 

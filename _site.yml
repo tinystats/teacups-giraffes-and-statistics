@@ -5,6 +5,8 @@ navbar:
   left:
   - text: "Home"
     href: index.html
+  - text: "'Narrative'"
+    href: 00_narrative.html
   - text: "Modules"
     menu:
       - text: "Intro to R"

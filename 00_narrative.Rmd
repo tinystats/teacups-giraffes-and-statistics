@@ -1,0 +1,8 @@
+---
+title: "'Narrative'"
+output:
+  bookdown::html_document2:
+    includes:
+      in_header: assets/00_narrative.html
+    toc: false
+---
