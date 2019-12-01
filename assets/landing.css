@@ -18,7 +18,7 @@
 }
 
 
-/*---Slider----*/
+/*---------Slider in Narrative--------*/
 
 
 .bx-wrapper {
@@ -81,7 +81,7 @@
     background-color: #ffffff;
 }
 
-/* Whole document: */
+/*-------------- Whole document------------- */
 
 body {
 	font-size: 19px;
@@ -385,10 +385,33 @@ body, html {
   left: 0;
   background-color: rgba(0,0,0,.1);
 }
+/* --------------v2 Landing Page---------------*/
 
-/* Landing Page*/
+.giraffe-container {
+  max-width: 700px;
+  margin: 10em auto;
+}
+
+.single-giraffe {
+  display: block;
+  position: relative;
+  top: 50%;
+  background-image: url("../images/singleGiraffe.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 350px;
+}
+
+
+.image-descript {
+  display: none;
+}
+
+/* --------------Landing Page---------------*/
 
 .back-panel {
+  display: none;
   max-width: 1500px;
   background: white;
   margin: 0 auto;
