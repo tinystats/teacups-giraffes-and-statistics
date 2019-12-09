@@ -109,6 +109,18 @@
     background-color: #ffffff;
 }
 
+/* hamburger menu on mobile */
+
+.icon-bar {
+  background-color: black !important;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #ffffff !important;
+}
+
+
+
 /* Whole document: */
 
 body {
