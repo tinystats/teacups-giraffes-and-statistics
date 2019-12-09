@@ -4,22 +4,43 @@
 
 .narrative-container {
   width: 80%;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.narrative-illo {
-  text-align: center;
+  max-width: 750px;
   margin: 4em auto;
 }
 
-.narrative-text {
-  font-family: Source Sans Pro;
+.narrative-cover {
+  text-align: center;
+  margin: 0 auto 2em auto;
+  max-width: 650px;
 }
 
+.narrative-illo {
+  max-width: 300px !important;
+  display: inline-block !important;
+  margin: 0.5em 1em 0em 0.5em;
+}
+
+.narrative-text {
+  font-family: "Source Sans Pro";
+  line-height: 1.75;
+}
+
+.slide-content > .narrative-text > p:first-of-type:first-letter { /*drop cap for first p that is a direct child of .narrative-text, which is in turn a direct child of .slide-content*/
+  color: #3fb5bd;
+  float: left;
+  font-family: 'Lora', serif;
+  font-weight: bold;
+  font-size: 7em;
+  line-height: 65px;
+  padding: 20px 8px 0px 3px;
+  margin-bottom: 9px;
+}
+
+.narrative-text * p {
+  margin-top: 2.5em;
+}
 
 /*---Slider----*/
-
 
 .bx-wrapper {
   -moz-box-shadow: 0 0 0px #ccc !important; /*remove box shadow */
@@ -29,7 +50,13 @@
   background: #fff;
 }
 
-/* DIRECTION CONTROLS (NEXT / PREV) */
+/*.bx-wrapper img {
+  max-width: 100%;
+  display: block;
+}*/
+
+
+/*----- DIRECTION CONTROLS (NEXT / PREV)----- */
 .bx-wrapper .bx-prev {
   left: -70px !important;
 }
@@ -51,6 +78,7 @@
   margin-left: 0px;
   margin-right: 0px;
   font-size: 3em;
+  font-family: 'Lora'
 }
 
 .map-island{
