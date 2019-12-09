@@ -73,12 +73,11 @@
 
 .end-text{
   text-align: center;
-  margin-top: 100px;
-  margin-bottom: 50px;
-  margin-left: 0px;
-  margin-right: 0px;
+  margin-top: 100px 0 50px 0;
   font-size: 3em;
-  font-family: 'Lora'
+  font-family: 'Lora';
+  font-weight: normal;
+  color: #3fb5bd;
 }
 
 .map-island{
@@ -134,7 +133,7 @@ ul {
   margin-bottom: 1em;
 }
 
-  .main-container {
+.main-container {
 	max-width: 1326px !important;
   }
 
