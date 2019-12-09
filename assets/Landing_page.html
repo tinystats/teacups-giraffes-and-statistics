@@ -11,25 +11,75 @@
 	
 	<!-- Clickable Giraffe -->
 	
-	
+	<script>
+    $(document).ready(function() {
+      $('.giraffe-container').click(function() {
+          $('.big-image-text.landing').css('visibility','visible');
+          $('.singleGiraffe-clickme').css('display', 'none');
+          $('.singleGiraffe').css('display', 'block');
+          $('.giraffeForest').css('display', 'block');
+        });
+    });
+  </script>
+
 	
 	<!-- CSS -->
 	<link href="assets/landing.css" rel="stylesheet">
 
 </head>
 
-
-
-
-
-
-<section class="giraffe-container" >
-  <div class="message-click-me"></div>
-  <div class="single-giraffe"></div>
-</section>
-
-
-
+<body>
+  <section class="landing container">
+   <h1> 
+   	<div class="lil-image-text">Welcome to the Wonderful World of</div>
+    <div class="landing big-image-text"><strong>TEACUPS, GIRAFFES, & STATISTICS</strong></div> 
+   </h1>
+    <section class="giraffe-container" >
+      <div class="singleGiraffe-clickme"></div>
+      <div class="singleGiraffe"></div>
+      <div class = "giraffeForest">
+        <div class="giraffeForest giraffeForest1"></div>
+        <div class="giraffeForest giraffeForest2"></div>
+        <div class="giraffeForest giraffeForest3"></div>
+        <div class="giraffeForest giraffeForest5"></div>
+      </div>
+    </section>
+    
+    <div class="landing-buttons"> 
+      <a class="button" href= "00_narrative.html">The History of Teacup Giraffes</a>
+      <a class="button" href= "01_introToR.html">Go Straight to the Stats</a>
+    </div>
+    
+    <section class="welcome">
+      <div class="welcome-boxes">
+        <div class="welcome-title"> Learn statistics & R coding </div>
+        <div class="landing-subimage"> 
+          <img class="images-landing" src="images/Landing_page/Landing3.jpg">
+        </div>
+  			<div class="welcome-text"> A series of modules that teach in an intuitive, playful, and approachable way.</div>
+  		</div>
+			
+			<div class = "welcome-boxes">
+  			<div class= "welcome-title"> For students, scientists, & stats-enthusiasts
+  			</div>
+  			<div class="landing-subimage"> 
+  			 <img class="images-landing" src="images/Landing_page/Landing1.jpg"> 
+  			</div>
+  			<div class="welcome-text"> Materials that will help you start from scratch or deepen your familiarity with statistics.
+  			</div>
+  		</div>
+			
+      <div class = "welcome-boxes">
+  			<div class= "welcome-title">Get started now, the giraffes are waiting</div>
+  			<div class="landing-subimage"> 
+  			 <img class="images-landing" src="images/Landing_page/Landing2.jpg"> 
+  			</div>
+  			<div class="welcome-text">Work through the content at your own pace with opportunities for interactive practice.</div>
+  		</div>
+    </section>
+  </section>
+</body>
+  
 
 <section class="image-descript"> 
 	<img class="main-image" src="images/big_image/Forest72dpi.jpg"> 
@@ -42,32 +92,7 @@
 </section>
 
 
-<div class="back-panel"> 
-	<div class="back-panel-contents">
-		<div class="landing-subimage"> <img class="images-landing" src="images/Landing_page/Landing1.jpg"> </div>
-		<div class="color-textbox">
-			<div class="color-textbox-title">Learn statistics & R coding </div>
-			<div class="color-textbox-text"> A series of modules that teach in an intuitive, playful, and approachable way.</div>
-		</div>
-	</div>
-	<div class="back-panel-contents back-panel-contents_row-reverse">
-		<div class="landing-subimage"> <img class="images-landing" src="images/Landing_page/Landing2.jpg"> </div>
-		<div class="color-textbox color-textbox-blue">
-			<div class="color-textbox-title">For students, scientists, & stats-enthusiasts </div>
-			<div class="color-textbox-text">Materials that will help you start from scratch or deepen your familiarity with statistics.</div>
-		</div>
-	</div>
 
-
-	<div class="back-panel-contents">
-		<div class="landing-subimage"> <img class="images-landing" src="images/Landing_page/Landing3.jpg"> </div>
-		<div class="color-textbox color-textbox-orchid">
-			<div class="color-textbox-title"> Get started now, the giraffes are waiting</div>
-			<div class="color-textbox-text">Work through the content at your own pace with opportunities for interactive practice.</div>
-		</div>
-	</div>
-
-</div>
 
 <div class="foot">
 	<hr> 
