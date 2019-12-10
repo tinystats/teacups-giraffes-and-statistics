@@ -3,9 +3,9 @@ output_dir: "docs"
 navbar:
   title: " "
   left:
-  - text: "Home"
+  - icon: "fa-home"
     href: index.html
-  - text: "'Narrative'"
+  - text: "History of Teacup Giraffes"
     href: 00_narrative.html
   - text: "Modules"
     menu:
