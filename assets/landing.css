@@ -326,7 +326,7 @@ div.tocify {
 .main-image {
   width: 100%;
   display: block; /*This gets rid of the weird little space from inline-block*/
-  margin-top: -50px;
+  /*margin-top: -50px;*/
   margin-bottom: 10px;
 }
 
