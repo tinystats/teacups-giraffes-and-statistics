@@ -25,6 +25,19 @@
   line-height: 1.75;
 }
 
+.dialogue {
+  text-indent: 2em;
+}
+
+p.blockquote{
+  background: #fcf8f0;
+  border-left: 10px solid #f2e0c3;
+  padding: 1.5em 10px;
+  font-family: "Lora";
+  font-style: italic;
+  font-size: 0.85em;
+  margin: 1em 2em 1em 2em !important;
+}
 .slide-content > .narrative-text > p:first-of-type:first-letter { /*drop cap for first p that is a direct child of .narrative-text, which is in turn a direct child of .slide-content*/
   color: #3fb5bd;
   float: left;
