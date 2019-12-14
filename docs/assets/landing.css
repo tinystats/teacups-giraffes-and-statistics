@@ -145,11 +145,6 @@ body {
   display: none;
 }
 
-h1 {
-  padding-top: 1em !important;
-  margin-top: -1em !important;
-}
-
 
 p {
   margin: 1em 0 1em 0 !important;
@@ -206,44 +201,8 @@ ul {
 
 
 
-
-/* LARGE IMAGE AT TOP OF EACH MODULE PAGE*/
-.image-descript {
-    position: relative;
-    animation: slide-in-from-bottom 1s forwards;
-
-}
-
-/*.main-image is for landing page*/
-.main-image {
-  width: 100%;
-  display: block; /*This gets rid of the weird little space from inline-block*/
-  /*margin-top: -50px;*/
-  margin-bottom: 10px;
-}
-
 body, html {
   height: 100%;
-}
-
-
-
-
-
-/*@media screen and (max-width: 300px) {
- .image-descript {
-  display: none;
- }*/
-
-
-.big-image-text { 
-  letter-spacing: 0.065em;
-  line-height: 1em;
-  font-size: 68px;
-  text-transform: uppercase;
-  text-align: center; 
-  display:block;
-  color: #fff;
 }
 
 
@@ -256,7 +215,7 @@ body, html {
 
   .giraffe-container {
     height: 500px;
-    margin: 5em auto 2em auto;
+    margin: 0em auto 2em auto;
     position: relative;
     display: flex;
     align-items: center;
@@ -266,7 +225,7 @@ body, html {
     .singleGiraffe-clickme {
       height: 400px;
       width: 354px;
-      left: 52%;
+      left: 50%;
       margin-left: -177px; /*half the container's width*, along with left: 50%*/
       position: absolute;
       display: block;
@@ -280,7 +239,7 @@ body, html {
     .singleGiraffe-clickme-hover {
       height: 400px;
       width: 354px;
-      left: 52%;
+      left: 50%;
       margin-left: -177px; /*half the container's width*, along with left: 50%*/
       position: absolute;
       display: block;
@@ -299,7 +258,7 @@ body, html {
     .singleGiraffe {
       height: 400px;
       width: 354px;
-      left: 52%;
+      left: 50%;
       margin-left: -177px; /*half the container's width*, along with left: 50%*/
       position: absolute;
       display: none;
@@ -327,34 +286,15 @@ body, html {
       animation: slide-in-from-bottom 1s forwards;
     }
     
-    .giraffeForest2 {
-      z-index: -2;
-      display: none;
-      background-image: url('../images/Landing_page/giraffeForest2.png');
-      animation: slide-in-from-right 1.5s forwards;
-    }
-    
-    .giraffeForest3 {
-      z-index: -100;
-      background-image: url('../images/Landing_page/giraffeForest3.png');
-      animation: slide-in-from-right 2s forwards;
-    }
-    
-    .giraffeForest5 {
-      z-index: -10;
-      display: none;
-      background-image: url('../images/Landing_page/giraffeForest5.png');
-      animation: slide-in-from-right 2s forwards;
-    }
     
     .g1 {
       display: block;
       height: 500px;
-      right: 80%;
-      background-image: url('../images/Landing_page/g1.png');
+      background-image: url('../images/Landing_page/Cool-Drink.jpg');
       background-size: contain;
       background-repeat: no-repeat;
       animation: slide-in-from-bottom 1s forwards;
+      background-position: center;
 
     }
     
@@ -375,23 +315,25 @@ body, html {
     }
 
 .image-descript {
-  display: none;
+  margin-top: 5em; /* put on giraffe container when text overlayed*/ 
+  visibility: hidden;
+  display: flex;
+  position: static;
   justify-content: center; /* flex horizontal center */
   align-items: center; /*flex vertical center*/
 }
 
  .big-text {
     text-align: center;
-    color: #ffffff;
-    visibility: visible;
+    color: #22321f;
     font-size: 3em;
     text-shadow: 1px 1px 35px #0e0d0d38;
     letter-spacing: 0.065em;
   }
 
 .small-text { 
-    color: white;
-    margin: 0px auto 20px auto;
+    color: #22321f;
+    margin: 0px auto;
     text-align: center; 
     display:block;
     font-family: 'Lora', serif;
@@ -406,9 +348,38 @@ body, html {
   }
 
 
-/*------ LANDING WELCOME INFO----- */
+/* JS appear */
+
+body.expanded .image-descript {
+  visibility: visible;
+}
+
+body.expanded .singleGiraffe-clickme {
+  display: none;
+}
 
 
+body.expanded .singleGiraffe {
+  display: block;
+}
+
+body.expanded .giraffeForest {
+  display: block;
+}
+    
+body.expanded .appears-after-click{
+  display: block;
+}
+  
+body.expanded .opacity-after-click {
+  opacity: 1;
+}
+
+body.expanded .visibility-after-click {
+  visibility: visible;
+}
+      
+/* ---DEFAULTS JS -- */ 
 .appears-after-click {
   display: none;
 }
@@ -416,6 +387,14 @@ body, html {
 .opacity-after-click {
   opacity: 0;
 }
+
+.visibile-after-click {
+  visibility: hidden;
+}
+
+
+/*------ LANDING WELCOME INFO----- */
+
   .welcome {
     display: flex;
     margin-top: 2em;

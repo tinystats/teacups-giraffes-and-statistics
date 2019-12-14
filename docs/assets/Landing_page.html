@@ -15,13 +15,8 @@
 	<script>
     $(document).ready(function() {
       $('.giraffe-container').click(function() {
-          $('.image-descript').css('display','flex');
-          $('.singleGiraffe-clickme').css('display', 'none');
-          $('.singleGiraffe').css('display', 'block');
-          $('.giraffeForest').css('display', 'block');
-          $('.appears-after-click').css('display', 'block');
-          $('.opacity-after-click').css('opacity', '1');
-        });
+        $('body').addClass('expanded');
+      });
     });
   </script>
 
@@ -35,6 +30,12 @@
 
 <body>
   <section class="landing container">
+   <section class="image-descript"> 
+    <div class="image-text">
+  		<div class="landing small-text">Welcome to the Wonderful World of</div>
+  		<div class="landing big-text"><strong>TEACUPS, GIRAFFES, & STATISTICS</strong></div>
+  	</div>
+    </section>
     <section class="giraffe-container" >
       <div class="singleGiraffe-clickme"></div>
       <div class="singleGiraffe-clickme-hover"></div>
@@ -42,12 +43,6 @@
         <div class="g1 opacity-after-click"></div>
       </div>
       <div class="singleGiraffe"></div>
-      <section class="image-descript"> 
-      	<div class="image-text">
-      		<div class="landing small-text">Welcome to the Wonderful World of</div>
-      		<div class="landing big-text"><strong>TEACUPS, GIRAFFES, & STATISTICS</strong></div>
-      	</div>
-      </section>
     </section>
     
     <div class="appears-after-click">
