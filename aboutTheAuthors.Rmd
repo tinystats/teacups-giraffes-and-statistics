@@ -4,4 +4,5 @@ output:
   bookdown::html_document2:
     includes:
       in_header: assets/aboutTheAuthors_image.html
+    toc: false
 ---

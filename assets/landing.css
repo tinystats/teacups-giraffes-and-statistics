@@ -4,22 +4,56 @@
 
 .narrative-container {
   width: 80%;
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 750px;
+  margin: 4em auto;
+}
+
+.narrative-cover {
+  text-align: center;
+  margin: 0 auto 2em auto;
+  max-width: 650px;
 }
 
 .narrative-illo {
-  text-align: center;
-  margin: 2em auto;
+  max-width: 300px !important;
+  display: inline-block !important;
+  margin: 0.5em 1em 0em 0.5em;
 }
 
 .narrative-text {
   font-family: "Source Sans Pro";
+  line-height: 1.75;
 }
 
+.dialogue {
+  text-indent: 2em;
+}
+
+p.blockquote{
+  background: #fcf8f0;
+  border-left: 10px solid #f2e0c3;
+  padding: 1.5em 10px;
+  font-family: "Lora";
+  font-style: italic;
+  font-size: 0.85em;
+  margin: 1em 2em 1em 2em !important;
+}
+.slide-content > .narrative-text > p:first-of-type:first-letter { /*drop cap for first p that is a direct child of .narrative-text, which is in turn a direct child of .slide-content*/
+  color: #3fb5bd;
+  float: left;
+  font-family: 'Lora', serif;
+  font-weight: bold;
+  font-size: 7em;
+  line-height: 65px;
+  padding: 20px 8px 0px 3px;
+  margin-bottom: 9px;
+}
+
+.narrative-text * p {
+  margin-top: 2.5em;
+}
 
 /*---------Slider in Narrative--------*/
-
 
 .bx-wrapper {
   -moz-box-shadow: 0 0 0px #ccc !important; /*remove box shadow */
@@ -29,7 +63,13 @@
   background: #fff;
 }
 
-/* DIRECTION CONTROLS (NEXT / PREV) */
+/*.bx-wrapper img {
+  max-width: 100%;
+  display: block;
+}*/
+
+
+/*----- DIRECTION CONTROLS (NEXT / PREV)----- */
 .bx-wrapper .bx-prev {
   left: -70px !important;
 }
@@ -46,11 +86,11 @@
 
 .end-text{
   text-align: center;
-  margin-top: 100px;
-  margin-bottom: 50px;
-  margin-left: 0px;
-  margin-right: 0px;
+  margin-top: 100px 0 50px 0;
   font-size: 3em;
+  font-family: 'Lora';
+  font-weight: normal;
+  color: #3fb5bd;
 }
 
 .map-island{
@@ -64,8 +104,9 @@
 
 /*------------NAVBAR-------------*/
 .navbar-default {
-    background-color: #ffffff;
-    border: none;
+  background-color: transparent;
+  background-image: linear-gradient(to bottom, #ffffff 50%, rgba(255,255,255,0)) !important;
+  border: none;
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -81,7 +122,20 @@
     background-color: #ffffff;
 }
 
-/*-------------- Whole document------------- */
+
+/* hamburger menu on mobile */
+
+.icon-bar {
+  background-color: black !important;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #ffffff !important;
+}
+
+
+
+/* Whole document: */
 
 body {
 	font-size: 19px;
@@ -105,7 +159,7 @@ ul {
   margin-bottom: 1em;
 }
 
-  .main-container {
+.main-container {
 	max-width: 1326px !important;
   }
 
@@ -162,7 +216,7 @@ ul {
 .main-image {
   width: 100%;
   display: block; /*This gets rid of the weird little space from inline-block*/
-  margin-top: -50px;
+  /*margin-top: -50px;*/
   margin-bottom: 10px;
 }
 

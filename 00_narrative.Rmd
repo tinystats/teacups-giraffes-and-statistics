@@ -1,5 +1,5 @@
 ---
-title: "'Narrative'"
+title: "History of Teacup Giraffes"
 output:
   bookdown::html_document2:
     includes:
