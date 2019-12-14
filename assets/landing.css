@@ -210,6 +210,8 @@ ul {
 /* LARGE IMAGE AT TOP OF EACH MODULE PAGE*/
 .image-descript {
     position: relative;
+    animation: slide-in-from-bottom 1s forwards;
+
 }
 
 /*.main-image is for landing page*/
@@ -352,6 +354,8 @@ body, html {
       background-image: url('../images/Landing_page/g1.png');
       background-size: contain;
       background-repeat: no-repeat;
+      animation: slide-in-from-bottom 1s forwards;
+
     }
     
     @keyframes slide-in-from-bottom {
