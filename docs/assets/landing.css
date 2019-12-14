@@ -173,25 +173,6 @@ body, html {
 
 
 
-.lil-image-text { 
-    color: black;
-    margin-top: 0px;
-      margin-right: auto;
-      margin-bottom: 20px;
-      margin-left: auto;
-    padding-top: 0px;
-    text-align: center; 
-    display:block;
-    font-family: 'Lora', serif;
-      font-size: 22px;
-      font-weight: 500;
-      line-height: 1.5em;
-      letter-spacing: 1px;
-      font-style: italic;
-      font-weight: normal;
-      color: #fff;
-  }
-
 
 /*@media screen and (max-width: 300px) {
  .image-descript {
@@ -207,7 +188,6 @@ body, html {
   text-align: center; 
   display:block;
   color: #fff;
-  margin-bottom: 3rem;
 }
 
 
@@ -219,48 +199,66 @@ body, html {
 }
 
   .giraffe-container {
-    height: 400px;
-    margin: 2em auto;
+    height: 500px;
+    margin: 5em auto 2em auto;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-
+  
     .singleGiraffe-clickme {
       height: 400px;
       width: 354px;
-      left: 50%;
+      left: 52%;
       margin-left: -177px; /*half the container's width*, along with left: 50%*/
       position: absolute;
       display: block;
       cursor: pointer;
       background-repeat: no-repeat;
       background-size: contain;
-      background-position: center;
+      background-position: bottom;
       background-image: url("../images/Landing_page/singleGiraffe-clickme.jpg");
     }
 
-    .singleGiraffe-clickme:hover {
-      background-image: url("../images/Landing_page/singleGiraffe-hover.jpg");
+    .singleGiraffe-clickme-hover {
+      height: 400px;
+      width: 354px;
+      left: 52%;
+      margin-left: -177px; /*half the container's width*, along with left: 50%*/
+      position: absolute;
+      display: block;
+      cursor: pointer;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: bottom;
+      background-image: url("../images/Landing_page/singleGiraffe-clickme-hover.jpg");
+      opacity: 0;
+    }
+    
+    .singleGiraffe-clickme-hover:hover {
+      opacity: 1;
     }
 
     .singleGiraffe {
       height: 400px;
       width: 354px;
-      left: 50%;
+      left: 52%;
       margin-left: -177px; /*half the container's width*, along with left: 50%*/
       position: absolute;
       display: none;
       background-repeat: no-repeat;
       background-size: contain;
-      background-position: center;  
+      background-position: bottom;  
       background-image: url("../images/Landing_page/singleGiraffe.png");
     }
 
     .giraffeForest {
       position: absolute;
-      height: 400px;
-      width: 700px;
+      height: 500px;
+      width: 1200px;
       left: 50%;
-      margin-left: -350px;
+      margin-left: -600px;
       display: none;
       background-repeat: no-repeat;
       background-size: contain;
@@ -293,6 +291,15 @@ body, html {
       animation: slide-in-from-right 2s forwards;
     }
     
+    .g1 {
+      display: block;
+      height: 500px;
+      right: 80%;
+      background-image: url('../images/Landing_page/g1.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    
     @keyframes slide-in-from-bottom {
       0% { opacity: 0; transform: translateY(100px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -309,23 +316,48 @@ body, html {
       100% { opacity: 1; transform: translateX(0); }
     }
 
+.image-descript {
+  display: none;
+  justify-content: center; /* flex horizontal center */
+  align-items: center; /*flex vertical center*/
+}
 
- .big-image-text.landing {
+ .big-text {
     text-align: center;
-    color: #bababa;
-    margin-top: 100px;
-    visibility: hidden;
+    color: #ffffff;
+    visibility: visible;
+    font-size: 3em;
+    text-shadow: 1px 1px 35px #0e0d0d38;
+    letter-spacing: 0.065em;
   }
 
-.image-descript {
+.small-text { 
+    color: white;
+    margin: 0px auto 20px auto;
+    text-align: center; 
+    display:block;
+    font-family: 'Lora', serif;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.5em;
+      letter-spacing: 1px;
+      font-style: italic;
+      font-weight: normal;
+  text-shadow: 1px 1px 35px #0e0d0d38;
+
+  }
+
+
+/*------ LANDING WELCOME INFO----- */
+
+
+.appears-after-click {
   display: none;
 }
 
-
-
-/* LANDING SUB IMAGES */
-
-
+.opacity-after-click {
+  opacity: 0;
+}
   .welcome {
     display: flex;
     margin-top: 2em;
@@ -367,7 +399,7 @@ body, html {
   max-width: 400px;
 }
 
-.button {
+a.button {
   border: 2px solid DarkSlateGray;
   background-color: #ffffff;
   text-align: center;
@@ -381,16 +413,10 @@ body, html {
   font-family: 'Source Sans Pro';
 }
 
-.button:hover {
+a.button:hover {
   background-color: DarkSlateGray;
   color: white;
   text-decoration: none !important;
-}
-
-a.button-landing-page {
-    color: white !important;
-    border: none;
-    text-decoration: none !important;
 }
 
 
