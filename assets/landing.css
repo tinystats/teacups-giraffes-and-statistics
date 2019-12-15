@@ -14,9 +14,15 @@
   max-width: 650px;
 }
 
-.narrative-illo {
-  max-width: 300px !important;
+.narrative-illo-small {
+  max-width: 350px !important;
   display: inline-block !important;
+  margin: 0.5em 1em 0em 0.5em;
+}
+
+.narrative-illo-big {
+  display: block !important;
+  max-width: 90% !important;
   margin: 0.5em 1em 0em 0.5em;
 }
 
