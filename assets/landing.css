@@ -256,7 +256,7 @@ body, html {
 
   .giraffe-container {
     height: 500px;
-    margin: 5em auto 2em auto;
+    margin: 2em auto 2em auto;
     position: relative;
     display: flex;
     align-items: center;
