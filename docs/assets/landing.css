@@ -69,7 +69,7 @@ p.blockquote{
   margin-bottom: 3em;
 }
 
-/*---Slider----*/
+/*---------Slider in Narrative--------*/
 
 .bx-wrapper {
   -moz-box-shadow: 0 0 0px #ccc !important; /*remove box shadow */
@@ -157,7 +157,6 @@ p.blockquote{
 }
 
     
-
 /* hamburger menu on mobile */
 
 .icon-bar {
@@ -180,29 +179,16 @@ body {
   display: none;
 }
 
+
 .main-container {
 	max-width: 1326px !important;
   }
-
-
-blockquote {
-  margin: 0 0 0 0 !important;
-  padding: 0.5px 21px;  /* I changed from default of 10.5px 21px*/
-}
-
-.blockquote-note {
-  color: #777777;
-  background-color: #f6f3f3;
-  width: 90%;
-  margin: 0 auto;
-}
 
 
  .container-fluid {                  /* margin: 0 Left-aligns container; margin: auto to "center" (Default)*/
     margin-right: auto !important; 
     margin-left: auto !important;
 } 
-
 
 .row-fluid{
   display: flex;
@@ -214,82 +200,6 @@ blockquote {
   position: relative;
 }
 
-/*-----------TABLE OF CONTENTS-------------*/
-
-/* GIRAFFE LOGO */
-#TOC::before {
-  content: "";
-  display: none; /*change from block to none for landing page */
-  height: 150px;
-  margin: 10px 10px 40px 10px;
-  background-image: url("../images/toc-giraffe-logo.jpg");
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-
-div.tocify {
-    width: 100% !important;
-    max-width: 260px;
-    max-height: 85%;
-    font-size: 16px;
-}
-
-.tocify {
-  border: none;
-  position: -webkit-sticky;
-  position: sticky; 
-  top: 60px; 
-  width: 100%;
-}
-
-#TOC {
-  position: -webkit-sticky !important;
-  position: sticky !important;
-}
-
-.toc-content {
-  width: 75%
-}
-
-.list-group-item {
-    position: relative;
-    display: block;
-    padding: 10px 15px;
-    margin-bottom: -1px;
-    background-color: white;
-    border: none;
-    color: gray;
-}
-
-.list-group-item:hover {
-    z-index: 2;
-    color: DarkSlateGray;
-    background-color: white;
-    border: none;
-}
-
-.list-group-item.active{
-    z-index: 2;
-    color: black;
-    background-color: white;
-    border: none;
-}
-
-.list-group-item.active:focus {
-    z-index: 2;
-    color: black;
-    background-color: white;
-    border: none;
-}
-
-.list-group-item.active:hover {
-  z-index: 2;
-  color: DarkSlateGray;
-  background-color: white;
-  border: none;
-}
 
 /*---------FOOTER-----------*/
 .foot_image {
@@ -316,20 +226,13 @@ div.tocify {
 }
 
 
-/* DATA CAMP WINDOWS */
-
-.powered-by-datacamp {
-  display: none !important;
-}
-
-.datacamp-exercise {
-  margin: 0 0 1em 0 !important;
-}
 
 
 /* LARGE IMAGE AT TOP OF EACH MODULE PAGE*/
 .image-descript {
     position: relative;
+    animation: slide-in-from-bottom 1s forwards;
+
 }
 
 /*.main-image is for landing page*/
@@ -340,86 +243,12 @@ div.tocify {
   margin-bottom: 10px;
 }
 
-.button {
-  border: 2px solid white;
-  background-color: #0000001a;
-  text-align: center;
-  color: white;
-  padding: 1rem;
-  font-size: 2rem;
-  cursor: pointer;
-  margin: 0 auto;
-  width: 150px;
-  text-transform: uppercase;
-}
-
-.button:hover {
-  background-color: white;
-  color: DarkSlateGray;
-  text-decoration: none !important;
-}
-
-a.button-landing-page {
-    color: white !important;
-    border: none;
-    text-decoration: none !important;
-}
-
-
-a.button-landing-page:focus{
-    z-index: 2;
-    color: DarkSlateGray;
-    border: none;
-    text-decoration: none !important;
-}
-
-a.button-landing-page:hover{
-    z-index: 2;
-    color: DarkSlateGray;
-    border: none;
-    text-decoration: none !important;
-}
-
 body, html {
   height: 100%;
 }
 
 
 
-/*.big_image is for module pages*/
-
-.big_image {
-  margin-top: -50px;
-  margin-bottom: 2em;
-  width: 100%;
-}
-
-.image-text{
-    position: absolute;
-    top:30%;
-    left:0;
-    right:0;
-    bottom:0;
-  }
-  
-.lil-image-text { 
-    color: white;
-    margin-top: 0px;
-      margin-right: auto;
-      margin-bottom: 20px;
-      margin-left: auto;
-    padding-top: 0px;
-    text-align: center; 
-    display:block;
-    font-family: 'Lora', serif;
-      font-size: 22px;
-      font-weight: 500;
-      line-height: 1.5em;
-      letter-spacing: 1px;
-      font-style: italic;
-      font-weight: normal;
-      color: #fff;
-  }
 
 
 /*@media screen and (max-width: 300px) {
@@ -436,80 +265,239 @@ body, html {
   text-align: center; 
   display:block;
   color: #fff;
-  margin-bottom: 3rem;
 }
 
 
-.color-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0,0,0,.1);
+
+/* --------------v2 Landing Page---------------*/
+
+.landing-container {
+  max-width: 700px;
 }
 
-/* Landing Page*/
+  .giraffe-container {
+    height: 500px;
+    margin: 2em auto 2em auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+    .singleGiraffe-clickme {
+      height: 400px;
+      width: 354px;
+      left: 52%;
+      margin-left: -177px; /*half the container's width*, along with left: 50%*/
+      position: absolute;
+      display: block;
+      cursor: pointer;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: bottom;
+      background-image: url("../images/Landing_page/singleGiraffe-clickme.jpg");
+    }
 
-.back-panel {
-  max-width: 1500px;
-  background: white;
-  margin: 0 auto;
-  margin-top: 3em;
-  padding: 0 0em;
+    .singleGiraffe-clickme-hover {
+      height: 400px;
+      width: 354px;
+      left: 52%;
+      margin-left: -177px; /*half the container's width*, along with left: 50%*/
+      position: absolute;
+      display: block;
+      cursor: pointer;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: bottom;
+      background-image: url("../images/Landing_page/singleGiraffe-clickme-hover.jpg");
+      opacity: 0;
+    }
+    
+    .singleGiraffe-clickme-hover:hover {
+      opacity: 1;
+    }
+
+    .singleGiraffe {
+      height: 400px;
+      width: 354px;
+      left: 52%;
+      margin-left: -177px; /*half the container's width*, along with left: 50%*/
+      position: absolute;
+      display: none;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: bottom;  
+      background-image: url("../images/Landing_page/singleGiraffe.png");
+    }
+
+    .giraffeForest {
+      position: absolute;
+      height: 500px;
+      width: 1200px;
+      left: 50%;
+      margin-left: -600px;
+      display: none;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center; 
+    }
+
+    .giraffeForest1 {
+      z-index: -1;
+      background-image: url('../images/Landing_page/giraffeForest1.png');
+      animation: slide-in-from-bottom 1s forwards;
+    }
+    
+    .giraffeForest2 {
+      z-index: -2;
+      display: none;
+      background-image: url('../images/Landing_page/giraffeForest2.png');
+      animation: slide-in-from-right 1.5s forwards;
+    }
+    
+    .giraffeForest3 {
+      z-index: -100;
+      background-image: url('../images/Landing_page/giraffeForest3.png');
+      animation: slide-in-from-right 2s forwards;
+    }
+    
+    .giraffeForest5 {
+      z-index: -10;
+      display: none;
+      background-image: url('../images/Landing_page/giraffeForest5.png');
+      animation: slide-in-from-right 2s forwards;
+    }
+    
+    .g1 {
+      display: block;
+      height: 500px;
+      right: 80%;
+      background-image: url('../images/Landing_page/g1.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: slide-in-from-bottom 1s forwards;
+
+    }
+    
+    @keyframes slide-in-from-bottom {
+      0% { opacity: 0; transform: translateY(100px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    
+    @keyframes slide-in-from-right{
+      0% { opacity: 0; transform: translateX(100px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes slide-in-from-left {
+      0% { opacity: 0; transform: translateX(100px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+.image-descript {
+  display: none;
+  justify-content: center; /* flex horizontal center */
+  align-items: center; /*flex vertical center*/
 }
 
-.back-panel-contents {
-  width: 100%;
+ .big-text {
+    text-align: center;
+    color: #ffffff;
+    visibility: visible;
+    font-size: 3em;
+    text-shadow: 1px 1px 35px #0e0d0d38;
+    letter-spacing: 0.065em;
+  }
+
+.small-text { 
+    color: white;
+    margin: 0px auto 20px auto;
+    text-align: center; 
+    display:block;
+    font-family: 'Lora', serif;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.5em;
+      letter-spacing: 1px;
+      font-style: italic;
+      font-weight: normal;
+  text-shadow: 1px 1px 35px #0e0d0d38;
+
+  }
+
+
+/*------ LANDING WELCOME INFO----- */
+
+
+.appears-after-click {
+  display: none;
+}
+
+.opacity-after-click {
+  opacity: 0;
+}
+  .welcome {
+    display: flex;
+    margin-top: 2em;
+  }
+  
+  .welcome-boxes {
+    margin: 3em 1em 5em 1em;
+  }
+
+  
+  .welcome-title {
+    color: DarkSlateGray;
+    font-size: 1.75em;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+    .landing-subimage {
+      margin: 1rem auto;
+  }
+
+  .images-landing {
+    display: block;
+    margin: 1em auto;
+    margin-bottom: 0 !important;
+    height: 250px;
+  }
+  
+  .welcome-text {
+    color: DarkSlateGray;
+    text-align: center;
+  }
+
+/*------ BUTTONS ------*/
+
+.landing-buttons {
   display: flex;
   margin: 0 auto;
+  max-width: 400px;
 }
 
-.back-panel-contents_row-reverse {
-  flex-direction: row-reverse;
+a.button {
+  border: 2px solid DarkSlateGray;
+  background-color: #ffffff;
+  text-align: center;
+  color: DarkSlateGray;
+  padding: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin: 0 auto;
+  width: 177px;
+  text-transform: uppercase;
+  font-family: 'Source Sans Pro';
 }
 
-.color-textbox {
-  width:70%;
-  background: #4accc2;
+a.button:hover {
+  background-color: DarkSlateGray;
   color: white;
-  text-align: center;
-  font-weight: normal;
-  margin-bottom: 3em;
+  text-decoration: none !important;
 }
 
-.color-textbox-blue {
-  background: #5eade3;
-}
-
-
-.color-textbox-orchid {
-  background: orchid;
-}
-
-.color-textbox-title {
-  text-align: center;
-  font-weight: bold;
-  font-size: 3.2rem;
-  padding: 8rem 3rem 0rem 3rem;
-}
-
-.color-textbox-text {
-  font-size: 3rem;
-  padding: 3rem 8rem 0rem 8rem;
-  font-weight: normal;
-  text-transform: normal;
-}
-
-.landing-subimage {
-  width:30%;
-  margin-bottom: 3em;
-}
-
-
-.images-landing {
-  margin-bottom: 0em !important;
-}
 
 
 
@@ -532,7 +520,7 @@ body, html {
   }
 
   .landing-subimage {
-    width: 75%;
+    height: 200px;
     margin: 0 auto;
   }
 
@@ -644,38 +632,6 @@ body, html {
 }
 
 
-/* -------ABOUT THE AUTHORS CSS------- */
-
-.image-text-about-the-authors {
-  top:44%;
-}
-
-.about-the-author-color-textbox {
-  width:33.3%;
-  background: white;
-  color: black;
-  text-align: center;
-  font-weight: normal;
-  margin-bottom: 1em;
-}
-
-.about-the-author-color-textbox-title {
-  text-align: center;
-  font-weight: bold;
-  font-size: 2.2rem;
-  padding: 8rem 3rem 0rem 3rem;
-}
-
-.about-the-author-color-textbox-text {
-  font-size: 2rem;
-  padding: 3rem 8rem 0rem 8rem;
-  font-weight: normal;
-  text-transform: normal;
-}
-
-.about-the-author-subimage {
-  width: 40%;
-}
 
 @media only screen and (max-width: 768px) {
   .lil-image-text {
@@ -702,35 +658,35 @@ body, html {
 }
 
 .hero-image {
-    max-width: 1800px;
-    margin-top: -50px !important;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    margin-bottom: 2em;
-    background-image: linear-gradient( rgba(0,0,0,.2), rgba(0,0,0,.2) ),
-    url(../images/big_image/Log.jpg); /* liner gradient tints the image darker for readability*/
-    height: 550px;
-    background-size: cover;
-    background-color: #1b3a42;
-    background-position: center bottom;
-    display: flex; /* Change to `display: none` for no hero image */
-    justify-content: center;
-    align-items: center;
+  max-width: 1800px;
+  margin-top: -50px !important;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  margin-bottom: 2em;
+  background-image: linear-gradient( rgba(0,0,0,.2), rgba(0,0,0,.2) ),
+  url(../images/big_image/Log.jpg); /* liner gradient tints the image darker for readability*/
+  height: 550px;
+  background-size: cover;
+  background-color: #1b3a42;
+  background-position: center bottom;
+  display: flex; /* Change to `display: none` for no hero image */
+  justify-content: center;
+  align-items: center;
 }
 
 
 .hero-image-text-little {
   position: relative;
   font-family: 'Lora', serif;
-      font-size: 24px;
-      font-weight: 500;
-      line-height: 1.5em;
-      letter-spacing: 1px;
-      font-style: italic;
-      font-weight: normal;
-      color: #fff;
-      text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.5em;
+  letter-spacing: 1px;
+  font-style: italic;
+  font-weight: normal;
+  color: #fff;
+  text-align: center;
 }
 
 .hero-image-text-big {
@@ -768,50 +724,11 @@ body, html {
     margin-bottom: 1em;
   }
   
-.toc-content.col-xs-12.col-sm-8.col-md-9{
-  width: 100%;
-  padding-left: 1px;
-  padding-right: 1px;
-}
-  
-
-}
-
-/*------------iframe-----------------*/
-
-iframe.interactive {
-    min-width: 100%;
-    margin: 0 auto;
+  .toc-content.col-xs-12.col-sm-8.col-md-9{
+    width: 100%;
+    padding-left: 1px;
+    padding-right: 1px;
   }
-  
-/*----------- video for gif----------- */
-
-video {
-  width: 100%;
 }
 
-.small_vid {
-  width:600px;
-  display: block;
-  margin: 0 auto;
-}
 
-/*----------DIV TIPS------------*/
-
-div.note, div.tip, div.gotcha, div.design, div.hat{
-  border: 4px #a0D1Ef63;
-  border-style: dashed;
-  padding: 1em;
-  margin: 1em 0;
-  padding-left: 100px;
-  background-size: 70px;
-  background-repeat: no-repeat;
-  background-position: 15px center;
-  min-height: 120px;
-  color: #59a9da;
-  background-color: #fcfcfc;
-}
-
-div.note {
-  background-image: url("../images/toc-giraffe.jpg");
-}

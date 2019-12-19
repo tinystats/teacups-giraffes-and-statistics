@@ -6,56 +6,96 @@
 	  window.dataLayer = window.dataLayer || [];
 	  function gtag(){dataLayer.push(arguments);}
 	  gtag('js', new Date());
-
 	  gtag('config', 'UA-135221736-1');
 	</script>
 	
+	<!-- Clickable Giraffe -->
+	
+  
+	<script>
+    $(document).ready(function() {
+      $('.giraffe-container').click(function() {
+          $('.image-descript').css('display','flex');
+          $('.singleGiraffe-clickme').css('display', 'none');
+          $('.singleGiraffe').css('display', 'block');
+          $('.giraffeForest').css('display', 'block');
+          $('.appears-after-click').css('display', 'block');
+          $('.opacity-after-click').css('opacity', '1');
+        });
+    });
+  </script>
+
+
+
+	
+	<!-- CSS -->
 	<link href="assets/landing.css" rel="stylesheet">
 
 </head>
 
-<section class="image-descript"> 
+<body>
+  <section class="landing container">
+    <section class="giraffe-container" >
+      <div class="singleGiraffe-clickme"></div>
+      <div class="singleGiraffe-clickme-hover"></div>
+      <div class="giraffeForest">
+        <div class="g1 opacity-after-click"></div>
+      </div>
+      <div class="singleGiraffe"></div>
+      <section class="image-descript"> 
+      	<div class="image-text">
+      		<div class="landing small-text">Welcome to the Wonderful World of</div>
+      		<div class="landing big-text"><strong>TEACUPS, GIRAFFES, & STATISTICS</strong></div>
+      	</div>
+      </section>
+    </section>
+    
+    <div class="appears-after-click">
+      <div class="landing-buttons"> 
+        <a class="button" href="00_narrative.html">The History of Teacup Giraffes</a>
+        <a class="button" href="01_introToR.html">Go Straight to the Stats</a>
+      </div>
+    
+      <!--no extra
+      <section class="welcome">
+        <div class="welcome-boxes">
+          <div class="welcome-title"> Learn statistics & R coding </div>
+          <div class="landing-subimage"> 
+            <img class="images-landing" src="images/Landing_page/Landing3.jpg">
+          </div>
+    			<div class="welcome-text"> A series of modules that teach in an intuitive, playful, and approachable way.</div>
+    		</div>
+  			
+  			<div class = "welcome-boxes">
+    			<div class= "welcome-title"> For students, scientists, & stats-enthusiasts
+    			</div>
+    			<div class="landing-subimage"> 
+    			 <img class="images-landing" src="images/Landing_page/Landing1.jpg"> 
+    			</div>
+    			<div class="welcome-text"> Materials that will help you start from scratch or deepen your familiarity with statistics.
+    			</div>
+    		</div>
+  			
+        <div class = "welcome-boxes">
+    			<div class= "welcome-title">Get started now, the giraffes are waiting</div>
+    			<div class="landing-subimage"> 
+    			 <img class="images-landing" src="images/Landing_page/Landing2.jpg"> 
+    			</div>
+    			<div class="welcome-text">Work through the content at your own pace with opportunities for interactive practice.</div>
+    		</div>
+      </section>
+      <no extra-->
+    </div>
+  </section>
+</body>
+  
+
+<!--section class="image-descript"> 
 	<img class="main-image" src="images/big_image/Forest72dpi.jpg"> 
-	<!--<div class="color-overlay"></div>-->
 	<div class="image-text">
 		<div class="lil-image-text">Welcome to the Wonderful World of</div>
 		<div class="big-image-text"><strong>TEACUPS, GIRAFFES, & STATISTICS</strong></div>
 		<a class= "button-landing-page" href= "01_introToR.html"><div class = "button"> Get Started</div></a>
 	</div>
-</section>
+</section-->
 
-
-<div class="back-panel"> 
-	<div class="back-panel-contents">
-		<div class="landing-subimage"> <img class="images-landing" src="images/Landing_page/Landing1.jpg"> </div>
-		<div class="color-textbox">
-			<div class="color-textbox-title">Learn statistics & R coding </div>
-			<div class="color-textbox-text"> A series of modules that teach in an intuitive, playful, and approachable way.</div>
-		</div>
-	</div>
-	<div class="back-panel-contents back-panel-contents_row-reverse">
-		<div class="landing-subimage"> <img class="images-landing" src="images/Landing_page/Landing2.jpg"> </div>
-		<div class="color-textbox color-textbox-blue">
-			<div class="color-textbox-title">For students, scientists, & stats-enthusiasts </div>
-			<div class="color-textbox-text">Materials that will help you start from scratch or deepen your familiarity with statistics.</div>
-		</div>
-	</div>
-
-
-	<div class="back-panel-contents">
-		<div class="landing-subimage"> <img class="images-landing" src="images/Landing_page/Landing3.jpg"> </div>
-		<div class="color-textbox color-textbox-orchid">
-			<div class="color-textbox-title"> Get started now, the giraffes are waiting</div>
-			<div class="color-textbox-text">Work through the content at your own pace with opportunities for interactive practice.</div>
-		</div>
-	</div>
-
-</div>
-
-<div class="foot">
-	<hr> 
-	<p style="text-align: center;"> <span style="color: #808080; display: inline-block; width: 33%;"> 	This project was created entirely in RStudio using R Markdown with features making use of DataCamp Light windows and published on GitHub pages. 
- </span></p>
-	<p style="text-align: center;">
-	</p>
-</div>

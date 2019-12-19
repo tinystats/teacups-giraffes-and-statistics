@@ -19,9 +19,6 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -35,59 +32,98 @@
 	  window.dataLayer = window.dataLayer || [];
 	  function gtag(){dataLayer.push(arguments);}
 	  gtag('js', new Date());
-
 	  gtag('config', 'UA-135221736-1');
 	</script>
 	
+	<!-- Clickable Giraffe -->
+	
+  
+	<script>
+    $(document).ready(function() {
+      $('.giraffe-container').click(function() {
+          $('.image-descript').css('display','flex');
+          $('.singleGiraffe-clickme').css('display', 'none');
+          $('.singleGiraffe').css('display', 'block');
+          $('.giraffeForest').css('display', 'block');
+          $('.appears-after-click').css('display', 'block');
+          $('.opacity-after-click').css('opacity', '1');
+        });
+    });
+  </script>
+
+
+
+	
+	<!-- CSS -->
 	<link href="assets/landing.css" rel="stylesheet">
 
 </head>
 
-<section class="image-descript"> 
+<body>
+  <section class="landing container">
+    <section class="giraffe-container" >
+      <div class="singleGiraffe-clickme"></div>
+      <div class="singleGiraffe-clickme-hover"></div>
+      <div class="giraffeForest">
+        <div class="g1 opacity-after-click"></div>
+      </div>
+      <div class="singleGiraffe"></div>
+      <section class="image-descript"> 
+      	<div class="image-text">
+      		<div class="landing small-text">Welcome to the Wonderful World of</div>
+      		<div class="landing big-text"><strong>TEACUPS, GIRAFFES, & STATISTICS</strong></div>
+      	</div>
+      </section>
+    </section>
+    
+    <div class="appears-after-click">
+      <div class="landing-buttons"> 
+        <a class="button" href="00_narrative.html">The History of Teacup Giraffes</a>
+        <a class="button" href="01_introToR.html">Go Straight to the Stats</a>
+      </div>
+    
+      <!--no extra
+      <section class="welcome">
+        <div class="welcome-boxes">
+          <div class="welcome-title"> Learn statistics & R coding </div>
+          <div class="landing-subimage"> 
+            <img class="images-landing" src="images/Landing_page/Landing3.jpg">
+          </div>
+    			<div class="welcome-text"> A series of modules that teach in an intuitive, playful, and approachable way.</div>
+    		</div>
+  			
+  			<div class = "welcome-boxes">
+    			<div class= "welcome-title"> For students, scientists, & stats-enthusiasts
+    			</div>
+    			<div class="landing-subimage"> 
+    			 <img class="images-landing" src="images/Landing_page/Landing1.jpg"> 
+    			</div>
+    			<div class="welcome-text"> Materials that will help you start from scratch or deepen your familiarity with statistics.
+    			</div>
+    		</div>
+  			
+        <div class = "welcome-boxes">
+    			<div class= "welcome-title">Get started now, the giraffes are waiting</div>
+    			<div class="landing-subimage"> 
+    			 <img class="images-landing" src="images/Landing_page/Landing2.jpg"> 
+    			</div>
+    			<div class="welcome-text">Work through the content at your own pace with opportunities for interactive practice.</div>
+    		</div>
+      </section>
+      <no extra-->
+    </div>
+  </section>
+</body>
+  
+
+<!--section class="image-descript"> 
 	<img class="main-image" src="images/big_image/Forest72dpi.jpg"> 
-	<!--<div class="color-overlay"></div>-->
 	<div class="image-text">
 		<div class="lil-image-text">Welcome to the Wonderful World of</div>
 		<div class="big-image-text"><strong>TEACUPS, GIRAFFES, & STATISTICS</strong></div>
 		<a class= "button-landing-page" href= "01_introToR.html"><div class = "button"> Get Started</div></a>
 	</div>
-</section>
-
-
-<div class="back-panel"> 
-	<div class="back-panel-contents">
-		<div class="landing-subimage"> <img class="images-landing" src="images/Landing_page/Landing1.jpg"> </div>
-		<div class="color-textbox">
-			<div class="color-textbox-title">Learn statistics & R coding </div>
-			<div class="color-textbox-text"> A series of modules that teach in an intuitive, playful, and approachable way.</div>
-		</div>
-	</div>
-	<div class="back-panel-contents back-panel-contents_row-reverse">
-		<div class="landing-subimage"> <img class="images-landing" src="images/Landing_page/Landing2.jpg"> </div>
-		<div class="color-textbox color-textbox-blue">
-			<div class="color-textbox-title">For students, scientists, & stats-enthusiasts </div>
-			<div class="color-textbox-text">Materials that will help you start from scratch or deepen your familiarity with statistics.</div>
-		</div>
-	</div>
-
-
-	<div class="back-panel-contents">
-		<div class="landing-subimage"> <img class="images-landing" src="images/Landing_page/Landing3.jpg"> </div>
-		<div class="color-textbox color-textbox-orchid">
-			<div class="color-textbox-title"> Get started now, the giraffes are waiting</div>
-			<div class="color-textbox-text">Work through the content at your own pace with opportunities for interactive practice.</div>
-		</div>
-	</div>
-
-</div>
-
-<div class="foot">
-	<hr> 
-	<p style="text-align: center;"> <span style="color: #808080; display: inline-block; width: 33%;"> 	This project was created entirely in RStudio using R Markdown with features making use of DataCamp Light windows and published on GitHub pages. 
- </span></p>
-	<p style="text-align: center;">
-	</p>
-</div>
+</section-->
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -314,69 +350,6 @@ $(document).ready(function () {
 
 
 
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-@media print {
-.toc-content {
-  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
-  float: right;
-}
-}
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-
 
 </head>
 
@@ -384,16 +357,6 @@ div.tocify {
 
 
 <div class="container-fluid main-container">
-
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -475,8 +438,6 @@ div.tocify {
 
 
 
-</div>
-</div>
 
 </div>
 
@@ -509,32 +470,6 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
