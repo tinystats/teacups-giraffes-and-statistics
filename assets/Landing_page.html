@@ -20,6 +20,8 @@
 	
 	<!-- CSS -->
 	<link href="assets/landing.css" rel="stylesheet">
+  <link href="assets/button.css" rel="stylesheet">
+  <link href="assets/mobile_landing.css" rel="stylesheet">
 
 </head>
 
@@ -44,10 +46,27 @@
     </section>
     
     <div class="appears-after-click">
+      <div class="about">A delightful series of modules to learn statistics and R coding for students, scientists, and stats-enthusiasts.</div>
       <div class="landing-buttons"> 
-        <a class="button" href="00_narrative.html">The History of Teacup Giraffes</a>
-        <a class="button" href="01_introToR.html">Go Straight to the Stats</a>
+        <a id="container" href="00_narrative.html">
+          <button class="learn-more">
+            <span class="circle">
+              <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">Read the History of Teacup Giraffes</span>
+          </button>
+        </a>
+        <a id="container" href="01_introToR.html">
+          <button class="learn-more deemphasized">
+            <span class="circle">
+              <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">Skip Straight to the Stats</span>
+          </button>
+        </a>
       </div>
+      
+      
     </div>
   </section>
 </body>
