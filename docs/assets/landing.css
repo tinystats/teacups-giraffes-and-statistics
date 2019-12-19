@@ -156,7 +156,7 @@ p.blockquote{
     background-color: white;
 }
 
-    
+
 /* hamburger menu on mobile */
 
 .icon-bar {
@@ -179,11 +179,22 @@ body {
   display: none;
 }
 
-
 .main-container {
 	max-width: 1326px !important;
   }
 
+
+blockquote {
+  margin: 0 0 0 0 !important;
+  padding: 0.5px 21px;  /* I changed from default of 10.5px 21px*/
+}
+
+.blockquote-note {
+  color: #777777;
+  background-color: #f6f3f3;
+  width: 90%;
+  margin: 0 auto;
+}
 
  .container-fluid {                  /* margin: 0 Left-aligns container; margin: auto to "center" (Default)*/
     margin-right: auto !important; 
@@ -372,7 +383,7 @@ body, html {
       display: block;
       height: 500px;
       right: 80%;
-      background-image: url('../images/Landing_page/g1.png');
+      background-image: url('../images/Landing_page/g1_1200px.jpg');
       background-size: contain;
       background-repeat: no-repeat;
       animation: slide-in-from-bottom 1s forwards;
