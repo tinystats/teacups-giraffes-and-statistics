@@ -1,5 +1,53 @@
 @import url('https://fonts.googleapis.com/css?family=Lora:400,400i&display=swap');
 
+
+/* JS appear: */
+/* After clicking, the class `.expanded` is added to the body tag, which applies the styles below to the elements below */
+
+body.expanded .image-descript {
+  display: flex;
+}
+
+body.expanded .singleGiraffe-clickme {
+  display: none;
+}
+
+
+body.expanded .singleGiraffe {
+  display: block;
+}
+
+body.expanded .giraffeForest {
+  display: block;
+}
+    
+body.expanded .appears-after-click{
+  display: block;
+}
+  
+body.expanded .opacity-after-click {
+  opacity: 1;
+}
+
+body.expanded .visibility-after-click {
+  visibility: visible;
+}
+
+      
+/* --- STATE BEFORE CLICK -- */ 
+.appears-after-click {
+  display: none;
+}
+
+.opacity-after-click {
+  opacity: 0;
+}
+
+.visibile-after-click {
+  visibility: hidden;
+}
+
+
 /*------------NARRATIVE-----------*/
 
 .narrative-container {
@@ -57,7 +105,7 @@ p.blockquote{
   font-weight: bold;
   font-size: 7em;
   line-height: 65px;
-  padding: 20px 8px 0px 3px;
+  padding: 20px 8px 0 3px;
   margin-bottom: 9px;
 }
 
@@ -65,48 +113,9 @@ p.blockquote{
   margin-bottom: 1.5em;
 }
 
-.slide-content {
+.slide-content { /* space separating each "chapter" */
   margin-bottom: 3em;
 }
-
-/*---------Slider in Narrative--------*/
-
-.bx-wrapper {
-  -moz-box-shadow: 0 0 0px #ccc !important; /*remove box shadow */
-  -webkit-box-shadow: 0 0 0px #ccc !important; /*remove box shadow */
-  box-shadow: 0 0 0px #ccc !important; /*remove box shadow */
-  border: 5px solid #fff;
-  background: #fff;
-}
-
-/*.bx-wrapper img {
-  max-width: 100%;
-  display: block;
-}*/
-
-
-
-
-/*----- DIRECTION CONTROLS (NEXT / PREV)----- */
-.bx-wrapper .bx-prev {
-  left: -70px !important;
-}
-
-.bx-wrapper .bx-next {
-  right: -70px !important;
-}
-
-.bx-wrapper .bx-controls-direction a {
-  position: absolute;
-  top: 100%; /*default 50% */
-  margin-top: -16px;
-  outline: 0;
-  width: 32px;
-  height: 32px;
-  text-indent: -9999px;
-  z-index: 9999;
-}
-
 
 .end-text{
   text-align: center;
@@ -115,14 +124,6 @@ p.blockquote{
   font-family: 'Lora';
   font-weight: normal;
   color: #3fb5bd;
-}
-
-.map-island{
-  height: 300px;
-  background-image: url("../images/02_bellCurve/giraffe_islands2.jpg");
-  background-size: contain;
-  background-repeat: no-repeat;
-
 }
 
 
@@ -163,7 +164,8 @@ p.blockquote{
   background-color: black !important;
 }
 
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+.navbar-default .navbar-toggle:hover, 
+.navbar-default .navbar-toggle:focus {
     background-color: #ffffff !important;
 }
 
@@ -427,20 +429,17 @@ body, html {
     text-align: center; 
     display:block;
     font-family: 'Lora', serif;
-      font-size: 22px;
-      font-weight: 500;
-      line-height: 1.5em;
-      letter-spacing: 1px;
-      font-style: italic;
-      font-weight: normal;
-  text-shadow: 1px 1px 35px #0e0d0d38;
-
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.5em;
+    letter-spacing: 1px;
+    font-style: italic;
+    text-shadow: 1px 1px 35px #0e0d0d38;
   }
 
 
 /*------ LANDING WELCOME INFO----- */
-
-
+/*
 .appears-after-click {
   display: none;
 }
@@ -480,6 +479,9 @@ body, html {
     color: DarkSlateGray;
     text-align: center;
   }
+*/
+
+
 
 /*------ BUTTONS ------*/
 
@@ -487,6 +489,19 @@ body, html {
   display: flex;
   margin: 0 auto;
   max-width: 400px;
+  animation: 3s fadeIn;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 a.button {
@@ -508,6 +523,7 @@ a.button:hover {
   color: white;
   text-decoration: none !important;
 }
+
 
 
 
