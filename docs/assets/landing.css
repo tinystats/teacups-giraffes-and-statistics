@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lora:400,400i&display=swap');
 
+/*Loads background-images in HTML as <img> tags, so that they are already loaded when animated to display later*/
 #preload {
   display: none;
 }
@@ -10,35 +11,16 @@
 body.expanded .image-descript {
   display: flex;
 }
-
 body.expanded .singleGiraffe-clickme {
   display: none;
 }
-
-
 body.expanded .singleGiraffe {
   display: block;
 }
-
 body.expanded .giraffeForest {
   display: block;
 }
     
-body.expanded .landing-buttons{
-  visibility: visible;
-  animation: 3s fadeIn;
-  animation-fill-mode: forwards;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    visibility: visible;
-    opacity: 1;
-  }
-}
 
 
 /*------------NARRATIVE-----------*/
@@ -60,13 +42,11 @@ body.expanded .landing-buttons{
   display: inline-block !important;
   margin: 0.5em 1em 0.5em 0.5em;
 }
-
 .narrative-illo-small {
   max-width: 350px !important;
   display: inline-block !important;
   margin: 0.5em 1em 0.5em 0.5em;
 }
-
 .narrative-illo-big {
   display: block !important;
   max-width: 90% !important;
@@ -91,6 +71,7 @@ p.blockquote{
   font-size: 0.85em;
   margin: 1em 2em 1em 2em !important;
 }
+
 .slide-content > .narrative-text > p:first-of-type:first-letter { /*drop cap for first p that is a direct child of .narrative-text, which is in turn a direct child of .slide-content*/
   color: #3fb5bd;
   float: left;
@@ -115,7 +96,7 @@ p.blockquote{
   margin-top: 100px 0 50px 0;
   font-size: 3em;
   font-family: 'Lora';
-  font-weight: normal;
+  font-weight: 600;
   color: #3fb5bd;
 }
 
@@ -163,7 +144,6 @@ p.blockquote{
 }
 
 
-
 /* Whole document: */
 
 body {
@@ -178,18 +158,6 @@ body {
 	max-width: 1326px !important;
   }
 
-
-blockquote {
-  margin: 0 0 0 0 !important;
-  padding: 0.5px 21px;  /* I changed from default of 10.5px 21px*/
-}
-
-.blockquote-note {
-  color: #777777;
-  background-color: #f6f3f3;
-  width: 90%;
-  margin: 0 auto;
-}
 
  .container-fluid {                  /* margin: 0 Left-aligns container; margin: auto to "center" (Default)*/
     margin-right: auto !important; 
@@ -206,72 +174,20 @@ blockquote {
   position: relative;
 }
 
-
-/*---------FOOTER-----------*/
-.foot_image {
-  width: 50px;
-  filter: grayscale(0%);
-  margin-left: 1em;
-  margin-right: 1em;
-}
-
-.foot {
-  font-size: .75em;
-  text-transform: uppercase;
-  color: #808080;
-  text-align: center;
-}
-
-.foot hr{
-  width: 80%;
-}
-
-
 .tocify-extend-page {
   height: 0px !important; /* Gets rid of extra space after footer*/
 }
 
-
-
-
-/* LARGE IMAGE AT TOP OF EACH MODULE PAGE*/
-.image-descript {
-    position: relative;
-    animation: slide-in-from-bottom 1s forwards;
-
-}
-
-/*.main-image is for landing page*/
-.main-image {
-  width: 100%;
-  display: block; /*This gets rid of the weird little space from inline-block*/
-  /*margin-top: -50px;*/
-  margin-bottom: 10px;
-}
 
 body, html {
   height: 100%;
 }
 
 
-
-
-
 /*@media screen and (max-width: 300px) {
  .image-descript {
   display: none;
  }*/
-
-
-.big-image-text { 
-  letter-spacing: 0.065em;
-  line-height: 1em;
-  font-size: 68px;
-  text-transform: uppercase;
-  text-align: center; 
-  display:block;
-  color: #fff;
-}
 
 
 
@@ -283,7 +199,7 @@ body, html {
 
   .giraffe-container {
     height: 500px;
-    margin: 2em auto 2em auto;
+    margin: 0.5em auto 0em auto;
     position: relative;
     display: flex;
     align-items: center;
@@ -334,6 +250,7 @@ body, html {
       background-size: contain;
       background-position: bottom;  
       background-image: url("../images/Landing_page/singleGiraffe.png");
+      animation: slide-up 1s forwards;
     }
 
     .giraffeForest {
@@ -354,8 +271,12 @@ body, html {
       background-image: url('../images/Landing_page/g1_1200px.jpg');
       background-size: contain;
       background-repeat: no-repeat;
-      animation: slide-in-from-bottom 1s forwards;
-
+      animation: slide-in-from-top 1s forwards;
+    }
+    
+     @keyframes slide-up {
+      0% { opacity: 1; transform: translateY(0px); }
+      100% { opacity: 1; transform: translateY(-15px); }
     }
     
     @keyframes slide-in-from-bottom {
@@ -363,6 +284,10 @@ body, html {
       100% { opacity: 1; transform: translateY(0); }
     }
     
+     @keyframes slide-in-from-top {
+      0% { opacity: 0; transform: translateY(-100px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
     
     @keyframes slide-in-from-right{
       0% { opacity: 0; transform: translateX(100px); }
@@ -375,11 +300,12 @@ body, html {
     }
 
 .image-descript {
+  position: relative;
   display: none;
+  animation: slide-in-from-bottom 1s forwards;
   justify-content: center; /* flex horizontal center */
   align-items: center; /*flex vertical center*/
 }
-
  .big-text {
     text-align: center;
     color: #ffffff;
@@ -388,10 +314,9 @@ body, html {
     text-shadow: 1px 1px 35px #0e0d0d38;
     letter-spacing: 0.065em;
   }
-
   .small-text { 
       color: white;
-      margin: 0px auto 20px auto;
+      margin: 0 auto 5px auto;
       text-align: center; 
       display:block;
       font-family: 'Lora', serif;
@@ -405,153 +330,31 @@ body, html {
 
 
 /*------ LANDING WELCOME INFO----- */
-/*
+
 .appears-after-click {
   display: none;
 }
 
-.opacity-after-click {
-  opacity: 0;
-}
-  .welcome {
-    display: flex;
-    margin-top: 2em;
-  }
-  
-  .welcome-boxes {
-    margin: 3em 1em 5em 1em;
-  }
-
-  
-  .welcome-title {
-    color: DarkSlateGray;
-    font-size: 1.75em;
-    font-weight: bold;
-    text-align: center;
-  }
-  
-    .landing-subimage {
-      margin: 1rem auto;
-  }
-
-  .images-landing {
-    display: block;
-    margin: 1em auto;
-    margin-bottom: 0 !important;
-    height: 250px;
-  }
-  
-  .welcome-text {
-    color: DarkSlateGray;
-    text-align: center;
-  }
-*/
-
-
-
-/*------ BUTTONS ------*/
-
-.landing-buttons {
-  display: flex;
-  margin: 0 auto;
-  max-width: 400px;
-  visibility: hidden;
-}
-
-a.button {
-  border: 2px solid DarkSlateGray;
-  background-color: #ffffff;
+.appears-after-click .about {
   text-align: center;
-  color: DarkSlateGray;
-  padding: 1rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin: 0 auto;
-  width: 177px;
-  text-transform: uppercase;
-  font-family: 'Source Sans Pro';
-}
-
-a.button:hover {
-  background-color: DarkSlateGray;
-  color: white;
-  text-decoration: none !important;
+  font-family: "Source Sans Pro";
+  font-size: 1.2em;
+  color: #707070;
+  max-width: 725px;
+  margin: 0 auto 1em auto;
 }
 
 
 
-
-
-/* SMARTPHONES PORTRAIT */
-@media only screen and (min-width: 300px) and (max-width: 479px) {
-.lil-image-text {
-    font-size: 1rem;
-  }
-
-  .big-image-text {
-    line-height: normal;
-    font-size: 1.5rem;
-  }
-
-  .back-panel {
-    margin-top: 0;
-  }
-  .back-panel-contents {
-    display: block;
-  }
-
-  .landing-subimage {
-    height: 200px;
-    margin: 0 auto;
-  }
-
-  .color-textbox {
-    width: 100%;
-    padding: 1.25rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .color-textbox-title{
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    padding: 0rem;
-  }
-
-  .color-textbox-text{
-    font-size: 1.5rem;
-    padding: 0rem;
-  }
-
-}
 
 /* Tablet */
 @media only screen and (min-width: 480px) and (max-width: 540px) {
-  .color-textbox-title{
-    font-size: 1.5rem;
-    padding: 2.25rem 0rem 0em 0rem;
-  }
-
-  .color-textbox-text{
-    font-size: 1.4rem;
-    padding: 1rem 5rem 0rem 5rem;
-  }
-
   .toc-content {
     width: 100%;
   }
 }
 
 @media only screen and (min-width: 541px) and (max-width: 649px) {
-  .color-textbox-title{
-    font-size: 2rem;
-    padding: 2.5rem 0rem 0em 0rem;
-  }
-
-  .color-textbox-text{
-    font-size: 1.75rem;
-    padding: 1rem 5rem 0rem 5rem;
-  }
-
   .toc-content {
     width: 100%;
   }
@@ -559,16 +362,6 @@ a.button:hover {
 
 
 @media only screen and (min-width: 650px) and (max-width: 767px) {
-  .color-textbox-title{
-    font-size: 2rem;
-    padding: 4rem 0rem 0em 0rem;
-  }
-
-  .color-textbox-text{
-    font-size: 2rem;
-    padding: 1rem 5rem 0rem 5rem;
-  }
-
   .toc-content {
     width: 100%;
   }
@@ -578,16 +371,6 @@ a.button:hover {
 /*iPad portrait*/
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-  .color-textbox-title{
-    font-size: 2.35rem;
-    padding: 6rem 0rem 0rem 0rem;
-  }
-
-  .color-textbox-text{
-    font-size: 2.25rem;
-    padding: 1rem 5rem 0rem 5rem;
-  }
-
   .toc-content {
     width: 100%;
   }
@@ -597,16 +380,6 @@ a.button:hover {
 /*iPad Pro portarit */
 
 @media only screen and (min-width: 1024px) and (max-width: 1225px) {
-  .color-textbox-title{
-    font-size: 3rem;
-    padding: 6rem 0rem 0rem 0rem;
-  }
-
-  .color-textbox-text{
-    font-size: 3rem;
-    padding: 1rem 5rem 0rem 5rem;
-  }
-
   .toc-content {
     width: 100%;
   }
@@ -615,15 +388,6 @@ a.button:hover {
 
 
 @media only screen and (max-width: 768px) {
-  .lil-image-text {
-    font-size: 15px;
-  }
-
-  .big-image-text {
-    line-height: normal;
-    font-size: 31px;
-  }
-
   .col-xs-12.col-sm-4.col-md-3 {
     display: none !important;
   }

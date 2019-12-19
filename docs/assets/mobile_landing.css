@@ -1,0 +1,64 @@
+
+/* IPHONE 6/7/8 */
+
+@media only screen and (max-width: 500px) {
+  .big-text {
+    font-size: 2.1em; /*down from 3em */
+    text-shadow: 1px 1px 35px #0e0d0d78; /*text shadow a little darker */
+    line-height: 1.2; /* makes smaller */
+  }
+  
+  .small-text {
+    font-size:18px; /*smaller*/
+    text-shadow: 1px 1px 35px #0e0d0d78; /*text shadow a little darker */
+  }
+  
+  .landing.about {
+    font-size: 1.1em; /*smaller*/
+  }
+  
+  /*--- BUTTONS---- */
+  /*Takes hovered styles and applies them to the static element */
+  
+  button.learn-more .circle .icon.arrow {
+    background-color: white;
+  }
+  button.learn-more .circle {
+    width: 100%; 
+  }
+  button.learn-more .circle .icon.arrow {
+  background: none; /*Eliminates arrow's horizontal line*/
+  -webkit-transform: translate(1.7rem, 0);
+          transform: translate(1.7rem, 0);
+  }
+  button.learn-more.deemphasized .circle .icon.arrow {
+    background: none; /*Eliminates arrow's horizontal line*/
+  }
+  button.learn-more .button-text {
+    color: white;
+  }
+  button.learn-more.deemphasized .button-text {
+    color: #282936;
+  }
+}
+
+
+
+
+
+/* LARGE MONITORS */
+
+@media only screen and (min-width: 1500px) {
+  .giraffe-container {
+    height: 500px;
+    margin: 2em auto 1em auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+   .singleGiraffe {
+      animation: none;
+    }
+}
