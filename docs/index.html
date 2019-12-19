@@ -36,23 +36,13 @@
 	</script>
 	
 	<!-- Clickable Giraffe -->
-	
-  
-	<script>
+  <script>
     $(document).ready(function() {
       $('.giraffe-container').click(function() {
-          $('.image-descript').css('display','flex');
-          $('.singleGiraffe-clickme').css('display', 'none');
-          $('.singleGiraffe').css('display', 'block');
-          $('.giraffeForest').css('display', 'block');
-          $('.appears-after-click').css('display', 'block');
-          $('.opacity-after-click').css('opacity', '1');
-        });
+        $('body').addClass('expanded');
+      });
     });
   </script>
-
-
-
 	
 	<!-- CSS -->
 	<link href="assets/landing.css" rel="stylesheet">
