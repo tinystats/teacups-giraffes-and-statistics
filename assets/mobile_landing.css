@@ -5,8 +5,11 @@
 1. Gets rid of hover-specific styles/ images
 */
 
-
 @media only screen and (max-width: 500px) {
+  .giraffe-container { /* takes margin-top from 0.5em to 0*/
+    margin: 0 auto;
+  }
+  
   .big-text {
     font-size: 2.1em; /*down from 3em */
     text-shadow: 1px 1px 35px #0e0d0d78; /*text shadow a little darker */
@@ -16,6 +19,11 @@
     font-size:18px; /*smaller*/
     text-shadow: 1px 1px 35px #0e0d0d78; /*text shadow a little darker */
   }
+  
+ .singleGiraffe-clickme-hover {
+   display: none;
+ }
+  
   .landing.about {
     font-size: 1.1em; /*smaller*/
   }
@@ -47,6 +55,46 @@
 
 
 
+/*--------- IPAD portrait-------- */
+
+@media only screen and (min-width: 501px) and (max-width: 768px) {
+.big-text {
+    text-shadow: 1px 1px 35px #0e0d0d78; /*text shadow a little darker */
+    line-height: 1.2; /* makes smaller */
+  }
+  .small-text {
+    font-size:18px; /*smaller*/
+    text-shadow: 1px 1px 35px #0e0d0d78; /*text shadow a little darker */
+  }
+  
+  /* Remove hovered styles for clickme giraffe and buttons*/
+
+    .singleGiraffe-clickme-hover {
+       display: none;
+     }
+
+    /*--BUTTON--*/
+      button.learn-more .circle .icon.arrow {
+        background-color: white;
+      }
+      button.learn-more .circle {
+        width: 100%; 
+      }
+      button.learn-more .circle .icon.arrow {
+      background: none; /*Eliminates arrow's horizontal line*/
+      -webkit-transform: translate(1.7rem, 0);
+              transform: translate(1.7rem, 0);
+      }
+      button.learn-more.deemphasized .circle .icon.arrow {
+        background: none; /*Eliminates arrow's horizontal line*/
+      }
+      button.learn-more .button-text {
+        color: white;
+      }
+      button.learn-more.deemphasized .button-text {
+        color: #282936;
+      }
+}
 
 
 /* LARGE MONITORS */
