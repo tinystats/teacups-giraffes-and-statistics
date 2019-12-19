@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Lora:400,400i&display=swap');
 
+#preload {
+  display: none;
+}
 
 /* JS appear: */
 /* After clicking, the class `.expanded` is added to the body tag, which applies the styles below to the elements below */
@@ -21,30 +24,20 @@ body.expanded .giraffeForest {
   display: block;
 }
     
-body.expanded .appears-after-click{
-  display: block;
-}
-  
-body.expanded .opacity-after-click {
-  opacity: 1;
-}
-
-body.expanded .visibility-after-click {
+body.expanded .landing-buttons{
   visibility: visible;
+  animation: 3s fadeIn;
+  animation-fill-mode: forwards;
 }
 
-      
-/* --- STATE BEFORE CLICK -- */ 
-.appears-after-click {
-  display: none;
-}
-
-.opacity-after-click {
-  opacity: 0;
-}
-
-.visibile-after-click {
-  visibility: hidden;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 
@@ -354,37 +347,10 @@ body, html {
       background-size: contain;
       background-position: center; 
     }
-
-    .giraffeForest1 {
-      z-index: -1;
-      background-image: url('../images/Landing_page/giraffeForest1.png');
-      animation: slide-in-from-bottom 1s forwards;
-    }
-    
-    .giraffeForest2 {
-      z-index: -2;
-      display: none;
-      background-image: url('../images/Landing_page/giraffeForest2.png');
-      animation: slide-in-from-right 1.5s forwards;
-    }
-    
-    .giraffeForest3 {
-      z-index: -100;
-      background-image: url('../images/Landing_page/giraffeForest3.png');
-      animation: slide-in-from-right 2s forwards;
-    }
-    
-    .giraffeForest5 {
-      z-index: -10;
-      display: none;
-      background-image: url('../images/Landing_page/giraffeForest5.png');
-      animation: slide-in-from-right 2s forwards;
-    }
     
     .g1 {
       display: block;
       height: 500px;
-      right: 80%;
       background-image: url('../images/Landing_page/g1_1200px.jpg');
       background-size: contain;
       background-repeat: no-repeat;
@@ -423,19 +389,19 @@ body, html {
     letter-spacing: 0.065em;
   }
 
-.small-text { 
-    color: white;
-    margin: 0px auto 20px auto;
-    text-align: center; 
-    display:block;
-    font-family: 'Lora', serif;
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 1.5em;
-    letter-spacing: 1px;
-    font-style: italic;
-    text-shadow: 1px 1px 35px #0e0d0d38;
-  }
+  .small-text { 
+      color: white;
+      margin: 0px auto 20px auto;
+      text-align: center; 
+      display:block;
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.5em;
+      letter-spacing: 1px;
+      font-style: italic;
+      text-shadow: 1px 1px 35px #0e0d0d38;
+    }
 
 
 /*------ LANDING WELCOME INFO----- */
@@ -489,19 +455,7 @@ body, html {
   display: flex;
   margin: 0 auto;
   max-width: 400px;
-  animation: 3s fadeIn;
-  animation-fill-mode: forwards;
   visibility: hidden;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    visibility: visible;
-    opacity: 1;
-  }
 }
 
 a.button {
