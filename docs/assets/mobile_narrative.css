@@ -1,0 +1,34 @@
+/*  IPHONE6/7/8 */
+
+@media only screen and (max-width: 540px) {
+ .narrative-container { 
+   margin: 0 auto 1em auto; /* reduce margin top */
+ }
+ 
+  .narrative-text {
+    padding: 0 16px; /* adds padding to sides */
+    margin: 0 auto; /* attempts to center */
+  }
+  
+  .narrative-illo-200 {
+    max-width: 300px !important; /*makes larger, essentially full screen*/
+  }
+  
+  .narrative-illo-small { 
+    margin: 0.5em auto; /* override margin so doesn't overflow */
+  }
+  
+  .narrative-illo-big {
+    max-width: 100% !important; /* overrides 90% */
+  }
+  
+  p.blockquote {
+    margin: 0em 1em 0em 1em !important; /* makes wider */
+  }
+  
+  .slide-content > .narrative-text > p:first-of-type:first-letter { /*drop cap*/
+    font-size: 4.5em;
+    line-height: 30px;
+    padding: 20px 5px 0 0;
+  }
+}
