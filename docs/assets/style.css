@@ -35,7 +35,7 @@ ul {
 	max-width: 1326px !important;
   }
 
-.alert-info {
+.alert-info { /* old objective box */
   padding: 1.5em;
   background-color: #a0d1ef !important;
 }
@@ -72,8 +72,8 @@ blockquote {
   position: relative;
 }
 
-.col-xs-12 .col-sm-4 .col-md-3{
-  width: 30%;
+.col-xs-12.col-sm-4.col-md-3{
+  width: 35%; /* should agree with body width aka toc-content, overriding default 25% from cosmo theme */
   position: relative;
 }
 
@@ -111,8 +111,8 @@ div.tocify {
   position: sticky !important;
 }
 
-.toc-content {
-  width: 70%
+.toc-content { /*actually, the body content*/
+  width: 65%
 }
 
 .list-group-item {
@@ -481,9 +481,6 @@ body, html {
     padding: 1rem 5rem 0rem 5rem;
   }
 
-  .toc-content {
-    width: 100%;
-  }
 }
 
 
@@ -500,9 +497,6 @@ body, html {
     padding: 1rem 5rem 0rem 5rem;
   }
 
-  .toc-content {
-    width: 100%;
-  }
 }
 
 
