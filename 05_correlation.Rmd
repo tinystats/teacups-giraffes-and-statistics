@@ -6,17 +6,18 @@ output:
       in_header: assets/05_correlation_image.html
       after_body: assets/foot.html
 ---
-<div class="alert alert-info">
-  **Module learning objectives:**
-  <ol> 
-  <li> Create a scatterplot using ggplot </li>
-  <li> Identify the similarities and differences between calculating the variance and covariance </li>
-  <li> Write a function for the covariance and Pearson's correlation coefficient </li>
-  <li> Interpret the meaning behind Pearson's correlation correlation
-  <li> Describe the purpose of dividing by the product of the standard deviations when calculating the correlation.</li>
-  </ol>
-</div>
 
+:::obj
+
+**Module learning objectives**
+
+1. Create a scatterplot using ggplot
+1. Identify the similarities and differences between calculating the variance and covariance 
+1. Write a function for the covariance and Pearson's correlation coefficient
+1. Interpret the meaning behind Pearson's correlation correlation
+1. Describe the purpose of dividing by the product of the standard deviations when calculating the correlation.
+
+:::
 
 # Gathering data on another variable
 Over the course of your time on the islands, you notice that the teacup giraffes seem to have an affinity for celery, which you have already used to entice so they come close enough for a height measurement. Suprisingly, one of the small ones had eaten so much of it! You decide to quantify how much celery each of the giraffes consumed to see if there is any relationship to height.

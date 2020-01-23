@@ -11,17 +11,15 @@ output:
 knitr::opts_chunk$set(echo = TRUE, fig.align="center")
 ```
 
+:::obj
+**Module learning objectives**
 
-<div class="alert alert-info">
-  **Module learning objectives:**
-  <ol> 
-  <li> Describe 3 measures of centrality   </li>
-  <li> Explain the mathematical notation used for calculating the mean</li>
-  <li> Write a function which calculates the mean for any vector </li>
-  <li> Write a function which calculates the median for any vector
-  <li> Describe how the reliability of a sample mean will scale with increasing sample size </li>
-  </ol>
-</div>
+1. Describe 3 measures of centrality
+1. Explain the mathematical notation used for calculating the mean 
+1. Write a function which calculates the mean for any vector
+1. Write a function which calculates the median for any vector
+1. Describe how the reliability of a sample mean will scale with increasing sample size
+:::
 
 # What are measures of centrality?
 

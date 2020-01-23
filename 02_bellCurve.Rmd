@@ -12,17 +12,15 @@ knitr::opts_chunk$set(echo = TRUE, fig.align="center")
 library(here)
 ```
 
+:::obj
+**Module learning objectives**
 
-<div class="alert alert-info">
-  **Module learning objectives:**
-  <ol>
-  <li> Define what a distribution is </li>
-  <li> Describe the characteristics of a normal distribution </li>
-  <li> Create a histogram using `ggplot` and modify its appearance </li>
-  <li> Define sample and population </li>
-  <li> Explain why distributions of sample data that come from populations with normal distibutions don't always look normal </li>
-  </ol>
-</div>
+1. Define what a distribution is
+1. Describe the characteristics of a normal distribution 
+1. Create a histogram using `ggplot` and modify its appearance
+1. Define sample and population
+1. Explain why distributions of sample data that come from populations with normal distibutions don't always look normal
+:::
 
 # Welcome to the island
 

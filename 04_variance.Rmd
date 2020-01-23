@@ -7,15 +7,16 @@ output:
       after_body: assets/foot.html
 ---
 
-<div class="alert alert-info">
-  **Module learning objectives:**
-  <ol> 
-  <li> Describe the steps for constructing the sum of squares </li>
-  <li> Describe how the standard deviations can allow us to determine which data values are common or rare </li>
-  <li> Write a function for the variance and standard deviation </li>
-  <li> Explain why the sample variance would be downwardly biased if we did not correct it by diving by (n-1) </li>
-  </ol>
-</div>
+:::obj
+
+**Module learning objectives**
+
+1. Describe the steps for constructing the sum of squares
+1. Describe how the standard deviations can allow us to determine which data values are common or rare 
+1. Write a function for the variance and standard deviation
+1. Explain why the sample variance would be downwardly biased if we did not correct it by diving by (n-1)
+
+:::
 
 
 ```{r setup, include=FALSE}

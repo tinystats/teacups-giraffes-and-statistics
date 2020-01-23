@@ -660,20 +660,32 @@ video {
 
 /*----------DIV TIPS------------*/
 
-div.note, div.tip, div.gotcha, div.design, div.hat{
-  border: 4px #a0D1Ef63;
-  border-style: dashed;
+div.note, div.tip, div.gotcha, div.design, div.hat, div.obj{
+  border: 4px #c5ede2;
+  border-style: solid;
   padding: 1em;
   margin: 1em 0;
-  padding-left: 100px;
-  background-size: 70px;
+  
+  /*uncomment for icon */
+  
+  /* padding-left: 100px; 
+  background-size: 70px; 
   background-repeat: no-repeat;
-  background-position: 15px center;
+  background-position: 15px center; */
   min-height: 120px;
-  color: #59a9da;
-  background-color: #fcfcfc;
+  color: #638f9d;
+  background-color: #ffffff;
 }
 
-div.note {
-  background-image: url("../images/toc-giraffe.jpg");
+div.obj {
+  /*background-image: url("../images/arrow.png");*/
 }
+
+div.obj>p:first-child {
+  padding-top: 0;
+  margin-top: 0 !important;
+  font-family: "Source Sans Pro";
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+

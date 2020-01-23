@@ -6,16 +6,16 @@ output:
       in_header: assets/06_standardError_image.html
       after_body: assets/foot.html
 ---
-<div class="alert alert-info">
-  **Module learning objectives:**
-  <ol>
-  <li> Determine how to quantify the uncertainty of an estimate </li>
-  <li> Describe the concept of statistical inference </li>
-  <li> Interpret sampling distributions and explain how they are influenced by sample size </li>
-  <li> Define and calculate standard error </li>
-  <li> Use the standard error to construct 95% confidence intervals </li>
-  </ol>
-</div>
+
+:::obj
+**Module learning objectives**
+
+1. Determine how to quantify the uncertainty of an estimate
+1. Describe the concept of statistical inference 
+1. Interpret sampling distributions and explain how they are influenced by sample size
+1. Define and calculate standard error
+1. Use the standard error to construct 95% confidence intervals
+:::
 
 # How accurate is our estimate of the mean?
 
