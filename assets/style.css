@@ -109,6 +109,8 @@ div.tocify {
 #TOC {
   position: -webkit-sticky !important;
   position: sticky !important;
+  margin-left: auto !important;
+  margin-right: auto !important; /* to center the TOC within it's col-xs-12, etc. container */
 }
 
 .toc-content { /*actually, the body content*/
