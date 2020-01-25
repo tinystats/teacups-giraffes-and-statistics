@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 
 <meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -38,6 +39,7 @@
 
 	  gtag('config', 'UA-135221736-1');
 	</script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.16/iframeResizer.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
@@ -260,7 +262,6 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
-  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -434,19 +435,19 @@ div.tocify {
 </div>
 
 
-<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <div id="ready-to-begin" class="section level1">
 <h1>Ready to begin?</h1>
 <p>You’re about to start an adventure to learn R and statistics. If this is your first time working with R, then you should begin on this page. If you’re comfortable with R basics and you’d like to start with the statistical content, please proceed onto the islands with this <a href="02_bellCurve.html">link</a>.</p>
 </div>
 <div id="using-interactive-windows" class="section level1">
 <h1>Using interactive windows</h1>
-<p>Throughout this material we will use an interactive version of R provided by <a href="https://www.datacamp.com/">DataCamp</a>. Although this way of using R comes with some limitations regarding functionality, it will give us the benefit of being able to run R code without switching from a web browser to a standalone application such as <a href="https://www.rstudio.com/">RStudio</a>.</p>
-<p>Below you can see an example of an interactive R window. On the left side of the window (under the tab titled <em>script.R</em>) is where you will write code to be executed. To run code you have written, click the yellow <em>Run</em> button and observe how the right side of the window gets filled with information. A copy of your code will show up in black, and if no errors were made the answer will be returned right below in brown text. Error messages are red and begin with <em>Error:</em>.</p>
-<p>Now spend a few minutes using the <em>Script</em> window below as a calculator and run simple calculations by clicking <em>Run</em>.</p>
-<div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIyKzMifQ==
-</div>
+<p>Throughout this material we will use an interactive version of R provided by <a href="https://rstudio.github.io/learnr/">learnR</a>. Although this way of using R comes with some limitations regarding functionality, it will give us the benefit of being able to run R code without switching from a web browser to a standalone application such as <a href="https://www.rstudio.com/">RStudio</a>.</p>
+<p>Below you can see an example of an interactive R window. In the white window (under the button with the text <em>Start Over</em>) is where you will write code to be executed. To run code you have written, click the green <em>Run Code</em> button and observe how information pops up under the window. If no errors were made, this is where the answer will be returned. Error messages are shown in a red box, also under the learnR window.</p>
+<p>Now spend a few minutes using the window below as a calculator and run simple calculations by clicking <em>Run Code</em>.</p>
+<!---LEARNR EX 1-->
+<iframe class="interactive" id="myIframe1" src="https://tinystats.shinyapps.io/01-intro-ex1/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 </div>
 <div id="objects-in-r" class="section level1">
 <h1>Objects in R</h1>
@@ -456,9 +457,10 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIyKzMifQ==
 <li>Use the window below to assign numbers to objects and output the content by typing out the name of the object.</li>
 <li>After creating two numerical objects, use the mathematical operator <code>+</code> to add these objects together and see what happens when you run the code.</li>
 </ul>
-<div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJteV9vYmplY3QgPC0gXG5teV9vYmplY3RcblxubXlfb2JqZWN0MiA8LSBcblxubXlfb2JqZWN0ICsgbXlfb2JqZWN0MiJ9
-</div>
+<!---LEARNR EX 2-->
+<iframe class="interactive" id="myIframe2" src="https://tinystats.shinyapps.io/01-intro-ex2/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 </div>
 <div id="common-functions" class="section level1">
 <h1>Common functions</h1>
@@ -468,9 +470,10 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJteV9vYmplY3QgPC0gXG5teV9vYmplY3RcblxubXlfb2Jq
 <li>In the window below, create an object combining a set of numerical values using <code>c( )</code>, separating the different values with commas.</li>
 <li>Then sum up the content of this object using <code>sum( )</code>.</li>
 </ul>
-<div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJteV9jb21iaW5lZF92YWx1ZXMgPC0gYygsKSBcbnN1bShteV9jb21iaW5lZF92YWx1ZXMpIn0=
-</div>
+<!---LEARNR EX 3-->
+<iframe class="interactive" id="myIframe3" src="https://tinystats.shinyapps.io/01-intro-ex3/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 </div>
 <div id="writing-your-own-function" class="section level1">
 <h1>Writing your own function</h1>
@@ -490,9 +493,10 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJteV9jb21iaW5lZF92YWx1ZXMgPC0gYygsKSBcbnN1bSht
 <li>Now create an object containing a set of numerical values and call it <code>my_combined_values</code>. Then try out your new function on this object, which will compute the square root of the object’s sum.</li>
 </ul></li>
 </ul>
-<div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFVzZSB0aGUgaW5zdHJ1Y3Rpb25zIGFib3ZlIHRvIGNvbXBsZXRlIHRoZSBmdW5jdGlvbiBiZWxvd1xubXlfZnVuY3Rpb25fbmFtZSA8LSBmdW5jdGlvbihpbnB1dF9kYXRhKXtcbiAgcyA8LSBzdW0oIClcbiAgc3MgPC0gc3FydCggKVxuICByZXR1cm4oIClcbn1cblxuIyBDcmVhdGUgYSBuZXcgb2JqZWN0IGFuZCB0cnkgb3V0IHlvdXIgbmV3IGZ1bmN0aW9uXG5teV9jb21iaW5lZF92YWx1ZXMgPC0gYygsKSBcblxubXlfZnVuY3Rpb25fbmFtZShteV9jb21iaW5lZF92YWx1ZXMpIn0=
-</div>
+<!---LEARNR EX 4-->
+<iframe class="interactive" id="myIframe4" src="https://tinystats.shinyapps.io/01-intro-ex4/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 </div>
 <div id="functions-within-functions" class="section level1">
 <h1>Functions within functions</h1>
@@ -520,17 +524,22 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFVzZSB0aGUgaW5zdHJ1Y3Rpb25zIGFib3ZlIHRvIGNv
 <li>In the window below, use the <code>data.frame()</code> function to create a data frame with two columns called <em>x</em> and <em>y</em>. When creating data frames we specify a column by giving the column a name and assigning values or vectors to it, e.g. <code>data.frame(x= c(&quot;Giraffe&quot;, &quot;Teacup&quot;))</code>.</li>
 <li>Also observe what happens when you try to combine an x and y vector of different lengths.</li>
 </ul>
-<div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJ4X3ZhbHVlcyA8LSBjKCwpXG55X3ZhbHVlcyA8LSBjKCwpXG5cbmQgPC0gZGF0YS5mcmFtZSh4ID0geF92YWx1ZXMsIHkgPSB5X3ZhbHVlcylcbmQifQ==
-</div>
+<!---LEARNR EX 5-->
+<iframe class="interactive" id="myIframe5" src="https://tinystats.shinyapps.io/01-intro-ex5/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 <p>As you could see above, running a line of code with just the name of a data structure (in this case, the letter <em>d</em>) will print the full data frame in the console output (if no errors were made!). If you instead are interested in only one of the columns, this can be specified by using the <code>$</code> operator followed by the column’s name, e.g <code>d$x</code>. Try it out below!</p>
-<div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJkIDwtIGRhdGEuZnJhbWUoeD0gYygxMCwgNDUpLCB5PSBjKDIsIDUpKVxuZCR4In0=
-</div>
+<!---LEARNR EX 6-->
+<iframe class="interactive" id="myIframe6" src="https://tinystats.shinyapps.io/01-intro-ex6/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 </div>
 <div id="youre-ready-to-go" class="section level1">
 <h1>You’re ready to go!</h1>
 <p>This was a brief introduction into R, but now you know what you need to get started with the <a href="02_bellCurve.html">first module</a>!</p>
+<script>
+  iFrameResize({}, ".interactive");
+</script>
 </div>
 
 <!DOCTYPE html>

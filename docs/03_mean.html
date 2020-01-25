@@ -13,6 +13,7 @@
 
 <title>Mean, Median, and Mode</title>
 
+<script src="site_libs/header-attrs-2.1.1/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -38,6 +39,7 @@
 
 	  gtag('config', 'UA-135221736-1');
 	</script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.16/iframeResizer.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
@@ -436,8 +438,6 @@ div.tocify {
 </div>
 
 
-<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
-<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <div class="obj">
 <p><strong>Module learning objectives</strong></p>
 <ol style="list-style-type: decimal">
@@ -524,24 +524,18 @@ Using <a href="#eq:equation2">(2)</a>, it’s easy to translate this equation in
 <p><br />
 </p>
 <p>Use the interactive window below to calculate the mean “by hand”.</p>
-<p><br />
-</p>
-<div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBTdW0gdXAgYWxsIG9ic2VydmF0aW9ucyBzdG9yZWQgaW4gaGVpZ2h0cywgdXNpbmcgdGhlIHN1bSggKSBmdW5jdGlvbiwgYW5kIHNhdmUgaXQgYXMgYSBuZXcgb2JqZWN0IGNhbGxlZCBcImhlaWdodHNfaXNsYW5kMV9zdW1cIlxuXG5cbiMgRGl2aWRlIGhlaWdodHNfaXNsYW5kMV9zdW0gYnkgdGhlIG51bWJlciBvZiBvYnNlcnZhdGlvbnMuIFVzZSB0aGUgbGVuZ3RoKCApIGZ1bmN0aW9uIGZvciBuLiBTdG9yZSB5b3VyIGFuc3dlciBhcyBcImhlaWdodHNfaXNsYW5kMV9tZWFuXCJcblxuXG4jIFByaW50IG91dCBcImhlaWdodHNfaXNsYW5kMV9tZWFuXCIgYW5kIGNvbXBhcmUgeW91ciBhbnN3ZXIgdG8gdGhlIFIgZnVuY3Rpb24gXCJtZWFuKGhlaWdodHNfaXNsYW5kMSlcIiIsInNvbHV0aW9uIjoiIyBTdW0gdXAgYWxsIG9ic2VydmF0aW9ucyBzdG9yZWQgaW4gXCJoZWlnaHRzX2lzbGFuZDFcIiwgdXNpbmcgdGhlIHN1bSgpIGZ1bmN0aW9uLCBhbmQgc2F2ZSBpdCBhcyBhIG5ldyBvYmplY3QgY2FsbGVkIFwiaGVpZ2h0c19pc2xhbmQxX3N1bVwiXG5oZWlnaHRzX2lzbGFuZDFfc3VtIDwtIHN1bShoZWlnaHRzX2lzbGFuZDEpXG5cbiMgRGl2aWRlIGhlaWdodHNfaXNsYW5kMV9zdW0gYnkgdGhlIG51bWJlciBvZiBvYnNlcnZhdGlvbnMuIFVzZSB0aGUgbGVuZ3RoKCkgZnVuY3Rpb24gZm9yIG4uIFN0b3JlIHlvdXIgYW5zd2VyIGFzIFwiaGVpZ2h0czFfbWVhblwiXG5oZWlnaHRzX2lzbGFuZDFfbWVhbiA8LSBoZWlnaHRzX2lzbGFuZDFfc3VtL2xlbmd0aChoZWlnaHRzX2lzbGFuZDEpXG5cbiMgUHJpbnQgb3V0IFwiaGVpZ2h0c19pc2xhbmQxX21lYW5cIiBhbmQgY29tcGFyZSB5b3VyIGFuc3dlciB0byB0aGUgUiBmdW5jdGlvbiBcIm1lYW4oaGVpZ2h0c19pc2xhbmQxKVwiXG5oZWlnaHRzX2lzbGFuZDFfbWVhblxubWVhbihoZWlnaHRzX2lzbGFuZDEpIiwic2N0IjoidGVzdF9vYmplY3QoXCJoZWlnaHRzX2lzbGFuZDFfc3VtXCIpXG50ZXN0X29iamVjdChcImhlaWdodHNfaXNsYW5kMV9tZWFuXCIpXG5cbnRlc3Rfb3V0cHV0X2NvbnRhaW5zKFwiaGVpZ2h0c19pc2xhbmQxX21lYW5cIiwgaW5jb3JyZWN0X21zZyA9IFwiRGlkIHlvdSBwcmludCAnaGVpZ2h0c19pc2xhbmQxX21lYW4nP1wiKVxudGVzdF9mdW5jdGlvbihcIm1lYW5cIiwgaW5jb3JyZWN0X21zZz0gXCJEaWQgeW91IHJ1biAnbWVhbihoZWlnaHRzX2lzbGFuZDEpJz9cIilcbnN1Y2Nlc3NfbXNnKFwiR3JlYXQhXCIpIn0=
-</div>
-<p><br />
-</p>
+<!---LEARNR EX 1-->
+<iframe class="interactive" id="myIframe1" src="https://tinystats.shinyapps.io/03-mean-ex1/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 </div>
 <div id="create-your-own-function" class="section level1">
 <h1>Create your own function</h1>
 <p>Now it’s your turn to write your own function. Call it “my_mean” and have it calculate the mean of any given vector. You’re going to use the rules for writing a function in R that you’ve used previously. As a reminder, you’ll use <code>function( )</code> and embed your code (that you completed in the window above) within curly brackets<code>{ }</code>. The advantage of making a “homemade” function is that you can string together all the steps from the previous exercise into a single command.</p>
-<p><br />
-</p>
-<div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBDb21wbGV0ZSB0aGUgY29kZSBiZWxvdyB0byBjcmVhdGUgeW91ciBvd24gZnVuY3Rpb24gdGhhdCB3aWxsIGNhbGN1bGF0ZSB0aGUgbWVhbiBvZiBhbnkgdmVjdG9yXG5cbm15X21lYW4gPC0gZnVuY3Rpb24odmVjdG9yKXtcbiBcbiAgXG59XG5cbiMgVmVyaWZ5IHRoYXQgeW91ciBmdW5jdGlvbiBjb3JyZWN0bHkgY2FsY3VsYXRlcyB0aGUgbWVhblxubXlfbWVhbihoZWlnaHRzX2lzbGFuZDEpXG5tZWFuKGhlaWdodHNfaXNsYW5kMSkgIiwic29sdXRpb24iOiIjIENvbXBsZXRlIHRoZSBjb2RlIGJlbG93IHRvIGNyZWF0ZSB5b3VyIG93biBmdW5jdGlvbiB0aGF0IHdpbGwgY2FsY3VsYXRlIHRoZSBtZWFuIG9mIGFueSB2ZWN0b3JcblxubXlfbWVhbiA8LSBmdW5jdGlvbih2ZWN0b3Ipe1xuICBhIDwtIHN1bSh2ZWN0b3IpXG4gIGIgPC0gYS9sZW5ndGgodmVjdG9yKVxuICByZXR1cm4oYilcbn1cblxuIyBWZXJpZnkgdGhhdCB5b3VyIGZ1bmN0aW9uIGNvcnJlY3RseSBjYWxjdWxhdGVzIHRoZSBtZWFuLlxubXlfbWVhbihoZWlnaHRzX2lzbGFuZDEpXG5tZWFuKGhlaWdodHNfaXNsYW5kMSkgIiwic2N0IjoidGVzdF9mdW5jdGlvbl9yZXN1bHQobmFtZT0gXCJteV9tZWFuXCIsIG5vdF9jYWxsZWRfbXNnPVwiRGlkIHlvdSBydW4gbXlfbWVhbigpP1wiLCBlcnJvcl9tc2c9XCJUaGVyZSdzIGFuIGVycm9yIGluIHlvdXIgZnVuY3Rpb24uXCIsIGluY29ycmVjdF9tc2c9XCJZb3VyIGZ1bmN0aW9uIHJ1bnMsIGJ1dCBpdCBpcyBjYWxjdWxhdGluZyB0aGUgd3JvbmcgdmFsdWUuXCIpXG5zdWNjZXNzX21zZyhcIkdyZWF0IVwiKSJ9
-</div>
-<p><br />
-</p>
+<!---LEARNR EX 2-->
+<iframe class="interactive" id="myIframe2" src="https://tinystats.shinyapps.io/03-mean-ex2/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 <p>You can also complete the exercise above in RStudio on your local computer. This way you will be able to save your <code>my_mean( )</code> function and script for future use.</p>
 <p><br />
 </p>
@@ -588,21 +582,15 @@ The <strong>modulus operation</strong> gives the remainder after division of one
 <p><br />
 </p>
 <p>An <code>if...else</code> statement is useful when you want to specify distinct outcomes for objects dependent on whether they meet your set criteria. See below.</p>
-<p><br />
-</p>
-<div data-datacamp-exercise="" data-height="160" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBQcmludCBhIGRpZmZlcmVudCByZXN1bHQgZGVwZW5kZW50IG9uIHdoZXRoZXIgYSBudW1iZXIgaXMgZXZlbiBvciBvZGRcblxuaWYobGVuZ3RoKGhlaWdodHNfaXNsYW5kMSkgJSUgMiA9PSAwKSB7XG4gIHByaW50KFwiRVZFTiFcIilcbn0gZWxzZSB7XG4gICAgcHJpbnQoXCJPREQhXCIpXG59XG5cblxuaWYoKGxlbmd0aChoZWlnaHRzX2lzbGFuZDEpLTEpICUlIDIgPT0gMCkge1xuICBwcmludChcIkVWRU4hXCIpXG59IGVsc2Uge1xuICAgIHByaW50KFwiT0REIVwiKVxufSJ9
-</div>
-<p><br />
-</p>
+<!---LEARNR EX 3-->
+<iframe class="interactive" id="myIframe3" src="https://tinystats.shinyapps.io/03-mean-ex3/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 <p>Now that you have a sense for how the <code>%%</code> operator can be used to test whether a number is EVEN or ODD, and how <code>if...else</code> statements work, use both of these concepts in the window below to write your own function that calculates the median of any vector.</p>
-<p><br />
-</p>
-<div data-datacamp-exercise="" data-height="210" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoiIyBDb21wbGV0ZSB0aGUgY29kZSBiZWxvdyB0byBjcmVhdGUgeW91ciBvd24gZnVuY3Rpb24gdGhhdCB3aWxsIGNhbGN1bGF0ZSB0aGUgbWVkaWFuIG9mIGFueSB2ZWN0b3JcblxubXlfbWVkaWFuIDwtIGZ1bmN0aW9uKHZlY3Rvcil7XG4gIGlmKCApe1xuICAgXG4gIH1lbHNleyBcbiAgIFxuICB9XG59XG5cbiMgVmVyaWZ5IHRoYXQgeW91ciBmdW5jdGlvbiBjb3JyZWN0bHkgY2FsY3VsYXRlcyB0aGUgbWVkaWFuLlxubXlfbWVkaWFuKGhlaWdodHNfaXNsYW5kMSlcbm1lZGlhbihoZWlnaHRzX2lzbGFuZDEpICIsInNvbHV0aW9uIjoiIyBDb21wbGV0ZSB0aGUgY29kZSBiZWxvdyB0byBjcmVhdGUgeW91ciBvd24gZnVuY3Rpb24gdGhhdCB3aWxsIGNhbGN1bGF0ZSB0aGUgbWVkaWFuIG9mIGFueSB2ZWN0b3JcblxubXlfbWVkaWFuIDwtIGZ1bmN0aW9uKHZlY3Rvcil7XG4gIG9yZGVyZWRfaGVpZ2h0cyA8LSBzb3J0KHZlY3RvciwgZGVjcmVhc2luZyA9IEZBTFNFKVxuICBpZihsZW5ndGgob3JkZXJlZF9oZWlnaHRzKSAlJSAyID09IDApe1xuICAgcG9zaXRpb24xIDwtIGxlbmd0aChvcmRlcmVkX2hlaWdodHMpIC8gMlxuICAgcG9zaXRpb24yIDwtIHBvc2l0aW9uMSArIDFcbiAgIHRlbXBfdmFsdWVzIDwtIG9yZGVyZWRfaGVpZ2h0c1tjKHBvc2l0aW9uMSwgcG9zaXRpb24yKV1cbiAgIG1lZGlhbiA8LSBtZWFuKHRlbXBfdmFsdWVzKVxuICB9ZWxzZXsgXG4gICBwb3NpdGlvbiA8LSAobGVuZ3RoKG9yZGVyZWRfaGVpZ2h0cykgKyAxKSAvIDJcbiAgIG1lZGlhbiA8LSBvcmRlcmVkX2hlaWdodHNbcG9zaXRpb25dXG4gIH1cbiAgcmV0dXJuKG1lZGlhbilcbn1cblxuIyBWZXJpZnkgdGhhdCB5b3VyIGZ1bmN0aW9uIGNvcnJlY3RseSBjYWxjdWxhdGVzIHRoZSBtZWRpYW4uXG5teV9tZWRpYW4oaGVpZ2h0c19pc2xhbmQxKVxubWVkaWFuKGhlaWdodHNfaXNsYW5kMSkgIiwic2N0IjoidGVzdF9mdW5jdGlvbl9yZXN1bHQobmFtZT0gXCJteV9tZWRpYW5cIiwgbm90X2NhbGxlZF9tc2c9XCJEaWQgeW91IHJ1biBteV9tZWFuKCk/XCIsIGVycm9yX21zZz1cIlRoZXJlJ3MgYW4gZXJyb3IgaW4geW91ciBmdW5jdGlvbi5cIiwgaW5jb3JyZWN0X21zZz1cIllvdXIgZnVuY3Rpb24gcnVucywgYnV0IGl0IGlzIGNhbGN1bGF0aW5nIHRoZSB3cm9uZyB2YWx1ZS5cIilcbnN1Y2Nlc3NfbXNnKFwiR3JlYXQhXCIpIn0=
-</div>
-<p><br />
-</p>
+<!---LEARNR EX 4-->
+<iframe class="interactive" id="myIframe4" src="https://tinystats.shinyapps.io/03-mean-ex4/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 </div>
 <div id="things-to-think-about" class="section level1">
 <h1>Things to think about</h1>
@@ -630,6 +618,9 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 <li>You can see that when the samples are small the sample mean isn’t necessarily a good representation of the population that it was sampled from–and that is not a good thing.</li>
 </ul>
 <p>For further reading see the <a href="https://en.wikipedia.org/wiki/Law_of_large_numbers">Law of Large Numbers</a>.</p>
+<script>
+  iFrameResize({}, ".interactive");
+</script>
 </div>
 
 <!DOCTYPE html>

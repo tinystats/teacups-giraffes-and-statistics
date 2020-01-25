@@ -19,6 +19,7 @@ knitr::opts_chunk$set(echo = TRUE, fig.align="center")
 1. Write a function which calculates the mean for any vector
 1. Write a function which calculates the median for any vector
 1. Describe how the reliability of a sample mean will scale with increasing sample size
+
 :::
 
 # What are measures of centrality?
@@ -153,100 +154,22 @@ head(heights_island1)
 
 Use the interactive window below to calculate the mean "by hand".
 
-\
+<!---LEARNR EX 1-->
 
-```{r, include=FALSE}
-tutorial::go_interactive(height = 160)
-```
+<iframe class="interactive" id="myIframe1" src="https://tinystats.shinyapps.io/03-mean-ex1/" scrolling="no" frameborder="no"></iframe>
 
-```{r ex="mean", type="pre-exercise-code"}
-set.seed(12)
-heights_island1 <- rnorm(50,10,2)
-
-```
-
-```{r ex="mean", type="sample-code"}
-
-# Sum up all observations stored in heights, using the sum( ) function, and save it as a new object called "heights_island1_sum"
-
-
-# Divide heights_island1_sum by the number of observations. Use the length( ) function for n. Store your answer as "heights_island1_mean"
-
-
-# Print out "heights_island1_mean" and compare your answer to the R function "mean(heights_island1)"
-
-```
-
-```{r ex="mean", type="solution"}
-
-# Sum up all observations stored in "heights_island1", using the sum() function, and save it as a new object called "heights_island1_sum"
-heights_island1_sum <- sum(heights_island1)
-
-# Divide heights_island1_sum by the number of observations. Use the length() function for n. Store your answer as "heights1_mean"
-heights_island1_mean <- heights_island1_sum/length(heights_island1)
-
-# Print out "heights_island1_mean" and compare your answer to the R function "mean(heights_island1)"
-heights_island1_mean
-mean(heights_island1)
-```
-
-```{r ex="mean", type="sct"}
-test_object("heights_island1_sum")
-test_object("heights_island1_mean")
-
-test_output_contains("heights_island1_mean", incorrect_msg = "Did you print 'heights_island1_mean'?")
-test_function("mean", incorrect_msg= "Did you run 'mean(heights_island1)'?")
-success_msg("Great!")
-```
-
-\
+<!------------->
 
 
 # Create your own function
 Now it's your turn to write your own function. Call it "my_mean" and have it calculate the mean of any given vector. You're going to use the rules for writing a function in R that you've used previously. As a reminder, you'll use `function( )` and embed your code (that you completed in the window above) within curly brackets`{ }`. The advantage of making a "homemade" function is that you can string together all the steps from the previous exercise into a single command.  
 
-\
 
-```{r ex="mean_function", type="pre-exercise-code"}
-set.seed(12)
-heights_island1 <- rnorm(50,10,2)
-```
+<!---LEARNR EX 2-->
 
-```{r ex="mean_function", type="sample-code"}
-# Complete the code below to create your own function that will calculate the mean of any vector
+<iframe class="interactive" id="myIframe2" src="https://tinystats.shinyapps.io/03-mean-ex2/" scrolling="no" frameborder="no"></iframe>
 
-my_mean <- function(vector){
- 
-  
-}
-
-# Verify that your function correctly calculates the mean
-my_mean(heights_island1)
-mean(heights_island1) 
-
-```
-
-```{r ex="mean_function", type="solution"}
-# Complete the code below to create your own function that will calculate the mean of any vector
-
-my_mean <- function(vector){
-  a <- sum(vector)
-  b <- a/length(vector)
-  return(b)
-}
-
-# Verify that your function correctly calculates the mean.
-my_mean(heights_island1)
-mean(heights_island1) 
-
-```
-
-```{r ex="mean_function", type="sct"}
-test_function_result(name= "my_mean", not_called_msg="Did you run my_mean()?", error_msg="There's an error in your function.", incorrect_msg="Your function runs, but it is calculating the wrong value.")
-success_msg("Great!")
-```
-
-\
+<!------------->
 
  You can also complete the exercise above in RStudio on your local computer. This way you will be able to save your `my_mean( )` function and script for future use.  
  
@@ -297,92 +220,23 @@ The **modulus operation** gives the remainder after division of one number by an
 
 An `if...else` statement is useful when you want to specify distinct outcomes for objects dependent on whether they meet your set criteria. See below.
 
-\
 
-```{r ex="if_else", type="pre-exercise-code"}
-set.seed(12)
-heights_island1 <- rnorm(50,10,2)
-```
+<!---LEARNR EX 3-->
 
-```{r ex="if_else", type="sample-code"}
-# Print a different result dependent on whether a number is even or odd
+<iframe class="interactive" id="myIframe3" src="https://tinystats.shinyapps.io/03-mean-ex3/" scrolling="no" frameborder="no"></iframe>
 
-if(length(heights_island1) %% 2 == 0) {
-  print("EVEN!")
-} else {
-    print("ODD!")
-}
+<!------------->
 
-
-if((length(heights_island1)-1) %% 2 == 0) {
-  print("EVEN!")
-} else {
-    print("ODD!")
-}
-```
-
-\
 
 Now that you have a sense for how the `%%` operator can be used to test whether a number is EVEN or ODD, and how `if...else` statements work, use both of these concepts in the window below to write your own function that calculates the median of any vector. 
 
-\
 
-```{r, include=FALSE}
-tutorial::go_interactive(height = 210)
-```
+<!---LEARNR EX 4-->
 
-```{r ex="median_function", type="pre-exercise-code"}
-set.seed(12)
-heights_island1 <- rnorm(50,10,2)
-```
+<iframe class="interactive" id="myIframe4" src="https://tinystats.shinyapps.io/03-mean-ex4/" scrolling="no" frameborder="no"></iframe>
 
-```{r ex="median_function", type="sample-code"}
-# Complete the code below to create your own function that will calculate the median of any vector
+<!------------->
 
-my_median <- function(vector){
-  if( ){
-   
-  }else{ 
-   
-  }
-}
-
-# Verify that your function correctly calculates the median.
-my_median(heights_island1)
-median(heights_island1) 
-
-```
-
-```{r ex="median_function", type="solution"}
-# Complete the code below to create your own function that will calculate the median of any vector
-
-my_median <- function(vector){
-  ordered_heights <- sort(vector, decreasing = FALSE)
-  if(length(ordered_heights) %% 2 == 0){
-   position1 <- length(ordered_heights) / 2
-   position2 <- position1 + 1
-   temp_values <- ordered_heights[c(position1, position2)]
-   median <- mean(temp_values)
-  }else{ 
-   position <- (length(ordered_heights) + 1) / 2
-   median <- ordered_heights[position]
-  }
-  return(median)
-}
-
-# Verify that your function correctly calculates the median.
-my_median(heights_island1)
-median(heights_island1) 
-
-
-```
-
-```{r ex="median_function", type="sct"}
-test_function_result(name= "my_median", not_called_msg="Did you run my_mean()?", error_msg="There's an error in your function.", incorrect_msg="Your function runs, but it is calculating the wrong value.")
-success_msg("Great!")
-```
-
-\
 
 # Things to think about
 Remember that the sample mean is an estimate of the entire population's mean (which would often be impossibly large to measure). How reliably does the mean of a sample represent the population mean? *Warning*: if a small sample has been used, the sample mean may not be a reliable at all! Estimates from small samples are subject to the whims of randomness. On the other hand, the larger the sample, the closer the sample size appraches the population size, and the more reliable the sample estimate becomes.
@@ -463,3 +317,7 @@ htmltools::save_html(p, here("images/03_mean/Law_of_large_numbers.html"))
 * You can see that when the samples are small the sample mean isn't necessarily a good representation of the population that it was sampled from--and that is not a good thing.
 
 For further reading see the [Law of Large Numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers).
+
+<script>
+  iFrameResize({}, ".interactive");
+</script>

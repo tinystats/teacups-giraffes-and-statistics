@@ -13,6 +13,7 @@
 
 <title>The Normal Distribution</title>
 
+<script src="site_libs/header-attrs-2.1.1/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -25,13 +26,13 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/htmlwidgets-1.3/htmlwidgets.js"></script>
-<script src="site_libs/plotly-binding-4.9.0/plotly.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.9.1/plotly.js"></script>
 <script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="site_libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="site_libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="site_libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="site_libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-1.49.4/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-1.49.4/plotly-latest.min.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 <head>
@@ -540,7 +541,7 @@ Happy with your progress thus far, you are excited to send your histogram result
 <p>It’s a good idea to save any ggplot you make as an object. It’s a helpful practice for when you’ll do more complicated graphing later (e.g. combining plots).</p>
 <p>Run the code below to see what this basic histogram in ggplot looks like:</p>
 <!---LEARNR EX 1-->
-<iframe class="interactive" id="myIframe21" src="https://tinystats.shinyapps.io/02-bellCurve-ex1/" scrolling="no" frameborder="no">
+<iframe class="interactive" id="myIframe1" src="https://tinystats.shinyapps.io/02-bellCurve-ex1/" scrolling="no" frameborder="no">
 </iframe>
 <!------------->
 </div>
@@ -551,7 +552,7 @@ Happy with your progress thus far, you are excited to send your histogram result
 <p>You might be wondering why we don’t use the <code>color=</code> here instead (which is a valid argument for <code>aes( )</code>), and this is because we want to change the color of the <em>fill</em> of the bars, while <code>color =</code> would change only the bar outline color (see below).</p>
 <p>To choose colors ggplot should use, we need to add a new option <code>+ scale_fill_manual( )</code> and then specify the colors with the argument <code>values =</code>. To read more about how to create your own color scale, see this <a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">page</a>. If you have more than one color you need to specify, make sure you combine them within the <code>c( )</code> function.</p>
 <p>Colors in R can be specified in different ways. For example, you can use a string of the color name (see possible colors <a href="http://sape.inf.usi.ch/quick-reference/ggplot2/colour">here</a>) or with <a href="https://htmlcolorcodes.com/">hex color codes</a>.</p>
-<p><strong>Outline Color:</strong> To change the color of the outline, specify <code>color =</code> within the parentheses of the <code>geom_</code> (i.e. <code>geom_histogram</code>).</p>
+<p><strong>Outline Color:</strong> To change the color of the outline, specify <code>color =</code> within the parentheses of the <code>geom_</code> (i.e. <code>geom_histogram</code>).</p>
 <p>In the window below, we have added some options that you can play around with. Use the descriptions above to:</p>
 <ul>
 <li>Specify the variable that <code>fill</code> should be set to, as well as the colors for the fill and outline.</li>
@@ -560,7 +561,7 @@ Happy with your progress thus far, you are excited to send your histogram result
 <p><br />
 </p>
 <!---LEARNR EX 2-->
-<iframe class="interactive" id="myIframe21" src="https://tinystats.shinyapps.io/02-bellCurve-ex2/" scrolling="no" frameborder="no">
+<iframe class="interactive" id="myIframe2" src="https://tinystats.shinyapps.io/02-bellCurve-ex2/" scrolling="no" frameborder="no">
 </iframe>
 <!------------->
 <p><img src="images/02_bellCurve/Painter.png" width="600px" style="display: block; margin: auto;" /></p>
@@ -595,7 +596,7 @@ Happy with your progress thus far, you are excited to send your histogram result
 <p><br />
 </p>
 <ol start="2" style="list-style-type: decimal">
-<li><p><strong>Change axes labels</strong>: Add <code>labs( )</code> to the existing ggplot layers and specify each axis you’d like to label as arguments, e.g. <code>x =</code>, followed by the string for your label. If you’d like to learn more about manipulations you can do with <code>labs( )</code>, see <a href="https://ggplot2.tidyverse.org/reference/labs.html">this reference</a>.</p></li>
+<li><p><strong>Change axes labels</strong>: Add <code>labs( )</code> to the existing ggplot layers and specify each axis you’d like to label as arguments, e.g. <code>x =</code>, followed by the string for your label. If you’d like to learn more about manipulations you can do with <code>labs( )</code>, see <a href="https://ggplot2.tidyverse.org/reference/labs.html">this reference</a>.</p></li>
 <li><p>In addition, <code>labs( )</code> can be used to <strong>remove labels</strong>. In this case, we can also include <code>fill = NULL</code> to remove the legend label (recall that the categories for our legend were determined by the <code>fill</code> argument in <code>aes()</code> previously).</p></li>
 </ol>
 <p>Use the window below to:</p>
@@ -606,39 +607,10 @@ Happy with your progress thus far, you are excited to send your histogram result
 <div style="margin-bottom:50px">
 
 </div>
-<pre class="r"><code>library(ggplot2)
-
-set.seed(12)
-
-x &lt;- rnorm(50, 10, 2)
-x2 &lt;- rnorm(50, 18, 1.2)
-x &lt;- data.frame(x=x, type=&quot;Island #1&quot;)
-x2 &lt;- data.frame(x=x2, type=&quot;Island #2&quot;)
-
-d &lt;- rbind(x,x2)
-colnames(d) &lt;- c(&quot;Height&quot;, &quot;Location&quot;)</code></pre>
-<pre class="r"><code># Remove space between bars and x-axis, and change labels
-
-p &lt;- ggplot(data = d, aes(x = Height, fill = Location)) +
-  geom_histogram(binwidth = 1, color = &quot;white&quot;) +
-  scale_fill_manual(values = c(&quot;green3&quot;, &quot;turquoise3&quot;)) + 
-  theme_light() +
-  scale_y_continuous(expand = ) +
-  labs()
-
-p</code></pre>
-<p><img src="02_bellCurve_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code># Remove space between bars and x-axis, and change labels
-
-p &lt;- ggplot(data = d, aes(x = Height, fill = Location)) +
-  geom_histogram(binwidth = 1, color = &quot;white&quot;) +
-  scale_fill_manual(values = c(&quot;green3&quot;, &quot;turquoise3&quot;)) + 
-  theme_light() +
-  scale_y_continuous(expand = c(0,0)) +
-  labs(x= &quot;Teacup Giraffe heights&quot;, y= &quot;Frequency&quot;, fill= NULL)
-  
-p</code></pre>
-<p><img src="02_bellCurve_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<!---LEARNR EX 4-->
+<iframe class="interactive" id="myIframe4" src="https://tinystats.shinyapps.io/02-bellCurve-ex4/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 <p><br />
 </p>
 <ol start="4" style="list-style-type: decimal">
@@ -647,86 +619,21 @@ p</code></pre>
 <ul>
 <li>In the window below, use what you just learned to remove the panel border and the minor grid lines of the plot.</li>
 </ul>
-<p><br />
-</p>
-<pre class="r"><code>library(ggplot2)
-
-set.seed(12)
-
-x &lt;- rnorm(50, 10, 2)
-x2 &lt;- rnorm(50, 18, 1.2)
-x &lt;- data.frame(x=x, type=&quot;Island #1&quot;)
-x2 &lt;- data.frame(x=x2, type=&quot;Island #2&quot;)
-
-d &lt;- rbind(x,x2)
-colnames(d) &lt;- c(&quot;Height&quot;, &quot;Location&quot;)</code></pre>
-<pre class="r"><code># Remove panel border and minor grid lines
-
-p &lt;- ggplot(data = d, aes(x = Height, fill = Location)) +
-  geom_histogram(binwidth = 1, color = &quot;white&quot;) +
-  scale_fill_manual(values = c(&quot;green3&quot;, &quot;turquoise3&quot;)) + 
-  theme_light() +
-  scale_y_continuous(expand = c(0,0)) +
-  labs(x=&quot;Teacup Giraffe heights&quot;, y=&quot;Frequency&quot;, fill=NULL) +
-  theme()
-
-p</code></pre>
-<p><img src="02_bellCurve_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code># Remove panel border and minor grid lines
-
-p &lt;- ggplot(data = d, aes(x = Height, fill = Location)) +
-  geom_histogram(binwidth = 1, color = &quot;white&quot;) +
-  scale_fill_manual(values = c(&quot;green3&quot;, &quot;turquoise3&quot;)) + 
-  theme_light() +
-  scale_y_continuous(expand = c(0,0)) +
-  labs(x=&quot;Teacup Giraffe heights&quot;, y=&quot;Frequency&quot;, fill=NULL) +
-  theme(panel.border=element_blank(), panel.grid.minor=element_blank())
-
-p</code></pre>
-<p><img src="02_bellCurve_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<!---LEARNR EX 5-->
+<iframe class="interactive" id="myIframe5" src="https://tinystats.shinyapps.io/02-bellCurve-ex5/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 <p><br />
 </p>
 <ol start="6" style="list-style-type: decimal">
 <li><strong>Move the Legend</strong>: We will add two more arguments to <code>theme( )</code> to move the legend and make its background transparent. To change its position, use <code>legend.position =</code> followed by the <code>c( )</code> command, in which you will specify the x- and y- positions. These values must be between 0 and 1. Specifying <code>c(0,0)</code>, for example, would place the legend at the bottom left of the plot, while <code>c(1,1)</code> would place it at the top right.</li>
 </ol>
 <p>To change the legend background to be transparent, we essentially remove it. Add the argument <code>legend.background =</code>. Take a look at previous steps to determine how you remove an element.</p>
+<!---LEARNR EX 6-->
+<iframe class="interactive" id="myIframe6" src="https://tinystats.shinyapps.io/02-bellCurve-ex6/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 <p><br />
-</p>
-<pre class="r"><code>library(ggplot2)
-
-set.seed(12)
-
-x &lt;- rnorm(50, 10, 2)
-x2 &lt;- rnorm(50, 18, 1.2)
-x &lt;- data.frame(x=x, type=&quot;Island #1&quot;)
-x2 &lt;- data.frame(x=x2, type=&quot;Island #2&quot;)
-
-d &lt;- rbind(x,x2)
-colnames(d) &lt;- c(&quot;Height&quot;, &quot;Location&quot;)</code></pre>
-<pre class="r"><code># Move legend
-
-p &lt;- ggplot(data = d, aes(x = Height, fill = Location)) +
-  geom_histogram(binwidth = 1, color = &quot;white&quot;) +
-  scale_fill_manual(values = c(&quot;green3&quot;, &quot;turquoise3&quot;)) + 
-  theme_light() +
-  scale_y_continuous(expand = c(0,0)) +
-  labs(x=&quot;Teacup Giraffe heights&quot;, y=&quot;Frequency&quot;, fill=NULL) +
-  theme(panel.border=element_blank(), panel.grid.minor=element_blank(), legend.position = , legend.background = )
-
-p</code></pre>
-<p><img src="02_bellCurve_files/figure-html/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code># Move legend
-
-p &lt;- ggplot(data = d, aes(x = Height, fill = Location)) +
-  geom_histogram(binwidth = 1, color = &quot;white&quot;) +
-  scale_fill_manual(values = c(&quot;green3&quot;, &quot;turquoise3&quot;)) + 
-  theme_light() +
-  scale_y_continuous(expand = c(0,0)) +
-  labs(x=&quot;Teacup Giraffe heights&quot;, y=&quot;Frequency&quot;, fill=NULL) +
-  theme(panel.border=element_blank(), panel.grid.minor=element_blank(), legend.position = c(0.165,0.92), legend.background = element_blank())
-
-p</code></pre>
-<p><img src="02_bellCurve_files/figure-html/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /><br />
 </p>
 <p>Hopefully your PhD advisor in the homeland will be satisfied with your new ggplot!</p>
 <p><br />
@@ -751,7 +658,7 @@ p</code></pre>
 <p>You decided that you had the resources to collect data on 50 giraffes on each of the islands. Will a sample of 50 be good enough to get a sense for the true values of the giraffe populations?</p>
 <p><br />
 </p>
-<p><img src="02_bellCurve_files/figure-html/unnamed-chunk-20-.gif" width="960" style="display: block; margin: auto;" /></p>
+<p><img src="02_bellCurve_files/figure-html/unnamed-chunk-10-.gif" width="960" style="display: block; margin: auto;" /></p>
 <script>
   iFrameResize({}, ".interactive");
 </script>

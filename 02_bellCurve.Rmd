@@ -13,13 +13,15 @@ library(here)
 ```
 
 :::obj
-**Module learning objectives**
 
-1. Define what a distribution is
-1. Describe the characteristics of a normal distribution 
-1. Create a histogram using `ggplot` and modify its appearance
-1. Define sample and population
-1. Explain why distributions of sample data that come from populations with normal distibutions don't always look normal
+  **Module learning objectives**
+  
+  1. Define what a distribution is
+  1. Describe the characteristics of a normal distribution 
+  1. Create a histogram using `ggplot` and modify its appearance
+  1. Define sample and population
+  1. Explain why distributions of sample data that come from populations with normal distibutions don't always look normal
+
 :::
 
 # Welcome to the island
@@ -215,7 +217,7 @@ Run the code below to see what this basic histogram in ggplot looks like:
 
 <!---LEARNR EX 1-->
 
-<iframe class="interactive" id="myIframe21" src="https://tinystats.shinyapps.io/02-bellCurve-ex1/" scrolling="no" frameborder="no"></iframe>
+<iframe class="interactive" id="myIframe1" src="https://tinystats.shinyapps.io/02-bellCurve-ex1/" scrolling="no" frameborder="no"></iframe>
 
 <!------------->
 
@@ -244,7 +246,7 @@ In the window below, we have added some options that you can play around with. U
 
 <!---LEARNR EX 2-->
 
-<iframe class="interactive" id="myIframe21" src="https://tinystats.shinyapps.io/02-bellCurve-ex2/" scrolling="no" frameborder="no"></iframe>
+<iframe class="interactive" id="myIframe2" src="https://tinystats.shinyapps.io/02-bellCurve-ex2/" scrolling="no" frameborder="no"></iframe>
 
 <!------------->
 
@@ -274,16 +276,6 @@ After trying different themes, you pick `theme_light()` and feel pretty good abo
 
 \
 
-```{r, echo=FALSE}
-# p <- ggplot(data = d, aes(x = Height, fill = Location)) +
-#   geom_histogram(binwidth = 1, color = "white")+
-#   scale_fill_manual(values = c("green3", "turquoise3")) + theme_light()
-# 
-# ggsave(filename = "/Users/Desiree/Documents/New R Projects/Cars/advisor_email.png", width=5, height=3, p)
-
-```
-
-
 ```{r, out.width="600px", echo= FALSE}
 knitr::include_graphics("images/02_bellCurve/advisor_email.png")
 ```
@@ -311,48 +303,12 @@ Use the window below to:
  * Change the x-axis label to "Teacup Giraffe heights" and the y-axis label to "Frequency".
 
  <div style="margin-bottom:50px"></div>
-```{r ex="histogram3", type="pre-exercise-code"}
-library(ggplot2)
 
-set.seed(12)
+<!---LEARNR EX 4-->
 
-x <- rnorm(50, 10, 2)
-x2 <- rnorm(50, 18, 1.2)
-x <- data.frame(x=x, type="Island #1")
-x2 <- data.frame(x=x2, type="Island #2")
+<iframe class="interactive" id="myIframe4" src="https://tinystats.shinyapps.io/02-bellCurve-ex4/" scrolling="no" frameborder="no"></iframe>
 
-d <- rbind(x,x2)
-colnames(d) <- c("Height", "Location")
-
-```
-
-```{r ex="histogram3", type="sample-code"}
-# Remove space between bars and x-axis, and change labels
-
-p <- ggplot(data = d, aes(x = Height, fill = Location)) +
-  geom_histogram(binwidth = 1, color = "white") +
-  scale_fill_manual(values = c("green3", "turquoise3")) + 
-  theme_light() +
-  scale_y_continuous(expand = ) +
-  labs()
-
-p
-
-```
-
-```{r ex="histogram3", type="solution"}
-# Remove space between bars and x-axis, and change labels
-
-p <- ggplot(data = d, aes(x = Height, fill = Location)) +
-  geom_histogram(binwidth = 1, color = "white") +
-  scale_fill_manual(values = c("green3", "turquoise3")) + 
-  theme_light() +
-  scale_y_continuous(expand = c(0,0)) +
-  labs(x= "Teacup Giraffe heights", y= "Frequency", fill= NULL)
-  
-p
-
-```
+<!------------->
 
 \
 
@@ -360,52 +316,12 @@ p
 
  * In the window below, use what you just learned to remove the panel border and the minor grid lines of the plot. 
 
-\
 
-```{r ex="histogram4", type="pre-exercise-code"}
-library(ggplot2)
+<!---LEARNR EX 5-->
 
-set.seed(12)
+<iframe class="interactive" id="myIframe5" src="https://tinystats.shinyapps.io/02-bellCurve-ex5/" scrolling="no" frameborder="no"></iframe>
 
-x <- rnorm(50, 10, 2)
-x2 <- rnorm(50, 18, 1.2)
-x <- data.frame(x=x, type="Island #1")
-x2 <- data.frame(x=x2, type="Island #2")
-
-d <- rbind(x,x2)
-colnames(d) <- c("Height", "Location")
-
-```
-
-```{r ex="histogram4", type="sample-code"}
-# Remove panel border and minor grid lines
-
-p <- ggplot(data = d, aes(x = Height, fill = Location)) +
-  geom_histogram(binwidth = 1, color = "white") +
-  scale_fill_manual(values = c("green3", "turquoise3")) + 
-  theme_light() +
-  scale_y_continuous(expand = c(0,0)) +
-  labs(x="Teacup Giraffe heights", y="Frequency", fill=NULL) +
-  theme()
-
-p
-
-```
-
-```{r ex="histogram4", type="solution"}
-# Remove panel border and minor grid lines
-
-p <- ggplot(data = d, aes(x = Height, fill = Location)) +
-  geom_histogram(binwidth = 1, color = "white") +
-  scale_fill_manual(values = c("green3", "turquoise3")) + 
-  theme_light() +
-  scale_y_continuous(expand = c(0,0)) +
-  labs(x="Teacup Giraffe heights", y="Frequency", fill=NULL) +
-  theme(panel.border=element_blank(), panel.grid.minor=element_blank())
-
-p
-
-```
+<!------------->
 
 \
 
@@ -413,52 +329,13 @@ p
 
 To change the legend background to be transparent, we essentially remove it. Add the argument `legend.background =`. Take a look at previous steps to determine how you remove an element.  
 
-\
 
-```{r ex="histogram5", type="pre-exercise-code"}
-library(ggplot2)
+<!---LEARNR EX 6-->
 
-set.seed(12)
+<iframe class="interactive" id="myIframe6" src="https://tinystats.shinyapps.io/02-bellCurve-ex6/" scrolling="no" frameborder="no"></iframe>
 
-x <- rnorm(50, 10, 2)
-x2 <- rnorm(50, 18, 1.2)
-x <- data.frame(x=x, type="Island #1")
-x2 <- data.frame(x=x2, type="Island #2")
+<!------------->
 
-d <- rbind(x,x2)
-colnames(d) <- c("Height", "Location")
-
-```
-
-```{r ex="histogram5", type="sample-code"}
-# Move legend
-
-p <- ggplot(data = d, aes(x = Height, fill = Location)) +
-  geom_histogram(binwidth = 1, color = "white") +
-  scale_fill_manual(values = c("green3", "turquoise3")) + 
-  theme_light() +
-  scale_y_continuous(expand = c(0,0)) +
-  labs(x="Teacup Giraffe heights", y="Frequency", fill=NULL) +
-  theme(panel.border=element_blank(), panel.grid.minor=element_blank(), legend.position = , legend.background = )
-
-p
-
-```
-
-```{r ex="histogram5", type="solution"}
-# Move legend
-
-p <- ggplot(data = d, aes(x = Height, fill = Location)) +
-  geom_histogram(binwidth = 1, color = "white") +
-  scale_fill_manual(values = c("green3", "turquoise3")) + 
-  theme_light() +
-  scale_y_continuous(expand = c(0,0)) +
-  labs(x="Teacup Giraffe heights", y="Frequency", fill=NULL) +
-  theme(panel.border=element_blank(), panel.grid.minor=element_blank(), legend.position = c(0.165,0.92), legend.background = element_blank())
-
-p
-
-```
 \
 
 Hopefully your PhD advisor in the homeland will be satisfied with your new ggplot!

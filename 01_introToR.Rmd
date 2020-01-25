@@ -10,20 +10,17 @@ output:
 You’re about to start an adventure to learn R and statistics. If this is your first time working with R, then you should begin on this page. If you’re comfortable with R basics and you’d like to start with the statistical content, please proceed onto the islands with this [link](02_bellCurve.html).
 
 # Using interactive windows
-Throughout this material we will use an interactive version of R provided by [DataCamp](https://www.datacamp.com/). Although this way of using R comes with some limitations regarding functionality, it will give us the benefit of being able to run R code without switching from a web browser to a standalone application such as [RStudio](https://www.rstudio.com/). 
+Throughout this material we will use an interactive version of R provided by [learnR](https://rstudio.github.io/learnr/). Although this way of using R comes with some limitations regarding functionality, it will give us the benefit of being able to run R code without switching from a web browser to a standalone application such as [RStudio](https://www.rstudio.com/). 
 
-Below you can see an example of an interactive R window. On the left side of the window (under the tab titled *script.R*) is where you will write code to be executed. To run code you have written, click the yellow *Run* button and observe how the right side of the window gets filled with information. A copy of your code will show up in black, and if no errors were made the answer will be returned right below in brown text. Error messages are red and begin with *Error:*. 
+Below you can see an example of an interactive R window. In the white window (under the button with the text *Start Over*) is where you will write code to be executed. To run code you have written, click the green *Run Code* button and observe how information pops up under the window. If no errors were made, this is where the answer will be returned. Error messages are shown in a red box, also under the learnR window. 
 
-Now spend a few minutes using the *Script* window below as a calculator and run simple calculations by clicking *Run*.
+Now spend a few minutes using the window below as a calculator and run simple calculations by clicking *Run Code*.
 
+<!---LEARNR EX 1-->
 
-```{r, include=FALSE}
-tutorial::go_interactive(height = 160)
-```
+<iframe class="interactive" id="myIframe1" src="https://tinystats.shinyapps.io/01-intro-ex1/" scrolling="no" frameborder="no"></iframe>
 
-```{r}
-2+3
-```
+<!------------->
 
 # Objects in R
 R is an object oriented programming language, meaning when working in R we will create different types of objects and use operators and functions to manipulate these objects. 
@@ -33,14 +30,11 @@ To create a new object in R we first pick a name for the object and tell R what 
 * Use the window below to assign numbers to objects and output the content by typing out the name of the object.
 * After creating two numerical objects, use the mathematical operator `+` to add these objects together and see what happens when you run the code.
 
-```{r}
-my_object <- 
-my_object
+<!---LEARNR EX 2-->
 
-my_object2 <- 
+<iframe class="interactive" id="myIframe2" src="https://tinystats.shinyapps.io/01-intro-ex2/" scrolling="no" frameborder="no"></iframe>
 
-my_object + my_object2
-```
+<!------------->
 
 # Common functions
 Most of the time when we work in R, we will use functions; either pre-written functions or ones we write ourselves. **Functions** make it easy to use sets of code instructions repeatedly (without filling our scripts with the code underlying the function) and help us carry out multiple tasks in a single step without having to go through the details of how the steps are executed. 
@@ -51,10 +45,11 @@ To use functions in R, we type the name of the function followed by parentheses 
 * Then sum up the content of this object using `sum( )`.
 
 
-```{r}
-my_combined_values <- c(,) 
-sum(my_combined_values)
-```
+<!---LEARNR EX 3-->
+
+<iframe class="interactive" id="myIframe3" src="https://tinystats.shinyapps.io/01-intro-ex3/" scrolling="no" frameborder="no"></iframe>
+
+<!------------->
 
 # Writing your own function
 R makes it easy to create user defined functions by using `function( )`. Here is how it works:
@@ -71,19 +66,11 @@ Use the following instructions to complete the function in the window below:
     * Now create an object containing a set of numerical values and call it `my_combined_values`. Then try out your new function on this object, which will compute the square root of the object's sum.
 
 
-```{r}
-# Use the instructions above to complete the function below
-my_function_name <- function(input_data){
-  s <- sum( )
-  ss <- sqrt( )
-  return( )
-}
+<!---LEARNR EX 4-->
 
-# Create a new object and try out your new function
-my_combined_values <- c(,) 
+<iframe class="interactive" id="myIframe4" src="https://tinystats.shinyapps.io/01-intro-ex4/" scrolling="no" frameborder="no"></iframe>
 
-my_function_name(my_combined_values)
-```
+<!------------->
 
 # Functions within functions
 It is also possible (and sometimes very useful) to put a function within another function. For example, we could combine multiple steps into one like this: `sqrt(prod(c(1,2)))`, resulting in one line of code that both generates the values and directly calculates the square root of the product of those values.
@@ -91,7 +78,7 @@ It is also possible (and sometimes very useful) to put a function within another
 # Vectors
 The `c( )` function will combine values and create a specific type of data structure called an **atomic vector**. A vector is a simple one-dimensional structure that can contain only one type of value. This means that storing multiple numeric values in a vector, as we have already done, works just fine. But there are other types of values that can be used in R, for example **character** values. These values are created by putting text or numbers within quotes such as `"Giraffe"`. If we try to combine numeric and character values in the same vector, R will convert both values to the character type.  
 
-```{r, tut=FALSE}
+```{r}
 c("Giraffe", 123)
 ```
 
@@ -101,7 +88,7 @@ This behavior is not always desirable, so it is a good idea to try to only combi
 Another type of variable in R is the boolean (TRUE/FALSE) type. **Boolean** or logical vectors can only take two different values; TRUE or FALSE (case sensitive). You will see these types of values mostly when logical operators are used to test how different objects relate to each other. For example, the **logical operator** `==` can be used to test if two different objects are exactly the same and `TRUE` will be returned only if the identity is fulfilled.
 
 
-```{r, tut=FALSE}
+```{r}
 "Giraffe"=="Teacup"
 sqrt(100)==10
 ```
@@ -113,20 +100,23 @@ Vectors are one of multiple data structures in R. We will not cover all types of
 * In the window below, use the `data.frame()` function to create a data frame with two columns called *x* and *y*. When creating data frames we specify a column by giving the column a name and assigning values or vectors to it, e.g. `data.frame(x= c("Giraffe", "Teacup"))`. 
 * Also observe what happens when you try to combine an x and y vector of different lengths. 
 
-```{r}
-x_values <- c(,)
-y_values <- c(,)
+<!---LEARNR EX 5-->
 
-d <- data.frame(x = x_values, y = y_values)
-d
-```
+<iframe class="interactive" id="myIframe5" src="https://tinystats.shinyapps.io/01-intro-ex5/" scrolling="no" frameborder="no"></iframe>
+
+<!------------->
 
 As you could see above, running a line of code with just the name of a data structure (in this case, the letter *d*) will print the full data frame in the console output (if no errors were made!). If you instead are interested in only one of the columns, this can be specified by using the `$` operator followed by the column's name, e.g `d$x`. Try it out below!
 
-```{r}
-d <- data.frame(x= c(10, 45), y= c(2, 5))
-d$x
-```
+<!---LEARNR EX 6-->
+
+<iframe class="interactive" id="myIframe6" src="https://tinystats.shinyapps.io/01-intro-ex6/" scrolling="no" frameborder="no"></iframe>
+
+<!------------->
 
 # You're ready to go! 
-This was a brief introduction into R, but now you know what you need to get started with the [first module](02_bellCurve.html)! 
+This was a brief introduction into R, but now you know what you need to get started with the [first module](02_bellCurve.html)!
+
+<script>
+  iFrameResize({}, ".interactive");
+</script>
