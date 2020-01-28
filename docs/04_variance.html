@@ -13,7 +13,6 @@
 
 <title>The Spread of the Data</title>
 
-<script src="site_libs/header-attrs-2.1.1/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -642,14 +641,14 @@ variance</code></pre>
 </ul>
 <p><img src="04_variance_files/figure-html/unnamed-chunk-6-.gif" width="483.84" style="display: block; margin: auto;" /></p>
 <ul>
-<li>When we compare the sum of squares in both of these scenarios: 1) using <span class="math inline">\(\bar{x}\)</span> or 2) using our imaginary <span class="math inline">\(\mu\)</span>, we see that the sum of squares from <span class="math inline">\(\mu\)</span> will <em>always</em> be greater than the <span class="math inline">\(\bar{x}\)</span> sum of squares. This is true because by definition of being the sample mean, the line at <span class="math inline">\(\bar{x}\)</span> will always be the “center” of the values in our sample. Its location already minimizes the total distance of all the observations to the center. A line at any other location (i.e. <span class="math inline">\(\mu\)</span>) would be a line that is not mimimizing the distance for observations in our sample.</li>
+<li>When we compare the sum of squares in both of these scenarios: 1) using <span class="math inline">\(\bar{x}\)</span> or 2) using our imaginary <span class="math inline">\(\mu\)</span>, we see that the sum of squares from <span class="math inline">\(\mu\)</span> will <em>always</em> be greater than the <span class="math inline">\(\bar{x}\)</span> sum of squares. This is true because by definition of being the sample mean, the line at <span class="math inline">\(\bar{x}\)</span> will always be the “center” of the values in our sample. Its location already minimizes the total distance of all the observations to the center. A line at any other location (i.e. <span class="math inline">\(\mu\)</span>) would be a line that is not mimimizing the distance for observations in our sample.</li>
 </ul>
 <center>
 <img src="images/04_variance/Squares2.png" width="750" />
 </center>
 <ul>
 <li><p>Therefore, when we calculate the sum of squares (and consequently, the variance and the standard deviation) using the sample mean <span class="math inline">\(\bar{x}\)</span>, we are most likely arriving at a value that is downwardly biased compared to what the true variance or standard deviation would be if we were able to know and use the population mean <span class="math inline">\(\mu\)</span>.</p></li>
-<li><p>This is why we need to adjust our sample variance by diving by <span class="math inline">\(n-1\)</span> instead of just <span class="math inline">\(N\)</span>. By diving by a smaller value (i.e. <span class="math inline">\(n-1\)</span> instead of N), we ensure that the overall value of the variance and standard deviation will be a little larger, correcting for the downward bias we just described.</p></li>
+<li><p>This is why we need to adjust our sample variance by diving by <span class="math inline">\(n-1\)</span> instead of just <span class="math inline">\(N\)</span>. By diving by a smaller value (i.e. <span class="math inline">\(n-1\)</span> instead of N), we ensure that the overall value of the variance and standard deviation will be a little larger, correcting for the downward bias we just described.</p></li>
 </ul>
 </div>
 <div id="things-to-think-about" class="section level1">
@@ -704,7 +703,7 @@ percent_of_true_variance </code></pre>
 
 <div class="foot">
 	<hr> 
-	<p style="text-align: center;"> <span style="color: #808080; display: inline-block; width: 33%;"> 	This project was created entirely in RStudio using R Markdown with features making use of DataCamp Light windows and published on GitHub pages. 
+	<p style="text-align: center;"> <span style="color: #808080; display: inline-block; width: 58%;"> 	This project was created entirely in RStudio using R Markdown and published on GitHub pages. 
  </span></p>
 	<p style="text-align: center;">
 	</p>
