@@ -13,6 +13,7 @@
 
 <title>The Spread of the Data</title>
 
+<script src="site_libs/header-attrs-2.1.1/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -38,7 +39,7 @@
 
 	  gtag('config', 'UA-135221736-1');
 	</script>
-	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.16/iframeResizer.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
@@ -436,7 +437,6 @@ div.tocify {
 </div>
 
 
-<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <div class="obj">
 <p><strong>Module learning objectives</strong></p>
 <ol style="list-style-type: decimal">
@@ -613,9 +613,10 @@ variance</code></pre>
 <li><p>In the window below, you will write two separate functions, one to calculate the sample variance and another to calculate the sample standard deviation. Name your functions <code>my_variance</code> and <code>my_sd</code>.</p></li>
 <li><p>Test your functions on the vector <code>heights_island1</code> and compare the output of your “handwritten” functions with the base R function of <code>var( )</code> and <code>sd( )</code>.</p></li>
 </ul>
-<div data-datacamp-exercise="" data-height="400" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19pc2xhbmQxIDwtIHJub3JtKDUwLDEwLDIpIiwic2FtcGxlIjoibXlfdmFyaWFuY2UgPC0gZnVuY3Rpb24oeCl7XG4gXG4gIFxuICBcbiAgXG5cbn1cblxubXlfdmFyaWFuY2UoaGVpZ2h0c19pc2xhbmQxKSAjIFVzZSB5b3VyIGZ1bmN0aW9uIG9uIHRoZSBoZWlnaHRzX2lzbGFuZDEgdmVjdG9yXG52YXIoICkgIyBDb21wYXJlIHRoZSBvdXRwdXQgd2l0aCB0aGUgYmFzZSBSIGZ1bmN0aW9uXG5cblxubXlfc2QgPC0gZnVuY3Rpb24oeCl7XG4gXG4gIFxuICBcbiAgXG4gIFxuICBcbn1cblxubXlfc2QoaGVpZ2h0c19pc2xhbmQxKSAjIFVzZSB5b3VyIGZ1bmN0aW9uIG9uIHRoZSBoZWlnaHRzX2lzbGFuZDEgdmVjdG9yXG5zZCggKSAjIENvbXBhcmUgdGhlIG91dHB1dCB3aXRoIHRoZSBiYXNlIFIgZnVuY3Rpb24iLCJzb2x1dGlvbiI6Im15X3ZhcmlhbmNlIDwtIGZ1bmN0aW9uKHgpe1xuICBtIDwtIG1lYW4oeClcbiAgZGV2aWF0aW9uIDwtIHggLSBtXG4gIHN1bV9vZl9zcXVhcmVzIDwtIHN1bShkZXZpYXRpb25eMilcbiAgdmFyaWFuY2UgPC0gIHN1bV9vZl9zcXVhcmVzIC8gKGxlbmd0aCh4KS0xKSAjIERpdmlkZXMgYnkgTi0xXG4gIHJldHVybih2YXJpYW5jZSlcbn1cblxubXlfdmFyaWFuY2UoaGVpZ2h0c19pc2xhbmQxKVxudmFyKGhlaWdodHNfaXNsYW5kMSlcblxuXG5teV9zZCA8LSBmdW5jdGlvbih4KXtcbiAgIG0gPC0gbWVhbih4KVxuICBkZXZpYXRpb24gPC0geCAtIG1cbiAgc3VtX29mX3NxdWFyZXMgPC0gc3VtKGRldmlhdGlvbl4yKVxuICB2YXJpYW5jZSA8LSAgc3VtX29mX3NxdWFyZXMgLyAobGVuZ3RoKHgpLTEpICMgRGl2aWRlcyBieSBOLTFcbiAgc3RhbmRhcmRfZGV2aWF0aW9uIDwtIHNxcnQodmFyaWFuY2UpXG4gIHJldHVybihzdGFuZGFyZF9kZXZpYXRpb24pXG59XG5cbm15X3NkKGhlaWdodHNfaXNsYW5kMSlcbnNkKGhlaWdodHNfaXNsYW5kMSkifQ==
-</div>
+<!---LEARNR EX 1-->
+<iframe class="interactive" id="myIframe1" src="https://tinystats.shinyapps.io/04-variance-ex1/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
 <div style="margin-top:50px">
 
 </div>
@@ -639,16 +640,16 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyKVxuaGVpZ2h0c19p
 </ul></li>
 <li>Recognizing that the true population mean value is probably some <em>other</em> value than <span class="math inline">\(\bar{x}\)</span>, let’s recalculate the sum of squares. This time we will use an imaginary true population <span class="math inline">\(\mu\)</span> as our center point, which in the animation below will be represented with a line at an arbitrary distance away from <span class="math inline">\(\bar{x}\)</span>.</li>
 </ul>
-<p><img src="04_variance_files/figure-html/unnamed-chunk-11-.gif" width="483.84" style="display: block; margin: auto;" /></p>
+<p><img src="04_variance_files/figure-html/unnamed-chunk-6-.gif" width="483.84" style="display: block; margin: auto;" /></p>
 <ul>
-<li>When we compare the sum of squares in both of these scenarios: 1) using <span class="math inline">\(\bar{x}\)</span> or 2) using our imaginary <span class="math inline">\(\mu\)</span>, we see that the sum of squares from <span class="math inline">\(\mu\)</span> will <em>always</em> be greater than the <span class="math inline">\(\bar{x}\)</span> sum of squares. This is true because by definition of being the sample mean, the line at <span class="math inline">\(\bar{x}\)</span> will always be the “center” of the values in our sample. Its location already minimizes the total distance of all the observations to the center. A line at any other location (i.e. <span class="math inline">\(\mu\)</span>) would be a line that is not mimimizing the distance for observations in our sample.</li>
+<li>When we compare the sum of squares in both of these scenarios: 1) using <span class="math inline">\(\bar{x}\)</span> or 2) using our imaginary <span class="math inline">\(\mu\)</span>, we see that the sum of squares from <span class="math inline">\(\mu\)</span> will <em>always</em> be greater than the <span class="math inline">\(\bar{x}\)</span> sum of squares. This is true because by definition of being the sample mean, the line at <span class="math inline">\(\bar{x}\)</span> will always be the “center” of the values in our sample. Its location already minimizes the total distance of all the observations to the center. A line at any other location (i.e. <span class="math inline">\(\mu\)</span>) would be a line that is not mimimizing the distance for observations in our sample.</li>
 </ul>
 <center>
 <img src="images/04_variance/Squares2.png" width="750" />
 </center>
 <ul>
 <li><p>Therefore, when we calculate the sum of squares (and consequently, the variance and the standard deviation) using the sample mean <span class="math inline">\(\bar{x}\)</span>, we are most likely arriving at a value that is downwardly biased compared to what the true variance or standard deviation would be if we were able to know and use the population mean <span class="math inline">\(\mu\)</span>.</p></li>
-<li><p>This is why we need to adjust our sample variance by diving by <span class="math inline">\(n-1\)</span> instead of just <span class="math inline">\(N\)</span>. By diving by a smaller value (i.e. <span class="math inline">\(n-1\)</span> instead of N), we ensure that the overall value of the variance and standard deviation will be a little larger, correcting for the downward bias we just described.</p></li>
+<li><p>This is why we need to adjust our sample variance by diving by <span class="math inline">\(n-1\)</span> instead of just <span class="math inline">\(N\)</span>. By diving by a smaller value (i.e. <span class="math inline">\(n-1\)</span> instead of N), we ensure that the overall value of the variance and standard deviation will be a little larger, correcting for the downward bias we just described.</p></li>
 </ul>
 </div>
 <div id="things-to-think-about" class="section level1">
@@ -690,9 +691,13 @@ percent_of_true_variance </code></pre>
 <pre><code>## [1] 100.8435</code></pre>
 <p>As we can see, the correction works by adjusting the downwardly biased sample variance to close to 100% of the true variance.</p>
 <p>Try hovering over a few other bars and see yourself that correction works indepdent of the sample size. You can use the window below as a calculator to change the N and the hover values and then run the code.</p>
-<div data-datacamp-exercise="" data-height="400" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIE1vZGVsIHlvdXIgY29kZSBvZmYgb2YgdGhlIGV4YW1wbGUgZm9yIG4gPSAzICJ9
-</div>
+<!---LEARNR EX 2-->
+<iframe class="interactive" id="myIframe2" src="https://tinystats.shinyapps.io/04-variance-ex2/" scrolling="no" frameborder="no">
+</iframe>
+<!------------->
+<script>
+  iFrameResize({}, ".interactive");
+</script>
 </div>
 
 <!DOCTYPE html>

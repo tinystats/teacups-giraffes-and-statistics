@@ -261,73 +261,11 @@ Using \@ref(eq:equation4) and \@ref(eq:equation5), it's easy to translate the eq
   
   * Test your functions on the vector `heights_island1` and compare the output of your "handwritten" functions with the base R function of `var( )` and `sd( )`. 
   
-```{r, include=FALSE}
-tutorial::go_interactive(height = 400)
-```
+<!---LEARNR EX 1-->
 
-```{r ex= "variance", type="pre-exercise-code"}
-set.seed(12)
-heights_island1 <- rnorm(50,10,2)
-```
+<iframe class="interactive" id="myIframe1" src="https://tinystats.shinyapps.io/04-variance-ex1/" scrolling="no" frameborder="no"></iframe>
 
-```{r ex="variance", type="sample-code"}
-
-my_variance <- function(x){
- 
-  
-  
-  
-
-}
-
-my_variance(heights_island1) # Use your function on the heights_island1 vector
-var( ) # Compare the output with the base R function
-
-
-my_sd <- function(x){
- 
-  
-  
-  
-  
-  
-}
-
-my_sd(heights_island1) # Use your function on the heights_island1 vector
-sd( ) # Compare the output with the base R function
-
-```
-
-```{r ex="variance", type="solution"}
-my_variance <- function(x){
-  m <- mean(x)
-  deviation <- x - m
-  sum_of_squares <- sum(deviation^2)
-  variance <-  sum_of_squares / (length(x)-1) # Divides by N-1
-  return(variance)
-}
-
-my_variance(heights_island1)
-var(heights_island1)
-
-
-my_sd <- function(x){
-   m <- mean(x)
-  deviation <- x - m
-  sum_of_squares <- sum(deviation^2)
-  variance <-  sum_of_squares / (length(x)-1) # Divides by N-1
-  standard_deviation <- sqrt(variance)
-  return(standard_deviation)
-}
-
-my_sd(heights_island1)
-sd(heights_island1)
-
-
-```
-```{r ex="variance", type="sct"}
-
-```
+<!------------->
 
 <div style="margin-top:50px"></div>
 <center>![](images/04_variance/Marmalade.png){width=650px}</center>
@@ -592,11 +530,12 @@ As we can see, the correction works by adjusting the downwardly biased sample va
 
 Try hovering over a few other bars and see yourself that correction works indepdent of the sample size. You can use the window below as a calculator to change the N and the hover values and then run the code. 
 
-```{r}
-# Model your code off of the example for n = 3 
+<!---LEARNR EX 2-->
 
+<iframe class="interactive" id="myIframe2" src="https://tinystats.shinyapps.io/04-variance-ex2/" scrolling="no" frameborder="no"></iframe>
 
+<!------------->
 
-```
-
-
+<script>
+  iFrameResize({}, ".interactive");
+</script>

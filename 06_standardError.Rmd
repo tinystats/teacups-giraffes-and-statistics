@@ -404,7 +404,6 @@ mclapply(rep(960, 40), function(x) plots4(x), mc.cores = 8, mc.cleanup = TRUE)
 A histogram of the sampling distribution is shown below. It is a histogram made up of many means.
 
 <br>
-<br>
 
 <center>
 ```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, fig.height=2.7, fig.width=4.5, cache= TRUE}
@@ -494,36 +493,14 @@ We can take the mean of the sampling distribution itself-- **the mean of the sam
 
 Note that if we had only generated a sampling distribution made up of samples of 5 giraffes, we would not have been able to exclude 11 cm as a possible value for ${\mu}$. In fact, if we were to draw a vertical line in the middle of each of the sampling distributions (the mean), we can tell that the population mean is likely even less than 10 cm.
 
-In the folowing window, you will test the relationship between sampling distribution and sample size. The function below (behind-the-scenes code not shown) will plot a sampling distribution made up of 1000 samples, with each sample containing `N` number of observations. Try setting `N` to a few different values. What does the resulting sampling distribution looks like? See if you can confirm for yourself that the above points are true.
+In the following window, you will test the relationship between sampling distribution and sample size. The function below (behind-the-scenes code not shown) will plot a sampling distribution made up of 1000 samples, with each sample containing `N` number of observations. Try setting `N` to a few different values. What does the resulting sampling distribution looks like? See if you can confirm for yourself that the above points are true.
 
 
-```{r, include=FALSE}
-tutorial::go_interactive(height = 160)
-```
+<!---LEARNR EX 1-->
 
-```{r ex="histogram5", type="pre-exercise-code"}
-library(ggplot2)
+<iframe class="interactive" id="myIframe1" src="https://tinystats.shinyapps.io/06-standardError-ex1/" scrolling="no" frameborder="no"></iframe>
 
-plot_hist <- function(N){
-  m <- do.call(rbind, lapply(1:1000, function(x) mean(rnorm(N, 10, 2))))
-  m <- as.data.frame(m)
-  colnames(m) <- "Height"
-  ggplot(data = m, aes(x = Height)) +
-  geom_histogram(binwidth = 0.1, color = "white", fill = "green3") +
-  theme_light() +
-  scale_y_continuous(expand = c(0,0)) +
-  xlim(5,15) + 
-  labs(x=paste0("Sample means N = ", N), y = "Frequency") +
-  theme(panel.border = element_blank(), panel.grid.minor = element_blank())  
-}
-
-```
-
-```{r ex="histogram5", type="sample-code"}
-# Set N equal to different sample sizes and test its effect on the sampling distribution
-plot_hist(N= )
-
-```
+<!------------->
 
 
 # Standard Error of the Mean
@@ -533,36 +510,11 @@ In the window below, calculate the standard deviation of each of the three sampl
 
 To complete this exercise, you will need to use the objects `sampling_distribution_N500`, `sampling_distribution_N50`, `sampling_distribution_N5`, which are vectors storing the thousands of ${\bar{x}}$ values from the corresponding groundhog sampling distributions.
 
-```{r, include=FALSE}
-tutorial::go_interactive(height = 160)
-```
+<!---LEARNR EX 2-->
 
-```{r ex="SEM1", type="pre-exercise-code"}
+<iframe class="interactive" id="myIframe2" src="https://tinystats.shinyapps.io/06-standardError-ex2/" scrolling="no" frameborder="no"></iframe>
 
-samp <- function(n){
-  x <- rnorm(n, 9.7, 2.1)
-  m <- mean(x)
-  return(m)
-}
-
-sampling_distribution_N5 <- as.vector(do.call(rbind, lapply(1:1000, function(x) samp(5))))
-sampling_distribution_N50 <- as.vector(do.call(rbind, lapply(1:1000, function(x) samp(50))))
-sampling_distribution_N500<- as.vector(do.call(rbind, lapply(1:1000, function(x) samp(500))))
-
-```
-
-```{r ex="SEM1", type="sample-code"}
-# Calculate the standard deviation of each of the three sampling distributions, using the object names above
-
-```
-
-```{r ex="SEM1", type="solution"}
-# Calculate the standard deviation of each of the three sampling distributions
-sd(sampling_distribution_N5)
-sd(sampling_distribution_N50)
-sd(sampling_distribution_N500)
-
-```
+<!------------->
 
 
 When you calculate the standard deviation of a sampling distribution of ${\bar{x}}$ values, you are calculating the **standard error of the mean (SEM)**, or just "standard error". The SEM is the value that we use to capture the level of precision of our sample estimate. But, we need a better and more efficient way to arrive at this value without relying on a groundhog day situation. Keep reading to learn more.
@@ -578,7 +530,7 @@ When you calculate the standard deviation of a sampling distribution of ${\bar{x
 # Standard error in practice
 Deriving the equation used for calculating the standard error of the mean using theory (i.e. without going out and resampling MANY times) is a bit complicated, but if you're interested, you can learn more about it [here](https://stats.stackexchange.com/questions/89154/general-method-for-deriving-the-standard-error). Instead, we can capture the relationship between **standard deviation**, **sample size**, and **standard error** with the plot below.
 
-
+<center>
 ```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, out.height=2, cache = TRUE, fig.align="center"}
 library(plotly)
 
@@ -604,7 +556,7 @@ layout(autosize = F, width = 600, height = 350,
   )
 
 ```
-
+</center>
 
 The standard deviation in this plot is `2.1`, which represents ${\sigma}$ for giraffe heights on Island 1. This population value is technically still unknown but can be deduced in theory by repeating the groundhog day example for the standard deviation instead of for the mean. It's important to note that the plot would have the same *shape* regardless of what scenario or standard deviation we were using.
 
@@ -616,38 +568,11 @@ The standard deviation in this plot is `2.1`, which represents ${\sigma}$ for gi
 
 Use the window below as a calculator to see if you can figure out the equation for the SEM.
 
-```{r ex="SEM2", type="pre-exercise-code"}
-# set.seed(12)
-# heights_island1 <- rnorm(50,10,2)
-# #9.7, 2.1 USE THESE WHEN NOT ISLAND 1 HEIGHTS
-```
+<!---LEARNR EX 3-->
 
-```{r ex="SEM2", type="sample-code"}
+<iframe class="interactive" id="myIframe3" src="https://tinystats.shinyapps.io/06-standardError-ex3/" scrolling="no" frameborder="no"></iframe>
 
-# Hover over a point and record the N and SEM values
-SEM = 
-N =
-SD = 2.1
-  
-# Use the plot and the hints above to see if you can deduce the equation for the standard error of the mean
-
-
-
-
-```
-
-```{r ex="SEM2", type="solution"}
-# Hover over a point and record the N and SEM values
-SEM = 0.542 # These can be any corresponding pair of SEM and N values from the plot
-N = 15
-SD = 2.1
-  
-# Use the plot and the hints above to see if you can deduce the equation for the standard error of the mean
-
-SD/sqrt(N) # This is the same as the SEM (allow for rounding error)
-
-SEM 
-```
+<!------------->
 
   
 In case you weren't able to figure it out, remember to check the `Solutions` tab in the DataCamp window or take a look at this [link](https://en.wikipedia.org/wiki/Standard_error) for the equation for calculating the SEM. Recall that we're working with the sample (and not population) standard deviation ($s$), so make sure you find the correct equation.
@@ -658,41 +583,11 @@ Let's test out the SEM equation on our original sample of `heights_island1` and 
 Below, you will use the object `heights_island1`, which contains our single sample of N=50, and the object `sampling_distribution_N50`, which contains the data from the corresponding groundhog sampling distribution.
 
 
-```{r ex="SEM3", type="pre-exercise-code"}
+<!---LEARNR EX 4-->
 
-samp <- function(n){
-  x <- rnorm(n, 9.7, 2.1)
-  m <- mean(x)
-  return(m)
-}
-sampling_distribution_N50 <- as.vector(do.call(rbind, lapply(1:10000, function(x) samp(50))))
+<iframe class="interactive" id="myIframe4" src="https://tinystats.shinyapps.io/06-standardError-ex4/" scrolling="no" frameborder="no"></iframe>
 
-
-set.seed(12)
-heights_island1 <- rnorm(50,10,2)
-  
-```
-
-```{r ex="SEM3", type="sample-code"}
-
-# Apply the SEM equation to `heights_island1` and compare the result to the standard deviation of the sampling distribution
-
-heights_island1
-
-sampling_distribution_N50
-
-```
-
-```{r ex="SEM3", type="solution"}
-# Apply the SEM equation to `heights_island1` and compare the result to the standard deviation of the sampling distribution
-
-SEM_heights_island1 <- sd(heights_island1)/sqrt(50)
-SEM_heights_island1
-
-sd(sampling_distribution_N50)
-
-
-```
+<!------------->
 
 Close enough! We wouldn't expect these to be *exactly* the same because of sampling variability.
   
@@ -708,47 +603,12 @@ Loosely speaking, a 95% CI is the range of values that we are 95% confident cont
 
 Use the window below to find out and make your first inference by constructing the 95% CI for the `heights_island1` mean estimate!
 
-\
 
-```{r ex="SEM4", type="pre-exercise-code"}
-set.seed(12)
-heights_island1 <- rnorm(50,10,2)
-  
-```
+<!---LEARNR EX 5-->
 
-```{r ex="SEM4", type="sample-code"}
+<iframe class="interactive" id="myIframe5" src="https://tinystats.shinyapps.io/06-standardError-ex5/" scrolling="no" frameborder="no"></iframe>
 
-# Calculate the SEM for heights_island1
-SEM_heights_island1 <- 
-
-# Calculate the sample mean
-heights_island1_mean <- 
-
-# Add ± 1.96 SEM to the sample mean to construct the upper and lower bounds of the 95% CI
-
-upperCI <- 
-lowerCI <- 
-  
-heights_island1_95CI <- c(lowerCI, upperCI)
-heights_island1_95CI
-
-```
-
-```{r ex="SEM4", type="solution"}
-# Calculate the SEM for heights_island1
-SEM_heights_island1 <- sd(heights_island1)/sqrt(50)
-
-# Calculate the sample mean
-heights_island1_mean <- mean(heights_island1)
-
-# Add ±  1.96 SEM to the sample mean to construct the upper and lower bounds of the 95% CI
-
-upperCI <- heights_island1_mean + 1.96 * SEM_heights_island1
-lowerCI <- heights_island1_mean - 1.96 * SEM_heights_island1
- 
-heights_island1_95CI <- c(lowerCI, upperCI)
-heights_island1_95CI
-```
+<!------------->
 
 The upper limit of our 95% CI is less than 11 cm, so the population mean of heights on island 1 is likely less than 11 cm. In the scientific community, this is a bonafide way of drawing this conclusion.
 
@@ -770,3 +630,7 @@ Importantly, some examples of what the 95% CI does NOT mean are:
 
 
 The precise interpretation of CIs is quite a nuanced and rather hotly debated topic [see here](https://featuredcontent.psychonomic.org/confidence-intervals-more-like-confusion-intervals/) and becomes somewhat philosophical-- so if these definition subtleties seem confusing, don't feel bad. As mentioned in the blog post linked above, one recent paper reported that 97% of surveyed researchers endorsed at least one misconception (out of 6) about CIs. 
+
+<script>
+  iFrameResize({}, ".interactive");
+</script>

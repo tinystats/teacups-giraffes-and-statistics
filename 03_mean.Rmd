@@ -233,7 +233,7 @@ Now that you have a sense for how the `%%` operator can be used to test whether 
 
 <!---LEARNR EX 4-->
 
-<iframe class="interactive" id="myIframe4" src="https://tinystats.shinyapps.io/03-mean-ex4/" scrolling="no" frameborder="no"></iframe>
+<iframe class="interactive" id="myIframe4" src="https://tinystats.shinyapps.io/03-mean-ex4b/" scrolling="no" frameborder="no"></iframe>
 
 <!------------->
 
