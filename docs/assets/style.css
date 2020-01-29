@@ -392,7 +392,7 @@ body, html {
     margin-top: 0;
   }
   .back-panel-contents {
-    display: block;
+    display: flex;
   }
 
   .landing-subimage {
@@ -515,13 +515,15 @@ body, html {
   text-align: center;
   font-weight: normal;
   margin-bottom: 1em;
+  margin: 0 auto;
 }
 
 .about-the-author-color-textbox-title {
   text-align: center;
   font-weight: bold;
   font-size: 2.2rem;
-  padding: 8rem 3rem 0rem 3rem;
+  padding: 4rem 3rem 0rem 3rem;
+  margin: 0 auto;
 }
 
 .about-the-author-color-textbox-text {
@@ -533,9 +535,42 @@ body, html {
 
 .about-the-author-subimage {
   width: 40%;
+  margin: 0 auto;
 }
 
 @media only screen and (max-width: 768px) {
+  
+.about-the-author-color-textbox {
+  width:100%;
+}
+  
+  .about-the-author-color-textbox-text {
+    min-width: 300px;
+    padding: 3rem 2rem 0rem 2rem;
+
+}
+
+.about-the-author-color-textbox-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.2rem;
+  padding: 8rem 3rem 0rem 3rem;
+  max-width: 100%;
+  min-width: 300px;
+}
+
+.about-the-author-subimage {
+  min-width: 300px;
+  margin: 0 auto;
+}
+  
+  .back-panel-contents {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+  
   .lil-image-text {
     font-size: 15px;
   }
