@@ -32,3 +32,9 @@
     padding: 20px 5px 0 0;
   }
 }
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+      color: black !important;
+  }
+}
