@@ -11,7 +11,7 @@ This repository holds the source materials for this project. To view the online 
 
 ### Licensing
 
-The illustrations and narrative[00_narrative.html] project are licensed under the [cc-by-nc-nd](https://creativecommons.org/licenses/by-nc-nd/2.0/) license. This means that these specific parts of the project cannot be modified or remixed if you use our materials.
+The illustrations and [narrative](00_narrative.html) project are licensed under the [cc-by-nc-nd](https://creativecommons.org/licenses/by-nc-nd/2.0/) license. This means that these specific parts of the project cannot be modified or remixed if you use our materials.
 
 Everything else in this project is licensed under the [cc-by-nc-sa 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license. In summary, this means that you can adapt the lesson material to suit your needs as long as you cite the original project and authors. 
 
