@@ -9,7 +9,11 @@ Created by:
 
 This repository holds the source materials for this project. To view the online modules, please visit: https://tinystats.github.io/teacups-giraffes-and-statistics/. 
 
-This project is licensed under the terms of the [cc-by-nc-nd](https://creativecommons.org/licenses/by-nc-nd/2.0/) license.
+### Licensing
+
+The illustrations and narrative[00_narrative.html] project are licensed under the [cc-by-nc-nd](https://creativecommons.org/licenses/by-nc-nd/2.0/) license. This means that these specific parts of the project cannot be modified or remixed if you use our materials.
+
+Everything else in this project is licensed under the [cc-by-nc-sa 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license. In summary, this means that you can adapt the lesson material to suit your needs as long as you cite the original project and authors. 
 
 # Getting Started
 
