@@ -283,7 +283,7 @@ This equation is used for the **sample correlation**:
 <div style="margin-bottom:50px">
 </div>
 
-# What the does correlation mean?
+# What does the correlation mean?
 We can interpret the correlation as a measure of **the strength and direction** of the relationship between two variables. It is a "standardized" version of the covariance. 
 
   * The correlation will always be between -1 and 1. At these extreme values, the two variables have the strongest relationship possible, in which each data point will fall exactly on a line. When the absolute value of the correlation coefficient approaches 0, the observations will be more "scattered". 
@@ -443,7 +443,7 @@ As you look at the plot above, you may have the following questions:
     
 # Things to think about
 
-**Correlation does not capture relationships that are not linear**: If the relationship is not linear, then correlation will not be meaningful. Check out the plot below. There is a clear U-shaped relationship between the two variables, but the correlation coefficient for these data is very close to 0. To meausure non-linear relationships a different metric must be used.
+**Correlation does not capture relationships that are not linear**: If the relationship is not linear, then correlation will not be meaningful. Check out the plot below. There is a clear U-shaped relationship between the two variables, but the correlation coefficient for these data is very close to 0. To measure non-linear relationships a different metric must be used.
 
 <center>![](images/05_correlation/corr_curve.png){width=40%}</center>
   
