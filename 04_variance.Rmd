@@ -35,7 +35,7 @@ You might start by quantifying the simplest measure of spread, the **range**. Th
 
 If we want to avoid undue influence of outliers for the measure of spread, the range is not good enough to provide us with a wholistic, robust measure.
 
-What is a more stable measurment? The answer is the **variance**.
+What is a more stable measurement? The answer is the **variance**.
 
 # Variance in plain language
 You need a solid understanding of variance in order to grasp the mechanics of any statistical test. But what does the concept variance really capture?
@@ -528,7 +528,7 @@ percent_of_true_variance
 ```
 As we can see, the correction works by adjusting the downwardly biased sample variance to close to 100% of the true variance. 
 
-Try hovering over a few other bars and see yourself that correction works indepdent of the sample size. You can use the window below as a calculator to change the N and the hover values and then run the code. 
+Try hovering over a few other bars and see yourself that correction works independent of the sample size. You can use the window below as a calculator to change the N and the hover values and then run the code. 
 
 <!---LEARNR EX 2-->
 
