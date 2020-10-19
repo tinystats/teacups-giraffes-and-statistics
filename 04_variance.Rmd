@@ -187,7 +187,7 @@ And for **sample standard deviation, $s$**:
 <div style="margin-bottom:50px"></div>
 
 # Meaning of the standard deviation
-Since we're now focusing on samples, let's think about how we can apply the standard deviation in a useful way to normal distributions to predict how "rare" or "common" particular observations in a data set may be. For the normal distribution, almost all of the data will fall within ± 3 standard deviations from the mean. This rule of thumb, called the **empirical rule**, is illustrated below and you can [(read more about it here)](https://newonlinecourses.science.psu.edu/stat200/lesson/2/2.2/2.2.7).
+Since we're now focusing on samples, let's think about how we can apply the standard deviation in a useful way to normal distributions to predict how "rare" or "common" particular observations in a data set may be. For the normal distribution, almost all of the data will fall within ± 3 standard deviations from the mean. This rule of thumb, called the **empirical rule**, is illustrated below and you can [read more about it here](https://newonlinecourses.science.psu.edu/stat200/lesson/2/2.2/2.2.7).
 <a name="empirical">
 ![](images/04_variance/General_empirical.jpg)
 </a>
