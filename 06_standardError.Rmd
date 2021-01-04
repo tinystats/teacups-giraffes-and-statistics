@@ -575,7 +575,7 @@ Use the window below as a calculator to see if you can figure out the equation f
 <!------------->
 
   
-In case you weren't able to figure it out, remember to check the `Solutions` tab in the DataCamp window or take a look at this [link](https://en.wikipedia.org/wiki/Standard_error) for the equation for calculating the SEM. Recall that we're working with the sample (and not population) standard deviation ($s$), so make sure you find the correct equation.
+In case you weren't able to figure it out, remember to check the `Solutions` tab in the exercise window or take a look at this [link](https://en.wikipedia.org/wiki/Standard_error) for the equation for calculating the SEM. Recall that we're working with the sample (and not population) standard deviation ($s$), so make sure you find the correct equation.
 
 # Confirming that the SEM equation works
 Let's test out the SEM equation on our original sample of `heights_island1` and compare it to what we would have gotten by taking the standard deviation of the sampling distribution example with the N= 50 case. **Does the SEM seem like a good approximation of the standard deviation of the sampling distribution?**

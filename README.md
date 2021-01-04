@@ -1,3 +1,5 @@
+![](assets/hex_tinystats.png){width=110}
+
 # Teacups, Giraffes, & Statistics
 
 An open resource which uses R Markdown to create a series of modules for learning R basics and statistics. Built with R Markdown in RStudio. This project is ongoing, and more modules are in development.
