@@ -7,16 +7,14 @@ output:
       after_body: assets/foot.html
 ---
 
-<div class="alert alert-info">
-  **Module learning objectives:**
-  <ol> 
-  <li> Describe 3 measures of centrality </li>
-  <li> Explain the mathematical notation used for calculating the mean</li>
-  <li> Write a function which calculates the mean for any vector </li>
-  <li> Write a function which calculates the median for any vector
-  <li> Describe how the reliability of a sample mean will scale with increasing sample size </li>
-  </ol>
-</div>
+
+:::obj
+**Module learning objectives**
+
+1. Determine how to quantify the uncertainty of an estimate
+1. Describe the concept of statistical inference 
+
+:::
 
 # The Two Islands
 
@@ -45,7 +43,8 @@ This question is of interest because if the two population means are different, 
 
 How do we test this?
 
-# Testing for group difference
+# Testing for group difference 
+
 When testing for group mean differenes, [it is much more common for a researcher to be interested in the **difference** between means than in the specific values of the means themselves. ] stolen
 
 When we focus on the **mean difference**, represented by $\Delta_{\bar{x}}$ (read "delta x-bar"), we can ask: is the $\Delta_{\bar{x}}$ meaningfully different from 0?
@@ -70,7 +69,7 @@ $H_A$ :  $\Delta_{\mu}$ $\neq$ 0
 One way to reject the null hypothesis would be to construct 95% CIs around the estimate for $\Delta_{\bar{x}}$.
 
 # Pooled standard deviation
-As we learned previously, a prerequisite to calculating 95% CIs is to calculate the standard error (which we know will require the sample standard deviation). However, we're now working with two samples, so which sample's standard deviation do we use? Can we use both? Yes, kind of...
+As we learned previously, a prerequisite to calculating 95% CIs is to calculate the standard error (which we know will require the sample standard deviation). However, we're now working with two samples, so which sample's standard deviation do we use? Can we use both?
 
 In this particular case, the standard error of the mean difference can be calculated based on a *combined*, or **pooled standard deviation** ($s_{p}$) from two samples. We use the standard deviation of each sample, weighted by sample size.
 
@@ -83,7 +82,7 @@ In this particular case, the standard error of the mean difference can be calcul
 <div style="margin-bottom:50px"></div>
 
 
-One thing to point out is that standard deviations from samples cannot be added together--but variances can be, which is why in (1) we use $s^2$ in the numerator only to take then the square root of the entire term. [BAD SENTENCE]
+One thing to point out is that standard deviations from samples cannot be added together -- but variances can be, which is why in (1) we use $s^2$ in the numerator only to take then the square root of the entire term.
 
 We see that the variances are being multiplied by a term containing the sample size ($n$). In the case that each of our samples were differently sized, we would want to more heavily weight the variance of the sample that was larger. In our case now, both of our samples have the same $n$, but we introduce the equation for more general cases.
 
@@ -99,11 +98,11 @@ tutorial::go_interactive(height = 160)
 
 # Standard Error (SE) of the mean difference
 
-After calculating the pooled standard deviation, the next step is to determine the standard error of the mean difference. We will follow the same logic as we did when calculated the standard error based on a single sample--except now we will use the pooled standard deviation. Again, we will be adding the terms from the two samples together, so to be able to sum these we need to use the pooled variance. 
+After calculating the pooled standard deviation, the next step is to determine the standard error of the mean difference. We will follow the same logic as we did when calculated the standard error based on a single sample -- except now we will use the pooled standard deviation. Again, we will be adding the terms from the two samples together, so to be able to sum these we need to use the pooled *variance* (the square of the pooled standard deviation.)
 
-[think langauge needs to be made more novice friendly, annotated?]
+[ annotated?]
 
-<div style="margin-bottom:50px"></div>
+<div style="margin-bottom: 50px;"></div>
 \begin{equation}
  (\#eq:equation2)
  \Large SE_{({\bar{x_1}-\bar{x_2})}} = \sqrt{\frac{s_p^2}{n_1} + {\frac{s_p^2}{n_2}}}
@@ -199,7 +198,7 @@ The t-test is all about the **t-statistic**, which is produced when the mean dif
 
 
 
-- The t-statistic is essentially combining whatever our sample estimate is (e.g. mean difference, sample mean, etc.) and its uncertainty (i.e. standard error) into one value.
+- The t-statistic is essentially combining whatever our sample estimate is (e.g. mean difference, sample mean, etc.) and its uncertainty (i.e. standard error) into one value.  
 - we convert the t-statistic into a p-value via the a specific kind of distribution called the t-distribution. [plot, here's an example of one]
 - the further out in the tails of the t-distribution that the t-statistic falls. The lower the pvalue will be. 
 
