@@ -7,6 +7,13 @@ output:
       after_body: assets/foot.html
 ---
 
+```{r setup, include=FALSE}
+library(MASS)
+library(plotly)
+library(here)
+library(ggplot2)
+```
+
 :::obj
 
 **Module learning objectives**
@@ -139,7 +146,6 @@ The equation is shown below for the *sample* crossproduct of the deviation score
 The animation below shows the "construction" of the crossproducts from the 5 observations we have been following:
  
 ```{r fig.show="animate", animation.hook = 'gifski', fig.width=7.2, fig.height=4.8, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.01666667, fig.align='center', cache=TRUE, include=FALSE}
-library(ggplot2)
 set.seed(12)
 x1 <- rnorm(50, 10, 2)
 
@@ -360,10 +366,6 @@ Well it's complicated, (see [here](https://www.quora.com/What-is-an-intuitive-ex
 If you don't take our word for it, press play below to see what the relationship between ${s}_x{s}_y$ and ${cov(x,y)}$ looks like. 
 
 ```{r, tut=FALSE, echo=FALSE, message= FALSE, cache=TRUE}
-library(MASS)
-library(plotly)
-library(here)
-
 cor_var <- function(x){
   r <- 0
   d <- mvrnorm(n = 6, mu = c(0,0), Sigma = matrix(c(1, r, r, 2), nrow = 2))
