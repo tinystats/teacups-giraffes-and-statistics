@@ -272,7 +272,7 @@ d <- do.call(rbind, lapply(lseq(10,10000, 300), function(x){
 
 dd <- aggregate(data=d, x~frame+N, FUN=mean)%>%
 accumulate_by(~N)
-p <- dd %>% plot_ly(x=~log10(N), y=~x, frame=~frame, type="scatter", mode="lines", line = list(simplyfy = F, color="orangered"),width=550, height=350)%>% 
+p <- dd %>% plot_ly(x=~log10(N), y=~x, frame=~`frame...4`, type="scatter", mode="lines", line = list(simplyfy = F, color="orangered"),width=550, height=350)%>% 
  animation_opts(
     frame = 10, 
     transition = 0, 
