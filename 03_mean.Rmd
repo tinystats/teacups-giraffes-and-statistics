@@ -60,7 +60,7 @@ knitr::include_graphics("images/03_mean/mean_hist.png")
 
 \
 
-You've just collected a lot data and graphed heights. Although informative, a graphical display of these data is difficult to summarize-- we need to describe these heights with a single number that will be meaningful and allow us to do statistics.
+You've just collected a lot data and graphed heights. Although informative, a graphical display of these data is difficult to summarize -- we need to describe these heights with a single number that will be meaningful and allow us to do statistics.
 
 We can do this with a **measure of centrality**, the concept that one number in the "center" of the data set is a good summary of all the values. Below are examples of different measures of centrality. 
 
