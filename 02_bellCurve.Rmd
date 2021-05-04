@@ -8,8 +8,13 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig.align="center")
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
 library(here)
+library(plotly)
+library(tweenr)
+library(here)
+library(ggplot2)
+
 ```
 
 :::obj
@@ -65,10 +70,6 @@ You can start by scanning the values for the shortest and tallest heights. You s
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-
-library(plotly)
-library(tweenr)
-library(here)
 
 set.seed(12)
 x <- round(rnorm(50, 10, 2))
@@ -366,7 +367,6 @@ You decided that you had the resources to collect data on 50 giraffes on each of
 \
 
 ```{r fig.show="animate", animation.hook = 'gifski', fig.width=10, fig.height=2, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', cache=TRUE}
-library(ggplot2)
 lims <- data.frame(min=c(0,0,0,0), max=c(4,16, 120, 1200))
 cols <- c("brown1", "darkturquoise", "royalblue1","darkorchid1")
 ns <- c("10", "100", "1,000", "10,000")
