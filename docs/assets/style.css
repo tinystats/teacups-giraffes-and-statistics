@@ -253,7 +253,7 @@ body, html {
 /*.big_image is for module pages*/
 
 .big_image {
-  margin-top: -50px;
+  margin-top: -66px;
   margin-bottom: 2em;
   width: 100%;
 }
@@ -596,7 +596,7 @@ body, html {
 
 .hero-image {
     max-width: 1800px;
-    margin-top: -50px !important;
+    margin-top: -66px !important;
     margin-left: auto;
     margin-right: auto;
     position: relative;
