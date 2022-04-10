@@ -8,8 +8,13 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig.align="center")
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
 library(here)
+library(plotly)
+library(tweenr)
+library(here)
+library(ggplot2)
+
 ```
 
 :::obj
@@ -66,70 +71,42 @@ You can start by scanning the values for the shortest and tallest heights. You s
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-library(plotly)
-library(tweenr)
-library(here)
-
 set.seed(12)
 x <- round(rnorm(50, 10, 2))
 x2 <- round(rnorm(50, 18, 1.2))
-x <- c(x,x2)
-df <- data.frame(x = x, y = 23, type=rep(c('Island #1', 'Island #2'), each=50))
+x <- c(x, x2)
+df <- data.frame(x = x, y = 23, type = rep(c("Island #1", "Island #2"), 
+    each = 50))
 dfs <- list(df)
-for(i in seq_len(nrow(df))) {
+for (i in seq_len(nrow(df)))
+{
     dftemp <- tail(dfs, 1)
     dftemp[[1]]$y[i] <- sum(dftemp[[1]]$x[seq_len(i)] == dftemp[[1]]$x[i])
     dfs <- append(dfs, dftemp)
 }
 dfs <- append(dfs, dfs[rep(length(dfs), 3)])
-dft <- tween_states(dfs, 10, 1, 'cubic-in', 500)
+dft <- tween_states(dfs, 10, 1, "cubic-in", 500)
 dft$y <- dft$y - 0.5
 dft <- dft[dft$y != 23, ]
 
-m <- list(
-  l = 50,
-  r = 50,
-  b = 10,
-  t = 10,
-  pad = 4
-)
+m <- list(l = 50, r = 50, b = 10, t = 10, pad = 4)
 
-p <- dft %>%
-  plot_ly(
-    x = ~x,
-    y = ~y,
-    frame = ~.frame,
-    color = ~type,
-    colors = c("green3", "turquoise3"),
-    marker = list(size = 16),
-    width=630,
-    height=390
-  )  %>%
-config(displayModeBar = F) %>%
-  layout(
-    xaxis = list(range=c(4,23),
-      title = "Teacup Giraffe heights",
-      zeroline = F
-    ),
-    yaxis = list(range=c(-0.5,21),
-      title = "Frequency",
-      zeroline = F
-    ),legend = list(x = 0.075, y = 0.91), autosize=F, margin=m
-  ) %>%
-  animation_opts(
-    frame = 50,
-    transition = 0,
-    redraw = FALSE
-  ) %>%
-  animation_slider(
-    hide = T
-    ) %>%
-  animation_button(
-    x = 1, xanchor = "right", y = 0, yanchor = "bottom"
-  )
- p
+p <- 
+  dft %>% 
+  plot_ly(x = ~x, y = ~y, frame = ~.frame, color = ~type, 
+          colors = c("green3", "turquoise3"), 
+          marker = list(size = 16), width = 630, height = 390) %>%
+  config(displayModeBar = F) %>%
+  layout(xaxis = list(range = c(4, 23), title = "Teacup Giraffe heights", zeroline = F), 
+         yaxis = list(range = c(-0.5, 21), title = "Frequency", zeroline = F), 
+         legend = list(x = 0.075, y = 0.91), 
+         autosize = F, margin = m) %>%
+  animation_opts(frame = 50, transition = 0, redraw = FALSE) %>%
+  animation_slider(hide = T) %>%
+  animation_button(x = 1, xanchor = "right", y = 0, yanchor = "bottom")
+p
 
- htmltools::save_html(p, here(file="images/02_bellCurve/two_animated_hist.html"))
+htmltools::save_html(p, here(file = "images/02_bellCurve/two_animated_hist.html"))
 ```
 <div style="margin-top:30px">
 </div>
@@ -144,9 +121,9 @@ As you put the last stone in place, your local guide saunters by and glances at 
 
 The histogram above shows the **distribution**, or shape, of your data. The distribution of a variable in a data set gives you information about:
 
-  * All the values the variable takes on in your data set, when the data are split into reasonably sized groups
-  * How often each value occurs
-  * The shape, center, and amount of variability in the data
+  * All the values the variable takes on in your data set, when the data are split into reasonably sized groups  
+  * How often each value occurs  
+  * The shape, center, and amount of variability in the data  
  
 Checking the distribution of the data is always one of the first steps of data anlaysis. By knowing the shape of the data, you gain insights into some of the data's statistical properties (which become useful down the line, for example, when you need to decide whether a particular statistical test would be appropriate). 
 
@@ -183,10 +160,10 @@ set.seed(12)
 
 x <- rnorm(50, 10, 2)
 x2 <- rnorm(50, 18, 1.2)
-x <- data.frame(x=x, type="Island #1")
-x2 <- data.frame(x=x2, type="Island #2")
+x <- data.frame(x = x, type = "Island #1")
+x2 <- data.frame(x = x2, type = "Island #2")
 
-d <- rbind(x,x2)
+d <- rbind(x, x2)
 colnames(d) <- c("Height", "Location")
 ```
 
@@ -346,7 +323,7 @@ Hopefully your PhD advisor in the homeland will be satisfied with your new ggplo
 
 Since we could not take the height of every giraffe on each of the two islands, and it is unclear how many giraffes live on the islands, we had to rely on taking the heights of randomly selected groups of giraffes. 
 
-A **sample**, in our case the 50 giraffes from each island, is a subset of a population. The **population** is defined as all available observations in a defined geographic area at a given point in time-- in this case, all existing giraffes on one of the islands while you are there. 
+A **sample**, in our case the 50 giraffes from each island, is a subset of a population. The **population** is defined as all available observations in a defined geographic area at a given point in time -- in this case, all existing giraffes on one of the islands while you are there. 
 
 If we pick our sample in a random way, then our hope is that our sample data will be representative of the population. The larger our sample is, the more of the population it will include, and thus, the more closely the sample will resemble the population in its statistical attributes (e.g the distribution). We then must acknowledge that the smaller our sample is, the less likely it is that it will be representative of the population. 
 
@@ -366,19 +343,26 @@ You decided that you had the resources to collect data on 50 giraffes on each of
 \
 
 ```{r fig.show="animate", animation.hook = 'gifski', fig.width=10, fig.height=2, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', cache=TRUE}
-library(ggplot2)
-lims <- data.frame(min=c(0,0,0,0), max=c(4,16, 120, 1200))
-cols <- c("brown1", "darkturquoise", "royalblue1","darkorchid1")
+lims <- data.frame(min = c(0, 0, 0, 0), max = c(4, 16, 120, 1200))
+cols <- c("brown1", "darkturquoise", "royalblue1", "darkorchid1")
 ns <- c("10", "100", "1,000", "10,000")
-plot1 <- function(x){
-	d <- lapply(c(10, 100, 1000, 10000), function(x){
-		d <- data.frame(x=rnorm(x), frame=x)
-		return(d)
-	})
-
-p <- lapply(1:4, function(y) ggplot(data=d[[y]], aes(x))+geom_histogram(binwidth=0.25, color="white", fill=cols[y])+theme_light()+theme(panel.border=element_blank(), panel.grid.minor=element_blank(), panel.grid.major=element_line(size=0.2), axis.ticks=element_blank(), strip.background = element_blank(), strip.text.x = element_text(color="black"), axis.text.x=element_blank(), plot.title = element_text(hjust = 0.5, size=12))+ guides(fill=FALSE)+labs(x=NULL, y=NULL)+scale_y_continuous(expand=c(0,0), limits=c(lims[y,1], lims[y,2]))+xlim(-5,5)+ggtitle(paste0("N=", ns[y])))
-p <- cowplot::plot_grid(p[[1]], p[[2]], p[[3]], p[[4]], ncol=4, align="hv")
-p
+plot1 <- function(x) {
+    d <- lapply(c(10, 100, 1000, 10000), function(x) {
+        d <- data.frame(x = rnorm(x), frame = x)
+        return(d)
+    })
+    
+    p <- lapply(1:4, function(y) ggplot(data = d[[y]], aes(x)) + geom_histogram(binwidth = 0.25, 
+        color = "white", fill = cols[y]) + theme_light() + theme(panel.border = element_blank(), 
+        panel.grid.minor = element_blank(), panel.grid.major = element_line(size = 0.2), 
+        axis.ticks = element_blank(), strip.background = element_blank(), 
+        strip.text.x = element_text(color = "black"), axis.text.x = element_blank(), 
+        plot.title = element_text(hjust = 0.5, size = 12)) + guides(fill = FALSE) + 
+        labs(x = NULL, y = NULL) + scale_y_continuous(expand = c(0, 0), 
+        limits = c(lims[y, 1], lims[y, 2])) + xlim(-5, 5) + ggtitle(paste0("N=", 
+        ns[y])))
+    p <- cowplot::plot_grid(p[[1]], p[[2]], p[[3]], p[[4]], ncol = 4, align = "hv")
+    p
 }
 
 lapply(1:8, function(x) plot1())

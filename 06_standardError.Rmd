@@ -7,6 +7,14 @@ output:
       after_body: assets/foot.html
 ---
 
+```{r setup, include = FALSE}
+library(ggplot2)
+library(tweenr)
+library(parallel)
+library(MASS)
+```
+
+
 :::obj
 **Module learning objectives**
 
@@ -37,7 +45,7 @@ The mean of our sample of 50 giraffes from Island 1 was:
 
 ```{r, echo=FALSE}
 set.seed(12)
-heights_island1 <- rnorm(50,10,2)
+heights_island1 <- rnorm(50, 10, 2)
 ``` 
 
 ```{r}
@@ -62,10 +70,7 @@ On the left side, each histogram represents a sample (e.g. `heights_island1` wou
 
 <center>
 ```{r fig.show="animate", animation.hook = 'gifski', fig.width=7, fig.height=3, echo=FALSE, message=FALSE, warning=FALSE, results = 'hide', interval=0.08, loop=FALSE, cache=TRUE}
-library(ggplot2)
-library(tweenr)
-library(parallel)
-library(MASS)
+
 ppplot <- function(sub){
 x <- round(rnorm(50, 9.7, 2.1))
 m <- mean(x)
@@ -407,7 +412,6 @@ A histogram of the sampling distribution is shown below. It is a histogram made 
 
 <center>
 ```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, fig.height=2.7, fig.width=4.5, cache= TRUE}
-library(ggplot2)
 
 samp <- function(n){
   x <- rnorm(n, 9.7, 2.1)
@@ -441,7 +445,6 @@ Back to the idea that larger samples are "better", we can explore what happens i
 
 <center>
 ```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, fig.height=6, fig.width=6, cache = TRUE}
-library(ggplot2)
 
 samp <- function(n){
   x <- rnorm(n, 9.7, 2.1)
@@ -532,7 +535,6 @@ Deriving the equation used for calculating the standard error of the mean using 
 
 <center>
 ```{r, tut=FALSE, echo=FALSE, message= FALSE, warning=FALSE, out.height=2, cache = TRUE, fig.align="center"}
-library(plotly)
 
 d <- data.frame(N = seq(5, 1000, 5), sd = 2.1)
 d$sterr <- d$sd/sqrt(d$N)

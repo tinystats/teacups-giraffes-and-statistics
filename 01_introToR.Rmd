@@ -89,8 +89,8 @@ Another type of variable in R is the boolean (TRUE/FALSE) type. **Boolean** or l
 
 
 ```{r}
-"Giraffe"=="Teacup"
-sqrt(100)==10
+"Giraffe" == "Teacup"
+sqrt(100) == 10
 ```
 
 

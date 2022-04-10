@@ -13,25 +13,34 @@
 
 <title>The Normal Distribution</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/htmlwidgets-1.3/htmlwidgets.js"></script>
-<script src="site_libs/plotly-binding-4.9.0/plotly.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="site_libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="site_libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="site_libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="site_libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 <head>
@@ -61,12 +70,16 @@
 	</div>
 </div>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -79,32 +92,8 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 
 
@@ -114,10 +103,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -134,40 +119,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -195,7 +156,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -207,7 +168,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -218,10 +179,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -233,7 +207,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -359,7 +332,7 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -373,7 +346,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -392,7 +365,7 @@ div.tocify {
   <a href="00_narrative.html">History of Teacup Giraffes</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Modules
      
     <span class="caret"></span>
@@ -434,7 +407,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -486,8 +459,10 @@ div.tocify {
 <h1>Distributions</h1>
 <p>The histogram above shows the <strong>distribution</strong>, or shape, of your data. The distribution of a variable in a data set gives you information about:</p>
 <ul>
-<li>All the values the variable takes on in your data set, when the data are split into reasonably sized groups</li>
-<li>How often each value occurs</li>
+<li>All the values the variable takes on in your data set, when the data are split into reasonably sized groups<br />
+</li>
+<li>How often each value occurs<br />
+</li>
 <li>The shape, center, and amount of variability in the data</li>
 </ul>
 <p>Checking the distribution of the data is always one of the first steps of data anlaysis. By knowing the shape of the data, you gain insights into some of the data’s statistical properties (which become useful down the line, for example, when you need to decide whether a particular statistical test would be appropriate).</p>
@@ -551,7 +526,7 @@ Happy with your progress thus far, you are excited to send your histogram result
 <p>You might be wondering why we don’t use the <code>color=</code> here instead (which is a valid argument for <code>aes( )</code>), and this is because we want to change the color of the <em>fill</em> of the bars, while <code>color =</code> would change only the bar outline color (see below).</p>
 <p>To choose colors ggplot should use, we need to add a new option <code>+ scale_fill_manual( )</code> and then specify the colors with the argument <code>values =</code>. To read more about how to create your own color scale, see this <a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">page</a>. If you have more than one color you need to specify, make sure you combine them within the <code>c( )</code> function.</p>
 <p>Colors in R can be specified in different ways. For example, you can use a string of the color name (see possible colors <a href="http://sape.inf.usi.ch/quick-reference/ggplot2/colour">here</a>) or with <a href="https://htmlcolorcodes.com/">hex color codes</a>.</p>
-<p><strong>Outline Color:</strong> To change the color of the outline, specify <code>color =</code> within the parentheses of the <code>geom_</code> (i.e. <code>geom_histogram</code>).</p>
+<p><strong>Outline Color:</strong> To change the color of the outline, specify <code>color =</code> within the parentheses of the <code>geom_</code> (i.e. <code>geom_histogram</code>).</p>
 <p>In the window below, we have added some options that you can play around with. Use the descriptions above to:</p>
 <ul>
 <li>Specify the variable that <code>fill</code> should be set to, as well as the colors for the fill and outline.</li>
@@ -595,7 +570,7 @@ Happy with your progress thus far, you are excited to send your histogram result
 <p><br />
 </p>
 <ol start="2" style="list-style-type: decimal">
-<li><p><strong>Change axes labels</strong>: Add <code>labs( )</code> to the existing ggplot layers and specify each axis you’d like to label as arguments, e.g. <code>x =</code>, followed by the string for your label. If you’d like to learn more about manipulations you can do with <code>labs( )</code>, see <a href="https://ggplot2.tidyverse.org/reference/labs.html">this reference</a>.</p></li>
+<li><p><strong>Change axes labels</strong>: Add <code>labs( )</code> to the existing ggplot layers and specify each axis you’d like to label as arguments, e.g. <code>x =</code>, followed by the string for your label. If you’d like to learn more about manipulations you can do with <code>labs( )</code>, see <a href="https://ggplot2.tidyverse.org/reference/labs.html">this reference</a>.</p></li>
 <li><p>In addition, <code>labs( )</code> can be used to <strong>remove labels</strong>. In this case, we can also include <code>fill = NULL</code> to remove the legend label (recall that the categories for our legend were determined by the <code>fill</code> argument in <code>aes()</code> previously).</p></li>
 </ol>
 <p>Use the window below to:</p>
@@ -641,7 +616,7 @@ Happy with your progress thus far, you are excited to send your histogram result
 <div id="bell-ttta" class="section level1">
 <h1>Things to think about</h1>
 <p>Since we could not take the height of every giraffe on each of the two islands, and it is unclear how many giraffes live on the islands, we had to rely on taking the heights of randomly selected groups of giraffes.</p>
-<p>A <strong>sample</strong>, in our case the 50 giraffes from each island, is a subset of a population. The <strong>population</strong> is defined as all available observations in a defined geographic area at a given point in time– in this case, all existing giraffes on one of the islands while you are there.</p>
+<p>A <strong>sample</strong>, in our case the 50 giraffes from each island, is a subset of a population. The <strong>population</strong> is defined as all available observations in a defined geographic area at a given point in time – in this case, all existing giraffes on one of the islands while you are there.</p>
 <p>If we pick our sample in a random way, then our hope is that our sample data will be representative of the population. The larger our sample is, the more of the population it will include, and thus, the more closely the sample will resemble the population in its statistical attributes (e.g the distribution). We then must acknowledge that the smaller our sample is, the less likely it is that it will be representative of the population.</p>
 <p>The animation below illustrates how small samples can depart from the characteristics of the population.</p>
 <ul>
@@ -683,7 +658,7 @@ Happy with your progress thus far, you are excited to send your histogram result
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -701,7 +676,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
@@ -710,6 +685,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')
@@ -722,7 +700,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

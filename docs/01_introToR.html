@@ -13,12 +13,21 @@
 
 <title>Introduction to the R programming language</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
@@ -53,12 +62,16 @@
 		</div>
   </div>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -71,32 +84,8 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 
 
@@ -106,10 +95,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -126,40 +111,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -187,7 +148,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -199,7 +160,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -210,10 +171,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -225,7 +199,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -351,7 +324,7 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -365,7 +338,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -384,7 +357,7 @@ div.tocify {
   <a href="00_narrative.html">History of Teacup Giraffes</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Modules
      
     <span class="caret"></span>
@@ -426,7 +399,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -465,7 +438,7 @@ div.tocify {
 <div id="common-functions" class="section level1">
 <h1>Common functions</h1>
 <p>Most of the time when we work in R, we will use functions; either pre-written functions or ones we write ourselves. <strong>Functions</strong> make it easy to use sets of code instructions repeatedly (without filling our scripts with the code underlying the function) and help us carry out multiple tasks in a single step without having to go through the details of how the steps are executed.</p>
-<p>To use functions in R, we type the name of the function followed by parentheses (e.g. <code>print( )</code>). Within the parentheses is where we will specify the function input and options, separated by commas <code>,</code>. One function you will use a lot is the <strong>combine function</strong> <code>c( )</code>, which as the name suggests lets you concatenate different types of values.</p>
+<p>To use functions in R, we type the name of the function followed by parentheses (e.g. <code>print( )</code>). Within the parentheses is where we will specify the function input and options, separated by commas <code>,</code>. One function you will use a lot is the <strong>combine function</strong> <code>c( )</code>, which as the name suggests lets you concatenate different types of values.</p>
 <ul>
 <li>In the window below, create an object combining a set of numerical values using <code>c( )</code>, separating the different values with commas.</li>
 <li>Then sum up the content of this object using <code>sum( )</code>.</li>
@@ -479,8 +452,8 @@ div.tocify {
 <h1>Writing your own function</h1>
 <p>R makes it easy to create user defined functions by using <code>function( )</code>. Here is how it works:</p>
 <ul>
-<li>Give your function an object name and assign the function to it, e.g. <code>my_function_name &lt;- function( )</code>.</li>
-<li>Within the parentheses you specify inputs and options just like how pre-written functions work, e.g. <code>function(input_data)</code></li>
+<li>Give your function an object name and assign the function to it, e.g. <code>my_function_name &lt;- function( )</code>.</li>
+<li>Within the parentheses you specify inputs and options just like how pre-written functions work, e.g. <code>function(input_data)</code></li>
 <li>Next, put all the code you want your function to execute inside curly brackets like this: <code>function(input_data){code to run}</code></li>
 <li>Use <code>return( )</code> to specify what you want to your function to output once it is done running the code.</li>
 </ul>
@@ -504,7 +477,7 @@ div.tocify {
 </div>
 <div id="vectors" class="section level1">
 <h1>Vectors</h1>
-<p>The <code>c( )</code> function will combine values and create a specific type of data structure called an <strong>atomic vector</strong>. A vector is a simple one-dimensional structure that can contain only one type of value. This means that storing multiple numeric values in a vector, as we have already done, works just fine. But there are other types of values that can be used in R, for example <strong>character</strong> values. These values are created by putting text or numbers within quotes such as <code>&quot;Giraffe&quot;</code>. If we try to combine numeric and character values in the same vector, R will convert both values to the character type.</p>
+<p>The <code>c( )</code> function will combine values and create a specific type of data structure called an <strong>atomic vector</strong>. A vector is a simple one-dimensional structure that can contain only one type of value. This means that storing multiple numeric values in a vector, as we have already done, works just fine. But there are other types of values that can be used in R, for example <strong>character</strong> values. These values are created by putting text or numbers within quotes such as <code>"Giraffe"</code>. If we try to combine numeric and character values in the same vector, R will convert both values to the character type.</p>
 <pre class="r"><code>c(&quot;Giraffe&quot;, 123)</code></pre>
 <pre><code>## [1] &quot;Giraffe&quot; &quot;123&quot;</code></pre>
 <p>This behavior is not always desirable, so it is a good idea to try to only combine values of the same type.</p>
@@ -512,16 +485,16 @@ div.tocify {
 <div id="boolean-values-and-logical-operators" class="section level1">
 <h1>Boolean values and logical operators</h1>
 <p>Another type of variable in R is the boolean (TRUE/FALSE) type. <strong>Boolean</strong> or logical vectors can only take two different values; TRUE or FALSE (case sensitive). You will see these types of values mostly when logical operators are used to test how different objects relate to each other. For example, the <strong>logical operator</strong> <code>==</code> can be used to test if two different objects are exactly the same and <code>TRUE</code> will be returned only if the identity is fulfilled.</p>
-<pre class="r"><code>&quot;Giraffe&quot;==&quot;Teacup&quot;</code></pre>
+<pre class="r"><code>&quot;Giraffe&quot; == &quot;Teacup&quot;</code></pre>
 <pre><code>## [1] FALSE</code></pre>
-<pre class="r"><code>sqrt(100)==10</code></pre>
+<pre class="r"><code>sqrt(100) == 10</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="data-frames" class="section level1">
 <h1>Data frames</h1>
 <p>Vectors are one of multiple data structures in R. We will not cover all types of structures here, but perhaps the most common one encountered when analyzing data in R is the <strong>data frame</strong>. Data frames are two dimensional, which basically means that data frames let you store multiple vectors in one object. Oftentimes, each vector will be a new column in the data frame. One constraint though is that all vectors/columns need to be of the same length.</p>
 <ul>
-<li>In the window below, use the <code>data.frame()</code> function to create a data frame with two columns called <em>x</em> and <em>y</em>. When creating data frames we specify a column by giving the column a name and assigning values or vectors to it, e.g. <code>data.frame(x= c(&quot;Giraffe&quot;, &quot;Teacup&quot;))</code>.</li>
+<li>In the window below, use the <code>data.frame()</code> function to create a data frame with two columns called <em>x</em> and <em>y</em>. When creating data frames we specify a column by giving the column a name and assigning values or vectors to it, e.g. <code>data.frame(x= c("Giraffe", "Teacup"))</code>.</li>
 <li>Also observe what happens when you try to combine an x and y vector of different lengths.</li>
 </ul>
 <!---LEARNR EX 5-->
@@ -562,7 +535,7 @@ div.tocify {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -580,7 +553,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
@@ -589,6 +562,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')
@@ -601,7 +577,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
